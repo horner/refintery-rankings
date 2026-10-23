@@ -199,17 +199,18 @@
     render();
   }
 
-  function selectTeam(index) {
+  function selectTeam(index, automatic = false) {
     state.selected = (index + state.data.top10.length) % state.data.top10.length;
     if (state.view === 'ftc') state.view = 'board';
-    history.replaceState(null, '', `#${state.view === 'team' ? 'spotlight' : 'team'}/${selected().number}`);
+    const keepSection = automatic && location.hash && !/^#(?:broadcast|board|(?:team|spotlight)\/\d+)$/.test(location.hash);
+    if (!keepSection) history.replaceState(null, '', `#${state.view === 'team' ? 'spotlight' : 'team'}/${selected().number}`);
     render();
   }
 
   function setAutoCycle(enabled) {
     clearInterval(state.cycle);
     state.cycle = enabled && state.data ? setInterval(() => {
-      if (!document.hidden && !state.exporting && state.view !== 'ftc' && !$('match-panel')?.matches(':hover, :focus-within') && !frame.querySelector('.screen-replay:hover, .screen-replay:focus-within, a:hover, a:focus-visible')) selectTeam(state.selected + 1);
+      if (!document.hidden && !state.exporting && state.view !== 'ftc' && !$('match-panel')?.matches(':hover, :focus-within') && !frame.querySelector('.screen-replay:hover, .screen-replay:focus-within, a:hover, a:focus-visible')) selectTeam(state.selected + 1, true);
     }, 12000) : null;
   }
 
