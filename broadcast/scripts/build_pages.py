@@ -83,6 +83,42 @@ def logo(logos, number, display, prefix=""):
     return f'<span class="logo{" dark-logo" if mark.get("background") == "dark" else ""}"><img src="{prefix}{e(shown["file"] if shown else mark["file"])}" alt="" loading="lazy" decoding="async"{size}></span>'
 
 
+def identity_logos(t, display, prefix=""):
+    marks = []
+    for kind in ("school", "team"):
+        mark = t.get("logos", {}).get(kind)
+        if not mark or not mark.get("file"):
+            continue
+        shown = display.get(mark["file"], {})
+        image = f'<span class="logo{(" dark-logo" if mark.get("background") == "dark" else "")}"><img src="{prefix}{e(shown.get("file", mark["file"]))}" alt="{e(mark["label"])}" loading="lazy" decoding="async"></span>'
+        marks.append(f'<figure>{image}<figcaption>{"School / organization" if kind == "school" else "Team"}</figcaption></figure>')
+    return '<div class="profile-logos">' + ''.join(marks) + '</div>'
+
+
+def person_evidence(p):
+    qualifiers = [("historical", "Historical evidence"), ("retrospective", "Retrospective account"), ("indexed", "Indexed evidence"), ("self reported", "Self-reported")]
+    parts = ["Source dated " + short(p["date"]) if p.get("date") else "Undated source"]
+    if p.get("season"):
+        parts.append("Season " + p["season"])
+    parts.extend(label for term, label in qualifiers if term in p.get("status", ""))
+    if p.get("note"):
+        parts.append(p["note"])
+    if p.get("dateBasis"):
+        parts.append(p["dateBasis"])
+    return e(" · ".join(parts))
+
+
+def people_details(people, gaps=()):
+    if not people:
+        return ""
+    rows = []
+    for p in people:
+        sources = " · ".join(ext(url, f"source {i + 1}") for i, url in enumerate(p["sourceUrls"]))
+        rows.append(f'<li><strong>{e(p["name"])}</strong> · {e(p["role"])}<br><small>{person_evidence(p)} · {sources}</small></li>')
+    note = " ".join(gaps) or "Confirm current captains and coaches with the team before publishing."
+    return f'<details open><summary>People named in public sources ({len(people)})</summary><ul class="people">{"".join(rows)}</ul><p class="muted small">{e(note)}</p></details>'
+
+
 def follow_label(link):
     if link["type"] == "Website":
         return "Team website"
@@ -175,9 +211,17 @@ def calendar(result, today):
     return "".join(html)
 
 
+def school_leader(s, linked=False):
+    leader = s.get("leader")
+    if not leader or not leader.get("name"):
+        return "School leader name not verified in public sources."
+    name = ext(leader["sourceUrl"], leader["name"]) if linked else e(leader["name"])
+    return f'{e(leader["role"])}: {name} · {e(leader["evidenceLabel"])}'
+
+
 def dnf_list(dnf):
     rows = sorted(dnf["schools"], key=lambda s: s["distanceMiles"])
-    return "".join(f'<li><details class="school"><summary><span><strong>{e(s["name"])}</strong><small>{e(s["city"])}, {e(s["state"])} · {e(s["sector"])}</small></span><span class="miles">{s["distanceMiles"]:.1f}<small> mi</small></span></summary><div class="school-body"><p>{e(s["district"])}</p>{f"<p>{e(s['leader']['role'])}: {e(s['leader']['name'])}</p>" if s.get("leader") else ""}</div></details></li>' for s in rows)
+    return "".join(f'<li><details class="school"><summary><span><strong>{e(s["name"])}</strong><small>{e(s["city"])}, {e(s["state"])} · {e(s["sector"])}</small><small class="school-leader">{school_leader(s)}</small></span><span class="miles">{s["distanceMiles"]:.1f}<small> mi</small></span></summary><div class="school-body"><p>{e(s["district"])}</p><p>{school_leader(s, True)}</p></div></details></li>' for s in rows)
 
 
 def news(result):
@@ -230,7 +274,7 @@ def page_shell(title, description, image, url, body, json_ld):
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/refinery-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../styles.css?v=20261023-integrated-1">
+  <link rel="stylesheet" href="../../styles.css?v=20261023-integrated-2">
   <script type="application/ld+json">{json.dumps(json_ld, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -245,7 +289,7 @@ def page_shell(title, description, image, url, body, json_ld):
 
 
 def team_hero(t, program, stats, honors, display):
-    return f"""    <section class="team-hero"><div class="wrap"><div class="team-hero-grid">{logo(t['logos'], t['number'], display, '../../').replace('class="logo', 'class="logo hero-logo')}<div>
+    return f"""    <section class="team-hero"><div class="wrap"><div class="team-hero-grid">{identity_logos(t, display, '../../')}<div>
       <p class="eyebrow">{program} {t['number']} · {e(t.get('city', ''))}</p>
       <h1>{e(t['name'])}</h1>
       <p class="team-school">{e(t.get('school', ''))}</p>
@@ -292,10 +336,10 @@ def frc_page(t, result):
     pic = next((photos[p] for p in t["photos"] if p in photos), None)
     figure = f'<figure class="team-photo"><img src="../../{e(pic["file"])}" alt="{e(pic["caption"])}" width="{pic["width"]}" height="{pic["height"]}" loading="lazy"><figcaption>{e(pic["caption"])} Photo: {e(pic["credit"])}</figcaption></figure>' if pic else ""
     people = t["students"] + t["representatives"] + t["adults"]
-    people_html = f'<details><summary>People named in public sources ({len(people)})</summary><ul class="people">{"".join(f"<li><strong>{e(p["name"])}</strong> · {e(p["role"])}<br><small>{"Source dated " + short(p["date"]) if p["date"] else "Undated source"} · {" · ".join(ext(u, f"source {i + 1}") for i, u in enumerate(p["sourceUrls"][:2]))}</small></li>" for p in people)}</ul><p class="muted small">Confirm current captains and coaches with the team before publishing.</p></details>' if people else ""
+    people_html = people_details(people, t.get("gaps", []))
     body = f"""{team_hero(t, 'FRC', stats, honors, display)}
     <section class="section team-body"><div class="wrap team-columns"><div>
-      <h2>2026 season</h2>{events}{awards}{upcoming_for(t['number'], result)}{people_html}{f'<p><a class="text-link" href="../../top10.html#team/{t["number"]}">View in the Top 10 display</a></p>' if t['powerRank'] <= 10 else ''}
+      {people_html}<h2>2026 season</h2>{events}{awards}{upcoming_for(t['number'], result)}{f'<p><a class="text-link" href="../../top10.html#team/{t["number"]}">View in the Top 10 display</a></p>' if t['powerRank'] <= 10 else ''}
       <h2>Team facts</h2><ul class="people"><li>{e(t['school'])} · {e(t['city'])}, {e(t['county'])} County</li><li>{e(t['affiliationNote'])}</li><li>{t['seasons']} FIRST seasons through 2026 · rookie year {t['rookieYear']}</li><li>Indiana EPA rank {t['stateEpaRank']} of {t['stateEpaCount']} · world {t['worldEpaRank']:,} of {t['worldEpaCount']:,}</li></ul>
     </div><aside>{follow(t)}{closest}{figure}{news_list(t['news'])}
       <h2>Stats &amp; profiles</h2><ul class="link-list"><li>{ext(t['links']['tba'], 'The Blue Alliance', 'text-link')}</li><li>{ext(t['links']['statbotics'], 'Statbotics', 'text-link')}</li><li>{ext(t['links']['first'], 'FIRST profile', 'text-link')}</li>{f"<li>{ext(t['links']['school'], 'School site', 'text-link')}</li>" if t['links'].get('school') else ''}</ul>
@@ -312,7 +356,7 @@ def ftc_page(t, result, rookie):
     stats = [("New", "2026–27 rookie team")] if rookie else [(f"{t['opr']:.1f}", "Best OPR, 2025–26"), (f"{t['regionalRank']}/{t['regionalCount']}", "Rank at Indiana events"), (f"{t['worldRank']:,}", f"World OPR rank (of {t['worldCount']:,})")]
     stories = [s for s in result["news"]["stories"] if f"ftc{t['number']}" in s["teams"]]
     people = (t.get("students") or []) + (t.get("adults") or [])
-    people_html = f'<details><summary>People named in public sources ({len(people)})</summary><ul class="people">{"".join(f"<li><strong>{e(p["name"])}</strong> · {e(p["role"])}</li>" for p in people)}</ul></details>' if people else ""
+    people_html = people_details(people, t.get("gaps", []))
     note = e(t.get("note") or t.get("qualification") or "")
     body = f"""{team_hero(t, 'FTC', stats, '', display)}
     <section class="section team-body"><div class="wrap team-columns"><div>

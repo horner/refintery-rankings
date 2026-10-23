@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import html
 from pathlib import Path
 import re
 import struct
@@ -45,6 +46,13 @@ def main():
         page = (HERE / f"dist/team/{t['number']}/index.html").read_text(encoding="utf-8")
         require(thumbnail["file"] in page and match["videoUrl"] in page, f"Team {t['number']} lost its cached replay preview")
         require(f"top10.html#team/{t['number']}" in page, f"Team {t['number']} has no Top 10 display link")
+        for mark in t["logos"].values():
+            if mark.get("file"):
+                require(f'alt="{html.escape(mark["label"], quote=True)}"' in page, f"Team {t['number']} lost a school or team logo")
+        page_text = html.unescape(re.sub(r"<[^>]+>", " ", page))
+        for person in t["students"] + t["representatives"] + t["adults"]:
+            require(person["name"] in page_text and person["role"] in page_text, f"Team {t['number']} lost a person's published role")
+            require(not person.get("note") or person["note"] in page_text, f"Team {t['number']} lost a person's evidence qualification")
     for asset in ("top10.html", "top10.js", "top10.css"):
         require((HERE / "dist" / asset).is_file(), f"Missing Top 10 display asset: {asset}")
     display_page = (HERE / "dist/top10.html").read_text(encoding="utf-8")

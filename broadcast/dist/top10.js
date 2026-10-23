@@ -20,10 +20,34 @@
   const standing = (team) => state.data.standings?.find((item) => Number(item.number) === Number(team.number)) || {};
   const matchFor = (team) => state.data.matchHighlights?.teams?.find((item) => item.program === 'FRC' && Number(item.number) === Number(team.number))?.main || standing(team).closestMatch;
   const thumbnailFor = (match) => asset(state.data.videoThumbnails?.[match?.videoUrl]?.file);
-  const logoMark = (team) => team.logos?.team?.file ? team.logos.team : team.logos?.school;
-  function logoFor(team) {
-    const logo = logoMark(team);
+  function logoFor(team, kind = 'team') {
+    const logo = team.logos?.[kind];
     return asset(state.data.displayAssets?.[logo?.file]?.file || logo?.file);
+  }
+  const evidenceDate = (value) => !value ? 'Undated source' : /^\d{4}-\d{2}-\d{2}$/.test(String(value)) ? date(value) : String(value).replace(/^(\d{4})-(\d{4})$/, '$1–$2');
+  const evidenceLine = (person) => `${evidenceDate(person.date)} · ${person.status || 'Status not recorded'}`;
+  function peopleFor(team) {
+    const students = team.students || [];
+    const representatives = team.representatives || [];
+    const student = students.find((person) => person.name === team.spotlight?.name) || students[0] || representatives.find((person) => /student/i.test(person.role)) || representatives[0];
+    const adult = team.adults?.[0];
+    return [
+      { label: student && !/student/i.test(student.role) && !students.includes(student) ? 'Team representative' : 'Student / team representative', person: student, gap: 'Student captain not verified.' },
+      { label: 'Adult / mentor', person: adult, gap: 'Adult coach or spokesperson not verified.' },
+    ];
+  }
+  function logoHtml(team, kind) {
+    const logo = team.logos?.[kind];
+    const file = logoFor(team, kind);
+    const label = kind === 'school' ? 'School / organization' : 'Robotics team';
+    return `<figure class="identity-mark"><div class="mark-frame${logo?.background === 'dark' ? ' dark-logo' : ''}">${file ? `<img src="${esc(file)}" alt="${esc(logo?.label || `${kind === 'school' ? team.school : team.name} logo`)}" decoding="async">` : '<span>Logo not verified</span>'}</div><figcaption>${label}</figcaption></figure>`;
+  }
+  function peopleHtml(team) {
+    const cards = peopleFor(team).map(({ label, person, gap }) => `<div class="person-summary"><h4>${esc(label)}</h4>${person ? `<p><strong>${esc(person.name)}</strong><span class="person-role">${esc(person.role)}</span></p><p class="person-evidence">${esc(evidenceLine(person))}${external(person.sourceUrls?.find(safeUrl), 'Source')}</p>` : `<p class="person-gap">${esc(gap)}</p>`}</div>`).join('');
+    const groups = [['Students', team.students], ['Adults / mentors', team.adults], ['Representatives', team.representatives]];
+    const full = groups.filter(([, people]) => people?.length).map(([label, people]) => `<section><h4>${label}</h4>${people.map((person) => `<article class="person-detail"><h5>${esc(person.name)}</h5><p>${esc(person.role)}</p><p class="person-evidence">${esc(evidenceLine(person))}<br>${esc(person.season || '')}${person.dateBasis ? `<br>${esc(person.dateBasis)}` : ''}</p><p>${esc(person.note || '')}</p><div class="person-sources">${(person.sourceUrls || []).map((url, i) => external(url, `Source ${i + 1}`)).join('')}</div></article>`).join('')}</section>`).join('');
+    const credits = ['school', 'team'].map((kind) => { const logo = team.logos?.[kind]; return logo ? `<p><strong>${kind === 'school' ? 'School / organization' : 'Robotics team'} mark:</strong> ${esc(logo.label)}. ${esc(logo.note || '')} ${logo.retrievedDate ? `Retrieved ${esc(date(logo.retrievedDate))}.` : ''} ${external(logo.pageUrl || logo.sourceUrl, 'Logo source')}</p>` : ''; }).join('');
+    return `<section class="people"><h3>PEOPLE IN THE RESEARCH</h3><div class="people-summary">${cards}</div><p class="people-caution">Published evidence; current appointments are not confirmed.</p><details class="people-details"><summary>All people, evidence notes &amp; logo credits</summary><div>${full}${team.gaps?.length ? `<section><h4>Research gaps</h4><ul>${team.gaps.map((gap) => `<li>${esc(gap)}</li>`).join('')}</ul></section>` : ''}<section><h4>Logo credits</h4>${credits}</section></div></details></section>`;
   }
   function announce(message) {
     clearTimeout(state.statusTimer);
@@ -31,7 +55,7 @@
     state.statusTimer = setTimeout(() => { $('status').textContent = ''; }, 6000);
   }
   function renderRows() {
-    $('ranking-rows').innerHTML = state.data.top10.map((team, index) => `<button type="button" class="rank-row" data-team="${index}" aria-current="${index === state.selected}" aria-label="Regional power rank ${esc(team.rank)}, team ${esc(team.number)}, ${esc(team.name)}, ${esc(team.city)}, EPA ${num(team.epa, 2)}"><span class="rank">${String(team.rank).padStart(2, '0')}</span><span class="team-number">${esc(team.number)}</span><span class="team-copy"><span class="team-name">${esc(team.name)}</span><span class="team-city">${esc(team.city)} · ${esc(team.county)} County</span></span><span class="epa">${num(team.epa, 2)}</span></button>`).join('');
+    $('ranking-rows').innerHTML = state.data.top10.map((team, index) => `<button type="button" class="rank-row" data-team="${index}" aria-current="${index === state.selected}" aria-label="Regional power rank ${esc(team.rank)}, team ${esc(team.number)}, ${esc(team.name)}, ${esc(team.city)}, EPA ${num(team.epa, 2)}"><span class="rank">${String(team.rank).padStart(2, '0')}</span><span class="row-marks" aria-hidden="true">${['school', 'team'].map((kind) => logoFor(team, kind) ? `<img class="${team.logos?.[kind]?.background === 'dark' ? 'dark-logo' : ''}" src="${esc(logoFor(team, kind))}" alt="">` : '<span></span>').join('')}</span><span class="team-number">${esc(team.number)}</span><span class="team-copy"><span class="team-name">${esc(team.name)}</span><span class="team-city">${esc(team.city)} · ${esc(team.county)} County</span></span><span class="epa">${num(team.epa, 2)}</span></button>`).join('');
   }
   function renderSpotlight() {
     const team = selected();
@@ -39,11 +63,10 @@
     const match = matchFor(team);
     const thumbnail = thumbnailFor(match);
     const video = safeUrl(match?.videoUrl);
-    const logo = logoFor(team);
     const record = stats.record ? `${num(stats.record.wins)}–${num(stats.record.losses)}–${num(stats.record.ties)}` : '—';
     const district = stats.district?.rank ? `#${num(stats.district.rank)}` : '—';
     const replay = match ? `<div class="replay-heading"><h3>CLOSEST FINISH / REPLAY</h3><span>Final alliance scores</span></div>${video && thumbnail ? `<a class="replay-image-link" href="${esc(video)}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${esc(team.name)} in ${esc(match.eventName)}, ${esc(match.matchLabel)} (opens YouTube)"><img class="replay-image" src="${esc(thumbnail)}" alt="Replay thumbnail for ${esc(match.videoTitle || `${match.eventName}, ${match.matchLabel}`)}" decoding="async"><span class="play-cta"><b aria-hidden="true">▶</b> WATCH THE MATCH ↗</span></a>` : `<div class="no-replay"><strong>${video ? 'Match replay available' : 'Match result preserved'}</strong><p>${video ? external(video, 'Watch the match') : 'A verified replay is not available for this match.'}</p></div>`}<div class="match-caption"><p>${esc(match.eventName)}<br>${esc(match.phase)} · ${esc(match.matchLabel)} · ${esc(match.dateLabel || date(match.playedDate))}</p><div class="match-score"><span class="red">${num(match.redScore)}</span>–<span class="blue">${num(match.blueScore)}</span><small>Team ${esc(team.number)}: ${esc(match.teamAlliance)} · ${esc(match.outcome)}</small></div></div>` : '<div class="no-replay"><strong>Replay research in progress</strong><p>No verified match replay is included for this team.</p></div>';
-    $('spotlight').innerHTML = `<p class="spotlight-kicker">POWER RANK ${esc(team.rank)} / TEAM ${esc(team.number)}</p><div class="identity"><div class="identity-copy"><h2 id="team-title">${esc(team.name)}</h2><p class="team-school">${esc(team.school)}<br>${esc(team.city)}, Indiana</p></div>${logo ? `<img class="team-logo${logoMark(team)?.background === 'dark' ? ' dark-logo' : ''}" src="${esc(logo)}" alt="${esc(team.name)} logo" decoding="async">` : ''}</div><div class="stats"><div class="stat"><strong class="stat-value">${num(team.epa, 2)}</strong><span class="stat-label">Statbotics EPA · 2026</span></div><div class="stat"><strong class="stat-value">${record}</strong><span class="stat-label">2026 season W–L–T</span></div><div class="stat"><strong class="stat-value">${district}</strong><span class="stat-label">FIRST IN district${stats.district?.points != null ? ` · ${num(stats.district.points)} pts` : ''}</span></div></div><div class="replay">${replay}</div><div class="spotlight-links"><a class="back-to-rankings" href="#rankings">↑ Back to the Top 10</a>${external(team.profileUrl || stats.links?.statbotics, 'EPA source')}${external(stats.links?.tba || team.sourceUrls?.find((url) => url.includes('thebluealliance.com')), 'Season results')}${match ? external(match.officialUrl, 'Official match') : ''}<a href="index.html#team/${esc(team.number)}">Full team profile ↗</a></div>`;
+    $('spotlight').innerHTML = `<p class="spotlight-kicker">POWER RANK ${esc(team.rank)} / TEAM ${esc(team.number)}</p><div class="identity"><div class="identity-copy"><h2 id="team-title">${esc(team.name)}</h2><p class="team-school">${esc(team.school)}<br>${esc(team.city)}, Indiana</p></div><div class="identity-marks">${logoHtml(team, 'school')}${logoHtml(team, 'team')}</div></div><div class="stats"><div class="stat"><strong class="stat-value">${num(team.epa, 2)}</strong><span class="stat-label">Statbotics EPA · 2026</span></div><div class="stat"><strong class="stat-value">${record}</strong><span class="stat-label">2026 season W–L–T</span></div><div class="stat"><strong class="stat-value">${district}</strong><span class="stat-label">FIRST IN district${stats.district?.points != null ? ` · ${num(stats.district.points)} pts` : ''}</span></div></div>${peopleHtml(team)}<div class="replay">${replay}</div><div class="spotlight-links"><a class="back-to-rankings" href="#rankings">↑ Back to the Top 10</a>${external(team.profileUrl || stats.links?.statbotics, 'EPA source')}${external(stats.links?.tba || team.sourceUrls?.find((url) => url.includes('thebluealliance.com')), 'Season results')}${match ? external(match.officialUrl, 'Official match') : ''}<a href="index.html#team/${esc(team.number)}">Full team profile ↗</a></div>`;
     document.querySelectorAll('[data-team]').forEach((row) => row.setAttribute('aria-current', String(Number(row.dataset.team) === state.selected)));
     document.title = `${team.name} · Power Top 10 · The REFINERY`;
   }
@@ -116,7 +139,7 @@
         image.onerror = () => resolve(null);
         image.src = file;
       });
-      const [thumbnail, logo] = await Promise.all([loadImage(thumbnailFor(match)), loadImage(logoFor(team))]);
+      const [thumbnail, schoolLogo, teamLogo] = await Promise.all([loadImage(thumbnailFor(match)), loadImage(logoFor(team, 'school')), loadImage(logoFor(team, 'team'))]);
       const canvas = document.createElement('canvas');
       canvas.width = 1920; canvas.height = 1080;
       const ctx = canvas.getContext('2d');
@@ -163,22 +186,37 @@
       write(`POWER RANK ${team.rank} / TEAM ${team.number}`, 1080, 258, '700 20px "Barlow Condensed"', '#a1d18b');
       let titleSize = 58;
       ctx.font = `800 ${titleSize}px "Barlow Condensed"`;
-      while (ctx.measureText(team.name).width > (logo ? 650 : 760) && titleSize > 36) { titleSize -= 1; ctx.font = `800 ${titleSize}px "Barlow Condensed"`; }
+      while (ctx.measureText(team.name).width > 545 && titleSize > 36) { titleSize -= 1; ctx.font = `800 ${titleSize}px "Barlow Condensed"`; }
       write(team.name, 1080, 315, `800 ${titleSize}px "Barlow Condensed"`, '#ffffff');
-      if (logo) {
-        rectangle(1774, 271, 70, 70, logoMark(team)?.background === 'dark' ? '#09283d' : '#ffffff');
-        const scale = Math.min(60 / logo.width, 60 / logo.height);
-        ctx.drawImage(logo, 1809 - logo.width * scale / 2, 306 - logo.height * scale / 2, logo.width * scale, logo.height * scale);
-      }
-      lines(`${team.school} · ${team.city}, Indiana`, 1080, 355, 758, 24, 2, '500 18px Inter', '#d6e2e9');
+      [[schoolLogo, 'school', 'SCHOOL / ORG.'], [teamLogo, 'team', 'ROBOTICS TEAM']].forEach(([logo, kind, label], index) => {
+        const x = 1648 + index * 103;
+        rectangle(x, 276, 93, 66, team.logos?.[kind]?.background === 'dark' ? '#09283d' : '#ffffff');
+        if (logo) {
+          const scale = Math.min(81 / logo.width, 54 / logo.height);
+          ctx.drawImage(logo, x + (93 - logo.width * scale) / 2, 309 - logo.height * scale / 2, logo.width * scale, logo.height * scale);
+        } else write('UNVERIFIED', x + 46, 312, '700 13px "Barlow Condensed"', '#536072', 'center');
+        write(label, x + 46, 359, '500 9px Inter', '#c6d5df', 'center');
+      });
+      lines(`${team.school} · ${team.city}, Indiana`, 1080, 355, 545, 24, 2, '500 18px Inter', '#d6e2e9');
       rectangle(1080, 410, 764, 1, '#46657a'); rectangle(1080, 503, 764, 1, '#46657a');
       const statsList = [[num(team.epa, 2), 'STATBOTICS EPA · 2026'], [stats.record ? `${num(stats.record.wins)}–${num(stats.record.losses)}–${num(stats.record.ties)}` : '—', '2026 SEASON W–L–T'], [stats.district?.rank ? `#${num(stats.district.rank)}` : '—', `FIRST IN DISTRICT${stats.district?.points != null ? ` · ${num(stats.district.points)} PTS` : ''}`]];
       statsList.forEach(([value, label], index) => { const x = 1080 + index * 263; write(value, x, 465, '700 48px "Barlow Condensed"', index ? '#fff' : '#a1d18b'); write(label, x, 487, '500 12px Inter', '#c6d5df'); });
-      write('CLOSEST FINISH / REPLAY', 1080, 535, '700 23px "Barlow Condensed"', '#ffffff');
-      if (thumbnail) imageContain(thumbnail, 1080, 552, 764, 320);
-      else { rectangle(1080, 552, 764, 320, '#09283d'); write('MATCH RESULT & SOURCES ON THE SITE', 1462, 715, '700 29px "Barlow Condensed"', '#a1d18b', 'center'); }
+      peopleFor(team).forEach(({ label, person, gap }, index) => {
+        const x = 1080 + index * 395;
+        write(label.toUpperCase(), x, 526, '700 16px "Barlow Condensed"', '#a1d18b');
+        if (person) {
+          write(person.name, x, 552, '700 26px "Barlow Condensed"', '#ffffff');
+          lines(person.role, x, 575, 365, 18, 3, '500 14px Inter', '#ffffff');
+          const source = person.sourceUrls?.find(safeUrl);
+          lines(`${evidenceLine(person)}${source ? ` · Source: ${new URL(source).hostname.replace(/^www\./, '')}` : ''}`, x, 635, 365, 16, 3, '500 12px Inter', '#c6d5df');
+        } else lines(gap, x, 552, 365, 20, 3, '500 16px Inter', '#d6e2e9');
+      });
+      write('Published evidence; current appointments are not confirmed. Full notes & credits on the website.', 1080, 684, '500 12px Inter', '#c6d5df');
+      write('CLOSEST FINISH / REPLAY', 1080, 710, '700 23px "Barlow Condensed"', '#ffffff');
+      if (thumbnail) imageContain(thumbnail, 1080, 724, 764, 150);
+      else { rectangle(1080, 724, 764, 150, '#09283d'); write('MATCH RESULT & SOURCES ON THE SITE', 1462, 805, '700 29px "Barlow Condensed"', '#a1d18b', 'center'); }
       if (match) {
-        rectangle(1094, 819, 244, 38, '#a1d18b'); write('WATCH ON THE WEBSITE ↗', 1107, 845, '700 22px "Barlow Condensed"', '#0d3550');
+        rectangle(1094, 827, 244, 34, '#a1d18b'); write('WATCH ON THE WEBSITE ↗', 1107, 851, '700 22px "Barlow Condensed"', '#0d3550');
         lines(`${match.eventName} · ${match.phase} · ${match.matchLabel}`, 1080, 905, 580, 23, 2, '500 17px Inter', '#d6e2e9');
         write(`${num(match.redScore)}–${num(match.blueScore)}`, 1844, 915, '700 37px "Barlow Condensed"', '#ffffff', 'right');
         write(`Team ${team.number}: ${match.teamAlliance} · ${match.outcome}`, 1844, 940, '500 13px Inter', '#c6d5df', 'right');

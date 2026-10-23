@@ -56,6 +56,17 @@
     const shown = state.data.displayAssets?.[mark.file];
     return `<span class="logo${mark.background === 'dark' ? ' dark-logo' : ''}"><img src="${esc(shown?.file || mark.file)}" alt="" loading="lazy" decoding="async"${shown ? ` width="${shown.width}" height="${shown.height}"` : ''}></span>`;
   };
+  const identityLogos = (t) => `<div class="profile-logos">${['school', 'team'].map((kind) => {
+    const mark = t.logos?.[kind];
+    if (!mark?.file) return '';
+    const file = state.data.displayAssets?.[mark.file]?.file || mark.file;
+    return `<figure><span class="logo${mark.background === 'dark' ? ' dark-logo' : ''}"><img src="${safeUrl(file)}" alt="${esc(mark.label)}" loading="lazy" decoding="async"></span><figcaption>${kind === 'school' ? 'School / organization' : 'Team'}</figcaption></figure>`;
+  }).join('')}</div>`;
+  const personEvidence = (p) => {
+    const status = p.status || '';
+    const qualifiers = [['historical', 'Historical evidence'], ['retrospective', 'Retrospective account'], ['indexed', 'Indexed evidence'], ['self reported', 'Self-reported']].filter(([term]) => status.includes(term)).map(([, label]) => label);
+    return [p.date ? `Source dated ${shortDate(p.date)}` : 'Undated source', p.season ? `Season ${p.season}` : '', ...qualifiers, p.note, p.dateBasis].filter(Boolean).map(esc).join(' · ');
+  };
   const handle = (url) => url.replace(/\/+$/, '').split('/').pop().replace(/^@/, '');
   const follow = (links) => links?.length ? `<ul class="link-list follow">${links.map((l) => `<li>${ext(l.url, l.type === 'Website' ? 'Team website' : ['Instagram', 'X', 'YouTube', 'TikTok'].includes(l.type) ? `${l.type} @${handle(l.url)}` : l.type, 'text-link')}</li>`).join('')}</ul>` : '';
   const honorClass = (b) => /winner/i.test(b) ? 'trophy' : /World/.test(b) ? 'worlds' : '';
@@ -102,11 +113,11 @@
     const fig = pic ? `<figure class="team-photo"><img src="${esc(pic.file)}" alt="${esc(pic.caption)}" loading="lazy" width="${pic.width}" height="${pic.height}"><figcaption>${esc(pic.caption)} Photo: ${esc(pic.credit)}</figcaption></figure>` : '';
     const news = t.news.length ? `<h4>In the news</h4><ul class="news-list">${t.news.map((s) => `<li>${ext(s.url, s.title)}<small>${esc(s.outlet)} · ${esc(shortDate(s.date))}</small></li>`).join('')}</ul>` : '';
     const people = [...t.students, ...t.representatives, ...t.adults];
-    const peopleHtml = people.length ? `<details><summary>People named in public sources (${people.length})</summary><ul class="people">${people.map((p) => `<li><strong>${esc(p.name)}</strong> · ${esc(p.role)}<br><small>${p.date ? `Source dated ${esc(shortDate(p.date))}` : 'Undated source'} · ${p.sourceUrls.slice(0, 2).map((u, i) => ext(u, `source ${i + 1}`)).join(' · ')}</small></li>`).join('')}</ul>${t.gaps.length ? `<p class="muted">${t.gaps.map(esc).join(' ')}</p>` : ''}</details>` : '';
+    const peopleHtml = people.length ? `<details open><summary>People named in public sources (${people.length})</summary><ul class="people">${people.map((p) => `<li><strong>${esc(p.name)}</strong> · ${esc(p.role)}<br><small>${personEvidence(p)} · ${p.sourceUrls.slice(0, 2).map((u, i) => ext(u, `source ${i + 1}`)).join(' · ')}</small></li>`).join('')}</ul>${t.gaps.length ? `<p class="muted">${t.gaps.map(esc).join(' ')}</p>` : ''}</details>` : '';
     const facts = `<details><summary>Team facts</summary><ul class="people"><li>Rookie year ${t.rookieYear} · ${t.seasons} seasons through 2026</li><li>${esc(t.county)} County · ${esc(t.affiliationNote)}</li><li>Indiana EPA rank ${t.stateEpaRank} of ${t.stateEpaCount} · world ${num(t.worldEpaRank)} of ${num(t.worldEpaCount)}</li><li>District points ${num(t.district.points)} · Indiana district rank ${t.district.rank} of ${t.district.teamCount}</li></ul></details>`;
     const links = `<ul class="link-list"><li>${ext(t.links.tba, 'The Blue Alliance', 'text-link')}</li><li>${ext(t.links.statbotics, 'Statbotics', 'text-link')}</li><li>${ext(t.links.first, 'FIRST profile', 'text-link')}</li>${t.links.school ? `<li>${ext(t.links.school, 'School site', 'text-link')}</li>` : ''}</ul>`;
     const followHtml = t.teamLinks?.length ? `<h4>Follow the team</h4>${follow(t.teamLinks)}` : '';
-    return `<div><h4>2026 season</h4>${events}${awards}${peopleHtml}${facts}</div><div>${followHtml}${closest}${fig}${news}<h4>Stats &amp; profiles</h4>${links}<p><a class="text-link page-link" href="team/${t.number}/">Full team page</a></p><p class="muted small">Interview requests: <a href="mailto:celder@bionanomics.com?subject=${encodeURIComponent(`Media request: ${t.name} (${t.number})`)}">celder@bionanomics.com</a></p></div>`;
+    return `<div>${identityLogos(t)}${peopleHtml}<h4>2026 season</h4>${events}${awards}${facts}</div><div>${followHtml}${closest}${fig}${news}<h4>Stats &amp; profiles</h4>${links}<p><a class="text-link page-link" href="team/${t.number}/">Full team page</a></p><p class="muted small">Interview requests: <a href="mailto:celder@bionanomics.com?subject=${encodeURIComponent(`Media request: ${t.name} (${t.number})`)}">celder@bionanomics.com</a></p></div>`;
   }
 
   function renderStandings() {
@@ -228,6 +239,8 @@
   }
 
   function renderDnf(dnf) {
+    const leaderText = (school) => school.leader?.name ? `${esc(school.leader.role)}: ${esc(school.leader.name)} · ${esc(school.leader.evidenceLabel)}` : 'School leader name not verified in public sources.';
+    const leaderLink = (school) => school.leader?.name ? `${esc(school.leader.role)}: ${ext(school.leader.sourceUrl, school.leader.name)} · ${esc(school.leader.evidenceLabel)}` : 'School leader name not verified in public sources.';
     const mail = (school = '') => `mailto:${dnf.contactEmail}?subject=${encodeURIComponent(`Interested in starting a robotics team${school ? ` — ${school}` : ''}`)}&body=${encodeURIComponent(`Hello The REFINERY,\n\nWe’re interested in exploring an FTC or FRC team${school ? ` at ${school}` : ' at our school'}. Please help us understand the first steps.\n\nSchool / organization: ${school}\nMy name and role: \n`)}`;
     $('dnf-count').innerHTML = `<strong data-count="${dnf.schools.length}">${dnf.schools.length}</strong><span>schools without a team</span>`;
     countUp($('dnf-count').querySelector('strong'));
@@ -236,7 +249,7 @@
       const region = $('dnf-state').value, sector = $('dnf-sector').value, sort = $('dnf-sort').value;
       const schools = dnf.schools.filter((s) => (!region || s.state === region) && (!sector || s.sector === sector) && (!query || [s.name, s.district, s.city, s.county, s.leader?.name].join(' ').toLocaleLowerCase().includes(query)))
         .sort((a, b) => sort === 'name' ? a.name.localeCompare(b.name) : a.distanceMiles - b.distanceMiles);
-      $('dnf-list').innerHTML = schools.slice(0, state.dnfLimit).map((s) => `<li><details class="school"><summary><span><strong>${esc(s.name)}</strong><small>${esc(s.city)}, ${esc(s.state)} · ${esc(s.sector)}${/^Regular/.test(s.schoolType) ? '' : ` · ${esc(s.schoolType)}`}</small></span><span class="miles">${num(s.distanceMiles, 1)}<small> mi</small></span></summary><div class="school-body"><p>${esc(s.district)}${s.county ? ` · ${esc(s.county)}` : ''}</p>${s.leader?.name ? `<p>${esc(s.leader.role)}: ${ext(s.leader.sourceUrl, s.leader.name)} <small>(${esc(s.leader.evidenceLabel)})</small></p>` : ''}${s.schoolStatusNote ? `<p>${esc(s.schoolStatusNote)}</p>` : ''}<p>${ext(s.schoolUrl, 'School website')} · ${num(s.distanceMiles, 1)} miles from downtown Fort Wayne</p><a class="button button-primary" href="${safeUrl(mail(s.name))}">We’re interested</a></div></details></li>`).join('') || '<li class="loading">No schools match. Try a town, district or county.</li>';
+      $('dnf-list').innerHTML = schools.slice(0, state.dnfLimit).map((s) => `<li><details class="school"><summary><span><strong>${esc(s.name)}</strong><small>${esc(s.city)}, ${esc(s.state)} · ${esc(s.sector)}${/^Regular/.test(s.schoolType) ? '' : ` · ${esc(s.schoolType)}`}</small><small class="school-leader">${leaderText(s)}</small></span><span class="miles">${num(s.distanceMiles, 1)}<small> mi</small></span></summary><div class="school-body"><p>${esc(s.district)}${s.county ? ` · ${esc(s.county)}` : ''}</p><p>${leaderLink(s)}</p>${s.schoolStatusNote ? `<p>${esc(s.schoolStatusNote)}</p>` : ''}<p>${ext(s.schoolUrl, 'School website')} · ${num(s.distanceMiles, 1)} miles from downtown Fort Wayne</p><a class="button button-primary" href="${safeUrl(mail(s.name))}">We’re interested</a></div></details></li>`).join('') || '<li class="loading">No schools match. Try a town, district or county.</li>';
       $('dnf-results').textContent = `Showing ${Math.min(state.dnfLimit, schools.length)} of ${schools.length} schools`;
       $('dnf-more').hidden = state.dnfLimit >= schools.length;
     };
@@ -247,7 +260,7 @@
     if (dnf.reviewSchools?.length) {
       $('dnf-review').hidden = false;
       $('dnf-review-summary').textContent = `Bring back a team: ${dnf.reviewSchools.length} schools with a former team or community connection`;
-      $('dnf-review-list').innerHTML = dnf.reviewSchools.map((s) => `<li><strong>${esc(s.name)}</strong> · ${esc(s.city)}, ${esc(s.state)}<br><small>${esc(s.teamNote)}</small><br><a href="${safeUrl(mail(s.name))}">Talk about a relaunch</a></li>`).join('');
+      $('dnf-review-list').innerHTML = dnf.reviewSchools.map((s) => `<li><strong>${esc(s.name)}</strong> · ${esc(s.city)}, ${esc(s.state)}<br><small>${esc(s.teamNote)}</small><p>${leaderLink(s)}</p><a href="${safeUrl(mail(s.name))}">Talk about a relaunch</a></li>`).join('');
     }
     $('dnf-method').innerHTML = `<p>${esc(dnf.scopeNote)}</p><p>${esc(dnf.qualification)}</p><p>The list includes career centers, alternative and special-education programs, and private schools as well as traditional high schools. ${dnf.counts.existingTeams} schools with current teams and ${dnf.counts.facilitiesNotInvited} secure or residential facilities are left off. Checked ${esc(shortDate(dnf.asOf))}. ${ext('https://github.com/horner/refintery-rankings/blob/main/broadcast/dist/dnf-methodology.md', 'Full school list, leaders and sources')}</p><p>Already fielding a team? ${ext('mailto:info@refineryrobotics.org?subject=DNF%20correction', 'Send a correction')} and we’ll move you to the lineup.</p>`;
     update();
