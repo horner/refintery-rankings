@@ -56,15 +56,12 @@
     const shown = state.data.displayAssets?.[mark.file];
     return `<span class="logo${mark.background === 'dark' ? ' dark-logo' : ''}"><img src="${esc(shown?.file || mark.file)}" alt="" loading="lazy" decoding="async"${shown ? ` width="${shown.width}" height="${shown.height}"` : ''}></span>`;
   };
-  const standingsLogos = (t) => {
-    const marks = ['school', 'team'].map((kind) => {
-      const mark = t.logos?.[kind];
-      if (!mark?.file || mark.status !== 'verified') return '';
-      const shown = state.data.displayAssets?.[mark.file];
-      const label = `${kind === 'school' ? 'School' : 'Team'}: ${mark.label}`;
-      return `<span class="logo ${kind}-mark${mark.background === 'dark' ? ' dark-logo' : ''}"><img src="${esc(shown?.file || mark.file)}" alt="${esc(label)}" title="${esc(label)}" loading="lazy" decoding="async"${shown ? ` width="${shown.width}" height="${shown.height}"` : ''}></span>`;
-    }).join('');
-    return `<span class="standings-logos">${marks || `<span class="logo placeholder" aria-hidden="true">${esc(t.number)}</span>`}</span>`;
+  const standingsMark = (t, kind) => {
+    const mark = t.logos?.[kind];
+    if (!mark?.file || mark.status !== 'verified') return '';
+    const shown = state.data.displayAssets?.[mark.file];
+    const label = `${kind === 'school' ? 'School' : 'Team'}: ${mark.label}`;
+    return `<span class="logo ${kind}-mark${mark.background === 'dark' ? ' dark-logo' : ''}"><img src="${esc(shown?.file || mark.file)}" alt="${esc(label)}" title="${esc(label)}" loading="lazy" decoding="async"${shown ? ` width="${shown.width}" height="${shown.height}"` : ''}></span>`;
   };
   const identityLogos = (t) => `<div class="profile-logos">${['school', 'team'].map((kind) => {
     const mark = t.logos?.[kind];
@@ -99,7 +96,7 @@
     return `<details class="team" id="team-${t.number}">
       <summary class="team-row">
         <span class="rank">${rank}</span>
-        <span class="identity">${standingsLogos(t)}<span><strong class="school-name">${esc(t.school)}</strong><small class="team-secondary"><span class="team-name">${esc(t.name)}</span> <span class="team-number">· FRC ${t.number}</span></small><small class="school-city">${esc(t.city)}</small></span></span>
+        <span class="identity">${standingsMark(t, 'school')}<span class="identity-copy"><strong class="school-name">${esc(t.school)}</strong><small class="team-secondary"><span class="team-name">${esc(t.name)}</span> <span class="team-number">· FRC ${t.number}</span></small><small class="school-city">${esc(t.city)}</small></span>${standingsMark(t, 'team')}</span>
         <span class="stat r num">${esc(record(t.record))}<small>W-L</small></span>
         <span class="stat r district num">${district}<small>${num(t.district.points)} points</small></span>
         <span class="stat r epa num">${num(t.epa, 1)}<small>EPA</small></span>

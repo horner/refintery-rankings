@@ -173,14 +173,18 @@ details[open] > :not(summary) { animation: fade-up .45s var(--ease) both; }
 .team[open] > summary { background: #eef3f6; }
 .rank { font-family: var(--display); font-size: 44px; font-weight: 800; font-style: italic; color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
 .identity { display: flex; align-items: center; gap: 14px; min-width: 0; }
-.identity > span:last-child { min-width: 0; }
+.identity > span:last-child, .identity-copy { min-width: 0; }
 .logo { width: 46px; height: 46px; flex: none; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
 .logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 .logo.dark-logo { background: var(--navy-deep); }
 .logo.placeholder { background: var(--navy); color: #fff; font-family: var(--display); font-weight: 800; font-size: 14px; border: 0; }
-.standings-logos { display: flex; align-items: center; gap: 6px; flex: none; }
-.standings-logos .school-mark { width: 84px; height: 56px; }
-.standings-logos .team-mark { width: 30px; height: 30px; }
+.team-row > .identity { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; }
+.team-row .school-mark { grid-column: 1; grid-row: 1; width: 84px; height: 56px; }
+.team-row .identity-copy { grid-column: 2; grid-row: 1; }
+.team-row .team-mark { grid-column: 3; grid-row: 1; width: 30px; height: 30px; }
+.team-row > .identity:not(:has(.school-mark)) { grid-template-columns: minmax(0, 1fr) auto; }
+.team-row > .identity:not(:has(.school-mark)) .identity-copy { grid-column: 1; }
+.team-row > .identity:not(:has(.school-mark)) .team-mark { grid-column: 2; }
 .profile-logos { display: flex; flex-wrap: wrap; gap: 16px; margin: 0 0 18px; }
 .profile-logos figure { margin: 0; width: 86px; }
 .profile-logos .logo { width: 64px; height: 64px; }
@@ -427,7 +431,8 @@ details[open] > :not(summary) { animation: fade-up .45s var(--ease) both; }
 .page-bar .back::before { content: '← '; font-family: var(--font); }
 .page-bar .back:hover { color: var(--mint); }
 .team-hero { background: var(--navy-deep); color: #fff; padding: 48px 0 8px; }
-.team-hero-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 32px; align-items: center; margin-bottom: 28px; }
+.team-hero-grid { display: grid; grid-template-columns: 148px minmax(0, 1fr) 64px; gap: 32px; align-items: center; margin-bottom: 28px; }
+.team-hero-copy { min-width: 0; }
 .team-hero .profile-logos { margin: 0; align-items: center; }
 .team-hero .profile-logos figure { width: 148px; }
 .team-hero .profile-logos .logo { width: 148px; height: 110px; }
@@ -452,7 +457,12 @@ details[open] > :not(summary) { animation: fade-up .45s var(--ease) both; }
 .team-body details summary { cursor: pointer; font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: .06em; text-transform: uppercase; padding: 12px 0 6px; }
 @media (max-width: 860px) {
   .team-columns { grid-template-columns: 1fr; gap: 0; }
-  .team-hero-grid { grid-template-columns: 1fr; gap: 18px; }
+  .team-hero-grid { grid-template-columns: 96px minmax(0, 1fr) 52px; gap: 16px; }
+  .team-hero .profile-logos figure, .team-hero .profile-logos .logo { width: 96px; }
+  .team-hero .profile-logos .logo { height: 76px; }
+  .team-hero .profile-logos .team-identity, .team-hero .profile-logos .team-identity .logo { width: 52px; }
+  .team-hero .profile-logos .team-identity .logo { height: 52px; }
+  .team-hero h1 { font-size: clamp(32px, 6.3vw, 64px); }
   .team-hero .hero-logo { width: 110px; height: 110px; }
   .team-hero .stat-bar { grid-template-columns: repeat(2, 1fr); }
   .team-hero .stat-bar div { border-right: 0; padding-left: 0; }
@@ -550,8 +560,11 @@ details[open] > :not(summary) { animation: fade-up .45s var(--ease) both; }
   .hero h1 { font-size: 48px; }
   .button { max-width: 100%; font-size: 16px; padding: 12px 20px 12px 16px; }
   .team-row { grid-template-columns: 28px minmax(0, 1fr) 14px; gap: 8px 10px; padding: 14px 10px; }
-  .team-row > .identity { grid-column: 2; grid-row: 1; flex-direction: column; align-items: flex-start; gap: 10px; }
-  .standings-logos .school-mark { width: 76px; height: 50px; }
+  .team-row > .identity { grid-column: 2; grid-row: 1; gap: 6px; }
+  .team-row .school-mark { width: 56px; height: 44px; }
+  .team-row .team-mark { width: 26px; height: 26px; }
+  .team-row .identity strong { font-size: 18px; }
+  .team-row .team-secondary { font-size: 14px; }
   .team-row > .stat:not(.district):not(.epa) { grid-column: 2; grid-row: 2; display: flex; align-items: baseline; gap: 6px; font-size: 22px; text-align: left; }
   .team-row > .stat:not(.district):not(.epa) small { margin-top: 0; }
   .team-row .chev { grid-column: 3; grid-row: 1; }
@@ -563,6 +576,15 @@ details[open] > :not(summary) { animation: fade-up .45s var(--ease) both; }
   .page-bar .wrap { gap: 12px; }
   .page-bar .brand img { max-width: 124px; height: auto; }
   .page-bar .back { font-size: 16px; text-align: right; }
+  .team-hero-grid { grid-template-columns: 64px minmax(0, 1fr) 36px; gap: 10px; }
+  .team-hero .profile-logos figure, .team-hero .profile-logos .logo { width: 64px; }
+  .team-hero .profile-logos .logo { height: 52px; }
+  .team-hero .profile-logos .team-identity, .team-hero .profile-logos .team-identity .logo { width: 36px; }
+  .team-hero .profile-logos .team-identity .logo { height: 36px; }
+  .team-hero .profile-logos figcaption { font-size: 10px; }
+  .team-hero h1 { font-size: clamp(24px, 7vw, 34px); }
+  .team-hero .eyebrow { font-size: 11px; }
+  .team-hero .team-school { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

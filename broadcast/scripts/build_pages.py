@@ -83,9 +83,9 @@ def logo(logos, number, display, prefix=""):
     return f'<span class="logo{" dark-logo" if mark.get("background") == "dark" else ""}"><img src="{prefix}{e(shown["file"] if shown else mark["file"])}" alt="" loading="lazy" decoding="async"{size}></span>'
 
 
-def identity_logos(t, display, prefix=""):
+def identity_logos(t, display, prefix="", kind=None):
     marks = []
-    for kind in ("school", "team"):
+    for kind in (kind,) if kind else ("school", "team"):
         mark = t.get("logos", {}).get(kind)
         if not mark or not mark.get("file"):
             continue
@@ -95,18 +95,14 @@ def identity_logos(t, display, prefix=""):
     return '<div class="profile-logos">' + ''.join(marks) + '</div>'
 
 
-def standings_logos(t, display):
-    marks = []
-    for kind in ("school", "team"):
-        mark = t.get("logos", {}).get(kind)
-        if not mark or not mark.get("file") or mark.get("status") != "verified":
-            continue
-        shown = display.get(mark["file"])
-        size = f' width="{shown["width"]}" height="{shown["height"]}"' if shown else ""
-        label = f'{"School" if kind == "school" else "Team"}: {mark["label"]}'
-        marks.append(f'<span class="logo {kind}-mark{" dark-logo" if mark.get("background") == "dark" else ""}"><img src="{e(shown["file"] if shown else mark["file"])}" alt="{e(label)}" title="{e(label)}" loading="lazy" decoding="async"{size}></span>')
-    fallback = f'<span class="logo placeholder" aria-hidden="true">{e(t["number"])}</span>'
-    return '<span class="standings-logos">' + (''.join(marks) or fallback) + '</span>'
+def standings_mark(t, display, kind):
+    mark = t.get("logos", {}).get(kind)
+    if not mark or not mark.get("file") or mark.get("status") != "verified":
+        return ""
+    shown = display.get(mark["file"])
+    size = f' width="{shown["width"]}" height="{shown["height"]}"' if shown else ""
+    label = f'{"School" if kind == "school" else "Team"}: {mark["label"]}'
+    return f'<span class="logo {kind}-mark{" dark-logo" if mark.get("background") == "dark" else ""}"><img src="{e(shown["file"] if shown else mark["file"])}" alt="{e(label)}" title="{e(label)}" loading="lazy" decoding="async"{size}></span>'
 
 
 def person_evidence(p):
@@ -159,7 +155,7 @@ def standings_rows(result):
     rows = []
     for t in sorted(result["standings"], key=lambda t: t["standingsRank"]):
         honors = "".join(f'<span class="{"trophy" if "winner" in b.lower() else "worlds" if "World" in b else ""}">{e(b)}</span>' for b in t["badges"])
-        rows.append(f"""<details class="team" id="team-{t['number']}"><summary class="team-row"><span class="rank">{t['standingsRank']}</span><span class="identity">{standings_logos(t, display)}<span><strong class="school-name">{e(t['school'])}</strong><small class="team-secondary"><span class="team-name">{e(t['name'])}</span> <span class="team-number">· FRC {t['number']}</span></small><small class="school-city">{e(t['city'])}</small></span></span><span class="stat r num">{record(t['record'])}<small>W-L</small></span><span class="stat r district num">#{t['district']['rank']}<small>{t['district']['points']} points</small></span><span class="stat r epa num">{t['epa']:.1f}<small>EPA</small></span><span class="honors">{honors}</span><span class="chev" aria-hidden="true"></span></summary><div class="team-detail" data-team="{t['number']}"><p><a class="text-link" href="team/{t['number']}/">Full team page</a></p></div></details>""")
+        rows.append(f"""<details class="team" id="team-{t['number']}"><summary class="team-row"><span class="rank">{t['standingsRank']}</span><span class="identity">{standings_mark(t, display, "school")}<span class="identity-copy"><strong class="school-name">{e(t['school'])}</strong><small class="team-secondary"><span class="team-name">{e(t['name'])}</span> <span class="team-number">· FRC {t['number']}</span></small><small class="school-city">{e(t['city'])}</small></span>{standings_mark(t, display, "team")}</span><span class="stat r num">{record(t['record'])}<small>W-L</small></span><span class="stat r district num">#{t['district']['rank']}<small>{t['district']['points']} points</small></span><span class="stat r epa num">{t['epa']:.1f}<small>EPA</small></span><span class="honors">{honors}</span><span class="chev" aria-hidden="true"></span></summary><div class="team-detail" data-team="{t['number']}"><p><a class="text-link" href="team/{t['number']}/">Full team page</a></p></div></details>""")
     head = '<div class="standings-header" aria-hidden="true"><span>#</span><span>School / team</span><span class="r">Record</span><span class="r">District</span><span class="r">EPA</span><span class="h-honors">2026 honors</span><span></span></div>'
     return head + "".join(rows)
 
@@ -303,12 +299,12 @@ def page_shell(title, description, image, url, body, json_ld):
 
 
 def team_hero(t, program, stats, honors, display):
-    return f"""    <section class="team-hero"><div class="wrap"><div class="team-hero-grid">{identity_logos(t, display, '../../')}<div>
+    return f"""    <section class="team-hero"><div class="wrap"><div class="team-hero-grid">{identity_logos(t, display, '../../', 'school')}<div class="team-hero-copy">
       <p class="eyebrow">{program} {t['number']} · {e(t.get('city', ''))}</p>
       <h1>{e(t.get('school') or t['name'])}</h1>
       <p class="team-school">{e(t['name'])} · {program} {t['number']}</p>
       {f'<p class="honors">{honors}</p>' if honors else ''}
-    </div></div>
+    </div>{identity_logos(t, display, '../../', 'team')}</div>
     <dl class="stat-bar">{''.join(f'<div><dt>{e(label)}</dt><dd>{e(value)}</dd></div>' for value, label in stats)}</dl></div></section>"""
 
 
