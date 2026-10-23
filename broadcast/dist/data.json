@@ -8494,6 +8494,104 @@
       }
     ]
   },
+  "videoThumbnails": {
+    "https://www.youtube.com/watch?v=VGFBklDAzrE": {
+      "videoUrl": "https://www.youtube.com/watch?v=VGFBklDAzrE",
+      "videoId": "VGFBklDAzrE",
+      "file": "assets/match-thumbnails/VGFBklDAzrE.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/VGFBklDAzrE/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/VGFBklDAzrE-oembed.json",
+      "sha256": "e760e302647c77013827167d7f07528de4d6b17925e635970623d72a2bbb7133",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-23T08:51:24.470840+00:00"
+    },
+    "https://www.youtube.com/watch?v=olAjzlBnZuU": {
+      "videoUrl": "https://www.youtube.com/watch?v=olAjzlBnZuU",
+      "videoId": "olAjzlBnZuU",
+      "file": "assets/match-thumbnails/olAjzlBnZuU.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/olAjzlBnZuU/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/olAjzlBnZuU-oembed.json",
+      "sha256": "903e924ed5cc2564b93372df4ea1273a76d9f5253abfaa3bf1c7daf816fcd209",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-23T08:51:24.467950+00:00"
+    },
+    "https://www.youtube.com/watch?v=BEO5rK8CBAs": {
+      "videoUrl": "https://www.youtube.com/watch?v=BEO5rK8CBAs",
+      "videoId": "BEO5rK8CBAs",
+      "file": "assets/match-thumbnails/BEO5rK8CBAs.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/BEO5rK8CBAs/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/BEO5rK8CBAs-oembed.json",
+      "sha256": "bbc729ed7cc2f1632386c639dcd264769f7c56f86878bfc21024772a446d8eda",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-23T08:51:24.502053+00:00"
+    },
+    "https://www.youtube.com/watch?v=awgnviexCt0": {
+      "videoUrl": "https://www.youtube.com/watch?v=awgnviexCt0",
+      "videoId": "awgnviexCt0",
+      "file": "assets/match-thumbnails/awgnviexCt0.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/awgnviexCt0/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/awgnviexCt0-oembed.json",
+      "sha256": "50201ef57b89e999ec564084bd98feda8822fb3dfb4e0e231f8c32e846e2703d",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-23T08:51:24.479997+00:00"
+    },
+    "https://www.youtube.com/watch?v=R6FT3SunVq4": {
+      "videoUrl": "https://www.youtube.com/watch?v=R6FT3SunVq4",
+      "videoId": "R6FT3SunVq4",
+      "file": "assets/match-thumbnails/R6FT3SunVq4.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/R6FT3SunVq4/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/R6FT3SunVq4-oembed.json",
+      "sha256": "bf345d7f6608e8dc849c55b5179e2e5638e9fb17e57fe6da629f271c6dbd1c3a",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-23T08:51:24.776567+00:00"
+    },
+    "https://www.youtube.com/watch?v=1yljTlNXDUM": {
+      "videoUrl": "https://www.youtube.com/watch?v=1yljTlNXDUM",
+      "videoId": "1yljTlNXDUM",
+      "file": "assets/match-thumbnails/1yljTlNXDUM.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/1yljTlNXDUM/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/1yljTlNXDUM-oembed.json",
+      "sha256": "53312bb2d181afa4cfb684dec36c153d02dda8aad26bf47a6e74aaee06c07798",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-23T08:51:24.799527+00:00"
+    },
+    "https://www.youtube.com/watch?v=LQt0EpMBBN8": {
+      "videoUrl": "https://www.youtube.com/watch?v=LQt0EpMBBN8",
+      "videoId": "LQt0EpMBBN8",
+      "file": "assets/match-thumbnails/LQt0EpMBBN8.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/LQt0EpMBBN8/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/LQt0EpMBBN8-oembed.json",
+      "sha256": "f1a4f172d5b14aaa9871d0d86ca27d1e9282a6b79c86b5bbbbf4a8305bc69c74",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-23T08:51:24.782758+00:00"
+    },
+    "https://www.youtube.com/watch?v=-vx3sFyHz3Y": {
+      "videoUrl": "https://www.youtube.com/watch?v=-vx3sFyHz3Y",
+      "videoId": "-vx3sFyHz3Y",
+      "file": "assets/match-thumbnails/-vx3sFyHz3Y.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/-vx3sFyHz3Y/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/-vx3sFyHz3Y-oembed.json",
+      "sha256": "c501ff528453539210bd6ced86bbac12fae5ada7ac8d372337cbcb02322cb92b",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-10-23T08:51:24.678247+00:00"
+    }
+  },
   "hero": {
     "headline": "THE ONLY SPORT WHERE EVERYONE CAN GO PRO",
     "subhead": "Friday-night energy. Skills for a lifetime. Meet the students building their future in engineering, software, manufacturing and business.",

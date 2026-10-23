@@ -27,6 +27,17 @@ def require(condition, message):
 def main():
     data = load(HERE / "dist/data.json")
     verify_matches(data)
+    thumbnails = load(HERE / "data/video-thumbnails.json")["thumbnails"]
+    require(data["videoThumbnails"] == {r["videoUrl"]: r for r in thumbnails}, "Video thumbnail join changed")
+    require(len({r["videoUrl"] for r in thumbnails}) == len(thumbnails), "Duplicate video thumbnail")
+    for thumbnail in thumbnails:
+        raw = (HERE / "dist" / thumbnail["file"]).read_bytes()
+        metadata = load(HERE / thumbnail["sourceMetadataFile"])
+        require(raw.startswith(b"\xff\xd8") and hashlib.sha256(raw).hexdigest() == thumbnail["sha256"], "Video thumbnail bytes changed")
+        require(thumbnail["sourceUrl"] == metadata["thumbnail_url"] and thumbnail["width"] == metadata["thumbnail_width"] and thumbnail["height"] == metadata["thumbnail_height"], "Video thumbnail source differs from the verified replay metadata")
+        require(thumbnail["videoUrl"] == "https://www.youtube.com/watch?v=" + thumbnail["videoId"] and thumbnail["videoId"] in metadata["html"], "Video preview belongs to a different replay")
+    match_library = {(r["program"], r["number"]): r for r in data["matchHighlights"]["teams"]}
+    require(all(match_library[("FRC", t["number"])]["main"]["videoUrl"] in data["videoThumbnails"] for t in data["top10"]), "Ranked team is missing its match preview")
     frc = load(ROOT / "data/teams.json")
     ftc = load(ROOT / "ftc/data/teams.json")
     regional = sorted([r for r in frc["teams"] if r["scope_group"] == "northeast_indiana"],

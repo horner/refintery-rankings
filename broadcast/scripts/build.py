@@ -89,6 +89,7 @@ def main():
         "seasonPreview": load(HERE / "data/season-preview.json"),
         "dnf": build_dnf(),
         "matchHighlights": build_matches(),
+        "videoThumbnails": {r["videoUrl"]: r for r in load(HERE / "data/video-thumbnails.json")["thumbnails"]},
         "hero": {"headline": "THE ONLY SPORT WHERE EVERYONE CAN GO PRO", "subhead": "Friday-night energy. Skills for a lifetime. Meet the students building their future in engineering, software, manufacturing and business.",
                  "attribution": "Career-focused campaign message from FIRST Global", "attributionUrl": "https://first.global/sport/",
                  "image": "assets/refinery-shop.jpeg", "logo": "assets/refinery-logo.svg"},

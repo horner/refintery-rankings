@@ -2467,6 +2467,33 @@ body.presenting { overflow: hidden; }
 .ftc-feature-card .screen-match > strong { font-size: 1.1cqw; }
 .ftc-feature-card { padding-top: .9cqw; padding-bottom: .9cqw; }
 .ftc-feature-card .ftc-feature-stat { margin-top: .5cqw; padding-top: .5cqw; }
+.screen-replay {
+  display: grid;
+  grid-template-columns: 13cqw minmax(0, 1fr);
+  align-items: center;
+  gap: 1cqw;
+  margin-top: auto;
+  padding-top: .6cqw;
+  flex-shrink: 0;
+}
+.replay-preview { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: #071b14; border: 1px solid #b5ce8850; }
+.replay-preview > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.replay-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 3cqw; height: 2.2cqw; border-radius: .4cqw; background: #bc552eed; color: white; font-size: 1.1cqw; box-shadow: 0 .15cqw .6cqw #0005; }
+.replay-preview:hover .replay-play, .replay-preview:focus-visible .replay-play { background: var(--rust); }
+.replay-watch { position: absolute; inset: auto 0 0; padding: .35cqw .5cqw; background: #09291fe8; color: white; font-size: .58cqw; font-weight: 800; letter-spacing: .06cqw; }
+.replay-copy { color: #e1e7d3; }
+.replay-copy > span { display: block; color: var(--lime); font-size: .65cqw; font-weight: 800; letter-spacing: .07cqw; }
+.replay-copy > strong { display: block; font-family: var(--condensed); font-size: 2cqw; font-weight: 400; line-height: 1.1; margin-top: .3cqw; }
+.replay-copy > strong > small { font-family: var(--sans); font-size: .47cqw; letter-spacing: .04cqw; margin-left: .6cqw; vertical-align: middle; }
+.replay-copy p { font-size: .74cqw; line-height: 1.35; margin: .3cqw 0; }
+.replay-copy .replay-event { font-size: .66cqw; color: #c6d2b9; }
+.replay-copy > a { font-size: .65cqw; color: var(--lime); text-underline-offset: .2em; }
+.board-screen .spotlight-identity { margin: .6cqw 0; }
+.board-screen .spotlight-stats { padding: .55cqw 0; }
+.board-screen .stat-value { font-size: 2.4cqw; }
+.board-screen .stat-label { margin-top: .3cqw; }
+.board-screen .people-section { margin-top: .4cqw; }
+.board-screen .people-heading { margin-bottom: .4cqw; }
 
 /* The film room gives viewers the final score, alliances and exact replay. */
 .film-room { margin: 30px 0 36px; }

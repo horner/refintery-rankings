@@ -108,6 +108,8 @@
   const matchReplay = (match, label = 'Watch replay') => match.videoUrl ? link(match.videoUrl, `${label} ↗`) : link(match.officialUrl, 'Match result ↗');
   const screenMatch = (team, program = 'FRC') => {
     const match = matchRecord(team, program)?.main;
+    const thumbnail = match && state.data.videoThumbnails?.[match.videoUrl];
+    if (thumbnail && program === 'FRC') return `<div class="screen-replay"><a class="replay-preview" href="${safeUrl(match.videoUrl)}" target="_blank" rel="noopener" aria-label="Watch ${esc(team.name)}: ${esc(match.matchLabel)}, ${esc(match.eventName)}"><img src="${esc(thumbnail.file)}" width="${esc(thumbnail.width)}" height="${esc(thumbnail.height)}" alt="Video preview: ${esc(match.videoTitle)}" loading="eager" decoding="async"><span class="replay-play" aria-hidden="true">▶</span><span class="replay-watch" aria-hidden="true">WATCH REPLAY ↗</span></a><div class="replay-copy"><span>CLOSEST FINISH / ${esc(match.phase === 'Playoff' ? 'PLAYOFF' : 'QUALIFIER')}</span><strong>${esc(matchScore(match))}<small>RED–BLUE ALLIANCE SCORE</small></strong><p>${esc(marginLabel(match))} · ${esc(match.matchLabel)}</p><p class="replay-event">${esc(match.eventName)}</p>${link(match.officialUrl, 'Official result ↗')}</div></div>`;
     return match ? `<p class="screen-match"><span>CLOSEST FINISH / ${esc(match.phase === 'Playoff' ? 'PLAYOFF' : 'QUALIFIER')}</span><strong>${esc(matchScore(match))}</strong> alliance score · ${esc(marginLabel(match).toLowerCase())} · ${matchReplay(match)}</p>` : `<p class="story-line">${esc(story(team))}</p>`;
   };
   const matchDate = (match) => match.playedDate ? date(match.playedDate) : match.eventStartDate === match.eventEndDate ? date(match.eventStartDate) : `${date(match.eventStartDate)} – ${date(match.eventEndDate)} · event dates`;
@@ -180,19 +182,19 @@
 
   function readHash() {
     const hash = location.hash.replace(/^#/, '');
-    const match = hash.match(/^team\/(\d+)$/);
+    const match = hash.match(/^(team|spotlight)\/(\d+)$/);
     if (match) {
-      const index = state.data.top10.findIndex((team) => String(team.number) === match[1]);
+      const index = state.data.top10.findIndex((team) => String(team.number) === match[2]);
       if (index >= 0) state.selected = index;
-      state.view = 'team';
+      state.view = match[1] === 'spotlight' ? 'team' : 'board';
     } else if (hash === 'ftc') state.view = 'ftc';
-    else if (hash === 'board' || !hash) state.view = 'board';
+    else state.view = 'board';
     render();
   }
 
   function route(view) {
     state.view = view;
-    const hash = view === 'team' ? `#team/${selected().number}` : `#${view}`;
+    const hash = view === 'team' ? `#spotlight/${selected().number}` : view === 'board' ? `#team/${selected().number}` : `#${view}`;
     history.replaceState(null, '', hash);
     render();
   }
@@ -200,14 +202,14 @@
   function selectTeam(index) {
     state.selected = (index + state.data.top10.length) % state.data.top10.length;
     if (state.view === 'ftc') state.view = 'board';
-    if (state.view === 'team') history.replaceState(null, '', `#team/${selected().number}`);
+    history.replaceState(null, '', `#${state.view === 'team' ? 'spotlight' : 'team'}/${selected().number}`);
     render();
   }
 
   function setAutoCycle(enabled) {
     clearInterval(state.cycle);
     state.cycle = enabled && state.data ? setInterval(() => {
-      if (!document.hidden && !state.exporting && state.view !== 'ftc' && !$('match-panel')?.matches(':hover, :focus-within') && !frame.querySelector('a:hover, a:focus-visible')) selectTeam(state.selected + 1);
+      if (!document.hidden && !state.exporting && state.view !== 'ftc' && !$('match-panel')?.matches(':hover, :focus-within') && !frame.querySelector('.screen-replay:hover, .screen-replay:focus-within, a:hover, a:focus-visible')) selectTeam(state.selected + 1);
     }, 12000) : null;
   }
 
@@ -257,7 +259,7 @@
       await Promise.all(originalNodes.map(async (element, index) => {
         if (element.tagName !== 'IMG') return;
         const response = await fetch(element.currentSrc || element.src);
-        if (!response.ok) throw new Error('A logo could not be loaded for export.');
+        if (!response.ok) throw new Error('An image could not be loaded for export.');
         const blob = await response.blob();
         const dataUrl = await new Promise((resolve, reject) => {
           const reader = new FileReader();
@@ -331,13 +333,14 @@
   }).then((data) => {
     if (!Array.isArray(data.top10) || !data.top10.length || !data.edition || !data.scope || !data.ftc || !data.links) throw new Error('The broadcast dataset is incomplete.');
     state.data = data;
+    Object.values(data.videoThumbnails || {}).forEach((thumbnail) => { const preview = new Image(); preview.src = thumbnail.file; });
     renderSeasonPreview();
     renderDnf();
     if (data.links.pressKit) $('press-kit-link').href = data.links.pressKit;
     if (data.links.repo) $('research-link').href = data.links.repo;
     readHash();
     setAutoCycle($('cycle-toggle').checked);
-    if (/^#(?:board|ftc|team\/\d+)$/.test(location.hash)) $('broadcast').scrollIntoView({ behavior: 'auto', block: 'start' });
+    if (!location.hash || /^#(?:broadcast|board|ftc|(?:team|spotlight)\/\d+)$/.test(location.hash)) document.querySelector('.studio-toolbar').scrollIntoView({ behavior: 'instant', block: 'start' });
     if (location.hash === '#season-preview' && data.seasonPreview) $('season-preview').scrollIntoView({ behavior: 'auto', block: 'start' });
     if (location.hash === '#dnf' && data.dnf) $('dnf').scrollIntoView({ behavior: 'auto', block: 'start' });
   }).catch((error) => {

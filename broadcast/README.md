@@ -8,7 +8,7 @@ The bottom [DNF invitation](https://horner.github.io/refintery-rankings/#dnf) me
 
 ## Use the screen
 
-[Open the public interactive site](https://horner.github.io/refintery-rankings/). Visitors can select a team in the Top 10, switch to its spotlight, explore FTC features, and open presenter notes and sources. Direct profile links work, for example [North Side / 9119](https://horner.github.io/refintery-rankings/#team/9119) and [FTC features](https://horner.github.io/refintery-rankings/#ftc).
+[Open the public interactive site](https://horner.github.io/refintery-rankings/). Visitors can select a team in the Top 10, switch to its spotlight, explore FTC features, and open presenter notes and sources. The main URL opens directly on the Top 10 screen. Team links retain the ranking list alongside the selected details; the optional standalone spotlight has its own `#spotlight/<number>` route. Direct team links work, for example [North Side / 9119](https://horner.github.io/refintery-rankings/#team/9119) and [FTC features](https://horner.github.io/refintery-rankings/#ftc).
 
 The [GitHub Pages workflow](../.github/workflows/pages.yml) rebuilds and verifies the research on every push to `main`, then publishes only `broadcast/dist`. The public site uses the same interactive files as the broadcast screen; PNGs remain optional downloads.
 
@@ -28,7 +28,9 @@ School marks appear before the identity text and team marks after it. List thumb
 
 ## Close games to watch
 
-Each featured team now has a **Watch replay** link on its broadcast profile and a **Down to the wire** card below the screen. The card shows the event, phase, final Red/Blue alliance scores, all playing team numbers, the featured team's result, and an official FIRST scorecard link. Main selections use the closest eligible final-score margin; equally close playoffs take priority. A different closest playoff is available as an alternative. Wins and losses qualify, and scores include penalties. Changing alliance opponents are a matchup rather than a claim of a permanent rivalry.
+Each FRC team has a clickable **video preview thumbnail** in the details panel on the Top 10 screen, alongside its close-match score and official result. The preserved YouTube thumbnail is cached locally so it also appears in PNG exports. All featured teams have a **Watch replay** link on their broadcast profile and a **Down to the wire** card below the screen. The card shows the event, phase, final Red/Blue alliance scores, all playing team numbers, the featured team's result, and an official FIRST scorecard link. Main selections use the closest eligible final-score margin; equally close playoffs take priority. A different closest playoff is available as an alternative. Wins and losses qualify, and scores include penalties. Changing alliance opponents are a matchup rather than a claim of a permanent rivalry.
+
+The [thumbnail manifest](data/video-thumbnails.json) records the exact YouTube metadata source, original dimensions, retrieval time and SHA-256 for each preview.
 
 The [complete match library](dist/match-highlights.md) covers all 17 FRC and 9 FTC research entries, including two pending entries without a prior-season match. All 12 played teams on the interactive screen have verified video links. FRC clips are joined to exact The Blue Alliance match pages; featured FTC replays open at official FIRSTINRobotics match chapters. [Frozen candidates, official scorecard checks, video evidence and source captures](data/match-research) make the selections inspectable. The [offline builder](scripts/build_matches.py) and [independent verifier](scripts/verify_matches.py) preserve the dated season scope and complete-field eligibility.
 
