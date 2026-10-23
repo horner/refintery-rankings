@@ -122,6 +122,8 @@ The Statbotics preservation script creates dated capture directories and compare
 
 ## Contributing corrections
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the contributor and coding-agent workflow, including the requirement to provide a Pages preview from your own fork before merge.
+
 For a coach, captain, or representative correction, supply the team number, exact role, applicable season, and a public school/team source. Add the new evidence with its date; retain historical evidence as historical. Update the curated input files, rebuild the exports, and verify them. A student's quote or an award nomination alone does not establish a captain title.
 
 Source documents remain linked to their publishers. The repository preserves factual extracts and the official Statbotics data response; third-party source-code attribution is included. See [third-party notices](THIRD_PARTY_NOTICES.md).
