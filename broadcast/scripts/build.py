@@ -3,8 +3,12 @@
 from __future__ import annotations
 
 import json
+import re
+from datetime import date, timedelta
 from build_dnf import build_dnf
 from build_matches import build_matches
+from build_pages import write_pages
+from build_press import write_press
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[1]
@@ -24,6 +28,111 @@ def person(row, ftc=False):
         "season": row.get("season", "Evidence from the published research; see date and notes"),
         "dateBasis": row.get("evidence_date_basis", "Undated source" if not row.get("evidence_date") else "Source publication date; not an appointment date"),
     }
+
+
+def write_ics(calendar):
+    """All-day events for newsroom calendars (RFC 5545: CRLF lines, escaped text, exclusive end date)."""
+    def text(value):
+        return str(value or "").replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+    def day(iso, plus=0):
+        return (date.fromisoformat(iso) + timedelta(days=plus)).strftime("%Y%m%d")
+    lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//The REFINERY//NEI Robotics calendar//EN", "CALSCALE:GREGORIAN",
+             "X-WR-CALNAME:Northeast Indiana Robotics 2026–27", "X-WR-TIMEZONE:America/Indiana/Indianapolis"]
+    for e in calendar["events"]:
+        place = ", ".join(x for x in (e["venue"], e["city"], e["state"]) if x)
+        lines += ["BEGIN:VEVENT", f"UID:{e['id']}@refintery-rankings", f"DTSTAMP:{day(calendar['retrievedDate'])}T000000Z",
+                  f"DTSTART;VALUE=DATE:{day(e['startDate'])}", f"DTEND;VALUE=DATE:{day(e['endDate'], 1)}",
+                  f"SUMMARY:{text(e['name'] if e['name'].startswith(('FTC', 'FRC', 'FIN', 'FIRST')) else e['program'] + ' · ' + e['name'])}", f"LOCATION:{text(place)}",
+                  f"DESCRIPTION:{text((e['description'] + ' ' if e['description'] else '') + e['url'])}", f"URL:{e['url']}", "END:VEVENT"]
+    lines.append("END:VCALENDAR")
+    folded = []
+    for line in lines:  # Lines over 75 octets continue on the next line after a space.
+        raw = line.encode("utf-8")
+        while len(raw) > 75:
+            cut = 75
+            while (raw[cut] & 0xC0) == 0x80:
+                cut -= 1
+            folded.append(raw[:cut])
+            raw = b" " + raw[cut:]
+        folded.append(raw)
+    (HERE / "dist/calendar.ics").write_bytes(b"\r\n".join(folded) + b"\r\n")
+
+
+def short_award(name):
+    """'Innovation in Control Award sponsored by nVent' -> 'Innovation in Control Award'."""
+    name = re.split(r" (?:sponsored by|in honor of|presented by) ", name)[0]
+    name = re.sub(r"^District Championship FIRST Leadership Award Semi-Finalist.*", "FIRST Leadership Award semifinalist", name)
+    return name
+
+
+def build_standings(frc, editorial, logos, matches):
+    """One row per Northeast Indiana FRC team: 2026 results from TBA, ratings from Statbotics."""
+    results = {r["teamNumber"]: r for r in load(HERE / "data/tba/results-2026.json")["teams"]}
+    # Kendallville (8431, 8432) and Fort Wayne (10411) sit outside the editorial Top 10 list.
+    counties = {8431: "Noble", 8432: "Noble", 10411: "Allen", **{r["team_number"]: r["county"] for r in editorial["top_10"]}}
+    photos = load(HERE / "data/photos.json")["photos"]
+    news = load(HERE / "data/news.json")["stories"]
+    team_links = {t["teamNumber"]: t["links"] for t in load(HERE / "data/team-links.json")["teams"]}
+    closest = {r["number"]: r for r in matches["teams"] if r["program"] == "FRC"}
+    regional = sorted([r for r in frc["teams"] if r["scope_group"] == "northeast_indiana"],
+                      key=lambda r: (-r["rankings"]["epa_mean"], r["team_number"]))
+    rows = []
+    for power_rank, r in enumerate(regional, 1):
+        number, k, h, l = r["team_number"], r["rankings"], r["season_history"], r["leadership"]
+        t = results[number]
+        official = [e for e in t["events"] if e["type"] != "offseason"]
+        titles = [e for e in official if e["playoff"] and e["playoff"]["result"] == "Won event"]
+        worlds = next((e for e in official if e["type"] == "championship_division"), None)
+        state = next((e for e in official if e["type"] == "district_championship"), None)
+        badges = []
+        if titles:
+            badges.append(f"{len(titles)}× event winner" if len(titles) > 1 else "Event winner")
+        if any(e["playoff"] and e["playoff"]["result"] == "Finalist" for e in official):
+            badges.append("Event finalist")
+        if worlds:
+            badges.append("World Championship")
+        elif state:
+            badges.append("State qualifier")
+        awards = [{"award": a, "event": e["shortName"], "eventKey": e["key"]} for e in t["events"] for a in e["awards"]
+                  if a not in ("District Event Winner", "District Event Finalist")]
+        # Name the awards rather than counting them; two fit on a row, the rest become "+N".
+        names = [short_award(a["award"]) for a in awards]
+        badges.extend(names[:2])
+        if len(names) > 2:
+            badges.append(f"+{len(names) - 2} more")
+        match = closest.get(number)
+        rows.append({
+            "number": number, "name": r["team_name"], "school": r["school_or_organization"], "city": r["city"],
+            "county": counties[number], "affiliationNote": r["affiliation_notes"],
+            "logos": logos(number), "rookieYear": h["official_rookie_year"], "seasons": h["recorded_season_count"],
+            "powerRank": power_rank, "epa": k["epa_mean"], "epaStandardDeviation": k["epa_standard_deviation"],
+            "stateEpaRank": k["state_rank"], "stateEpaCount": k["state_team_count"], "worldEpaRank": k["world_rank"], "worldEpaCount": k["world_team_count"],
+            "record": t["officialRecord"], "district": t["district"], "events": t["events"], "awards": awards,
+            "titles": [e["shortName"] for e in titles], "worlds": worlds["shortName"] if worlds else None,
+            "stateChampionship": bool(state), "badges": badges,
+            "closestMatch": match.get("main") if match else None,
+            "students": [person(p) for p in l["students"]], "adults": [person(p) for p in l["adults"]],
+            "representatives": [person(p) for p in l["other_representatives"]], "gaps": l["gaps"],
+            "news": [s for s in news if f"frc{number}" in s["teams"]],
+            "photos": [p["id"] for p in photos if number in p["teams"]],
+            "links": {"tba": t["tbaUrl"], "statbotics": r["statbotics_url"], "first": r["first_team_url"], "school": r["school_url"]},
+            "teamLinks": team_links.get(number, []),
+        })
+    by_points = sorted(rows, key=lambda row: (row["district"]["rank"] or 999))
+    for i, row in enumerate(by_points, 1):
+        row["standingsRank"] = i
+    summary = {
+        "teams": len(rows),
+        "eventTitles": sum(len(row["titles"]) for row in rows),
+        "worldsTeams": [row["number"] for row in rows if row["worlds"]],
+        "stateTeams": [row["number"] for row in rows if row["stateChampionship"]],
+        "awards": sum(len(row["awards"]) for row in rows),
+        "wins": sum(row["record"]["wins"] for row in rows),
+        "updated": load(HERE / "data/tba/results-2026.json")["retrievedDate"],
+        "resultsSource": "The Blue Alliance, captured Oct 22, 2026",
+        "ratingsSource": "Statbotics EPA, final 2026 values (June 12, 2026 snapshot)",
+    }
+    return rows, summary
 
 
 def main():
@@ -67,6 +176,7 @@ def main():
             "profileUrl": r["statbotics_url"],
             "schoolUrl": r["school_url"], "affiliationNote": r["affiliation_notes"],
         })
+    ftc_links = {t["teamNumber"]: t["links"] for t in load(HERE / "data/team-links.json")["teams"]}
     # FTC features stay within the same Indiana regional frame; nearby Ohio research remains linked separately.
     features = []
     for r in ftc["teams"]:
@@ -83,11 +193,13 @@ def main():
             "adults": [person(p, True) for p in l["adult_leadership"]],
             "gaps": [l["gap"]], "sourceUrls": r["source_urls"],
             "profileUrl": r["first_team_url"], "qualification": k["qualification"],
+            "teamLinks": ftc_links.get(r["team_number"], []),
         })
     result = {
         "title": "The REFINERY · NEI Robotics Top 10",
         "seasonPreview": load(HERE / "data/season-preview.json"),
-        "dnf": build_dnf(),
+        # The 166-school invitation list is most of the payload; the page loads it on demand.
+        "dnf": {"src": "dnf.json"},
         "matchHighlights": build_matches(),
         "videoThumbnails": {r["videoUrl"]: r for r in load(HERE / "data/video-thumbnails.json")["thumbnails"]},
         "hero": {"headline": "THE ONLY SPORT WHERE EVERYONE CAN GO PRO", "subhead": "Friday-night energy. Skills for a lifetime. Meet the students building their future in engineering, software, manufacturing and business.",
@@ -105,14 +217,25 @@ def main():
                             "sources": ["https://www.firstinspires.org/programs/ftc/", "https://www.firstinspires.org/programs/frc/"]},
         "top10": teams,
         "ftc": {"season": "2025–26 DECODE", "note": "Separate FTC features, using peak event non-penalty OPR captured October 22, 2026. USIN is an assigned event-region cohort, not a home-state rank. FTC OPR and FRC EPA are different models and games.",
-                "teams": features, "newTeams": [{"number": r["team_number"], "name": r["team_name"], "school": r["school_or_organization"], "note": r["notes"], "logos": logos(r["team_number"], "ftc")} for r in ftc["current_season_only_teams"]]},
-        "links": {"refinery": "https://refineryrobotics.org/", "about": "https://refineryrobotics.org/about/", "involved": "https://refineryrobotics.org/get-involved/", "repo": "https://github.com/horner/refintery-rankings", "pressKit": "press-kit.md"},
+                "teams": features, "newTeams": [{"number": r["team_number"], "name": r["team_name"], "school": r["school_or_organization"], "note": r["notes"], "logos": logos(r["team_number"], "ftc"), "teamLinks": ftc_links.get(r["team_number"], [])} for r in ftc["current_season_only_teams"]]},
+        "links": {"refinery": "https://refineryrobotics.org/", "about": "https://refineryrobotics.org/about/", "involved": "https://refineryrobotics.org/get-involved/", "repo": "https://github.com/horner/refintery-rankings", "pressKit": "press/"},
         "producerNotes": ["Use the documented title and evidence date; do not announce an unconfirmed current captain or head coach.",
                           "The first two EPA values differ by 0.19 points, much less than their model uncertainty. A numbered ordering is not evidence of a meaningful performance gap.",
                           "Recorded season entries can include registrations without matches. They are not a count of winning seasons.",
                           "No movement arrows or voting totals are shown because only one frozen ranking snapshot supports this edition."],
     }
+    result["standings"], result["seasonSummary"] = build_standings(frc, editorial, logos, result["matchHighlights"])
+    result["calendar"] = load(HERE / "data/calendar-2026-27.json")
+    write_ics(result["calendar"])
+    result["photos"] = load(HERE / "data/photos.json")["photos"]
+    result["news"] = load(HERE / "data/news.json")
+    result["displayAssets"] = {r["source"]: {"file": r["file"], "width": r["width"], "height": r["height"]}
+                               for r in load(HERE / "data/display-assets.json")["assets"]}
     (HERE / "dist/data.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+    dnf = build_dnf()
+    (HERE / "dist/dnf.json").write_text(json.dumps(dnf, ensure_ascii=False, separators=(",", ":")) + "\n")
+    write_press(result, len(dnf["schools"]))
+    write_pages(result, dnf)
     press = ["# The REFINERY — NEI Robotics Top 10", "", "## Segment concept", "",
              "Bring the energy of a college football rankings reveal to local student robotics: reveal the regional FRC Top 10, select a team, and introduce the students and adults behind the robot. FTC appears in its own feature segment.", "",
              "Hero line: **The only sport where everyone can go pro.** The career-focused campaign phrase is attributed to [FIRST Global](https://first.global/sport/). Engineering, software, manufacturing, design, and business skills give the line its meaning.", "",

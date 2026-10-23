@@ -1,354 +1,445 @@
 'use strict';
 
 (() => {
-  const $ = (id) => document.getElementById(id);
-  const state = { data: null, selected: 0, view: 'board', presenter: false, cycle: null, exporting: false, presentation: false, countdownTimer: null };
-  const frame = $('on-air-frame');
-  const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const safeUrl = (value) => { try { const url = new URL(value, location.href); return ['https:', 'http:'].includes(url.protocol) ? esc(url.href) : '#'; } catch { return '#'; } };
-  const num = (value, decimals = 0) => Number.isFinite(Number(value)) && value !== null && value !== '' ? Number(value).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) : '—';
-  const date = (value) => { if (!value) return 'Date not supplied'; const match = String(value).match(/^(\d{4})-(\d{2})-(\d{2})/); return match ? `${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Number(match[2]) - 1]} ${Number(match[3])}, ${match[1]}` : String(value); };
-  const selected = () => state.data.top10[state.selected];
-  const setStatus = (message) => { $('app-status').textContent = message; };
-  const link = (url, title) => `<a href="${safeUrl(url)}" target="_blank" rel="noopener">${esc(title)}</a>`;
-  const sourceLabel = (url) => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return String(url); } };
-  const sources = (urls = []) => [...new Set(urls)].map((url, i) => link(url, `${sourceLabel(url)}${urls.filter((u) => sourceLabel(u) === sourceLabel(url)).length > 1 ? ` [${i + 1}]` : ''}`)).join(' · ');
-  const calendarDay = (iso) => { const match = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})$/); return match ? Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])) / 86400000 : null; };
-  const indianaDay = () => {
-    const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: 'America/Indiana/Indianapolis', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date()).filter((part) => ['year', 'month', 'day'].includes(part.type)).map((part) => [part.type, part.value]));
-    return calendarDay(`${parts.year}-${parts.month}-${parts.day}`);
+  // Preserve links to the original broadcast/spotlight view in the separate display.
+  const legacyDisplayRoute = () => {
+    const spotlight = location.hash.match(/^#spotlight\/(\d+)$/);
+    if (!spotlight && !['#board', '#broadcast'].includes(location.hash)) return false;
+    const url = new URL('top10.html', location.href);
+    url.hash = spotlight ? `#team/${spotlight[1]}` : '';
+    location.replace(url.href);
+    return true;
   };
-  function renderCountdown() {
-    const countdown = state.data?.seasonPreview?.countdown;
-    if (!countdown || !$('season-countdown')) return;
-    const start = calendarDay(countdown.targetDate);
-    const end = calendarDay(countdown.endDate) ?? start;
-    if (start === null) return;
-    const today = indianaDay();
-    const remaining = Math.max(0, start - today);
-    const phase = today < start ? 'COUNTDOWN TO' : today <= end ? 'THIS WEEKEND' : 'SEASON UNDERWAY';
-    const value = today < start ? `<strong class="countdown-value">${esc(remaining)}<span>${remaining === 1 ? 'DAY' : 'DAYS'}</span></strong>` : `<strong class="countdown-value countdown-live">${today <= end ? 'IT’S GO TIME.' : 'GAME ON.'}</strong>`;
-    $('season-countdown').innerHTML = `<div class="eyebrow">${phase}</div>${value}<h3>${esc(countdown.label)}</h3><p class="countdown-date">${esc(date(countdown.targetDate))}${countdown.endDate && countdown.endDate !== countdown.targetDate ? ` – ${esc(date(countdown.endDate))}` : ''}</p>${countdown.sourceUrl ? `<a href="${safeUrl(countdown.sourceUrl)}" target="_blank" rel="noopener">Event details <span aria-hidden="true">↗</span></a>` : ''}<p class="countdown-note">${esc(countdown.note || '')}</p><small>Countdown uses the calendar date in Fort Wayne, Indiana.</small>`;
+  if (legacyDisplayRoute()) return;
+  if (location.hash === '#season-preview') history.replaceState(null, '', '#schedule');
+  const $ = (id) => document.getElementById(id);
+  const state = { data: null, sort: 'district', dnfLimit: 24 };
+  const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const safeUrl = (value) => { try { const url = new URL(value, location.href); return ['https:', 'http:', 'mailto:'].includes(url.protocol) ? esc(url.href) : '#'; } catch { return '#'; } };
+  const ext = (url, label, cls = '') => `<a${cls ? ` class="${cls}"` : ''} href="${safeUrl(url)}" target="_blank" rel="noopener">${esc(label)}</a>`;
+  const num = (value, decimals = 0) => Number.isFinite(Number(value)) && value !== null ? Number(value).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) : '—';
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const parts = (iso) => { const [y, m, d] = String(iso).split('-').map(Number); return { y, m, d }; };
+  const shortDate = (iso) => { if (!/^\d{4}-\d{2}-\d{2}$/.test(String(iso))) return String(iso); const { y, m, d } = parts(iso); return `${MONTHS[m - 1]} ${d}, ${y}`; };
+  const dateRange = (start, end) => {
+    const a = parts(start), b = parts(end || start);
+    if (start === end || !end) return shortDate(start);
+    if (a.y === b.y && a.m === b.m) return `${MONTHS[a.m - 1]} ${a.d}–${b.d}, ${a.y}`;
+    return `${MONTHS[a.m - 1]} ${a.d} – ${MONTHS[b.m - 1]} ${b.d}, ${b.y}`;
+  };
+  const today = () => { const n = new Date(); return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`; };
+  const utc = (iso) => { const { y, m, d } = parts(iso); return Date.UTC(y, m - 1, d); };
+  const daysUntil = (iso) => Math.round((utc(iso) - utc(today())) / 86400000);
+  const record = (r) => `${r.wins}-${r.losses}${r.ties ? `-${r.ties}` : ''}`;
+  const recordText = (text) => String(text || '').replace(/-0$/, '');
+  const ordinal = (n) => { const suffix = ['th', 'st', 'nd', 'rd'], v = n % 100; return `${n}${suffix[(v - 20) % 10] || suffix[v] || suffix[0]}`; };
+  // Plain-language playoff results. In the 8-alliance double-elimination bracket the round a team
+  // goes out in fixes its finish: round 2 = 7th–8th, round 3 = 5th–6th, round 4 = 4th, round 5 = 3rd.
+  const FINISH = { 2: 'Tied 7th (out in playoff round 2)', 3: 'Tied 5th (out in playoff round 3)', 4: '4th place', 5: '3rd place' };
+  const playoffResult = (p) => {
+    if (!p) return 'Not picked for playoffs';
+    if (p.result === 'Won event') return 'Won the event';
+    if (p.result === 'Finalist') return 'Runner-up (lost in the finals)';
+    const round = Number((p.result.match(/round (\d)/) || [])[1]);
+    return FINISH[round] || 'Reached playoffs';
+  };
+  const playoffRole = (p) => {
+    if (!p?.alliance) return '';
+    const seed = `#${p.alliance} alliance`;
+    return p.role === 'Captain' ? `Captain of the ${seed}` : p.role === 'Backup' ? `Backup robot for the ${seed}` : `${p.role.toLowerCase().replace(/^./, (c) => c.toUpperCase())} of the ${seed}`;
+  };
+
+  // Small WebP copies are for display; the verified originals stay linked in the credits.
+  const logo = (logos, number) => {
+    const mark = logos?.team?.file ? logos.team : logos?.school?.file ? logos.school : null;
+    if (!mark) return `<span class="logo placeholder" aria-hidden="true">${esc(number)}</span>`;
+    const shown = state.data.displayAssets?.[mark.file];
+    return `<span class="logo${mark.background === 'dark' ? ' dark-logo' : ''}"><img src="${esc(shown?.file || mark.file)}" alt="" loading="lazy" decoding="async"${shown ? ` width="${shown.width}" height="${shown.height}"` : ''}></span>`;
+  };
+  const handle = (url) => url.replace(/\/+$/, '').split('/').pop().replace(/^@/, '');
+  const follow = (links) => links?.length ? `<ul class="link-list follow">${links.map((l) => `<li>${ext(l.url, l.type === 'Website' ? 'Team website' : ['Instagram', 'X', 'YouTube', 'TikTok'].includes(l.type) ? `${l.type} @${handle(l.url)}` : l.type, 'text-link')}</li>`).join('')}</ul>` : '';
+  const honorClass = (b) => /winner/i.test(b) ? 'trophy' : /World/.test(b) ? 'worlds' : '';
+  const photo = (id) => state.data.photos.find((p) => p.id === id);
+  const replayThumbnail = (match, teamName) => {
+    const thumbnail = state.data.videoThumbnails?.[match?.videoUrl];
+    return thumbnail ? `<a class="replay-thumbnail" href="${safeUrl(match.videoUrl)}" target="_blank" rel="noopener" aria-label="Watch ${esc(teamName)}: ${esc(match.eventName)}, ${esc(match.matchLabel)}"><img src="${safeUrl(thumbnail.file)}" width="${thumbnail.width}" height="${thumbnail.height}" alt="Replay preview: ${esc(match.videoTitle || match.matchLabel)}" loading="lazy" decoding="async"><span>▶ Watch replay</span></a>` : '';
+  };
+
+  function renderStats() {
+    const s = state.data.seasonSummary;
+    const ftcCount = state.data.ftc.teams.length + state.data.ftc.newTeams.length;
+    const stats = [[s.teams, 'FRC teams'], [s.eventTitles, 'Event titles in 2026'], [s.worldsTeams.length, 'World Championship teams'], [s.awards, 'Judged awards'], [ftcCount, 'FTC teams to follow']];
+    $('stat-bar').innerHTML = stats.map(([value, label]) => `<div><dt>${esc(label)}</dt><dd data-count="${Number(value)}">${esc(num(value))}</dd></div>`).join('');
   }
 
-  function renderSeasonPreview() {
-    const preview = state.data?.seasonPreview;
-    if (!preview || !$('season-preview')) return;
-    $('season-label').textContent = `${preview.seasonLabel || '2026–27'} / THE NEXT CHAPTER`;
-    $('season-title').textContent = preview.title || 'THE SEASON AHEAD.';
-    $('season-intro').textContent = preview.intro || '';
-    renderCountdown();
-    clearInterval(state.countdownTimer);
-    state.countdownTimer = setInterval(renderCountdown, 60000);
-    $('season-ftc').innerHTML = `<div class="eyebrow dark">FTC / THREE LOCAL TEAMS TO FOLLOW</div><h3>A NEW TEAM.<br>A NEW CHAPTER.</h3><div class="season-team-list">${(preview.localFtcTeams || []).map((team) => `<a href="${safeUrl(team.profileUrl)}" target="_blank" rel="noopener"><span class="season-team-number">${esc(team.number)}</span><span><strong>${esc(team.name)}${team.isNew ? '<small class="rookie-tag">NEW THIS SEASON</small>' : ''}</strong><span>${esc(team.school)}</span></span><span class="season-team-arrow" aria-hidden="true">↗</span></a>`).join('')}</div><p>After their first matches: meet the students, the mentors, and the robots behind the results.</p>`;
-    $('season-timeline').innerHTML = (preview.milestones || []).map((event, index) => {
-      const statusClass = event.status === 'Confirmed event' ? 'confirmed' : event.status === 'Planned coverage' ? 'planned' : 'target';
-      return `<article class="season-milestone" id="season-${esc(event.id || index)}"><div class="milestone-topline"><span class="milestone-program">${esc(event.program || 'ROBOTICS')}</span><span class="milestone-status ${statusClass}">${esc(event.status)}</span></div><div class="milestone-date">${esc(event.dateLabel || date(event.startDate))}</div><h4>${esc(event.title)}</h4><p>${esc(event.description)}</p>${event.location ? `<span class="milestone-location">${esc(event.location)}</span>` : ''}${event.note ? `<p class="milestone-note">${esc(event.note)}</p>` : ''}${event.linkUrl ? `<a class="milestone-link" href="${safeUrl(event.linkUrl)}" target="_blank" rel="noopener">${esc(event.linkLabel || 'Source & details')} <span aria-hidden="true">↗</span></a>` : ''}</article>`;
-    }).join('');
-    const showList = (program, shows) => `<details class="season-show-list"><summary><span><small>${esc(program)} / PLANNED COVERAGE</small><strong>THE WEEKLY RUNDOWN</strong><span class="show-range">${shows.length ? `${esc(date(shows[0].date))} – ${esc(date(shows[shows.length - 1].date))}` : 'Episode dates coming soon'}</span></span><span class="show-expand" aria-hidden="true">＋</span></summary><ol>${shows.map((show) => `<li><time datetime="${esc(show.date)}">${esc(date(show.date))}</time><div><strong>${esc(show.title)}</strong><p>${esc(show.summary)}</p>${show.sourceUrl ? `<a href="${safeUrl(show.sourceUrl)}" target="_blank" rel="noopener">Competition calendar <span aria-hidden="true">↗</span></a>` : ''}</div></li>`).join('')}</ol></details>`;
-    $('season-shows').innerHTML = `<div class="weekly-promise"><div class="eyebrow dark">AFTER THE FINAL BUZZER</div><h3>THE SCORES.<br>THE STORIES.<br>THE NEXT PICK.</h3><p>${esc(preview.weeklyPromise || '')}</p><span>All show dates below are planned coverage dates.</span></div><div class="season-show-calendars">${showList('FTC', preview.shows?.ftc || [])}${showList('FRC', preview.shows?.frc || [])}</div>`;
-    $('season-notes').innerHTML = `<span class="schedule-asof">SCHEDULE CHECKED ${esc(date(preview.asOf))}</span><ul>${(preview.notes || []).map((note) => `<li>${esc(note)}</li>`).join('')}</ul>`;
-    $('season-preview').hidden = false;
+  function standingsRow(t) {
+    const rank = state.sort === 'power' ? t.powerRank : t.standingsRank;
+    const district = t.district.rank ? `#${t.district.rank}` : '—';
+    return `<details class="team" id="team-${t.number}">
+      <summary class="team-row">
+        <span class="rank">${rank}</span>
+        <span class="identity">${logo(t.logos, t.number)}<span><strong><span class="team-name">${esc(t.name)}</span> <span class="team-number muted">· ${t.number}</span></strong><small>${esc(t.city)} · ${esc(t.school)}</small></span></span>
+        <span class="stat r num">${esc(record(t.record))}<small>W-L</small></span>
+        <span class="stat r district num">${district}<small>${num(t.district.points)} points</small></span>
+        <span class="stat r epa num">${num(t.epa, 1)}<small>EPA</small></span>
+        <span class="honors">${t.badges.map((b) => `<span class="${honorClass(b)}">${esc(b)}</span>`).join('')}</span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="team-detail" data-team="${t.number}"></div>
+    </details>`;
   }
-  function renderDnf() {
-    const dnf = state.data?.dnf;
-    if (!dnf || !$('dnf')) return;
-    const interestUrl = (school = '') => `mailto:${dnf.contactEmail}?subject=${encodeURIComponent(`Interested in starting a robotics team${school ? ` — ${school}` : ''}`)}&body=${encodeURIComponent(`Hello The REFINERY,\n\nWe’re interested in exploring an FTC or FRC team${school ? ` at ${school}` : ' at our school'}. Please help us understand the first steps.\n\nSchool / organization: ${school}\nMy name and role: \n`)}`;
-    $('dnf-interest').href = interestUrl();
-    $('dnf-summary').textContent = `${dnf.schools.length} schools to invite. One conversation to begin.`;
-    $('dnf-qualification').textContent = dnf.qualification;
-    $('dnf-source-note').innerHTML = `<p>${esc(dnf.scopeNote)}</p><p>Checked ${esc(date(dnf.asOf))}. ${link(dnf.methodologyUrl, 'School roster, team screening, and leadership sources')}.</p>`;
-    let limit = 20;
+
+  function teamDetail(t) {
+    const eventRow = (e) => `<tr class="${e.type === 'offseason' ? 'offseason' : ''}"><td>${ext(e.tbaUrl, e.shortName)}<br><small class="muted">${esc(dateRange(e.startDate, e.endDate))}</small></td><td>${ordinal(e.qualRank)}<br><small class="muted">${esc(recordText(e.qualRecord))} record</small></td><td class="${e.playoff?.result === 'Won event' ? 'won' : ''}">${esc(playoffResult(e.playoff))}${playoffRole(e.playoff) ? `<br><small class="muted">${esc(playoffRole(e.playoff))}</small>` : ''}</td></tr>`;
+    const head = `<thead><tr><th>Event</th><th>${term('qualifying', 'After qualifying')}</th><th>${term('playoffs', 'Playoffs')}</th></tr></thead>`;
+    const official = t.events.filter((e) => e.type !== 'offseason');
+    const offseason = t.events.filter((e) => e.type === 'offseason');
+    const events = `<table class="events">${head}<tbody>${official.map(eventRow).join('')}</tbody></table>${offseason.length ? `<details><summary>Offseason events (${offseason.length})</summary><table class="events">${head}<tbody>${offseason.map(eventRow).join('')}</tbody></table></details>` : ''}`;
+    const awards = t.awards.length ? `<h4>Awards</h4><ul class="award-list">${t.awards.map((a) => `<li>${esc(a.award)} <span>· ${esc(a.event)}</span></li>`).join('')}</ul>` : '';
+    const m = t.closestMatch;
+    const closest = m ? `<h4>Closest game</h4><div class="close-game">${replayThumbnail(m, t.name)}<div>${esc(m.eventName)} · ${esc(m.matchLabel)}</div><div class="scoreline"><span class="red">${m.redScore}</span><span class="muted">–</span><span class="blue">${m.blueScore}</span></div><div class="muted">${esc(m.margin)}-point ${esc(m.outcome.toLowerCase())} on the ${esc(m.teamAlliance.toLowerCase())} alliance</div><ul class="link-list">${m.videoUrl ? `<li>${ext(m.videoUrl, 'Watch replay', 'text-link')}</li>` : ''}<li>${ext(m.officialUrl, 'Official result', 'text-link')}</li></ul></div>` : '';
+    const pic = t.photos.map(photo).filter(Boolean)[0];
+    const fig = pic ? `<figure class="team-photo"><img src="${esc(pic.file)}" alt="${esc(pic.caption)}" loading="lazy" width="${pic.width}" height="${pic.height}"><figcaption>${esc(pic.caption)} Photo: ${esc(pic.credit)}</figcaption></figure>` : '';
+    const news = t.news.length ? `<h4>In the news</h4><ul class="news-list">${t.news.map((s) => `<li>${ext(s.url, s.title)}<small>${esc(s.outlet)} · ${esc(shortDate(s.date))}</small></li>`).join('')}</ul>` : '';
+    const people = [...t.students, ...t.representatives, ...t.adults];
+    const peopleHtml = people.length ? `<details><summary>People named in public sources (${people.length})</summary><ul class="people">${people.map((p) => `<li><strong>${esc(p.name)}</strong> · ${esc(p.role)}<br><small>${p.date ? `Source dated ${esc(shortDate(p.date))}` : 'Undated source'} · ${p.sourceUrls.slice(0, 2).map((u, i) => ext(u, `source ${i + 1}`)).join(' · ')}</small></li>`).join('')}</ul>${t.gaps.length ? `<p class="muted">${t.gaps.map(esc).join(' ')}</p>` : ''}</details>` : '';
+    const facts = `<details><summary>Team facts</summary><ul class="people"><li>Rookie year ${t.rookieYear} · ${t.seasons} seasons through 2026</li><li>${esc(t.county)} County · ${esc(t.affiliationNote)}</li><li>Indiana EPA rank ${t.stateEpaRank} of ${t.stateEpaCount} · world ${num(t.worldEpaRank)} of ${num(t.worldEpaCount)}</li><li>District points ${num(t.district.points)} · Indiana district rank ${t.district.rank} of ${t.district.teamCount}</li></ul></details>`;
+    const links = `<ul class="link-list"><li>${ext(t.links.tba, 'The Blue Alliance', 'text-link')}</li><li>${ext(t.links.statbotics, 'Statbotics', 'text-link')}</li><li>${ext(t.links.first, 'FIRST profile', 'text-link')}</li>${t.links.school ? `<li>${ext(t.links.school, 'School site', 'text-link')}</li>` : ''}</ul>`;
+    const followHtml = t.teamLinks?.length ? `<h4>Follow the team</h4>${follow(t.teamLinks)}` : '';
+    return `<div><h4>2026 season</h4>${events}${awards}${peopleHtml}${facts}</div><div>${followHtml}${closest}${fig}${news}<h4>Stats &amp; profiles</h4>${links}<p><a class="text-link page-link" href="team/${t.number}/">Full team page</a></p><p class="muted small">Interview requests: <a href="mailto:celder@bionanomics.com?subject=${encodeURIComponent(`Media request: ${t.name} (${t.number})`)}">celder@bionanomics.com</a></p></div>`;
+  }
+
+  function renderStandings() {
+    const teams = [...state.data.standings].sort((a, b) => state.sort === 'power' ? a.powerRank - b.powerRank : a.standingsRank - b.standingsRank);
+    $('standings-list').innerHTML = `<div class="standings-header"><span>#</span><span>Team</span><span class="r">${term('record', 'Record')}</span><span class="r">${term('district', 'District')}</span><span class="r">${term('epa', 'EPA')}</span><span class="h-honors">2026 honors</span><span></span></div>${teams.map(standingsRow).join('')}`;
+    $('standings-list').querySelectorAll('details.team').forEach((el) => el.addEventListener('toggle', () => {
+      const body = el.querySelector('.team-detail');
+      if (el.open && !body.innerHTML) body.innerHTML = teamDetail(state.data.standings.find((t) => t.number === Number(body.dataset.team)));
+      if (el.open) history.replaceState(null, '', `#team/${body.dataset.team}`);
+      else if (location.hash === `#team/${body.dataset.team}`) history.replaceState(null, '', location.pathname + location.search);
+    }));
+    const s = state.data.seasonSummary;
+    $('standings-updated').textContent = `Final 2026 results · updated ${shortDate(s.updated)}`;
+    $('standings-source').innerHTML = `Records, events and awards: ${esc(s.resultsSource)}. Ratings: ${esc(s.ratingsSource)}. District rank is among ${state.data.standings[0].district.teamCount} Indiana teams.`;
+  }
+
+  function renderHighlights() {
+    const teams = state.data.standings;
+    const cards = [];
+    teams.filter((t) => t.titles.length).sort((a, b) => b.titles.length - a.titles.length).forEach((t) => {
+      const year = 2026 - t.rookieYear + 1;
+      const extra = t.worlds ? `, then reached the ${t.worlds}` : year <= 2 ? ` in just its ${year === 1 ? 'first' : 'second'} season` : '';
+      cards.push({ big: `${t.titles.length}×`, title: `${t.name} (${t.number})`, text: `Won the ${t.titles.join(' and ')} district event${t.titles.length > 1 ? 's' : ''}${extra}.`, href: `#team/${t.number}` });
+    });
+    teams.filter((t) => t.worlds && !t.titles.length).forEach((t) => cards.push({ big: 'Worlds', title: `${t.name} (${t.number})`, text: `Earned a trip to the ${t.worlds} in Houston.`, href: `#team/${t.number}` }));
+    const s = state.data.seasonSummary;
+    cards.push({ big: s.awards, title: 'Judged awards', text: `Won by ${new Set(teams.filter((t) => t.awards.length).map((t) => t.number)).size} regional teams, from Innovation in Control to Rising All-Star.`, href: '#standings' });
+    $('highlight-grid').innerHTML = cards.slice(0, 4).map((c) => `<a class="highlight" href="${esc(c.href)}"><span class="big">${esc(c.big)}</span><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></a>`).join('');
+    const order = ['winner-banners', 'team-8742', 'robot-9431', 'judging', 'robot-9119'];
+    $('gallery').innerHTML = order.map(photo).filter(Boolean).map((p) => `<figure><img src="${esc(p.file)}" alt="${esc(p.caption)}" loading="lazy" decoding="async" width="${p.width}" height="${p.height}"><figcaption>${esc(p.caption)} Photo: ${esc(p.credit)}</figcaption></figure>`).join('');
+  }
+
+  function renderFtc() {
+    const { ftc, news } = state.data;
+    const stories = (n) => news.stories.filter((s) => s.teams.includes(`ftc${n}`));
+    const card = (t, rookie) => {
+      const s = stories(t.number);
+      const stats = rookie ? '<p class="muted">Rookie team for 2026–27. First matches this season.</p>' : `<div class="card-stats"><div><strong>${num(t.opr, 1)}</strong><span>Best ${term('opr', 'OPR')}, 2025–26</span></div><div><strong>${t.regionalRank}<small class="muted">/${t.regionalCount}</small></strong><span>Rank at Indiana events</span></div></div>`;
+      return `<article class="card"><span class="label ${rookie ? 'new' : 'ftc'}">${rookie ? 'New this season' : 'FTC'} · ${t.number}</span><div class="identity">${logo(t.logos, t.number)}<span><strong>${esc(t.name)}</strong><small>${esc(t.school)}${t.city ? ` · ${esc(t.city)}` : ''}</small></span></div>${stats}${s.length ? `<details><summary>In the news (${s.length})</summary><ul class="news-list">${s.map((x) => `<li>${ext(x.url, x.title)}<small>${esc(x.outlet)} · ${esc(shortDate(x.date))}</small></li>`).join('')}</ul></details>` : ''}${follow(t.teamLinks)}<p><a class="text-link page-link" href="team/${t.number}/">Team page</a></p><ul class="link-list"><li>${ext(`https://ftcscout.org/teams/${t.number}`, 'FTCScout', 'text-link')}</li>${t.profileUrl ? `<li>${ext(t.profileUrl, 'FIRST profile', 'text-link')}</li>` : ''}</ul></article>`;
+    };
+    $('ftc-grid').innerHTML = ftc.teams.map((t) => card(t, false)).join('') + ftc.newTeams.map((t) => card(t, true)).join('');
+  }
+
+  function renderSchedule() {
+    const cal = state.data.calendar;
+    const now = today();
+    const plusDay = (iso) => { const d = new Date(utc(iso) + 86400000); return d.toISOString().slice(0, 10).replace(/-/g, ''); };
+    const google = (e) => `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(e.name)}&dates=${e.startDate.replace(/-/g, '')}/${plusDay(e.endDate)}&location=${encodeURIComponent([e.venue, e.city, e.state].filter(Boolean).join(', '))}&details=${encodeURIComponent(`${e.description ? `${e.description} ` : ''}${e.url}`)}`;
+    const row = (e) => {
+      const { m, d } = parts(e.startDate);
+      const place = [e.venue, [e.city, e.state].filter(Boolean).join(', ')].filter(Boolean).join(' · ');
+      const ftcOnly = e.program === 'FTC';
+      return `<li class="${e.endDate < now ? 'past' : ''}"><div class="date-block"><span class="m">${MONTHS[m - 1]}</span><span class="d">${d}</span></div><div><span class="label${ftcOnly ? ' ftc' : ''}">${esc(e.program)} · ${esc(e.type)}${e.week ? ` · Week ${e.week}` : ''}</span><h3>${esc(e.name)}</h3><p>${esc(dateRange(e.startDate, e.endDate))}${place ? ` · ${esc(place)}` : ''}</p>${e.description ? `<p class="desc">${esc(e.description)}</p>` : ''}${e.entrants ? `<div class="region-teams"><span class="rt-label">REFINERY-region teams</span>${regionTeams(e)}</div>` : ''}<ul class="link-list"><li>${ext(e.url, 'Event details', 'text-link')}</li><li>${ext(google(e), 'Google Calendar', 'text-link')}</li></ul></div></li>`;
+    };
+    const draw = () => {
+      const events = cal.events.filter((e) => (!state.program || e.program.includes(state.program)) && (state.showPast || e.endDate >= now));
+      const months = [];
+      events.forEach((e) => { const key = e.startDate.slice(0, 7); const group = months.find((g) => g.key === key) || (months.push({ key, events: [] }), months[months.length - 1]); group.events.push(e); });
+      $('calendar-list').innerHTML = months.map((g) => { const { y, m } = parts(`${g.key}-01`); return `<h3 class="month">${['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][m - 1]} ${y}</h3><ol class="schedule">${g.events.map(row).join('')}</ol>`; }).join('') || '<p class="loading">No events match.</p>';
+      const earlier = cal.events.filter((e) => e.endDate < now && (!state.program || e.program.includes(state.program))).length;
+      $('calendar-past').hidden = !earlier;
+      $('calendar-past').textContent = state.showPast ? 'Hide earlier events' : `Show earlier events (${earlier})`;
+    };
+    document.querySelectorAll('[data-program]').forEach((button) => button.addEventListener('click', () => {
+      state.program = button.dataset.program;
+      document.querySelectorAll('[data-program]').forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+      draw();
+    }));
+    $('calendar-past').addEventListener('click', () => { state.showPast = !state.showPast; draw(); });
+    draw();
+    $('calendar-source').innerHTML = `Dates from ${cal.sources.map(esc).join(', ')}. Checked ${esc(shortDate(cal.retrievedDate))}. Dates can change; confirm with the event before you go.`;
+    renderNextEvent(cal.events.find((e) => e.endDate >= now && e.type !== 'Kickoff'), google);
+  }
+
+  // The next event, front and center: when, where, how to watch, and which local teams are in.
+  // The REFINERY-region teams entered in an event, from its posted entry list.
+  function regionTeams(e, muted = 'muted') {
+    const entry = e.entrants;
+    if (!entry) return '';
+    if (!entry.posted) {
+      return e.type === 'Championship'
+        ? `<p class="${muted}">Teams qualify during the season. Region qualifiers will be listed here.</p>`
+        : `<p class="${muted}">Entry list not posted yet. Region teams will be listed here when it is.</p>`;
+    }
+    if (!entry.local.length) return `<p class="${muted}">${entry.count} teams entered; none from The REFINERY’s region yet.</p>`;
+    const roster = new Map([...state.data.standings, ...state.data.ftc.teams, ...state.data.ftc.newTeams].map((t) => [t.number, t]));
+    return `<ul class="entered">${entry.local.map((n) => { const t = roster.get(n); return `<li>${t ? logo(t.logos, n) : ''}<span><strong>${t?.name ? (state.data.standings.some((s) => s.number === n) ? `<a href="team/${n}/">${esc(t.name)}</a>` : esc(t.name)) : `Team ${n}`}</strong><small>${n}${t?.school ? ` · ${esc(t.school)}` : ''}</small></span></li>`; }).join('')}</ul><p class="${muted}">${entry.local.length} of ${entry.count} teams entered are from The REFINERY’s region.</p>`;
+  }
+
+  function renderNextEvent(e, google) {
+    if (!e) return;
+    const days = daysUntil(e.startDate);
+    const live = days <= 0;
+    const when = live ? 'Happening now' : days === 1 ? 'Tomorrow' : `In ${days} days`;
+    const place = [e.venue, e.address || [e.city, e.state].filter(Boolean).join(', ')].filter(Boolean).join(' · ');
+    const map = e.address || e.venue ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([e.venue, e.address || `${e.city}, ${e.state}`].filter(Boolean).join(', '))}` : '';
+    const teams = regionTeams(e, 'muted-light') || '<p class="muted-light">Entries aren’t tracked for this event.</p>';
+    const watch = e.watch?.length ? e.watch.map((w) => ext(w.url, w.label, 'text-link')).join(' ') : '<span class="muted-light">No livestream announced yet.</span>';
+    $('next-event').hidden = false;
+    $('next-event').innerHTML = `<div class="next-main"><span class="next-when">${esc(when)}</span><span class="label">${esc(e.program)} · ${esc(e.type)}</span><h3>${esc(e.name)}</h3><p class="next-date">${esc(dateRange(e.startDate, e.endDate))}</p>${place ? `<p>${map ? ext(map, place) : esc(place)}</p>` : ''}${e.admission ? `<p><strong>Admission:</strong> ${esc(e.admission)}</p>` : ''}${e.description ? `<p class="muted-light">${esc(e.description)}</p>` : ''}<ul class="link-list"><li>${ext(e.url, 'Event details', 'text-link')}</li><li>${ext(google(e), 'Add to Google Calendar', 'text-link')}</li></ul></div><div class="next-side">${live ? '' : `<div class="next-count"><strong>${days}</strong><span>${days === 1 ? 'day' : 'days'} to go</span></div>`}<h4>Local teams entered</h4>${teams}<h4>How to watch</h4><p>${watch}</p></div>`;
+    // During event week, a strip under the hero points here.
+    if (days <= 7) {
+      $('this-week').hidden = false;
+      $('this-week').innerHTML = `<span class="wrap"><span class="tw-label">${live ? 'Happening now' : 'This week'}</span><strong>${esc(e.name)}</strong><span>${esc(dateRange(e.startDate, e.endDate))} · ${esc(e.city || e.venue)}</span><span class="tw-go">Details</span></span>`;
+    }
+  }
+
+  function renderMedia() {
+    const { news, seasonSummary: s } = state.data;
+    $('news-list').innerHTML = [...news.stories].sort((a, b) => b.date.localeCompare(a.date)).map((x) => `<li>${ext(x.url, x.title)}<small>${esc(x.outlet)} · ${esc(shortDate(x.date))}</small></li>`).join('');
+    $('sources-body').innerHTML = `<ul class="news-list">
+      <li><strong>Records, events, awards:</strong> ${ext('https://www.thebluealliance.com/', 'The Blue Alliance')}, captured Oct 22, 2026. Records count official matches only.</li>
+      <li><strong>EPA ratings:</strong> ${ext('https://www.statbotics.io/', 'Statbotics')}, final 2026 values from the June 12, 2026 data file.</li>
+      <li><strong>FTC ratings:</strong> ${ext('https://ftcscout.org/', 'FTCScout')}, best event OPR excluding penalties, 2025–26 season.</li>
+      <li><strong>Team-school links, hometowns, rookie years:</strong> official ${ext('https://frc-events.firstinspires.org/', 'FIRST')} team profiles.</li>
+      <li><strong>Replays:</strong> official FIRST Indiana Robotics video, matched to TBA result pages.</li>
+      <li><a href="standings-2026.csv" download>Standings CSV</a> · <a href="calendar.ics" download>Season calendar (.ics)</a> · ${ext('https://github.com/horner/refintery-rankings/tree/main/data', 'All data as JSON and CSV')}</li>
+      <li>${ext('https://github.com/horner/refintery-rankings', 'Full research, raw captures and methodology on GitHub')}</li></ul>`;
+  }
+
+  function renderDnf(dnf) {
+    const mail = (school = '') => `mailto:${dnf.contactEmail}?subject=${encodeURIComponent(`Interested in starting a robotics team${school ? ` — ${school}` : ''}`)}&body=${encodeURIComponent(`Hello The REFINERY,\n\nWe’re interested in exploring an FTC or FRC team${school ? ` at ${school}` : ' at our school'}. Please help us understand the first steps.\n\nSchool / organization: ${school}\nMy name and role: \n`)}`;
+    $('dnf-count').innerHTML = `<strong data-count="${dnf.schools.length}">${dnf.schools.length}</strong><span>schools without a team</span>`;
+    countUp($('dnf-count').querySelector('strong'));
     const update = () => {
       const query = $('dnf-search').value.trim().toLocaleLowerCase();
-      const region = $('dnf-state').value;
-      const sector = $('dnf-sector').value;
-      const schools = dnf.schools.filter((school) => (!region || school.state === region) && (!sector || school.sector === sector) && (!query || [school.name, school.district, school.city, school.county, school.leader?.name].join(' ').toLocaleLowerCase().includes(query)));
-      $('dnf-schools').innerHTML = schools.slice(0, limit).map((school) => `<tr><td data-label="School"><strong>${link(school.schoolUrl, school.name)}</strong><span>${esc(school.city)}, ${esc(school.state)} · ${esc(school.sector)}</span><small>${esc(school.district || '')}</small>${school.schoolStatusNote ? `<small>${esc(school.schoolStatusNote)}</small>` : ''}</td><td data-label="Superintendent / school contact">${school.leader?.name ? `<strong>${link(school.leader.sourceUrl, school.leader.name)}</strong><span>${esc(school.leader.role)}</span>${school.leader.evidenceLabel ? `<small>${esc(school.leader.evidenceLabel)}</small>` : ''}` : `<strong>Name not verified</strong><span>${link(school.schoolUrl, 'See school source')}</span>`}</td><td data-label="From downtown"><strong>${num(school.distanceMiles, 1)} mi</strong><span>Straight line</span></td><td data-label="Take the first step"><a class="dnf-school-interest" href="${esc(interestUrl(school.name))}">We’re interested <span aria-hidden="true">↗</span><span class="sr-only"> in starting a team at ${esc(school.name)}</span></a></td></tr>`).join('') || '<tr><td colspan="4">No schools match those filters. Try a school, district, leader, or town.</td></tr>';
-      $('dnf-results').textContent = `Showing ${Math.min(limit, schools.length)} of ${schools.length} schools${schools.length === dnf.schools.length ? '' : ` (${dnf.schools.length} total)`}.`;
-      $('dnf-more').hidden = limit >= schools.length;
+      const region = $('dnf-state').value, sector = $('dnf-sector').value, sort = $('dnf-sort').value;
+      const schools = dnf.schools.filter((s) => (!region || s.state === region) && (!sector || s.sector === sector) && (!query || [s.name, s.district, s.city, s.county, s.leader?.name].join(' ').toLocaleLowerCase().includes(query)))
+        .sort((a, b) => sort === 'name' ? a.name.localeCompare(b.name) : a.distanceMiles - b.distanceMiles);
+      $('dnf-list').innerHTML = schools.slice(0, state.dnfLimit).map((s) => `<li><details class="school"><summary><span><strong>${esc(s.name)}</strong><small>${esc(s.city)}, ${esc(s.state)} · ${esc(s.sector)}${/^Regular/.test(s.schoolType) ? '' : ` · ${esc(s.schoolType)}`}</small></span><span class="miles">${num(s.distanceMiles, 1)}<small> mi</small></span></summary><div class="school-body"><p>${esc(s.district)}${s.county ? ` · ${esc(s.county)}` : ''}</p>${s.leader?.name ? `<p>${esc(s.leader.role)}: ${ext(s.leader.sourceUrl, s.leader.name)} <small>(${esc(s.leader.evidenceLabel)})</small></p>` : ''}${s.schoolStatusNote ? `<p>${esc(s.schoolStatusNote)}</p>` : ''}<p>${ext(s.schoolUrl, 'School website')} · ${num(s.distanceMiles, 1)} miles from downtown Fort Wayne</p><a class="button button-primary" href="${safeUrl(mail(s.name))}">We’re interested</a></div></details></li>`).join('') || '<li class="loading">No schools match. Try a town, district or county.</li>';
+      $('dnf-results').textContent = `Showing ${Math.min(state.dnfLimit, schools.length)} of ${schools.length} schools`;
+      $('dnf-more').hidden = state.dnfLimit >= schools.length;
     };
-    ['dnf-search', 'dnf-state', 'dnf-sector'].forEach((id) => $(id).addEventListener(id === 'dnf-search' ? 'input' : 'change', () => { limit = 20; update(); }));
-    $('dnf-more').addEventListener('click', () => { limit += 20; update(); });
-    if ($('dnf-review')) {
-      $('dnf-review').hidden = !(dnf.reviewSchools || []).length;
-      $('dnf-review-summary').textContent = `${(dnf.reviewSchools || []).length} former-team and community connections to check`;
-      $('dnf-review-schools').innerHTML = (dnf.reviewSchools || []).map((school) => `<article><h4>${esc(school.name)} <small>${esc(school.state)}</small></h4><p>${esc(school.teamNote)}</p><p>${school.leader?.name ? `${esc(school.leader.name)} · ${esc(school.leader.role)}. ` : ''}${link(dnf.methodologyUrl, 'Affiliation and leadership sources')}</p><a href="${esc(interestUrl(school.name))}">Talk about the next step ↗</a></article>`).join('');
+    ['dnf-search', 'dnf-state', 'dnf-sector', 'dnf-sort'].forEach((id) => $(id).addEventListener(id === 'dnf-search' ? 'input' : 'change', () => { state.dnfLimit = 24; update(); }));
+    $('dnf-more').addEventListener('click', () => { state.dnfLimit += 24; update(); });
+    $('dnf-interest').href = mail();
+    $('dnf-interest').removeAttribute('target');
+    if (dnf.reviewSchools?.length) {
+      $('dnf-review').hidden = false;
+      $('dnf-review-summary').textContent = `Bring back a team: ${dnf.reviewSchools.length} schools with a former team or community connection`;
+      $('dnf-review-list').innerHTML = dnf.reviewSchools.map((s) => `<li><strong>${esc(s.name)}</strong> · ${esc(s.city)}, ${esc(s.state)}<br><small>${esc(s.teamNote)}</small><br><a href="${safeUrl(mail(s.name))}">Talk about a relaunch</a></li>`).join('');
     }
+    $('dnf-method').innerHTML = `<p>${esc(dnf.scopeNote)}</p><p>${esc(dnf.qualification)}</p><p>The list includes career centers, alternative and special-education programs, and private schools as well as traditional high schools. ${dnf.counts.existingTeams} schools with current teams and ${dnf.counts.facilitiesNotInvited} secure or residential facilities are left off. Checked ${esc(shortDate(dnf.asOf))}. ${ext('https://github.com/horner/refintery-rankings/blob/main/broadcast/dist/dnf-methodology.md', 'Full school list, leaders and sources')}</p><p>Already fielding a team? ${ext('mailto:info@refineryrobotics.org?subject=DNF%20correction', 'Send a correction')} and we’ll move you to the lineup.</p>`;
     update();
-    $('dnf').hidden = false;
   }
-  const schoolName = (team) => team.school || team.name;
-  const identityBadge = (team, kind, compact = false) => {
-    const logo = team.logos?.[kind];
-    return logo?.file ? `<span class="identity-badge${compact ? ' compact-badge' : ''}" title="${esc(logo.label)}"><span class="logo-tile${logo.background === 'dark' ? ' dark-logo' : ''}"><img src="${esc(logo.file)}" alt="${esc(logo.label)}" decoding="async"></span>${compact ? '' : `<span class="logo-caption">${kind === 'school' ? 'SCHOOL' : 'TEAM'}</span>`}</span>` : '';
+
+  function loadDnf() {
+    if (state.dnfRequested || !state.data?.dnf?.src) return;
+    state.dnfRequested = true;
+    fetch(state.data.dnf.src, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`School list returned ${r.status}`); return r.json(); })
+      .then((dnf) => { renderDnf(dnf); if (location.hash === '#dnf') $('dnf').scrollIntoView(); })
+      .catch((error) => { console.warn('DNF list:', error); $('dnf-list').innerHTML = '<li class="loading">The school list could not be loaded. Refresh to try again.</li>'; });
+  }
+
+  function openFromHash() {
+    if (legacyDisplayRoute()) return;
+    const match = location.hash.match(/^#team\/(\d+)$/);
+    if (!match) return;
+    const el = $(`team-${match[1]}`);
+    if (el) { el.open = true; el.scrollIntoView({ block: 'start' }); }
+  }
+
+  // Plain-language definitions behind the jargon. Tap a dotted-underlined term to see one.
+  const GLOSSARY = {
+    alliance: ['Alliance', 'Three teams playing together as red or blue. Partners change every qualifying match; playoff alliances stay together.'],
+    record: ['Record', 'Wins and losses in official matches: district events, the state championship and the world championship. A win is shared by the whole alliance.'],
+    district: ['District points', 'FIRST Indiana awards points at each district event for qualifying wins, being picked for playoffs, playoff wins and judged awards. The top teams by points go to the state championship.'],
+    epa: ['EPA', 'Expected Points Added, from Statbotics: about how many points a robot adds to its alliance’s score each match. Think points per game.'],
+    qualifying: ['Qualifying', 'The first part of an event: every team plays a dozen or more matches with random partners. The ranking after qualifying decides the playoff seeds.'],
+    playoffs: ['Playoffs', 'The top 8 teams each pick two partners (the #1 seed picks first). Alliances play a double-elimination bracket, so a team is out after two losses, and the last two alliances meet in a best-of-three final.'],
+    opr: ['OPR', 'Offensive Power Rating: an FTC estimate of the points a team adds per match, worked out from its alliances’ scores. Not comparable to FRC’s EPA.'],
   };
-  const prioritizeSpotlight = (people, team) => [...people].sort((a, b) => Number(b.name === team.spotlight?.name) - Number(a.name === team.spotlight?.name));
-  const studentVoices = (team) => {
-    const records = [...(team.students || []), ...(team.representatives || []).filter((p) => /^student\b/i.test(p.role))];
-    return prioritizeSpotlight(records.filter((p, i) => records.findIndex((other) => other.name === p.name) === i), team);
-  };
-  const logoSources = (team) => Object.values(team.logos || {}).filter((r) => r.file).map((r) => link(r.pageUrl, `${r.kind === 'school' ? 'School' : 'Team'} logo · ${r.label}`)).join(' · ');
-  const shortSchool = (team) => schoolName(team).replace(/High School/g, 'HS').replace(/Junior\s*\/\s*Senior/g, 'Jr./Sr.').replace(/\s*\/\s*Huntington County 4-H/g, ' / 4-H');
-  const personDetail = (person) => {
-    const status = person.status || '';
-    const qualification = /retrospective/i.test(status) ? 'retrospective' : /historical/i.test(status) ? 'historical' : /indexed/i.test(status) ? 'indexed evidence' : /self reported/i.test(status) ? 'self-reported' : /season qualification/i.test(status) ? 'season-qualified' : '';
-    const evidenceDate = person.date ? date(person.date) : person.season && /^\d{4}[-–]\d{2}$/.test(person.season) ? `${person.season} · undated` : 'undated evidence';
-    return [person.role, evidenceDate, qualification].filter(Boolean).join(' · ');
-  };
-  const peopleBlock = (people, heading, gap) => `<div class="people-section"><h4 class="people-heading">${heading}</h4>${people?.length ? `<div class="people-list">${people.slice(0, 2).map((p) => `<div><span class="person-name">${esc(p.name)}</span><span class="person-role">${esc(personDetail(p))}</span></div>`).join('')}</div>` : `<p class="person-gap">${esc(gap)}</p>`}</div>`;
-  const stateRank = (team) => team.stateRank ? `${num(team.stateRank)}<small>/ ${num(team.stateCount)}</small>` : '—';
-  const seasonCount = (team) => Array.isArray(team.seasons) ? team.seasons.length : team.seasons;
-  const stats = (team) => `<div class="spotlight-stats"><div><span class="stat-value">${num(team.epa, 2)}</span><span class="stat-label">2026 EPA</span></div><div><span class="stat-value">${stateRank(team)}</span><span class="stat-label">INDIANA EPA RANK</span></div><div><span class="stat-value">${num(seasonCount(team))}</span><span class="stat-label">RECORDED SEASONS</span></div></div>`;
-  const teamIdentity = (team) => `<div class="spotlight-eyebrow"><span>TEAM SPOTLIGHT / NO. ${esc(team.number)}</span><span>REGIONAL #${esc(team.rank)}</span></div><div class="spotlight-identity">${identityBadge(team, 'school')}<div class="spotlight-copy"><h3 class="spotlight-school"${schoolName(team).length > 45 ? ' style="font-size:2.8cqw"' : ''}>${esc(schoolName(team))}</h3><p class="spotlight-name">${esc(team.name)}</p><p class="spotlight-place">${esc([team.city, team.county ? `${team.county.replace(/ County$/i, '')} County` : ''].filter(Boolean).join(' · '))}</p></div>${identityBadge(team, 'team')}</div>`;
-  const story = (team) => (team.talkingPoints || [])[2] || (team.talkingPoints || [])[0] || `${team.name} brings student engineering, coding, and teamwork to ${team.city || 'Northeast Indiana'}.`;
-  const matchRecord = (team, program = 'FRC') => state.data.matchHighlights?.teams.find((record) => record.program === program && record.number === team.number);
-  const marginLabel = (match) => match.margin === 0 ? 'Tied score' : `${num(match.margin)}-point game`;
-  const matchScore = (match) => `${num(match.redScore)}–${num(match.blueScore)}`;
-  const matchReplay = (match, label = 'Watch replay') => match.videoUrl ? link(match.videoUrl, `${label} ↗`) : link(match.officialUrl, 'Match result ↗');
-  const screenMatch = (team, program = 'FRC') => {
-    const match = matchRecord(team, program)?.main;
-    const thumbnail = match && state.data.videoThumbnails?.[match.videoUrl];
-    if (thumbnail && program === 'FRC') return `<div class="screen-replay"><a class="replay-preview" href="${safeUrl(match.videoUrl)}" target="_blank" rel="noopener" aria-label="Watch ${esc(team.name)}: ${esc(match.matchLabel)}, ${esc(match.eventName)}"><img src="${esc(thumbnail.file)}" width="${esc(thumbnail.width)}" height="${esc(thumbnail.height)}" alt="Video preview: ${esc(match.videoTitle)}" loading="eager" decoding="async"><span class="replay-play" aria-hidden="true">▶</span><span class="replay-watch" aria-hidden="true">WATCH REPLAY ↗</span></a><div class="replay-copy"><span>CLOSEST FINISH / ${esc(match.phase === 'Playoff' ? 'PLAYOFF' : 'QUALIFIER')}</span><strong>${esc(matchScore(match))}<small>RED–BLUE ALLIANCE SCORE</small></strong><p>${esc(marginLabel(match))} · ${esc(match.matchLabel)}</p><p class="replay-event">${esc(match.eventName)}</p>${link(match.officialUrl, 'Official result ↗')}</div></div>`;
-    return match ? `<p class="screen-match"><span>CLOSEST FINISH / ${esc(match.phase === 'Playoff' ? 'PLAYOFF' : 'QUALIFIER')}</span><strong>${esc(matchScore(match))}</strong> alliance score · ${esc(marginLabel(match).toLowerCase())} · ${matchReplay(match)}</p>` : `<p class="story-line">${esc(story(team))}</p>`;
-  };
-  const matchDate = (match) => match.playedDate ? date(match.playedDate) : match.eventStartDate === match.eventEndDate ? date(match.eventStartDate) : `${date(match.eventStartDate)} – ${date(match.eventEndDate)} · event dates`;
-  const matchLineups = (match, team) => ['Red', 'Blue'].map((color) => `<div class="match-alliance ${color.toLowerCase()}-alliance"><div><span>${color.toUpperCase()} ALLIANCE</span><strong>${num(match[`${color.toLowerCase()}Score`])}</strong></div><p>${match[`${color.toLowerCase()}Teams`].map((number) => number === team.number ? `<strong title="Featured team">${esc(number)}</strong>` : esc(number)).join(' <span aria-hidden="true">/</span> ')}</p></div>`).join('');
-  const matchNotes = (team, program = 'FRC') => {
-    const match = matchRecord(team, program)?.main;
-    return match ? `<h4>THE CLOSE FINISH</h4><p>${esc(match.eventName)} · ${esc(match.matchLabel)} · ${esc(matchDate(match))}. Red ${num(match.redScore)}, Blue ${num(match.blueScore)}. Team ${esc(team.number)} was on ${esc(match.teamAlliance)} (${esc(match.outcome.toLowerCase())}); ${esc(marginLabel(match).toLowerCase())}. ${matchReplay(match)} · ${link(match.officialUrl, 'Official result')}.</p><p>Final alliance totals include penalties. Opposing teams in this match are a matchup, not evidence of a lasting rivalry.</p>` : '';
-  };
-  function matchCard(team, program) {
-    const record = matchRecord(team, program);
-    if (!record?.main) return `<article class="match-pending"><span class="eyebrow dark">${esc(program)} ${esc(team.number)} / DEBUT WATCH</span><h4>${esc(team.name)}</h4><p>${esc(record?.note || 'The match profile follows this team’s first official match.')}</p></article>`;
-    const match = record.main;
-    const playoff = record.playoff;
-    return `<article class="match-card"><div class="match-card-top"><span>${esc(program)} ${esc(team.number)} / ${esc(team.name)}</span><span class="match-phase">${esc(match.phase)}</span></div><div class="match-card-body"><div class="match-caption"><span class="match-season">${esc(record.seasonLabel)} / CLOSEST FINISH</span><h4>${esc(match.eventName)}</h4><p>${esc(match.matchLabel)} · ${esc(matchDate(match))}</p></div><div class="match-scoreboard">${matchLineups(match, team)}</div><div class="match-outcome"><strong>${esc(marginLabel(match))}</strong><span>Team ${esc(team.number)} on ${esc(match.teamAlliance)} · ${esc(match.outcome.toLowerCase())}</span></div><div class="match-actions">${match.videoUrl ? `<a class="watch-replay" href="${safeUrl(match.videoUrl)}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> WATCH REPLAY <span aria-hidden="true">↗</span><span class="sr-only">: ${esc(team.name)}, ${esc(match.matchLabel)}</span></a>` : ''}${link(match.officialUrl, 'Official result ↗')}</div>${playoff ? `<details class="match-playoff"><summary><span>ALSO IN THE PLAYOFFS</span><strong>${esc(marginLabel(playoff))} <span aria-hidden="true">＋</span></strong></summary><div><h5>${esc(playoff.eventName)}</h5><p>${esc(playoff.matchLabel)} · ${esc(matchDate(playoff))}</p><div class="match-scoreboard">${matchLineups(playoff, team)}</div><p>Team ${esc(team.number)} on ${esc(playoff.teamAlliance)} · ${esc(playoff.outcome.toLowerCase())}</p><p>${matchReplay(playoff)} · ${link(playoff.officialUrl, 'Official result ↗')}</p></div></details>` : ''}</div></article>`;
-  }
-  function renderMatches() {
-    const library = state.data.matchHighlights;
-    if (!library || !$('match-panel')) return;
-    const teams = state.view === 'ftc' ? state.data.ftc.teams : [selected()];
-    const program = state.view === 'ftc' ? 'FTC' : 'FRC';
-    $('match-panel').innerHTML = `<div class="film-room-heading"><div><span class="eyebrow dark">THE FILM ROOM / LAST SEASON’S CLOSE FINISHES</span><h3>DOWN TO THE WIRE.</h3></div><p>${program === 'FRC' ? 'Pick a team above. Relive its closest finish.' : 'Two local teams. Two games worth watching.'}<br>Playoff replays included wherever available.</p></div><div class="match-grid${program === 'FTC' ? ' ftc-matches' : ''}">${teams.map((team) => matchCard(team, program)).join('')}</div>${program === 'FTC' ? state.data.ftc.newTeams.map((team) => matchCard(team, program)).join('') : ''}<div class="match-method"><p>${esc(library.scoreNote)}</p><p>${esc(library.policy)} ${link(library.methodologyUrl, 'All teams, match selections & sources ↗')}</p><small>Auto-cycle pauses while you hover or focus in the film room.</small></div>`;
-    $('match-panel').hidden = false;
-  }
-  const header = () => `<header class="screen-header"><div class="screen-brand">THE REFINERY<small>NORTHEAST INDIANA ROBOTICS</small></div><div class="edition-tag">${state.view === 'ftc' ? 'FTC · COMPACT-ROBOT FORMAT' : 'FRC · LARGER-ROBOT FORMAT'}</div></header>`;
-  const footer = () => `<footer class="screen-footer"><span><strong>REFINERYROBOTICS.ORG</strong><br>${esc(state.data.scope.label)}</span><span>${state.view === 'ftc' ? `${esc(state.data.ftc.season)} · Last season’s FTC OPR` : `Preseason baseline · 2026 EPA · ${esc(date(state.data.edition.rankingsDate))}`}<br>Research: ${esc(date(state.data.edition.researchDate))} · Historical snapshot</span></footer><div class="screen-bottom-stripe" aria-hidden="true"></div>`;
+  const term = (key, label) => `<button type="button" class="term" data-term="${key}">${esc(label)}</button>`;
+  const tip = document.createElement('div');
+  tip.className = 'term-tip';
+  tip.id = 'term-tip';
+  tip.setAttribute('role', 'tooltip');
+  tip.hidden = true;
+  document.body.append(tip);
+  let tipFor = null;
+  const hideTip = () => { tip.hidden = true; tipFor?.setAttribute('aria-expanded', 'false'); tipFor = null; };
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('.term');
+    if (!button) { if (!event.target.closest('.term-tip')) hideTip(); return; }
+    event.preventDefault();
+    event.stopPropagation();
+    if (tipFor === button) { hideTip(); return; }
+    const [title, text] = GLOSSARY[button.dataset.term] || [];
+    if (!title) return;
+    hideTip();
+    tip.innerHTML = `<strong>${esc(title)}</strong>${esc(text)}`;
+    tip.hidden = false;
+    const box = button.getBoundingClientRect();
+    const left = Math.max(12, Math.min(box.left, innerWidth - tip.offsetWidth - 12));
+    tip.style.left = `${left + scrollX}px`;
+    tip.style.top = `${box.bottom + scrollY + 8}px`;
+    button.setAttribute('aria-expanded', 'true');
+    button.setAttribute('aria-describedby', 'term-tip');
+    tipFor = button;
+  }, true);
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') hideTip(); });
+  addEventListener('resize', hideTip);
 
-  function boardMarkup() {
-    const team = selected();
-    return `${header()}<div class="screen-title-row"><div><div class="screen-kicker">2026 PERFORMANCE REWIND / NORTHEAST INDIANA</div><h2 class="screen-title">THE REGIONAL <em>TOP 10</em></h2></div><div class="screen-title-note">Preseason baseline · last season’s results<br>Statbotics EPA · FRC teams only</div></div><div class="screen-content"><div class="rankings"><div class="table-labels"><span>RK</span><span>SCHOOL / TEAM</span><span>EPA</span></div>${state.data.top10.map((t, i) => `<button class="ranking-row" data-team="${i}" aria-current="${i === state.selected}" aria-label="Rank ${t.rank}: ${esc(schoolName(t))}, ${esc(t.name)}, team ${t.number}, EPA ${num(t.epa, 2)}"><span class="row-rank">${esc(t.rank).padStart(2, '0')}</span><span class="row-identity">${identityBadge(t, 'school', true)}<span class="row-copy"><span class="row-school">${esc(shortSchool(t))}</span><span class="row-name">${esc(t.name)} · ${esc(t.number)}</span></span>${identityBadge(t, 'team', true)}</span><span class="row-score">${num(t.epa, 2)}</span></button>`).join('')}</div><article class="spotlight">${teamIdentity(team)}${stats(team)}${peopleBlock(studentVoices(team), 'STUDENT VOICES / PUBLIC EVIDENCE', 'Student leadership names not verified in public sources.')}${peopleBlock(prioritizeSpotlight(team.adults || [], team), 'ADULT TEAM ROLES / PUBLIC EVIDENCE', 'Adult leadership names not verified in public sources.')}${screenMatch(team)}</article></div>${footer()}`;
-  }
+  // The replay loads YouTube only when someone presses play.
+  $('replay-play')?.addEventListener('click', (event) => {
+    const button = event.currentTarget;
+    button.outerHTML = `<div class="replay-frame"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(button.dataset.video)}?autoplay=1&rel=0" title="2026 FIN District Mishawaka Event, Finals 2" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>`;
+  });
 
-  function teamMarkup() {
-    const team = selected();
-    return `${header()}<div class="screen-title-row"><div><div class="screen-kicker">2026 REWIND / THE PEOPLE BEHIND THE ROBOT</div><h2 class="screen-title">BUILT HERE. <em>GOING PLACES.</em></h2></div></div><div class="screen-content"><article class="spotlight">${teamIdentity(team)}${stats(team)}</article><div class="team-details">${peopleBlock(studentVoices(team), 'STUDENT VOICES / PUBLIC EVIDENCE', 'No student leadership names verified in public sources.')}${peopleBlock(prioritizeSpotlight(team.adults || [], team), 'ADULT TEAM ROLES / PUBLIC EVIDENCE', 'No adult leadership names verified in public sources.')}${screenMatch(team)}</div></div>${footer()}`;
-  }
-
-  function ftcMarkup() {
-    const ftc = state.data.ftc;
-    const teams = ftc.teams || [];
-    const featured = teams.find((team) => team.students?.length || team.adults?.length) || teams[0];
-    return `${header()}<div class="screen-title-row"><div><div class="screen-kicker">2025–26 PERFORMANCE REWIND / FTC</div><h2 class="screen-title">SMALLER ROBOTS. <em>BIG STORIES.</em></h2></div><div class="screen-title-note">${esc(ftc.season)}<br>Last season’s results · separate from FRC Top 10</div></div><div class="screen-content"><div class="ftc-feature-cards">${teams.slice(0, 2).map((t) => `<article class="ftc-feature-card"><div class="screen-kicker">FTC / TEAM ${esc(t.number)} · ${esc(t.city)}</div><div class="ftc-identity-meta">${identityBadge(t, 'school')}<div class="ftc-identity-copy"><h3>${esc(t.school)}</h3><p class="ftc-feature-name">${esc(t.name)}</p></div>${identityBadge(t, 'team')}</div><div class="ftc-feature-stat"><span>${num(t.opr, 2)}</span><div>PEAK EVENT NON-PENALTY OPR<br><small>WORLD #${num(t.worldRank)} / ${num(t.worldCount)}</small></div></div>${screenMatch(t, 'FTC')}</article>`).join('')}<p class="ftc-comparison-note">Different games, different scoring models.<br>FTC OPR and FRC EPA are not directly comparable.</p></div><article class="ftc-story"><div class="screen-kicker">THE PEOPLE BEHIND THE ROBOT</div><h3>THE SKILLS<br>GO EVERYWHERE.</h3>${featured ? `${peopleBlock(featured.students?.slice(0, 1), `${esc(featured.name)} / STUDENT EVIDENCE`, 'Student leaders: names not publicly verified.')}${peopleBlock(featured.adults?.slice(0, 1), `${esc(featured.name)} / ADULT ROSTER EVIDENCE`, 'Adult leaders: names not publicly verified.')}` : ''}<div class="ftc-new"><div class="people-heading">${ftc.newTeams?.length ? 'A NEW SEASON / ON THE RADAR' : 'READING THE NUMBERS'}</div>${ftc.newTeams?.length ? ftc.newTeams.slice(0, 1).map((t) => `<strong>${esc(t.name)} / ${esc(t.number)}</strong><p>${esc(t.note || 'Registered for a future season; no ranking in this snapshot.')}</p>`).join('') : '<p>OPR estimates scoring contribution.</p>'}</div></article></div>${footer()}`;
-  }
-
-  function renderSources() {
-    const data = state.data;
-    const team = selected();
-    $('sources-content').innerHTML = `<div><h3>WHAT THIS TOP 10 MEANS</h3><p>${esc(data.scope.note)}</p><p>${esc(data.edition.note)}</p><p>EPA is Statbotics’ estimate of robot scoring contribution. This board sorts FRC teams by the preserved 2026 EPA, not a media vote. It does not measure every student’s contribution or a program’s full impact.</p><p>Rankings snapshot: <strong>${esc(date(data.edition.rankingsDate))}</strong>. Research date: <strong>${esc(date(data.edition.researchDate))}</strong>.</p><p>${link(data.links.repo, 'Full research, source captures & methodology ↗')}</p></div><div><h3>TEAM ${esc(team.number)} / ${esc(team.name).toUpperCase()}</h3><p>${sources(team.sourceUrls)}</p><p>People are shown with the exact role and date supported by public evidence. A historical captain, event representative, or mentor is not automatically a current captain or head coach. Full qualifications appear in presenter notes.</p><h3>SCHOOL & TEAM MARKS</h3><p>${logoSources(team) || 'No verified marks available for this profile.'}</p><p><a href="logo-credits.md" target="_blank">All logo sources and qualifications ↗</a></p><h3>THE CLOSEST FINISHES</h3><p>${esc(data.matchHighlights.policy)}</p><p>${esc(data.matchHighlights.scoreNote)} ${link(data.matchHighlights.methodologyUrl, 'Full match selections, replays & sources ↗')}</p><h3>FTC IS A SEPARATE FORMAT</h3><p>${esc(data.ftc.note)}</p><p>${sources((data.ftc.teams || []).flatMap((t) => t.sourceUrls || []).slice(0, 8))}</p></div>`;
-  }
-
-  function renderPresenter() {
-    const team = selected();
-    const personList = (records, empty) => records?.length ? records.map((p) => `<div class="presenter-person"><strong>${esc(p.name)}</strong> · ${esc(p.role)}<br>${esc(date(p.date))}${p.season ? ` · ${esc(p.season)}` : ''}${p.dateBasis ? `<br>${esc(p.dateBasis)}` : ''}${p.status ? ` · ${esc(p.status)}` : ''}${p.note ? `<br>${esc(p.note)}` : ''}${p.sourceUrls?.length ? `<br>${sources(p.sourceUrls)}` : ''}</div>`).join('') : `<p>${empty}</p>`;
-    const teamNotes = `<div><h4>THE TALKING POINTS</h4><ul>${(team.talkingPoints || [story(team)]).map((s) => `<li>${esc(s)}</li>`).join('')}</ul><p style="margin-top:12px">Regional #${esc(team.rank)} · ${esc(schoolName(team))} · Team ${esc(team.number)}<br>EPA ${num(team.epa, 2)} · Indiana rank ${num(team.stateRank)} of ${num(team.stateCount)} · World rank ${num(team.worldRank)} of ${num(team.worldCount)}</p>${matchNotes(team)}<h4>QUALIFICATIONS & REPORTING GAPS</h4><ul>${(team.gaps?.length ? team.gaps : ['Confirm the current season’s roster with the team before introducing a person by a current role.']).map((g) => `<li>${esc(g)}</li>`).join('')}</ul><p style="margin-top:12px">${team.profileUrl ? link(team.profileUrl, 'Team profile ↗') : ''}${team.profileUrl && team.sourceUrls?.length ? ' · ' : ''}${sources(team.sourceUrls)}</p></div><div><h4>STUDENTS / EXACT PUBLIC ROLE</h4>${personList(team.students, 'Student leadership names have not been verified in public sources.')}${team.representatives?.length ? `<h4>PUBLIC REPRESENTATIVES / STATUS AS QUALIFIED</h4>${personList(team.representatives, '')}` : ''}<h4>ADULTS / EXACT PUBLIC ROLE</h4>${personList(team.adults, 'Adult leadership names have not been verified in public sources.')}</div>`;
-    const ftcNotes = `<div><h4>THE FORMAT</h4><p>${esc(state.data.ftc.note)}</p><p>FTC has compact robots and often smaller teams; FRC has larger robots and often larger programs. FIRST does not divide the programs by school size. Both offer their own game and championships.</p><p>Never compare FTC OPR directly to FRC EPA. The metrics describe different games.</p>${state.data.ftc.teams.map((t) => matchNotes(t, 'FTC')).join('')}</div><div><h4>PUBLIC LEADERSHIP EVIDENCE</h4>${state.data.ftc.teams.filter((t) => t.students?.length || t.adults?.length).map((t) => `<p><strong>${esc(t.name)} / ${esc(t.number)}</strong></p>${personList([...(t.students || []), ...(t.adults || [])], '')}`).join('') || '<p>No public leadership records in this snapshot.</p>'}</div>`;
-    $('presenter-panel').innerHTML = `<div class="presenter-top"><h3 id="presenter-title">${state.view === 'ftc' ? 'FTC / PRODUCER NOTES' : `TEAM ${esc(team.number)} / PRODUCER NOTES`}</h3><span>OFF-AIR NOTES · EXCLUDED FROM PNG</span></div><div class="presenter-grid">${state.view === 'ftc' ? ftcNotes : teamNotes}</div><p class="presenter-warning">Historical snapshot. Confirm current student and adult roles before an on-air introduction. These notes are separate from the clean broadcast frame.</p>`;
-    $('presenter-panel').hidden = !state.presenter;
-  }
-
-  function render() {
-    if (!state.data) return;
-    frame.className = `on-air-frame ${state.view === 'team' ? 'team-screen' : state.view === 'ftc' ? 'ftc-screen' : 'board-screen'}`;
-    frame.innerHTML = state.view === 'team' ? teamMarkup() : state.view === 'ftc' ? ftcMarkup() : boardMarkup();
-    frame.setAttribute('aria-busy', 'false');
-    document.querySelectorAll('[data-view]').forEach((button) => button.setAttribute('aria-selected', String(button.dataset.view === state.view)));
-    frame.querySelectorAll('[data-team]').forEach((button) => button.addEventListener('click', () => selectTeam(Number(button.dataset.team))));
-    renderMatches();
-    renderPresenter();
-    renderSources();
-  }
-
-  function readHash() {
-    const hash = location.hash.replace(/^#/, '');
-    const match = hash.match(/^(team|spotlight)\/(\d+)$/);
-    if (match) {
-      const index = state.data.top10.findIndex((team) => String(team.number) === match[2]);
-      if (index >= 0) state.selected = index;
-      state.view = match[1] === 'spotlight' ? 'team' : 'board';
-    } else if (hash === 'ftc') state.view = 'ftc';
-    else state.view = 'board';
-    render();
-  }
-
-  function route(view) {
-    state.view = view;
-    const hash = view === 'team' ? `#spotlight/${selected().number}` : view === 'board' ? `#team/${selected().number}` : `#${view}`;
-    history.replaceState(null, '', hash);
-    render();
-  }
-
-  function selectTeam(index, automatic = false) {
-    state.selected = (index + state.data.top10.length) % state.data.top10.length;
-    if (state.view === 'ftc') state.view = 'board';
-    const keepSection = automatic && location.hash && !/^#(?:broadcast|board|(?:team|spotlight)\/\d+)$/.test(location.hash);
-    if (!keepSection) history.replaceState(null, '', `#${state.view === 'team' ? 'spotlight' : 'team'}/${selected().number}`);
-    render();
-  }
-
-  function setAutoCycle(enabled) {
-    clearInterval(state.cycle);
-    state.cycle = enabled && state.data ? setInterval(() => {
-      if (!document.hidden && !state.exporting && state.view !== 'ftc' && !$('match-panel')?.matches(':hover, :focus-within') && !frame.querySelector('.screen-replay:hover, .screen-replay:focus-within, a:hover, a:focus-visible')) selectTeam(state.selected + 1, true);
-    }, 12000) : null;
-  }
-
-  function toggleNotes() {
-    state.presenter = !state.presenter;
-    $('notes-button').setAttribute('aria-pressed', String(state.presenter));
-    $('presentation-notes-button').setAttribute('aria-pressed', String(state.presenter));
-    renderPresenter();
-  }
-
-  function setPresentation(active) {
-    state.presentation = active;
-    $('stage').classList.toggle('is-presenting', active);
-    document.body.classList.toggle('presenting', active);
-    $('fullscreen-button').setAttribute('aria-pressed', String(active));
-    if (active) $('stage').append($('presenter-panel'));
-    else $('match-panel').after($('presenter-panel'));
-  }
-
-  function toggleFullscreen() {
-    setPresentation(!state.presentation);
-    setStatus(state.presentation ? 'Presentation mode enabled. Press Esc or choose Exit to return.' : 'Presentation mode closed.');
-  }
-
-  async function exportPng() {
-    if (state.exporting || !state.data) return;
-    state.exporting = true;
-    $('export-button').disabled = true;
-    setStatus('Preparing the clean 1920 × 1080 broadcast image…');
-    try {
-      // Inline resolved styles so the exported frame has no stylesheet or font requests.
-      const bounds = frame.getBoundingClientRect();
-      const clone = frame.cloneNode(true);
-      const originalNodes = [frame, ...frame.querySelectorAll('*')];
-      const clonedNodes = [clone, ...clone.querySelectorAll('*')];
-      originalNodes.forEach((element, index) => {
-        const computed = getComputedStyle(element);
-        let rules = '';
-        for (let p = 0; p < computed.length; p++) {
-          const property = computed[p];
-          if (!property.startsWith('--')) rules += `${property}:${computed.getPropertyValue(property)};`;
-        }
-        clonedNodes[index].setAttribute('style', `${rules}transition:none;animation:none;`);
-        clonedNodes[index].removeAttribute('aria-current');
+  // Motion: reveal blocks as they scroll in, count numbers up, drift the hero photo.
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Items that arrive together stagger by their order in that batch, so a long list never lags.
+  const revealer = !calm && 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries) => {
+      entries.filter((e) => e.isIntersecting).forEach((e, i) => {
+        if (e.target.dataset.stagger) e.target.style.setProperty('--i', Math.min(i, 7));
+        e.target.classList.add('in');
+        revealer.unobserve(e.target);
       });
-      // Data URLs keep local school/team marks inside the self-contained SVG canvas.
-      await Promise.all(originalNodes.map(async (element, index) => {
-        if (element.tagName !== 'IMG') return;
-        const response = await fetch(element.currentSrc || element.src);
-        if (!response.ok) throw new Error('An image could not be loaded for export.');
-        const blob = await response.blob();
-        const dataUrl = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(blob);
-        });
-        clonedNodes[index].setAttribute('src', dataUrl);
-        clonedNodes[index].removeAttribute('srcset');
-      }));
-      clone.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
-      clone.style.width = `${bounds.width}px`;
-      clone.style.height = `${bounds.height}px`;
-      clone.style.margin = '0';
-      const serialized = new XMLSerializer().serializeToString(clone);
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 ${bounds.width} ${bounds.height}"><foreignObject x="0" y="0" width="${bounds.width}" height="${bounds.height}">${serialized}</foreignObject></svg>`;
-      const image = new Image();
-      const imageUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-      await new Promise((resolve, reject) => { image.onload = resolve; image.onerror = () => reject(new Error('The browser could not render the export.')); image.src = imageUrl; });
-      const canvas = document.createElement('canvas');
-      canvas.width = 1920; canvas.height = 1080;
-      const context = canvas.getContext('2d');
-      if (!context) throw new Error('Canvas is unavailable.');
-      context.fillStyle = '#123d2b'; context.fillRect(0, 0, 1920, 1080);
-      context.drawImage(image, 0, 0, 1920, 1080);
-      const blob = await new Promise((resolve, reject) => canvas.toBlob((result) => result ? resolve(result) : reject(new Error('PNG export is unavailable.')), 'image/png'));
-      const url = URL.createObjectURL(blob);
-      const anchor = document.createElement('a');
-      anchor.href = url;
-      anchor.download = `refinery-${state.view === 'ftc' ? 'ftc-features' : state.view === 'team' ? `frc-${selected().number}` : `nei-top10-spotlight-${selected().number}`}-2026.png`;
-      document.body.append(anchor); anchor.click(); anchor.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
-      setStatus('1920 × 1080 PNG exported. Presenter notes are excluded.');
-    } catch (error) {
-      console.warn('Broadcast export:', error);
-      setStatus('This browser could not export the image. Use full screen for presentation, or Print → Save as PDF for a clean frame.');
-    } finally {
-      state.exporting = false;
-      $('export-button').disabled = false;
-    }
+    }, { rootMargin: '0px 0px -10% 0px' })
+    : null;
+  const reveal = (selector, kind = 'reveal', stagger = true) => document.querySelectorAll(selector).forEach((el) => {
+    if (!revealer || el.dataset.revealed) return;
+    el.dataset.revealed = kind;
+    el.classList.add(kind);
+    if (stagger) el.dataset.stagger = '1';
+    revealer.observe(el);
+  });
+  // Heavy section rules draw across instead of appearing.
+  const rule = (selector, size, color) => document.querySelectorAll(selector).forEach((el) => {
+    if (!revealer) return;
+    el.classList.add('rule');
+    el.style.setProperty('--rule', size);
+    el.style.setProperty('--rule-color', color);
+    revealer.observe(el);
+  });
+  const countUp = (el) => {
+    const target = Number(el.dataset.count);
+    if (calm || !Number.isFinite(target) || !('IntersectionObserver' in window)) { el.textContent = num(target); return; }
+    el.textContent = '0';
+    new IntersectionObserver(([entry], observer) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      const start = performance.now(), duration = 1100;
+      const tick = (now) => { const p = Math.min(1, (now - start) / duration); el.textContent = num(Math.round(target * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    }).observe(el);
+  };
+  const heroBg = document.querySelector('.hero-bg');
+  if (!calm && heroBg) {
+    let ticking = false;
+    addEventListener('scroll', () => {
+      if (ticking || scrollY > innerHeight) return;
+      ticking = true;
+      requestAnimationFrame(() => { heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`; ticking = false; });
+    }, { passive: true });
   }
+  const animateSections = () => {
+    reveal('.section .kicker', 'reveal', false);
+    reveal('.section h2', 'reveal-head', false);
+    reveal('.section-lede', 'reveal', false);
+    reveal('.segmented, .next-event, .dnf-count', 'reveal', false);
+    reveal('.explainer', 'reveal', false);
+    reveal('#standings-list .team', 'reveal-left');
+    reveal('.highlight');
+    reveal('.gallery figure', 'reveal-img');
+    reveal('.card');
+    reveal('.schedule li');
+    reveal('.faq details');
+    reveal('.beats li');
+    reveal('.replay', 'reveal-img', false);
+    reveal('.media-card');
+    reveal('.dnf .hero-actions, .dnf-tools', 'reveal', false);
+    rule('.standings', '5px', 'var(--navy)');
+    rule('.card-grid', '5px', 'var(--green)');
+    rule('.media-grid', '5px', 'var(--navy)');
+    rule('.schedule, .faq', '2px', 'var(--ink)');
+    rule('.highlight-grid', '1px', 'var(--dark-line)');
+    document.querySelectorAll('[data-count]').forEach(countUp);
+  };
 
-  document.querySelectorAll('[data-view]').forEach((button) => button.addEventListener('click', () => { if (state.data) route(button.dataset.view); }));
-  $('notes-button').addEventListener('click', () => { if (state.data) toggleNotes(); });
-  $('presentation-notes-button').addEventListener('click', () => { if (state.data) toggleNotes(); });
-  $('presentation-exit-button').addEventListener('click', toggleFullscreen);
-  $('fullscreen-button').addEventListener('click', toggleFullscreen);
-  $('export-button').addEventListener('click', exportPng);
-  $('cycle-toggle').addEventListener('change', (event) => {
-    setAutoCycle(event.target.checked);
-    if (event.target.checked) setStatus('Auto-cycle enabled: the selected FRC team changes every 12 seconds.');
-    else setStatus('Auto-cycle stopped.');
-  });
-  document.addEventListener('keydown', (event) => {
-    if (!state.data || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName) || event.target.isContentEditable || event.ctrlKey || event.metaKey || event.altKey) return;
-    if (event.target.closest('#match-panel')) return;
-    const bounds = frame.getBoundingClientRect();
-    if (!state.presentation && !event.target.closest('#broadcast') && (bounds.bottom < 0 || bounds.top > innerHeight)) return;
-    if (['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'].includes(event.key)) { event.preventDefault(); selectTeam(state.selected + (['ArrowLeft', 'ArrowUp'].includes(event.key) ? -1 : 1)); }
-    else if (/^[0-9]$/.test(event.key)) { event.preventDefault(); selectTeam(event.key === '0' ? 9 : Number(event.key) - 1); }
-    else if (event.key.toLowerCase() === 'f') { event.preventDefault(); toggleFullscreen(); }
-    else if (event.key.toLowerCase() === 'p') { event.preventDefault(); toggleNotes(); }
-    else if (event.key === 'Escape' && state.presentation) { event.preventDefault(); toggleFullscreen(); }
-    else if (event.key === 'Escape' && state.presenter) { state.presenter = false; $('notes-button').setAttribute('aria-pressed', 'false'); $('presentation-notes-button').setAttribute('aria-pressed', 'false'); renderPresenter(); }
-  });
-  window.addEventListener('hashchange', () => { if (state.data) readHash(); });
+  // Header: solid once the hero scrolls away, tucks away while reading down, returns on scroll up.
+  // A thin progress bar tracks how far down the page you are.
+  const header = document.querySelector('.site-header');
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.append(progress);
+  let lastY = scrollY, frame = false;
+  const onScroll = () => {
+    if (frame) return;
+    frame = true;
+    requestAnimationFrame(() => {
+      const y = scrollY;
+      header.classList.toggle('scrolled', y > 40);
+      if (y < innerHeight * 0.9 || y < lastY - 6) header.classList.remove('tucked');
+      else if (y > lastY + 6 && !header.classList.contains('open') && innerWidth > 760) header.classList.add('tucked');
+      if (Math.abs(y - lastY) > 6) lastY = y;
+      progress.style.transform = `scaleX(${Math.min(1, y / Math.max(1, document.documentElement.scrollHeight - innerHeight))})`;
+      // A jump (nav link, deep link) can skip past blocks without them ever intersecting; show them.
+      document.querySelectorAll('[data-revealed]:not(.in), .rule:not(.in)').forEach((el) => { if (el.getBoundingClientRect().top < innerHeight * 0.9) { el.classList.add('in'); revealer?.unobserve(el); } });
+      frame = false;
+    });
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  $('menu-toggle').addEventListener('click', () => { const open = header.classList.toggle('open'); $('menu-toggle').setAttribute('aria-expanded', String(open)); });
+  $('site-nav').addEventListener('click', (e) => { if (e.target.closest('a')) { header.classList.remove('open'); $('menu-toggle').setAttribute('aria-expanded', 'false'); } });
+  document.querySelectorAll('[data-sort]').forEach((button) => button.addEventListener('click', () => {
+    state.sort = button.dataset.sort;
+    document.querySelectorAll('[data-sort]').forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+    renderStandings();
+    document.querySelectorAll('#standings-list .team').forEach((el) => el.classList.add('reveal', 'in'));
+  }));
+  addEventListener('hashchange', () => { openFromHash(); if (location.hash === '#dnf') loadDnf(); });
 
-  fetch('data.json', { cache: 'no-cache' }).then((response) => {
-    if (!response.ok) throw new Error(`Dataset request returned ${response.status}.`);
-    return response.json();
-  }).then((data) => {
-    if (!Array.isArray(data.top10) || !data.top10.length || !data.edition || !data.scope || !data.ftc || !data.links) throw new Error('The broadcast dataset is incomplete.');
+  fetch('data.json', { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`Data returned ${r.status}`); return r.json(); }).then((data) => {
     state.data = data;
-    Object.values(data.videoThumbnails || {}).forEach((thumbnail) => { const preview = new Image(); preview.src = thumbnail.file; });
-    renderSeasonPreview();
-    renderDnf();
-    if (data.links.pressKit) $('press-kit-link').href = data.links.pressKit;
-    if (data.links.repo) $('research-link').href = data.links.repo;
-    readHash();
-    setAutoCycle($('cycle-toggle').checked);
-    if (!location.hash || /^#(?:broadcast|board|ftc|(?:team|spotlight)\/\d+)$/.test(location.hash)) document.querySelector('.studio-toolbar').scrollIntoView({ behavior: 'instant', block: 'start' });
-    if (location.hash === '#season-preview' && data.seasonPreview) $('season-preview').scrollIntoView({ behavior: 'auto', block: 'start' });
-    if (location.hash === '#dnf' && data.dnf) $('dnf').scrollIntoView({ behavior: 'auto', block: 'start' });
+    renderStats();
+    renderStandings();
+    renderHighlights();
+    renderFtc();
+    renderSchedule();
+    renderMedia();
+    animateSections();
+    openFromHash();
+    // Content above a section deep link has just rendered, so jump again to land on it.
+    if (/^#[a-z]+$/.test(location.hash) && location.hash !== '#dnf') document.querySelector(location.hash)?.scrollIntoView();
+    // The school directory is most of the data; fetch it when a visitor heads toward it.
+    if (location.hash === '#dnf' || !('IntersectionObserver' in window)) loadDnf();
+    else new IntersectionObserver((entries, observer) => { if (entries.some((e) => e.isIntersecting)) { observer.disconnect(); loadDnf(); } }, { rootMargin: '1200px 0px' }).observe($('dnf'));
   }).catch((error) => {
-    console.warn('Broadcast dataset:', error);
-    frame.innerHTML = '<div class="loading-state"><span class="screen-brand">THE REFINERY</span><h3>THE RUNDOWN IS TAKING A TIMEOUT.</h3><p>The research snapshot could not be loaded.<br>Refresh the page, or open the full research below.</p></div>';
-    frame.setAttribute('aria-busy', 'false');
-    setStatus(location.protocol === 'file:' ? 'Serve this folder with a local web server to load data.json. For example: python3 -m http.server 8000' : 'The local data.json file could not be loaded. Refresh the page or consult the research repository.');
-    ['export-button', 'notes-button', 'cycle-toggle', 'tab-board', 'tab-team', 'tab-ftc'].forEach((id) => { $(id).disabled = true; });
+    console.warn('Data:', error);
+    $('standings-list').innerHTML = `<p class="loading">The standings could not be loaded. ${location.protocol === 'file:' ? 'Serve this folder with a local web server, e.g. python -m http.server.' : 'Refresh the page to try again.'}</p>`;
   });
 })();

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d3550">
+  <meta name="description" content="The REFINERY Northeast Indiana FRC Power Top 10. A frozen 2026 Statbotics EPA snapshot, built for the big screen and your phone.">
+  <title>Power Top 10 · Northeast Indiana Robotics</title>
+  <link rel="stylesheet" href="top10.css">
+  <script src="top10.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#rankings">Skip to rankings</a>
+  <header class="topbar">
+    <a class="wordmark" href="index.html">THE REFINERY<span>NORTHEAST INDIANA ROBOTICS</span></a>
+    <a class="back-link" href="index.html#standings">Standings & stories <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="broadcast" class="broadcast" aria-busy="true">
+    <div class="heading">
+      <div><p class="eyebrow">2026 FRC / THE REGIONAL REWIND</p><h1>THE POWER <em>TOP 10</em></h1></div>
+      <p class="heading-note">Northeast Indiana · 12 counties<br><strong>Last season’s EPA. This season’s baseline.</strong></p>
+    </div>
+    <div class="toolbar" aria-label="Display controls">
+      <div class="team-controls">
+        <button id="previous" type="button" aria-label="Previous team" disabled>← <span>Previous</span></button>
+        <button id="next" type="button" aria-label="Next team" disabled><span>Next</span> →</button>
+        <button id="cycle" type="button" aria-pressed="false" disabled>Auto-cycle: off</button>
+      </div>
+      <div class="display-controls">
+        <button id="export" type="button" disabled>Save PNG <span aria-hidden="true">↓</span></button>
+        <button id="fullscreen" type="button">Full screen <span aria-hidden="true">⤢</span></button>
+      </div>
+    </div>
+    <div class="board" id="board">
+      <section class="rankings" id="rankings" tabindex="-1" aria-labelledby="rankings-title">
+        <div class="rank-labels"><h2 id="rankings-title">REGIONAL POWER RANK</h2><span>EPA</span></div>
+        <div id="ranking-rows" class="ranking-rows"><p class="loading">Loading the Top 10…</p></div>
+      </section>
+      <article id="spotlight" class="spotlight" aria-labelledby="team-title"><p class="loading">Loading team spotlight…</p></article>
+    </div>
+    <footer class="snapshot"><p id="snapshot-note">Historical 2026 snapshot · Statbotics EPA</p><p>EPA power order ≠ district standings. <a href="index.html#standings">See all 13 teams ↗</a></p></footer>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+  <details class="methodology"><summary>How to read this board</summary><div><p id="edition-note"></p><p>EPA is Statbotics’ estimate of a robot’s scoring contribution. This Top 10 orders the regional FRC cohort by EPA; it is separate from official FIRST Indiana district ranks and points. A small EPA gap does not establish a meaningful difference in performance.</p><p id="scope-note"></p><p><a href="https://github.com/horner/refintery-rankings/blob/main/broadcast/dist/match-highlights.md" target="_blank" rel="noopener noreferrer">Replay selections & sources ↗</a> · <a href="https://github.com/horner/refintery-rankings/blob/main/broadcast/dist/logo-credits.md" target="_blank" rel="noopener noreferrer">Logo credits ↗</a> · <a href="index.html#standings">Full team profiles & standings</a></p><p>Use the arrow keys to select a team. Auto-cycle advances every 12 seconds only after you enable it. Selecting a team or using a control stops cycling; it also stops when this tab is hidden.</p></div></details>
+  <noscript><p class="no-script">Enable JavaScript to view the interactive Top 10, or <a href="index.html#standings">open the standings</a>.</p></noscript>
+</body>
+</html>

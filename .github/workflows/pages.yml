@@ -32,6 +32,7 @@ jobs:
           python3 ftc/scripts/verify.py
           python3 broadcast/scripts/verify.py
           node --check broadcast/dist/app.js
+          node --check broadcast/dist/top10.js
           git diff --exit-code
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

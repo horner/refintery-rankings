@@ -1,0 +1,73 @@
+{
+  "generator": "broadcast/scripts/build_share_images.py",
+  "cards": {
+    "home": {
+      "file": "assets/share/home.jpg",
+      "fingerprint": "972cc1583c875fe54e9bec751fd828835c5957e712bff7a0a465248e9688691c"
+    },
+    "1501": {
+      "file": "assets/share/team-1501.png",
+      "fingerprint": "3954eaba875efcdcddd0f8ad495b4cec9576d0ee21d476863edb4042f3920169"
+    },
+    "1720": {
+      "file": "assets/share/team-1720.png",
+      "fingerprint": "ff9234eed0a4e71cd0091b16982c64cfa37129daabf07870052f9fec42afe85b"
+    },
+    "9119": {
+      "file": "assets/share/team-9119.png",
+      "fingerprint": "b22cf34e143a36403c858ba4092c35db615041064455f014e775a0553b57619e"
+    },
+    "9431": {
+      "file": "assets/share/team-9431.png",
+      "fingerprint": "0ad5329dfdad63db25ba03b448d90179af3187ba1da33c00ea6c0a1596bebbe6"
+    },
+    "4982": {
+      "file": "assets/share/team-4982.png",
+      "fingerprint": "ec5367509f206e4995496aa57e98e238c6e3ab28113c7f27515100bec188fc63"
+    },
+    "10434": {
+      "file": "assets/share/team-10434.png",
+      "fingerprint": "738bfdb1315d656ba3d56292b3fc4d202c824a6a67c78c04620fbcc6e1155cc4"
+    },
+    "8103": {
+      "file": "assets/share/team-8103.png",
+      "fingerprint": "c528b25eed45713a8dd1bdac135ca5b1447b4f33400c36cbbf56737798ea3748"
+    },
+    "10332": {
+      "file": "assets/share/team-10332.png",
+      "fingerprint": "4b68405a595a7b96c92909f63548a512df4092a7c1d85e96031c8f4185e86c1d"
+    },
+    "8742": {
+      "file": "assets/share/team-8742.png",
+      "fingerprint": "70ceea9b80d4b3825331ff99ac208cad48ecf031eeb08f9adf35d28e5542e960"
+    },
+    "10172": {
+      "file": "assets/share/team-10172.png",
+      "fingerprint": "b298a22c1857a64bc28311ca1e08f011a26ea3c71e8d5d0aa896577535e3c14e"
+    },
+    "8431": {
+      "file": "assets/share/team-8431.png",
+      "fingerprint": "6e8ea162b0f0975b3c895977a0c3d8aee8521c67dd5e62e3ef33c576de141bdc"
+    },
+    "10411": {
+      "file": "assets/share/team-10411.png",
+      "fingerprint": "0e5c7443237d7e4fc9c30021d015a43d3343853d788f8535fa4b51f6d8e772a9"
+    },
+    "8432": {
+      "file": "assets/share/team-8432.png",
+      "fingerprint": "cb6e40750682491433e66ef220fc2b8b4a5a2010b070a34eba25f92cfabec1db"
+    },
+    "22331": {
+      "file": "assets/share/team-22331.png",
+      "fingerprint": "d4efa113702799a50e78283a5ab9606987834ce15715b7785c74bfb7c472df15"
+    },
+    "25638": {
+      "file": "assets/share/team-25638.png",
+      "fingerprint": "9d02307c6eb80ee618b92977684a9c8648d0c92f99c788e93b78cd3b0b60a45f"
+    },
+    "36124": {
+      "file": "assets/share/team-36124.png",
+      "fingerprint": "752a703039d55536c4a003bd8e99878d25f733b8cbde8dc877fdde835576ce40"
+    }
+  }
+}

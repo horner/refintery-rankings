@@ -906,6 +906,159 @@
       "ncesIds": [
         "180266000320"
       ]
+    },
+    {
+      "schoolName": "Jimtown High School",
+      "state": "IN",
+      "aliases": [
+        "Jimtown High School"
+      ],
+      "classification": "former-review",
+      "note": "Former FTC team 15190 Full Steam Ahead (rookie 2018); last season with events on FTCScout: 2019\u201320. No 2025\u201326 or 2026\u201327 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 15190,
+          "season": 2019,
+          "heading": "Team 15190 - Full Steam Ahead",
+          "registeredLocation": "Elkhart, IN",
+          "schoolAffiliationHeadline": "Jimtown High School",
+          "sponsorsAndAffiliations": "Jimtown High School",
+          "sourceUrl": "https://ftcscout.org/teams/15190",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/15190"
+        }
+      ],
+      "ncesIds": [
+        "180042000090"
+      ]
+    },
+    {
+      "schoolName": "Elkhart Christian Academy",
+      "state": "IN",
+      "aliases": [
+        "Elkhart Christian Academy"
+      ],
+      "classification": "former-review",
+      "note": "Former FTC team 18721 Samurai Sushi (rookie 2020); last season with events on FTCScout: 2020\u201321. No 2025\u201326 or 2026\u201327 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 18721,
+          "season": 2020,
+          "heading": "Team 18721 - Samurai Sushi",
+          "registeredLocation": "Elkhart, IN",
+          "schoolAffiliationHeadline": "Elkhart Christian Academy",
+          "sponsorsAndAffiliations": "Elkhart Christian Academy",
+          "sourceUrl": "https://ftcscout.org/teams/18721",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/18721"
+        }
+      ],
+      "ncesIds": []
+    },
+    {
+      "schoolName": "Mississinewa High School",
+      "state": "IN",
+      "aliases": [
+        "Mississinewa High School"
+      ],
+      "classification": "former-review",
+      "note": "Former FTC team 18578 Robo Tribe RJB (rookie 2020); last season with events on FTCScout: 2021\u201322. No 2025\u201326 or 2026\u201327 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 18578,
+          "season": 2021,
+          "heading": "Team 18578 - Robo Tribe RJB",
+          "registeredLocation": "Gas City, IN",
+          "schoolAffiliationHeadline": "Mississinewa High School",
+          "sponsorsAndAffiliations": "Mississinewa High School",
+          "sourceUrl": "https://ftcscout.org/teams/18578",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/18578"
+        }
+      ],
+      "ncesIds": [
+        "180687001189"
+      ]
+    },
+    {
+      "schoolName": "North Miami Middle/High School",
+      "state": "IN",
+      "aliases": [
+        "North Miami Middle/High School"
+      ],
+      "classification": "former-review",
+      "note": "Former FTC team 12231 WarriorTech (rookie 2016); last season with events on FTCScout: 2023\u201324. No 2025\u201326 or 2026\u201327 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 12231,
+          "season": 2023,
+          "heading": "Team 12231 - WarriorTech",
+          "registeredLocation": "Denver, IN",
+          "schoolAffiliationHeadline": "North Miami Middle/High School",
+          "sponsorsAndAffiliations": "North Miami Middle/High School",
+          "sourceUrl": "https://ftcscout.org/teams/12231",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/12231"
+        }
+      ],
+      "ncesIds": [
+        "180789001351"
+      ]
+    },
+    {
+      "schoolName": "St Marys Memorial High School",
+      "state": "OH",
+      "aliases": [
+        "St Marys Memorial High School"
+      ],
+      "classification": "former-review",
+      "note": "Former FTC team 20670 SMCS Robotics (rookie 2021); last season with events on FTCScout: 2021\u201322. No 2025\u201326 or 2026\u201327 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 20670,
+          "season": 2021,
+          "heading": "Team 20670 - SMCS Robotics",
+          "registeredLocation": "Saint Marys, OH",
+          "schoolAffiliationHeadline": "St Marys Memorial High School",
+          "sponsorsAndAffiliations": "St Marys Memorial High School",
+          "sourceUrl": "https://ftcscout.org/teams/20670",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/20670"
+        }
+      ],
+      "ncesIds": [
+        "390447201585"
+      ]
     }
   ],
   "candidateScreen": [

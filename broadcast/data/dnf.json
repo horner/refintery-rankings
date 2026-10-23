@@ -107,70 +107,6 @@
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
-      "id": "IN-0100",
-      "ncesId": "180363002174",
-      "name": "Allen Co Juvenile Center",
-      "state": "IN",
-      "city": "Fort Wayne",
-      "county": "Allen County",
-      "district": "Fort Wayne Community Schools",
-      "sector": "Public",
-      "latitude": 41.102623749193,
-      "longitude": -85.147368962058,
-      "distanceMiles": 1.673585,
-      "gradesLow": "KG",
-      "gradesHigh": "12",
-      "schoolType": "Alternative/Special Education",
-      "schoolUrl": "http://acjc.us/",
-      "leader": {
-        "name": "Mark Daniel",
-        "role": "Superintendent",
-        "sourceUrl": "https://www.fortwayneschools.org/about-us/district-leadership",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "District Leadership - Fort Wayne Community School District\nSkip To Main Content\nClose Menu\nSearch\nClear\nSearch\nDistrict Leadership\nSuperintendent\nMark D. Daniel, Ph.D.\nDr. Mark Daniel joined Fort Wayne Community Schools as the 15th Superintendent of FWCS on July 1, 2020.\nDr. Daniel is a 1979 graduate of North Side High School, making him the second FWCS alumni to become FWCS superintendent in the District’s history. His first teaching job was at North Side High School, where he taught advanced algebra, geometry, business law, accounting and skills for living. He also coached football, basketball, baseball, track and golf.\nHe left North Side to be"
-      },
-      "sourceUrls": [
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "https://acjc.us/",
-        "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2929+N+Wells%2C+Fort+Wayne%2C+IN+46808&benchmark=Public_AR_Current&format=json"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
-      "id": "IN-0145",
-      "ncesId": "180825002160",
-      "name": "Allen Co Youth Services Center",
-      "state": "IN",
-      "city": "Fort Wayne",
-      "county": "Allen County",
-      "district": "Northwest Allen County Schools",
-      "sector": "Public",
-      "latitude": 41.190726207035,
-      "longitude": -85.167146105823,
-      "distanceMiles": 7.83604,
-      "gradesLow": "1",
-      "gradesHigh": "12",
-      "schoolType": "Alternative/Special Education",
-      "schoolUrl": "http://www.allencounty.us/government/law-justice/youth-services-center",
-      "leader": {
-        "name": "Wayne Barker",
-        "role": "Superintendent",
-        "sourceUrl": "https://www.nacs.k12.in.us/superintendent",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "Wayne Barker — Superintendent"
-      },
-      "sourceUrls": [
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "https://www.allencounty.us/government/law-justice/youth-services-center",
-        "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=11805+Lima+Rd%2C+Fort+Wayne%2C+IN+46818&benchmark=Public_AR_Current&format=json"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
       "id": "181110001797",
       "ncesId": "181110001797",
       "name": "Angola High School",
@@ -360,39 +296,6 @@
         "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=180018000048",
         "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
         "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0",
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
-      "id": "A9701438",
-      "ncesId": "A9701438",
-      "name": "Bashor Children's Home",
-      "state": "IN",
-      "city": "Goshen",
-      "county": "Elkhart County",
-      "district": "Independent school",
-      "sector": "Private",
-      "latitude": 41.590229,
-      "longitude": -85.904468,
-      "distanceMiles": 53.16756,
-      "gradesLow": "KG",
-      "gradesHigh": "12",
-      "schoolType": "Alternative/Other",
-      "schoolUrl": "http://www.bashor.org/",
-      "leader": {
-        "name": "Marcia Brothers",
-        "role": "Principal",
-        "sourceUrl": "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "evidenceLabel": "2025–26 directory",
-        "verifiedCurrent": false,
-        "evidence": "NPSCHL worksheet: Bashor Children's Home; principal fields."
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A9701438",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip",
         "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
       ],
       "schoolDirectoryYear": "2025–26 Indiana directory",
@@ -1285,40 +1188,6 @@
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
-      "id": "A1701689",
-      "ncesId": "A1701689",
-      "name": "Crossroad Child & Family Services",
-      "state": "IN",
-      "city": "Fort Wayne",
-      "county": "Allen County",
-      "district": "Independent school",
-      "sector": "Private",
-      "latitude": 41.093802,
-      "longitude": -85.104851,
-      "distanceMiles": 1.987499,
-      "gradesLow": "KG",
-      "gradesHigh": "12",
-      "schoolType": "Alternative/Other",
-      "schoolUrl": "http://www.crossroad-fwch.org/",
-      "leader": {
-        "name": "Amy Kohler",
-        "role": "Principal",
-        "sourceUrl": "https://crossroadcares.org/about-us/our-staff/",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "The official academy page says one campus serves day students and residential treatment clients. State program IDs A275 and D928 are consolidated into one campus. The official staff page says Amy Kohler became principal in January 2024."
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A1701689",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip",
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "https://crossroadcares.org/how-we-help/crossroad-academy-alternative-education/"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
       "id": "02026162",
       "ncesId": "02026162",
       "name": "Cuba Mennonite School",
@@ -1700,38 +1569,6 @@
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
-      "id": "IN-A990",
-      "ncesId": null,
-      "name": "Elkhart Christian Academy",
-      "state": "IN",
-      "city": "Elkhart",
-      "county": "Elkhart County",
-      "district": "Independent school",
-      "sector": "Private",
-      "latitude": 41.637786780039,
-      "longitude": -85.962086603038,
-      "distanceMiles": 57.574651,
-      "gradesLow": "PK",
-      "gradesHigh": "12",
-      "schoolType": "Regular School",
-      "schoolUrl": "http://www.elkhartchristian.org",
-      "leader": {
-        "name": "Chris Baldridge",
-        "role": "Principal",
-        "sourceUrl": "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "evidenceLabel": "2025–26 directory",
-        "verifiedCurrent": false,
-        "evidence": "NPSCHL worksheet: Elkhart Christian Academy; principal fields."
-      },
-      "sourceUrls": [
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "https://www.elkhartchristian.org",
-        "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=25943+CR+22+E%2C+Elkhart%2C+IN+46517-2127&benchmark=Public_AR_Current&format=json"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
       "id": "A9302967",
       "ncesId": "A9302967",
       "name": "Emmanuel Christian School",
@@ -1985,38 +1822,6 @@
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
-      "id": "A0301470",
-      "ncesId": "A0301470",
-      "name": "Gateway Woods School",
-      "state": "IN",
-      "city": "Leo",
-      "county": "Allen County",
-      "district": "Independent school",
-      "sector": "Private",
-      "latitude": 41.220148,
-      "longitude": -84.991697,
-      "distanceMiles": 12.34381,
-      "gradesLow": "9",
-      "gradesHigh": "12",
-      "schoolType": "Alternative/Other",
-      "schoolUrl": "https://gatewaywoods.org/services/school",
-      "leader": {
-        "name": "Brock Williamson",
-        "role": "Director of Education",
-        "sourceUrl": "https://gatewaywoods.org/services/school",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "The official school program serves grades 6–12. Its staff list names Brock Williamson, Director of Education, and Laura Steffen, Dean of Students."
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A0301470",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip"
-      ],
-      "schoolDirectoryYear": "2023–24",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
       "id": "180393000654",
       "ncesId": "180393000654",
       "name": "Goshen High School",
@@ -2045,38 +1850,6 @@
         "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
         "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0",
         "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
-      "id": "IN-2416",
-      "ncesId": "180639001557",
-      "name": "Grant County Comm Justice Center",
-      "state": "IN",
-      "city": "Marion",
-      "county": "Grant County",
-      "district": "Marion Community Schools",
-      "sector": "Public",
-      "latitude": 40.549891079954,
-      "longitude": -85.658641632304,
-      "distanceMiles": 45.609388,
-      "gradesLow": "5",
-      "gradesHigh": "12",
-      "schoolType": "Alternative/Special Education",
-      "schoolUrl": "http://www.marion.k12.in.us",
-      "leader": {
-        "name": "Dr. Stephanie Lockwood",
-        "role": "Superintendent",
-        "sourceUrl": "https://www.marion.k12.in.us/apps/pages/index.jsp?pREC_ID=2478485&type=d&uREC_ID=3882767",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "Dr. Stephanie Lockwood — Superintendent"
-      },
-      "sourceUrls": [
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "https://www.marion.k12.in.us",
-        "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1240+S+Adams+St%2C+Marion%2C+IN+46953&benchmark=Public_AR_Current&format=json"
       ],
       "schoolDirectoryYear": "2025–26 Indiana directory",
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
@@ -2597,39 +2370,6 @@
         "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0"
       ],
       "schoolDirectoryYear": "2024-2025",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
-      "id": "180042000090",
-      "ncesId": "180042000090",
-      "name": "Jimtown High School",
-      "state": "IN",
-      "city": "Elkhart",
-      "county": "Elkhart County",
-      "district": "Baugo Community Schools",
-      "sector": "Public",
-      "latitude": 41.6374,
-      "longitude": -86.0243,
-      "distanceMiles": 59.991588,
-      "gradesLow": "9",
-      "gradesHigh": "12",
-      "schoolType": "Regular School",
-      "schoolUrl": "http://baugocommunity.in.schoolwebpages.com/education/school/school.php?sectionid=3",
-      "leader": {
-        "name": "Byron Sanders, Ph.D.",
-        "role": "Superintendent",
-        "sourceUrl": "https://www.baugo.org/about/superintendents_welcome",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "Byron Sanders, Ph.D. — Superintendent"
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=180042000090",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0",
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
@@ -3213,39 +2953,6 @@
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
-      "id": "180687001189",
-      "ncesId": "180687001189",
-      "name": "Mississinewa High School",
-      "state": "IN",
-      "city": "Gas City",
-      "county": "Grant County",
-      "district": "Mississinewa Community School Corp",
-      "sector": "Public",
-      "latitude": 40.4967,
-      "longitude": -85.6133,
-      "distanceMiles": 47.325184,
-      "gradesLow": "9",
-      "gradesHigh": "12",
-      "schoolType": "Regular School",
-      "schoolUrl": "http://mhs.olemiss.k12.in.us/",
-      "leader": {
-        "name": "Jeremy Fewell, Ed.S.",
-        "role": "Superintendent",
-        "sourceUrl": "https://myemail.constantcontact.com/Tribe-Talk---January-2025.html?aid=wOv_0ZvYHjI&soid=1137193734923",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "Mississinewa Community Schools district-published Tribe Talk newsletter January 2025 signed Jeremy Fewell, Ed.S., Superintendent; current 2026 directory corroborates name."
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=180687001189",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0",
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
       "id": "390455202262",
       "ncesId": "390455202262",
       "name": "Montpelier High School",
@@ -3430,39 +3137,6 @@
         "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0"
       ],
       "schoolDirectoryYear": "2024-2025",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
-      "id": "180789001351",
-      "ncesId": "180789001351",
-      "name": "North Miami Middle/High School",
-      "state": "IN",
-      "city": "Denver",
-      "county": "Miami County",
-      "district": "North Miami Community Schools",
-      "sector": "Public",
-      "latitude": 40.8964,
-      "longitude": -86.066,
-      "distanceMiles": 50.028126,
-      "gradesLow": "7",
-      "gradesHigh": "12",
-      "schoolType": "Regular School",
-      "schoolUrl": "http://www.nmcs.k12.in.us",
-      "leader": {
-        "name": "Dr. Jill VanDriessche",
-        "role": "Superintendent",
-        "sourceUrl": "https://www.nmcs.k12.in.us/229689_2",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "Dr. Jill VanDriessche — Superintendent"
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=180789001351",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0",
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
@@ -3759,39 +3433,6 @@
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
-      "id": "A1901971",
-      "ncesId": "A1901971",
-      "name": "Paddock View Residential Center",
-      "state": "IN",
-      "city": "Marion",
-      "county": "Grant County",
-      "district": "Independent school",
-      "sector": "Private",
-      "latitude": 40.56384,
-      "longitude": -85.635481,
-      "distanceMiles": 44.113366,
-      "gradesLow": "2",
-      "gradesHigh": "12",
-      "schoolType": "Alternative/Other",
-      "schoolUrl": "http://www.paddockview.org",
-      "leader": {
-        "name": "John Pierce",
-        "role": "Principal",
-        "sourceUrl": "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "evidenceLabel": "2025–26 directory",
-        "verifiedCurrent": false,
-        "evidence": "NPSCHL worksheet: Paddock View Residential Center; principal fields."
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A1901971",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip",
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
       "id": "390485703303",
       "ncesId": "390485703303",
       "name": "Parkway High School",
@@ -3950,39 +3591,6 @@
         "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0"
       ],
       "schoolDirectoryYear": "2024-2025",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
-      "id": "A2101755",
-      "ncesId": "A2101755",
-      "name": "Pierceton Woods Academy",
-      "state": "IN",
-      "city": "Pierceton",
-      "county": "Kosciusko County",
-      "district": "Independent school",
-      "sector": "Private",
-      "latitude": 41.204531,
-      "longitude": -85.69226,
-      "distanceMiles": 30.109446,
-      "gradesLow": "4",
-      "gradesHigh": "12",
-      "schoolType": "Alternative/Other",
-      "schoolUrl": "http://www.lifelineyouth.org/residential-services.html",
-      "leader": {
-        "name": "Maddison Barnes",
-        "role": "Principal",
-        "sourceUrl": "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
-        "evidenceLabel": "2025–26 directory",
-        "verifiedCurrent": false,
-        "evidence": "NPSCHL worksheet: Pierceton Woods Academy; principal fields."
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A2101755",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip",
-        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
-      ],
-      "schoolDirectoryYear": "2025–26 Indiana directory",
       "teamClassification": "no-school-affiliation-verified-in-roster-screen"
     },
     {
@@ -4368,38 +3976,6 @@
       },
       "sourceUrls": [
         "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=390485803305",
-        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
-        "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0"
-      ],
-      "schoolDirectoryYear": "2024-2025",
-      "teamClassification": "no-school-affiliation-verified-in-roster-screen"
-    },
-    {
-      "id": "390447201585",
-      "ncesId": "390447201585",
-      "name": "St Marys Memorial High School",
-      "state": "OH",
-      "city": "Saint Marys",
-      "county": "Auglaize County",
-      "district": "St Marys City",
-      "sector": "Public",
-      "latitude": 40.55841,
-      "longitude": -84.374255,
-      "distanceMiles": 53.764568,
-      "gradesLow": "9",
-      "gradesHigh": "12",
-      "schoolType": "Regular School",
-      "schoolUrl": "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=390447201585",
-      "leader": {
-        "name": "Bill Ruane",
-        "role": "Superintendent",
-        "sourceUrl": "https://www.smriders.net/staff?page_no=7",
-        "evidenceLabel": "Current published source",
-        "verifiedCurrent": true,
-        "evidence": "Bill Ruane — Superintendent"
-      },
-      "sourceUrls": [
-        "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=390447201585",
         "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
         "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0"
       ],
@@ -5542,6 +5118,58 @@
       ]
     },
     {
+      "id": "IN-A990",
+      "ncesId": null,
+      "name": "Elkhart Christian Academy",
+      "state": "IN",
+      "city": "Elkhart",
+      "county": "Elkhart County",
+      "district": "Independent school",
+      "sector": "Private",
+      "latitude": 41.637786780039,
+      "longitude": -85.962086603038,
+      "distanceMiles": 57.574651,
+      "gradesLow": "PK",
+      "gradesHigh": "12",
+      "schoolType": "Regular School",
+      "schoolUrl": "http://www.elkhartchristian.org",
+      "leader": {
+        "name": "Chris Baldridge",
+        "role": "Principal",
+        "sourceUrl": "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "evidenceLabel": "2025–26 directory",
+        "verifiedCurrent": false,
+        "evidence": "NPSCHL worksheet: Elkhart Christian Academy; principal fields."
+      },
+      "sourceUrls": [
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "https://www.elkhartchristian.org",
+        "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=25943+CR+22+E%2C+Elkhart%2C+IN+46517-2127&benchmark=Public_AR_Current&format=json"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "former-review",
+      "teamNote": "Former FTC team 18721 Samurai Sushi (rookie 2020); last season with events on FTCScout: 2020–21. No 2025–26 or 2026–27 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 18721,
+          "season": 2020,
+          "heading": "Team 18721 - Samurai Sushi",
+          "registeredLocation": "Elkhart, IN",
+          "schoolAffiliationHeadline": "Elkhart Christian Academy",
+          "sponsorsAndAffiliations": "Elkhart Christian Academy",
+          "sourceUrl": "https://ftcscout.org/teams/18721",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/18721"
+        }
+      ]
+    },
+    {
       "id": "390467102628",
       "ncesId": "390467102628",
       "name": "Fairview High School",
@@ -5654,6 +5282,59 @@
       ]
     },
     {
+      "id": "180042000090",
+      "ncesId": "180042000090",
+      "name": "Jimtown High School",
+      "state": "IN",
+      "city": "Elkhart",
+      "county": "Elkhart County",
+      "district": "Baugo Community Schools",
+      "sector": "Public",
+      "latitude": 41.6374,
+      "longitude": -86.0243,
+      "distanceMiles": 59.991588,
+      "gradesLow": "9",
+      "gradesHigh": "12",
+      "schoolType": "Regular School",
+      "schoolUrl": "http://baugocommunity.in.schoolwebpages.com/education/school/school.php?sectionid=3",
+      "leader": {
+        "name": "Byron Sanders, Ph.D.",
+        "role": "Superintendent",
+        "sourceUrl": "https://www.baugo.org/about/superintendents_welcome",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "Byron Sanders, Ph.D. — Superintendent"
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=180042000090",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0",
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "former-review",
+      "teamNote": "Former FTC team 15190 Full Steam Ahead (rookie 2018); last season with events on FTCScout: 2019–20. No 2025–26 or 2026–27 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 15190,
+          "season": 2019,
+          "heading": "Team 15190 - Full Steam Ahead",
+          "registeredLocation": "Elkhart, IN",
+          "schoolAffiliationHeadline": "Jimtown High School",
+          "sponsorsAndAffiliations": "Jimtown High School",
+          "sourceUrl": "https://ftcscout.org/teams/15190",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/15190"
+        }
+      ]
+    },
+    {
       "id": "390442205325",
       "ncesId": "390442205325",
       "name": "Lima Senior High School",
@@ -5706,6 +5387,59 @@
           "publisher": "WLIO/Hometown Stations",
           "evidence": "Report names a Lima Senior senior as a Bean City Bots participant. Secondary reporting; not official district affiliation.",
           "retrievedAt": "2026-10-22T08:34:03.040315+00:00"
+        }
+      ]
+    },
+    {
+      "id": "180687001189",
+      "ncesId": "180687001189",
+      "name": "Mississinewa High School",
+      "state": "IN",
+      "city": "Gas City",
+      "county": "Grant County",
+      "district": "Mississinewa Community School Corp",
+      "sector": "Public",
+      "latitude": 40.4967,
+      "longitude": -85.6133,
+      "distanceMiles": 47.325184,
+      "gradesLow": "9",
+      "gradesHigh": "12",
+      "schoolType": "Regular School",
+      "schoolUrl": "http://mhs.olemiss.k12.in.us/",
+      "leader": {
+        "name": "Jeremy Fewell, Ed.S.",
+        "role": "Superintendent",
+        "sourceUrl": "https://myemail.constantcontact.com/Tribe-Talk---January-2025.html?aid=wOv_0ZvYHjI&soid=1137193734923",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "Mississinewa Community Schools district-published Tribe Talk newsletter January 2025 signed Jeremy Fewell, Ed.S., Superintendent; current 2026 directory corroborates name."
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=180687001189",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0",
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "former-review",
+      "teamNote": "Former FTC team 18578 Robo Tribe RJB (rookie 2020); last season with events on FTCScout: 2021–22. No 2025–26 or 2026–27 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 18578,
+          "season": 2021,
+          "heading": "Team 18578 - Robo Tribe RJB",
+          "registeredLocation": "Gas City, IN",
+          "schoolAffiliationHeadline": "Mississinewa High School",
+          "sponsorsAndAffiliations": "Mississinewa High School",
+          "sourceUrl": "https://ftcscout.org/teams/18578",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/18578"
         }
       ]
     },
@@ -5766,6 +5500,59 @@
       ]
     },
     {
+      "id": "180789001351",
+      "ncesId": "180789001351",
+      "name": "North Miami Middle/High School",
+      "state": "IN",
+      "city": "Denver",
+      "county": "Miami County",
+      "district": "North Miami Community Schools",
+      "sector": "Public",
+      "latitude": 40.8964,
+      "longitude": -86.066,
+      "distanceMiles": 50.028126,
+      "gradesLow": "7",
+      "gradesHigh": "12",
+      "schoolType": "Regular School",
+      "schoolUrl": "http://www.nmcs.k12.in.us",
+      "leader": {
+        "name": "Dr. Jill VanDriessche",
+        "role": "Superintendent",
+        "sourceUrl": "https://www.nmcs.k12.in.us/229689_2",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "Dr. Jill VanDriessche — Superintendent"
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=180789001351",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0",
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "former-review",
+      "teamNote": "Former FTC team 12231 WarriorTech (rookie 2016); last season with events on FTCScout: 2023–24. No 2025–26 or 2026–27 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 12231,
+          "season": 2023,
+          "heading": "Team 12231 - WarriorTech",
+          "registeredLocation": "Denver, IN",
+          "schoolAffiliationHeadline": "North Miami Middle/High School",
+          "sponsorsAndAffiliations": "North Miami Middle/High School",
+          "sourceUrl": "https://ftcscout.org/teams/12231",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/12231"
+        }
+      ]
+    },
+    {
       "id": "180963001576",
       "ncesId": "180963001576",
       "name": "Rochester Community High School",
@@ -5813,6 +5600,58 @@
         }
       ],
       "additionalSources": []
+    },
+    {
+      "id": "390447201585",
+      "ncesId": "390447201585",
+      "name": "St Marys Memorial High School",
+      "state": "OH",
+      "city": "Saint Marys",
+      "county": "Auglaize County",
+      "district": "St Marys City",
+      "sector": "Public",
+      "latitude": 40.55841,
+      "longitude": -84.374255,
+      "distanceMiles": 53.764568,
+      "gradesLow": "9",
+      "gradesHigh": "12",
+      "schoolType": "Regular School",
+      "schoolUrl": "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=390447201585",
+      "leader": {
+        "name": "Bill Ruane",
+        "role": "Superintendent",
+        "sourceUrl": "https://www.smriders.net/staff?page_no=7",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "Bill Ruane — Superintendent"
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=390447201585",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/arcgis/rest/services/CCD/CCD_Data/MapServer/0"
+      ],
+      "schoolDirectoryYear": "2024-2025",
+      "teamClassification": "former-review",
+      "teamNote": "Former FTC team 20670 SMCS Robotics (rookie 2021); last season with events on FTCScout: 2021–22. No 2025–26 or 2026–27 events found. A relaunch candidate, not proof the program ended.",
+      "teamEvidence": [
+        {
+          "program": "FTC",
+          "teamNumber": 20670,
+          "season": 2021,
+          "heading": "Team 20670 - SMCS Robotics",
+          "registeredLocation": "Saint Marys, OH",
+          "schoolAffiliationHeadline": "St Marys Memorial High School",
+          "sponsorsAndAffiliations": "St Marys Memorial High School",
+          "sourceUrl": "https://ftcscout.org/teams/20670",
+          "retrievedAt": "2026-10-22T22:00:00+00:00",
+          "sourceSha256": null
+        }
+      ],
+      "additionalSources": [
+        {
+          "sourceUrl": "https://api.ftcscout.org/rest/v1/teams/20670"
+        }
+      ]
     }
   ],
   "excludedSchools": [
@@ -6804,16 +6643,288 @@
       "additionalSources": []
     }
   ],
+  "facilitySchools": [
+    {
+      "id": "IN-0100",
+      "ncesId": "180363002174",
+      "name": "Allen Co Juvenile Center",
+      "state": "IN",
+      "city": "Fort Wayne",
+      "county": "Allen County",
+      "district": "Fort Wayne Community Schools",
+      "sector": "Public",
+      "latitude": 41.102623749193,
+      "longitude": -85.147368962058,
+      "distanceMiles": 1.673585,
+      "gradesLow": "KG",
+      "gradesHigh": "12",
+      "schoolType": "Alternative/Special Education",
+      "schoolUrl": "http://acjc.us/",
+      "leader": {
+        "name": "Mark Daniel",
+        "role": "Superintendent",
+        "sourceUrl": "https://www.fortwayneschools.org/about-us/district-leadership",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "District Leadership - Fort Wayne Community School District\nSkip To Main Content\nClose Menu\nSearch\nClear\nSearch\nDistrict Leadership\nSuperintendent\nMark D. Daniel, Ph.D.\nDr. Mark Daniel joined Fort Wayne Community Schools as the 15th Superintendent of FWCS on July 1, 2020.\nDr. Daniel is a 1979 graduate of North Side High School, making him the second FWCS alumni to become FWCS superintendent in the District’s history. His first teaching job was at North Side High School, where he taught advanced algebra, geometry, business law, accounting and skills for living. He also coached football, basketball, baseball, track and golf.\nHe left North Side to be"
+      },
+      "sourceUrls": [
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "https://acjc.us/",
+        "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=2929+N+Wells%2C+Fort+Wayne%2C+IN+46808&benchmark=Public_AR_Current&format=json"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "exclude-secure-or-residential-facility",
+      "teamNote": "Juvenile detention center (Allen County)."
+    },
+    {
+      "id": "IN-0145",
+      "ncesId": "180825002160",
+      "name": "Allen Co Youth Services Center",
+      "state": "IN",
+      "city": "Fort Wayne",
+      "county": "Allen County",
+      "district": "Northwest Allen County Schools",
+      "sector": "Public",
+      "latitude": 41.190726207035,
+      "longitude": -85.167146105823,
+      "distanceMiles": 7.83604,
+      "gradesLow": "1",
+      "gradesHigh": "12",
+      "schoolType": "Alternative/Special Education",
+      "schoolUrl": "http://www.allencounty.us/government/law-justice/youth-services-center",
+      "leader": {
+        "name": "Wayne Barker",
+        "role": "Superintendent",
+        "sourceUrl": "https://www.nacs.k12.in.us/superintendent",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "Wayne Barker — Superintendent"
+      },
+      "sourceUrls": [
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "https://www.allencounty.us/government/law-justice/youth-services-center",
+        "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=11805+Lima+Rd%2C+Fort+Wayne%2C+IN+46818&benchmark=Public_AR_Current&format=json"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "exclude-secure-or-residential-facility",
+      "teamNote": "Youth residential/detention services campus (Allen County)."
+    },
+    {
+      "id": "A9701438",
+      "ncesId": "A9701438",
+      "name": "Bashor Children's Home",
+      "state": "IN",
+      "city": "Goshen",
+      "county": "Elkhart County",
+      "district": "Independent school",
+      "sector": "Private",
+      "latitude": 41.590229,
+      "longitude": -85.904468,
+      "distanceMiles": 53.16756,
+      "gradesLow": "KG",
+      "gradesHigh": "12",
+      "schoolType": "Alternative/Other",
+      "schoolUrl": "http://www.bashor.org/",
+      "leader": {
+        "name": "Marcia Brothers",
+        "role": "Principal",
+        "sourceUrl": "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "evidenceLabel": "2025–26 directory",
+        "verifiedCurrent": false,
+        "evidence": "NPSCHL worksheet: Bashor Children's Home; principal fields."
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A9701438",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip",
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "exclude-secure-or-residential-facility",
+      "teamNote": "Residential treatment campus for children and youth."
+    },
+    {
+      "id": "A1701689",
+      "ncesId": "A1701689",
+      "name": "Crossroad Child & Family Services",
+      "state": "IN",
+      "city": "Fort Wayne",
+      "county": "Allen County",
+      "district": "Independent school",
+      "sector": "Private",
+      "latitude": 41.093802,
+      "longitude": -85.104851,
+      "distanceMiles": 1.987499,
+      "gradesLow": "KG",
+      "gradesHigh": "12",
+      "schoolType": "Alternative/Other",
+      "schoolUrl": "http://www.crossroad-fwch.org/",
+      "leader": {
+        "name": "Amy Kohler",
+        "role": "Principal",
+        "sourceUrl": "https://crossroadcares.org/about-us/our-staff/",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "The official academy page says one campus serves day students and residential treatment clients. State program IDs A275 and D928 are consolidated into one campus. The official staff page says Amy Kohler became principal in January 2024."
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A1701689",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip",
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "https://crossroadcares.org/how-we-help/crossroad-academy-alternative-education/"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "exclude-secure-or-residential-facility",
+      "teamNote": "Residential treatment campus for children and youth (Fort Wayne)."
+    },
+    {
+      "id": "A0301470",
+      "ncesId": "A0301470",
+      "name": "Gateway Woods School",
+      "state": "IN",
+      "city": "Leo",
+      "county": "Allen County",
+      "district": "Independent school",
+      "sector": "Private",
+      "latitude": 41.220148,
+      "longitude": -84.991697,
+      "distanceMiles": 12.34381,
+      "gradesLow": "9",
+      "gradesHigh": "12",
+      "schoolType": "Alternative/Other",
+      "schoolUrl": "https://gatewaywoods.org/services/school",
+      "leader": {
+        "name": "Brock Williamson",
+        "role": "Director of Education",
+        "sourceUrl": "https://gatewaywoods.org/services/school",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "The official school program serves grades 6–12. Its staff list names Brock Williamson, Director of Education, and Laura Steffen, Dean of Students."
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A0301470",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip"
+      ],
+      "schoolDirectoryYear": "2023–24",
+      "teamClassification": "exclude-secure-or-residential-facility",
+      "teamNote": "School on a residential children's home campus (Leo)."
+    },
+    {
+      "id": "IN-2416",
+      "ncesId": "180639001557",
+      "name": "Grant County Comm Justice Center",
+      "state": "IN",
+      "city": "Marion",
+      "county": "Grant County",
+      "district": "Marion Community Schools",
+      "sector": "Public",
+      "latitude": 40.549891079954,
+      "longitude": -85.658641632304,
+      "distanceMiles": 45.609388,
+      "gradesLow": "5",
+      "gradesHigh": "12",
+      "schoolType": "Alternative/Special Education",
+      "schoolUrl": "http://www.marion.k12.in.us",
+      "leader": {
+        "name": "Dr. Stephanie Lockwood",
+        "role": "Superintendent",
+        "sourceUrl": "https://www.marion.k12.in.us/apps/pages/index.jsp?pREC_ID=2478485&type=d&uREC_ID=3882767",
+        "evidenceLabel": "Current published source",
+        "verifiedCurrent": true,
+        "evidence": "Dr. Stephanie Lockwood — Superintendent"
+      },
+      "sourceUrls": [
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "https://www.marion.k12.in.us",
+        "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1240+S+Adams+St%2C+Marion%2C+IN+46953&benchmark=Public_AR_Current&format=json"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "exclude-secure-or-residential-facility",
+      "teamNote": "Juvenile justice/detention campus (Grant County)."
+    },
+    {
+      "id": "A1901971",
+      "ncesId": "A1901971",
+      "name": "Paddock View Residential Center",
+      "state": "IN",
+      "city": "Marion",
+      "county": "Grant County",
+      "district": "Independent school",
+      "sector": "Private",
+      "latitude": 40.56384,
+      "longitude": -85.635481,
+      "distanceMiles": 44.113366,
+      "gradesLow": "2",
+      "gradesHigh": "12",
+      "schoolType": "Alternative/Other",
+      "schoolUrl": "http://www.paddockview.org",
+      "leader": {
+        "name": "John Pierce",
+        "role": "Principal",
+        "sourceUrl": "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "evidenceLabel": "2025–26 directory",
+        "verifiedCurrent": false,
+        "evidence": "NPSCHL worksheet: Paddock View Residential Center; principal fields."
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A1901971",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip",
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "exclude-secure-or-residential-facility",
+      "teamNote": "Residential treatment campus."
+    },
+    {
+      "id": "A2101755",
+      "ncesId": "A2101755",
+      "name": "Pierceton Woods Academy",
+      "state": "IN",
+      "city": "Pierceton",
+      "county": "Kosciusko County",
+      "district": "Independent school",
+      "sector": "Private",
+      "latitude": 41.204531,
+      "longitude": -85.69226,
+      "distanceMiles": 30.109446,
+      "gradesLow": "4",
+      "gradesHigh": "12",
+      "schoolType": "Alternative/Other",
+      "schoolUrl": "http://www.lifelineyouth.org/residential-services.html",
+      "leader": {
+        "name": "Maddison Barnes",
+        "role": "Principal",
+        "sourceUrl": "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx",
+        "evidenceLabel": "2025–26 directory",
+        "verifiedCurrent": false,
+        "evidence": "NPSCHL worksheet: Pierceton Woods Academy; principal fields."
+      },
+      "sourceUrls": [
+        "https://nces.ed.gov/surveys/pss/privateschoolsearch/school_detail.asp?ID=A2101755",
+        "https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0",
+        "https://nces.ed.gov/surveys/pss/zip/pss2324_pu_csv.zip",
+        "https://www.in.gov/doe/files/2025-2026-school-directory-2026-03-23.xlsx"
+      ],
+      "schoolDirectoryYear": "2025–26 Indiana directory",
+      "teamClassification": "exclude-secure-or-residential-facility",
+      "teamNote": "Residential treatment campus for youth (Pierceton)."
+    }
+  ],
   "universeCount": 193,
   "scopeReviewCount": 16,
   "counts": {
-    "invited": 166,
+    "invited": 153,
     "existingTeams": 19,
-    "affiliationsToConfirm": 8,
-    "leadersNamed": 157,
+    "affiliationsToConfirm": 13,
+    "facilitiesNotInvited": 8,
+    "leadersNamed": 144,
     "byState": {
-      "IN": 111,
-      "OH": 49,
+      "IN": 99,
+      "OH": 48,
       "MI": 6
     }
   }

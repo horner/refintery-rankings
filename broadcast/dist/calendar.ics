@@ -1,0 +1,251 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The REFINERY//NEI Robotics calendar//EN
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Northeast Indiana Robotics 2026–27
+X-WR-TIMEZONE:America/Indiana/Indianapolis
+BEGIN:VEVENT
+UID:ftc-usinavko@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:FTC Kickoff · Avon
+LOCATION:Avon High School\, Avon\, IN
+DESCRIPTION:Season launch: the new FTC game is revealed and teams start bui
+ lding. https://ftcscout.org/events/2026/USINAVKO
+URL:https://ftcscout.org/events/2026/USINAVKO
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usinblko@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:FTC Kickoff · Bloomington
+LOCATION:IUB MESH\, Bloomington\, IN
+DESCRIPTION:Season launch: the new FTC game is revealed and teams start bui
+ lding. https://ftcscout.org/events/2026/USINBLKO
+URL:https://ftcscout.org/events/2026/USINBLKO
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usinosko@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:FTC Kickoff · South Bend
+LOCATION:GEARS Youth Robotics Center\, Osceola\, IN
+DESCRIPTION:Season launch: the new FTC game is revealed and teams start bui
+ lding. https://ftcscout.org/events/2026/USINOSKO
+URL:https://ftcscout.org/events/2026/USINOSKO
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usinwlko@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260913
+SUMMARY:FTC Kickoff · West Lafayette
+LOCATION:WBI Shop\, West Lafayette\, IN
+DESCRIPTION:Season launch: the new FTC game is revealed and teams start bui
+ lding. https://ftcscout.org/events/2026/USINWLKO
+URL:https://ftcscout.org/events/2026/USINWLKO
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-2026inbbb@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261025
+SUMMARY:FRC · Boiler Bot Battle
+LOCATION:Tippecanoe County Fairgrounds\, Lafayette\, IN
+DESCRIPTION:Fall offseason event: last season's robots\, new drivers\, and 
+ an early look at 2027. https://www.thebluealliance.com/event/2026inbbb
+URL:https://www.thebluealliance.com/event/2026inbbb
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-2026infor@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:FRC · Monster Match
+LOCATION:Wayne High School\, Fort Wayne\, IN
+DESCRIPTION:The REFINERY's Halloween offseason event. Matches 8:15 a.m.–6
+  p.m. ET\; college and career fair 10 a.m.–2 p.m. Free spectator admissi
+ on\; costumes encouraged. https://refineryrobotics.org/programs-events/mon
+ ster-match/
+URL:https://refineryrobotics.org/programs-events/monster-match/
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usinweq1@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:FTC Qualifier · Westfield 1
+LOCATION:Westfield Middle School\, Westfield\, IN
+DESCRIPTION:Qualifying tournament. Top teams and award winners earn spots a
+ t the Indiana FTC State Championship. https://ftcscout.org/events/2026/USI
+ NWEQ1
+URL:https://ftcscout.org/events/2026/USINWEQ1
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usinweq2@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:FTC Qualifier · Westfield 2
+LOCATION:Westfield Middle School\, Westfield\, IN
+DESCRIPTION:Qualifying tournament. Top teams and award winners earn spots a
+ t the Indiana FTC State Championship. https://ftcscout.org/events/2026/USI
+ NWEQ2
+URL:https://ftcscout.org/events/2026/USINWEQ2
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-kickoff-2027@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+SUMMARY:FRC · 2027 FRC game reveal (Kickoff)
+LOCATION:Worldwide broadcast
+DESCRIPTION:FIRST reveals the 2027 game at noon ET. Teams start designing a
+ nd building. https://www.firstinspires.org/programs/calendar
+URL:https://www.firstinspires.org/programs/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usingrq@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20270207
+SUMMARY:FTC Qualifier · Greenwood
+LOCATION:Greenwood Middle School\, Greenwood\, IN
+DESCRIPTION:Qualifying tournament. Top teams and award winners earn spots a
+ t the Indiana FTC State Championship. https://ftcscout.org/events/2026/USI
+ NGRQ
+URL:https://ftcscout.org/events/2026/USINGRQ
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usinshq@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270213
+DTEND;VALUE=DATE:20270214
+SUMMARY:FTC Qualifier · Shoals
+LOCATION:Shoals Jr/Sr High School\, Shoals\, IN
+DESCRIPTION:Qualifying tournament. Top teams and award winners earn spots a
+ t the Indiana FTC State Championship. https://ftcscout.org/events/2026/USI
+ NSHQ
+URL:https://ftcscout.org/events/2026/USINSHQ
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-week0-2027@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:FRC Week Zero
+LOCATION:Scrimmages nationwide
+DESCRIPTION:Unofficial practice events before the season counts. A local RE
+ FINERY scrimmage date has not been announced. https://www.firstinspires.or
+ g/programs/calendar
+URL:https://www.firstinspires.org/programs/calendar
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usinavq@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:FTC Qualifier · Avon
+LOCATION:Avon High School\, Avon\, IN
+DESCRIPTION:Qualifying tournament. Top teams and award winners earn spots a
+ t the Indiana FTC State Championship. https://ftcscout.org/events/2026/USI
+ NAVQ
+URL:https://ftcscout.org/events/2026/USINAVQ
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-usinmiq@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:FTC Qualifier · Mishawaka
+LOCATION:Penn High School\, Mishawaka\, IN
+DESCRIPTION:Qualifying tournament. Top teams and award winners earn spots a
+ t the Indiana FTC State Championship. https://ftcscout.org/events/2026/USI
+ NMIQ
+URL:https://ftcscout.org/events/2026/USINMIQ
+END:VEVENT
+BEGIN:VEVENT
+UID:ftc-state-2027@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270306
+DTEND;VALUE=DATE:20270307
+SUMMARY:FIRST Indiana FTC State Championship
+LOCATION:Nicoson Hall\, University of Indianapolis\, Indianapolis\, IN
+DESCRIPTION:Indiana's FTC state championship and the path to Houston. https
+ ://www.firstindianarobotics.org/event/ftc-state-championship-3/
+URL:https://www.firstindianarobotics.org/event/ftc-state-championship-3/
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-2027inmis@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270312
+DTEND;VALUE=DATE:20270315
+SUMMARY:FIN District Mishawaka Event
+LOCATION:Penn High School\, Mishawaka\, IN
+DESCRIPTION:The first Indiana district event of 2027. THRUST (1501) and CyB
+ ears (10434) won it together in 2026. https://www.thebluealliance.com/even
+ t/2027inmis
+URL:https://www.thebluealliance.com/event/2027inmis
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-2027insel@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270322
+SUMMARY:FIN District Sellersburg Event
+LOCATION:Silver Creek Senior High School\, Sellersburg\, IN
+DESCRIPTION:Southern Indiana district event. https://www.thebluealliance.co
+ m/event/2027insel
+URL:https://www.thebluealliance.com/event/2027insel
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-2027inlaf@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270325
+DTEND;VALUE=DATE:20270328
+SUMMARY:FIN District Lafayette Event
+LOCATION:Jefferson High School\, Lafayette\, IN
+DESCRIPTION:THRUST (1501) won Lafayette in 2026. https://www.theblueallianc
+ e.com/event/2027inlaf
+URL:https://www.thebluealliance.com/event/2027inlaf
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-2027inftw@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270404
+SUMMARY:FIN District Fort Wayne Event
+LOCATION:Homestead High School\, Fort Wayne\, IN
+DESCRIPTION:Indiana district robotics comes to Fort Wayne. The home event f
+ or most teams on this page. https://www.thebluealliance.com/event/2027inft
+ w
+URL:https://www.thebluealliance.com/event/2027inftw
+END:VEVENT
+BEGIN:VEVENT
+UID:frc-2027incmp@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270419
+SUMMARY:FIRST Indiana State Championship (FRC)
+LOCATION:Center Grove High School\, Greenwood\, IN
+DESCRIPTION:Indiana's top teams by district points meet for the state title
+  and spots at the FIRST Championship. https://www.thebluealliance.com/even
+ t/2027incmp
+URL:https://www.thebluealliance.com/event/2027incmp
+END:VEVENT
+BEGIN:VEVENT
+UID:cmp-2027@refintery-rankings
+DTSTAMP:20261022T000000Z
+DTSTART;VALUE=DATE:20270428
+DTEND;VALUE=DATE:20270502
+SUMMARY:FIRST Championship
+LOCATION:George R. Brown Convention Center\, Houston\, TX
+DESCRIPTION:The world championship for FRC and FTC. Teams qualify through d
+ istrict\, state and regional results. https://www.firstinspires.org/progra
+ ms/first-championship
+URL:https://www.firstinspires.org/programs/first-championship
+END:VEVENT
+END:VCALENDAR

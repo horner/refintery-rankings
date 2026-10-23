@@ -96,7 +96,8 @@ def build_dnf():
                 return record
         return None
 
-    schools, excluded, review = [], [], []
+    facility_reasons = {row["id"]: row["reason"] for row in load("facility-exclusions.json")["schools"]}
+    schools, excluded, review, facilities = [], [], [], []
     for school in universe["schools"]:
         leader, leader_source = leader_for(school)
         primary = next((web_url(x) for x in school["sourceUrls"] if web_url(x)), "https://nces.ed.gov/programs/edge/Geographic/SchoolLocations")
@@ -104,7 +105,11 @@ def build_dnf():
         if operating_checks.get(school["id"], {}).get("currentSchoolSiteLocated") is False:
             row["schoolStatusNote"] = "2023–24 directory record; current campus status to confirm."
         match = team_match(school)
-        if match:
+        if school["id"] in facility_reasons:
+            row["teamClassification"] = "exclude-secure-or-residential-facility"
+            row["teamNote"] = facility_reasons[school["id"]]
+            facilities.append(row)
+        elif match:
             row["teamClassification"] = match["classification"]
             row["teamNote"] = match["note"]
             row["teamEvidence"] = match.get("teamEvidence", [])
@@ -113,9 +118,9 @@ def build_dnf():
         else:
             row["teamClassification"] = "no-school-affiliation-verified-in-roster-screen"
             schools.append(row)
-    for rows in (schools, excluded, review):
+    for rows in (schools, excluded, review, facilities):
         rows.sort(key=lambda row: (row["name"].casefold(), row["state"], row["id"]))
-    result = {"asOf": "2026-10-22", "title": "DNF — Did Not Field. Yet.", "contactEmail": "info@refineryrobotics.org", "interestPage": "https://refineryrobotics.org/get-involved/#start-or-host-a-team", "resourceUrl": "https://refineryrobotics.org/what-we-do/", "methodologyUrl": "dnf-methodology.md", "origin": universe["origin"], "radiusMiles": 60, "qualification": "The schools below have no school-affiliated FTC or FRC team verified in our dated public-source review. DNF is an invitation to join the lineup. A new team, an unlisted affiliation, or participation in another robotics program may already exist.", "scopeNote": "Physical public, charter, and private campuses offering any of grades 9–12 within 60 straight-line miles of Citizens Square, downtown Fort Wayne, including Ohio and Michigan. School locations come from NCES and documented state/site supplements; directory years vary. Distance is tested before rounding. Older private-school records needing current campus confirmation are marked. Statewide virtual-school offices and adult-only diploma centers are excluded. Former teams and documented community-team connections are listed separately for follow-up.", "schools": schools, "reviewSchools": review, "excludedSchools": excluded, "universeCount": len(universe["schools"]), "scopeReviewCount": len(universe.get("reviewSchools", [])), "counts": {"invited": len(schools), "existingTeams": len(excluded), "affiliationsToConfirm": len(review), "leadersNamed": sum(bool(row["leader"]) for row in schools), "byState": dict(Counter(row["state"] for row in schools))}}
+    result = {"asOf": "2026-10-22", "title": "DNF — Did Not Field. Yet.", "contactEmail": "info@refineryrobotics.org", "interestPage": "https://refineryrobotics.org/get-involved/#start-or-host-a-team", "resourceUrl": "https://refineryrobotics.org/what-we-do/", "methodologyUrl": "dnf-methodology.md", "origin": universe["origin"], "radiusMiles": 60, "qualification": "The schools below have no school-affiliated FTC or FRC team verified in our dated public-source review. DNF is an invitation to join the lineup. A new team, an unlisted affiliation, or participation in another robotics program may already exist.", "scopeNote": "Physical public, charter, and private campuses offering any of grades 9–12 within 60 straight-line miles of Citizens Square, downtown Fort Wayne, including Ohio and Michigan. School locations come from NCES and documented state/site supplements; directory years vary. Distance is tested before rounding. Older private-school records needing current campus confirmation are marked. Statewide virtual-school offices and adult-only diploma centers are excluded. Former teams and documented community-team connections are listed separately for follow-up.", "schools": schools, "reviewSchools": review, "excludedSchools": excluded, "facilitySchools": facilities, "universeCount": len(universe["schools"]), "scopeReviewCount": len(universe.get("reviewSchools", [])), "counts": {"invited": len(schools), "existingTeams": len(excluded), "affiliationsToConfirm": len(review), "facilitiesNotInvited": len(facilities), "leadersNamed": sum(bool(row["leader"]) for row in schools), "byState": dict(Counter(row["state"] for row in schools))}}
     (HERE / "data/dnf.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     write_methodology(result, universe, team_screen)
     return result
@@ -123,7 +128,7 @@ def build_dnf():
 
 def write_methodology(data, universe, team_screen):
     lines = ["# DNF — Did Not Field. Yet.", "", "A school invitation list, checked October 22, 2026. No school or superintendent was contacted, and no interest response is inferred.", "", "## What this list means", "", data["qualification"], "", data["scopeNote"], "", "The list describes school affiliations in FIRST Tech Challenge and FIRST Robotics Competition. It does not say a school has no STEM activities, no robotics of any kind, or no students on independent community teams. No inference is made about a superintendent’s support for robotics.", "", f"The campus universe contains {data['universeCount']} schools: {len(data['schools'])} invitations, {len(data['excludedSchools'])} with current/recent team affiliations, and {len(data['reviewSchools'])} with former-team or community connections to confirm. {data['counts']['leadersNamed']} invitation rows have a named superintendent or school leader; the others retain an explicit unverified field.", "", "## Geography and school coverage", "", universe["method"], "", *["- " + note for note in universe["scopeNotes"]], "", "## Team screening", "", *["- " + note for note in team_screen["method"]], "", "Current/recent team-affiliated schools are omitted from the invitation table even when a registration has no match statistics. The screening includes newer registrations and cross-border teams, and preserves named community participants and former teams below.", "", "## Leadership", "", "Names retain their published roles. A private-school principal or head is not relabeled superintendent. Current official district/school pages take precedence over older directories. Rows using the Indiana 2025–26 directory retain that year rather than claiming a verified 2026–27 appointment. The raw research files and offline join code are [in the repository](https://github.com/horner/refintery-rankings/tree/main/broadcast/data/dnf-research).", "", "## The first step", "", "Say you’re interested. [The REFINERY’s team-starting inquiry](https://refineryrobotics.org/get-involved/#start-or-host-a-team) and email drafts from the directory start a conversation; they do not enroll a school or commit it to a budget. [Published support](https://refineryrobotics.org/what-we-do/) includes program selection, organizational planning, mentor development, technical training, parts, tools and practice access. Launch support focuses on the 12-county Northeast Indiana region; border schools can ask about shared resources and connections."]
-    for title, rows in [("Invitation directory", data["schools"]), ("Former teams and community connections to confirm", data["reviewSchools"]), ("Current/recent affiliations — held out of DNF", data["excludedSchools"])]:
+    for title, rows in [("Invitation directory", data["schools"]), ("Former teams and community connections to confirm", data["reviewSchools"]), ("Current/recent affiliations — held out of DNF", data["excludedSchools"]), ("Secure or residential facilities — not invited", data["facilitySchools"])]:
         lines.extend(["", "## " + title, "", "| School | District / leader | Miles | Evidence |", "|---|---|---:|---|"])
         for row in rows:
             leader = row["leader"]

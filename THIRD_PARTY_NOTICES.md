@@ -13,3 +13,7 @@ FIRST, Statbotics, FTCScout, school, team, and organization names belong to thei
 The broadcast package uses The REFINERY's logo and practice-field photograph from its public BioNanomics/REFINERY-site website repository. Original asset URLs, retrieval date, and checksums are recorded in `broadcast/data/asset-manifest.json`. The photograph illustrates the shared facility, not a selected-team portrait. The hero phrase is attributed to FIRST Global's Robotics Is a Sport campaign at https://first.global/sport/.
 
 Small school and robotics team marks are preserved unmodified from official school websites, their linked website providers, FIRST team profiles, and The REFINERY's official partner assets. `broadcast/data/logos.json` records each identity and source. Marks are used to identify the named organization; original proportions and colors are retained. School and team marks remain distinct, and no school is assigned to a community team.
+
+## Inter typeface
+
+`broadcast/dist/assets/fonts/inter-latin-wght.woff2` is the Inter variable font (Latin subset) by Rasmus Andersson, distributed through Fontsource and licensed under the [SIL Open Font License 1.1](https://openfontlicense.org/). It is the same typeface The REFINERY's website uses.

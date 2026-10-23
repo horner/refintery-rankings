@@ -1,0 +1,111 @@
+{
+  "note": "Photos from The REFINERY’s public website source repository, resized for the web. Credit The REFINERY; ask The REFINERY before reuse elsewhere.",
+  "photos": [
+    {
+      "id": "fans-4982",
+      "file": "assets/photos/fans-4982.webp",
+      "width": 1280,
+      "height": 720,
+      "caption": "Olympus Robotics (4982) fans cheer from the stands.",
+      "teams": [
+        4982
+      ],
+      "credit": "The REFINERY",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/events/monster-match/hero-4982-cheering.jpg",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/assets/events/monster-match/hero-4982-cheering.jpg",
+      "sourceSha256": "a16306d615aac34472359173bcaa15ed3eee471ca36677a12488e37f3b4411fe",
+      "sha256": "157645b13d6a0b073ef6a98a16b85f4dd889008f6ac980f990bd92a32cc3540e",
+      "retrievedDate": "2026-10-22"
+    },
+    {
+      "id": "team-8742",
+      "file": "assets/photos/team-8742.webp",
+      "width": 1000,
+      "height": 897,
+      "caption": "Madison-Grant’s Argyll Attack (8742) with its 2026 robot.",
+      "teams": [
+        8742
+      ],
+      "credit": "The REFINERY",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/teams/frc-8742-argyll-attack-2026-orville.jpg",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/assets/teams/frc-8742-argyll-attack-2026-orville.jpg",
+      "sourceSha256": "11d9fe2b9e164a0035c944d742983952bf5afd9274b9850e2b78949a47097fef",
+      "sha256": "5f80e4a915f1aab0627795ee091053d37658ff7869366ebeb7358f7eec12bac7",
+      "retrievedDate": "2026-10-22"
+    },
+    {
+      "id": "robot-9431",
+      "file": "assets/photos/robot-9431.webp",
+      "width": 800,
+      "height": 800,
+      "caption": "Snider’s The Gold Standard (9431) with its robot at competition.",
+      "teams": [
+        9431
+      ],
+      "credit": "The REFINERY",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/events/from-kit-to-career/hero-9431-robot.jpg",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/assets/events/from-kit-to-career/hero-9431-robot.jpg",
+      "sourceSha256": "b4368bf9a90273e14ba4d70e1702fa651d2ee6ca8ec042b3434844c3ae8b734c",
+      "sha256": "12a77b5a36a98af589d27a22cb39c9830ee8bc0f3f809ea4d55f6a4cf569c50f",
+      "retrievedDate": "2026-10-22"
+    },
+    {
+      "id": "robot-9119",
+      "file": "assets/photos/robot-9119.webp",
+      "width": 720,
+      "height": 960,
+      "caption": "Iron Legends (9119) robot beside The REFINERY’s practice field.",
+      "teams": [
+        9119
+      ],
+      "credit": "The REFINERY",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/news/a-year-building-the-refinery/robots-next-to-field.jpeg",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/assets/news/a-year-building-the-refinery/robots-next-to-field.jpeg",
+      "sourceSha256": "5955bf02cba703d3ada3f8a31c7c57a3db17ec851ba7b0f6de0ec4619bb33e2f",
+      "sha256": "b961d6f8d9d7d25909a2cecdd9a6bd540501db4d93605515c58f0a9982eb5856",
+      "retrievedDate": "2026-10-22"
+    },
+    {
+      "id": "judging",
+      "file": "assets/photos/judging.webp",
+      "width": 1400,
+      "height": 933,
+      "caption": "Volunteer judges at a FIRST Indiana event.",
+      "teams": [],
+      "credit": "The REFINERY",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/news/a-year-building-the-refinery/judging.jpeg",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/assets/news/a-year-building-the-refinery/judging.jpeg",
+      "sourceSha256": "e098c682a936f0b0dd78ba8f7ac11d8f93a88adc00330cbc4cc9aa1238aa2543",
+      "sha256": "48d1f756c9105293c2ae97645d7e031684b08eb9502a3972b5496f3921ef81ab",
+      "retrievedDate": "2026-10-22"
+    },
+    {
+      "id": "winner-banners",
+      "file": "assets/photos/winner-banners.webp",
+      "width": 1400,
+      "height": 1050,
+      "caption": "Winner banners hang over The REFINERY’s practice field in Fort Wayne.",
+      "teams": [],
+      "credit": "The REFINERY",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/news/a-year-building-the-refinery/winner-banners.jpeg",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/assets/news/a-year-building-the-refinery/winner-banners.jpeg",
+      "sourceSha256": "2dae7a6b60d93a8841332e023c30757a4097e54c4375745a7e9e01477a1cfc00",
+      "sha256": "8a574dde8a99c0033478775b51c28b7989618dae2c9859432e247bf36a1db0cf",
+      "retrievedDate": "2026-10-22"
+    },
+    {
+      "id": "week-0",
+      "file": "assets/photos/week-0.webp",
+      "width": 800,
+      "height": 1414,
+      "caption": "A Week 0 scrimmage at The REFINERY.",
+      "teams": [],
+      "credit": "The REFINERY",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/news/a-year-building-the-refinery/week-0-scrimmage.jpeg",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/assets/news/a-year-building-the-refinery/week-0-scrimmage.jpeg",
+      "sourceSha256": "bc370f1b1255a28cf4512c525b8eac9938c1883bdb394baca51e613506ef7ea6",
+      "sha256": "f5ebe2dd28bec8605269d118b8710c638be03edf3398a1785591f022d6cd1122",
+      "retrievedDate": "2026-10-22"
+    }
+  ]
+}

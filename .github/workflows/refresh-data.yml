@@ -1,0 +1,66 @@
+name: Refresh results and calendar
+
+# Pulls fresh results (The Blue Alliance) and events (FTCScout, The Blue Alliance), rebuilds and
+# verifies the site, then opens a pull request for review. Nothing is published until it is merged.
+# Needs the repository secret TBA_AUTH_KEY for FRC data; without it only the FTC calendar refreshes.
+# Setup and review steps: docs/tba-api.md
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Mondays 13:00 UTC (9 a.m. ET), after competition weekends.
+    - cron: "0 13 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      TBA_AUTH_KEY: ${{ secrets.TBA_AUTH_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Refresh calendar
+        run: python3 scripts/fetch_calendar.py
+      - name: Refresh FRC results
+        if: ${{ env.TBA_AUTH_KEY != '' }}
+        run: python3 scripts/fetch_tba.py --season 2026 --output broadcast/data/tba/results-2026.json
+      - name: Rebuild and verify
+        run: |
+          python3 -m pip install --quiet pillow
+          python3 scripts/build.py
+          python3 ftc/scripts/build.py
+          python3 broadcast/scripts/build.py
+          python3 broadcast/scripts/build_share_images.py
+          python3 broadcast/scripts/build.py
+          python3 scripts/verify.py --write-checksums
+          python3 scripts/verify.py
+          python3 ftc/scripts/verify.py
+          python3 broadcast/scripts/verify.py
+          node --check broadcast/dist/app.js
+      - name: Open a pull request if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          branch="refresh/$(date -u +%Y-%m-%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add -A
+          git commit -m "Refresh results and calendar ($(date -u +%Y-%m-%d))"
+          git push --force origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Refresh results and calendar ($(date -u +%Y-%m-%d))" \
+            --body "Automated refresh from The Blue Alliance and FTCScout. Review the data diff, then merge to publish. See docs/tba-api.md." \
+            || echo "A pull request for $branch already exists."

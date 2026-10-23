@@ -1,0 +1,905 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "source": "The Blue Alliance public team pages",
+  "retrievedDate": "2026-10-22",
+  "method": "Each team's https://www.thebluealliance.com/team/{n}/2026 page was saved and its event rank, qualification record, awards and playoff sentence extracted. Official record and district rank/points come from the preserved Statbotics snapshot and match TBA's page text. Refresh with scripts/fetch_tba.py and a TBA API key.",
+  "teams": [
+    {
+      "teamNumber": 1501,
+      "tbaUrl": "https://www.thebluealliance.com/team/1501/2026",
+      "responseSha256": "bad60775ff3188dc14abd5dd2c81c2e82c41ddd96ab93e3ed38b7f24fd4038ea",
+      "responseBytes": 562382,
+      "officialRecord": {
+        "wins": 45,
+        "losses": 15,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 6,
+        "points": 250,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 1,
+          "qualRecord": "17-1-0",
+          "awards": [
+            "District Event Winner",
+            "Imagery Award in honor of Jack Kamen"
+          ],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 1,
+            "result": "Won event",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 1 and won the event."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026inlaf",
+          "name": "FIN District Lafayette Event",
+          "shortName": "Lafayette",
+          "type": "district",
+          "startDate": "2026-03-26",
+          "endDate": "2026-03-28",
+          "week": 4,
+          "qualRank": 2,
+          "qualRecord": "15-2-0",
+          "awards": [
+            "District Event Winner",
+            "Innovation in Control Award sponsored by nVent"
+          ],
+          "playoff": {
+            "role": "1st Pick",
+            "alliance": 1,
+            "result": "Won event",
+            "sourceText": "They competed in the playoffs as the 1st Pick of Alliance 1 and won the event."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inlaf"
+        },
+        {
+          "key": "2026incmp",
+          "name": "FIRST Indiana State Championship",
+          "shortName": "Indiana State Championship",
+          "type": "district_championship",
+          "startDate": "2026-04-17",
+          "endDate": "2026-04-19",
+          "week": 7,
+          "qualRank": 6,
+          "qualRecord": "10-5-0",
+          "awards": [
+            "Quality Award"
+          ],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 5,
+            "result": "Eliminated in playoff round 3",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 5 and were eliminated in the Double Elimination Bracket (Round 3)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        },
+        {
+          "key": "2026arc",
+          "name": "FIRST Championship · Archimedes Division",
+          "shortName": "World Championship (Archimedes)",
+          "type": "championship_division",
+          "startDate": "2026-04-29",
+          "endDate": "2026-05-02",
+          "week": null,
+          "qualRank": 62,
+          "qualRecord": "3-7-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026arc"
+        },
+        {
+          "key": "2026kylou",
+          "name": "RiverBOaT Rumble",
+          "shortName": "RiverBOaT Rumble",
+          "type": "offseason",
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-11",
+          "week": null,
+          "qualRank": 5,
+          "qualRecord": "9-6-0",
+          "awards": [],
+          "playoff": {
+            "role": "1st Pick",
+            "alliance": 2,
+            "result": "Playoffs (final result not recorded on TBA)",
+            "sourceText": "They are 4-1-0 in the Double Elimination Bracket (Round 2) as the 1st Pick of Alliance 2."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026kylou"
+        }
+      ]
+    },
+    {
+      "teamNumber": 1720,
+      "tbaUrl": "https://www.thebluealliance.com/team/1720/2026",
+      "responseSha256": "592e64074bfc0a63ddbf30587b09160640fbf89a5d993cd3b313e33c7da47f6a",
+      "responseBytes": 609844,
+      "officialRecord": {
+        "wins": 31,
+        "losses": 24,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 11,
+        "points": 189,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 10,
+          "qualRecord": "8-7-0",
+          "awards": [
+            "Creativity Award sponsored by Rockwell Automation"
+          ],
+          "playoff": {
+            "role": "1st Pick",
+            "alliance": 3,
+            "result": "Eliminated in playoff round 3",
+            "sourceText": "They competed in the playoffs as the 1st Pick of Alliance 3 and were eliminated in the Double Elimination Bracket (Round 3)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026inwas",
+          "name": "FIN District Washington Event",
+          "shortName": "Washington",
+          "type": "district",
+          "startDate": "2026-04-02",
+          "endDate": "2026-04-04",
+          "week": 5,
+          "qualRank": 9,
+          "qualRecord": "7-7-0",
+          "awards": [
+            "Innovation in Control Award sponsored by nVent"
+          ],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 6,
+            "result": "Eliminated in playoff round 2",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 6 and were eliminated in the Double Elimination Bracket (Round 2)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inwas"
+        },
+        {
+          "key": "2026incmp",
+          "name": "FIRST Indiana State Championship",
+          "shortName": "Indiana State Championship",
+          "type": "district_championship",
+          "startDate": "2026-04-17",
+          "endDate": "2026-04-19",
+          "week": 7,
+          "qualRank": 8,
+          "qualRecord": "9-7-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 6,
+            "result": "Eliminated in playoff round 5",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 6 and were eliminated in the Double Elimination Bracket (Round 5)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        },
+        {
+          "key": "2026dal",
+          "name": "FIRST Championship · Daly Division",
+          "shortName": "World Championship (Daly)",
+          "type": "championship_division",
+          "startDate": "2026-04-29",
+          "endDate": "2026-05-02",
+          "week": null,
+          "qualRank": 23,
+          "qualRecord": "7-3-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026dal"
+        },
+        {
+          "key": "2026kylou",
+          "name": "RiverBOaT Rumble",
+          "shortName": "RiverBOaT Rumble",
+          "type": "offseason",
+          "startDate": "2026-07-10",
+          "endDate": "2026-07-11",
+          "week": null,
+          "qualRank": 1,
+          "qualRecord": "11-3-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 1,
+            "result": "Eliminated in playoff round 2",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 1 and were eliminated in the Double Elimination Bracket (Round 2)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026kylou"
+        },
+        {
+          "key": "2026iri",
+          "name": "Indiana Robotics Invitational",
+          "shortName": "Indiana Robotics Invitational",
+          "type": "offseason",
+          "startDate": "2026-07-16",
+          "endDate": "2026-07-18",
+          "week": null,
+          "qualRank": 8,
+          "qualRecord": "7-4-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 7,
+            "result": "Eliminated in playoff round 2",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 7 and were eliminated in the Double Elimination Bracket (Round 2)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026iri"
+        }
+      ]
+    },
+    {
+      "teamNumber": 9119,
+      "tbaUrl": "https://www.thebluealliance.com/team/9119/2026",
+      "responseSha256": "fdd6dc58686664ca0fbcd775141fe1cee0fc24c4f12897550aa0bc040460db14",
+      "responseBytes": 329947,
+      "officialRecord": {
+        "wins": 21,
+        "losses": 21,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 32,
+        "points": 89,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 10,
+          "qualRecord": "8-6-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 7,
+            "result": "Eliminated in playoff round 2",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 7 and were eliminated in the Double Elimination Bracket (Round 2)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 9,
+          "qualRecord": "9-7-0",
+          "awards": [
+            "Rising All-Star Award"
+          ],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 6,
+            "result": "Eliminated in playoff round 4",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 6 and were eliminated in the Double Elimination Bracket (Round 4)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026incmp",
+          "name": "FIRST Indiana State Championship",
+          "shortName": "Indiana State Championship",
+          "type": "district_championship",
+          "startDate": "2026-04-17",
+          "endDate": "2026-04-19",
+          "week": 7,
+          "qualRank": 32,
+          "qualRecord": "4-8-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        }
+      ]
+    },
+    {
+      "teamNumber": 9431,
+      "tbaUrl": "https://www.thebluealliance.com/team/9431/2026",
+      "responseSha256": "a5a2dd18603d16255f5f68973f9594cd7c76796156a6768fbe7c07bd7af75566",
+      "responseBytes": 327837,
+      "officialRecord": {
+        "wins": 21,
+        "losses": 20,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 33,
+        "points": 84,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 17,
+          "qualRecord": "6-8-0",
+          "awards": [],
+          "playoff": {
+            "role": "1st Pick",
+            "alliance": 7,
+            "result": "Eliminated in playoff round 2",
+            "sourceText": "They competed in the playoffs as the 1st Pick of Alliance 7 and were eliminated in the Double Elimination Bracket (Round 2)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 5,
+          "qualRecord": "11-4-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 3,
+            "result": "Eliminated in playoff round 3",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 3 and were eliminated in the Double Elimination Bracket (Round 3)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026incmp",
+          "name": "FIRST Indiana State Championship",
+          "shortName": "Indiana State Championship",
+          "type": "district_championship",
+          "startDate": "2026-04-17",
+          "endDate": "2026-04-19",
+          "week": 7,
+          "qualRank": 30,
+          "qualRecord": "4-8-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        }
+      ]
+    },
+    {
+      "teamNumber": 4982,
+      "tbaUrl": "https://www.thebluealliance.com/team/4982/2026",
+      "responseSha256": "0de439a87ec4e32f63298f4e857bce3e3afc34634a3ac610013b974ad6cdbd66",
+      "responseBytes": 373135,
+      "officialRecord": {
+        "wins": 24,
+        "losses": 25,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 21,
+        "points": 136,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 24,
+          "qualRecord": "10-7-0",
+          "awards": [
+            "District Event Winner"
+          ],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 1,
+            "result": "Won event",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 1 and won the event."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026inlaf",
+          "name": "FIN District Lafayette Event",
+          "shortName": "Lafayette",
+          "type": "district",
+          "startDate": "2026-03-26",
+          "endDate": "2026-03-28",
+          "week": 4,
+          "qualRank": 27,
+          "qualRecord": "6-10-0",
+          "awards": [],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 3,
+            "result": "Eliminated in playoff round 4",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 3 and were eliminated in the Double Elimination Bracket (Round 4)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inlaf"
+        },
+        {
+          "key": "2026incmp",
+          "name": "FIRST Indiana State Championship",
+          "shortName": "Indiana State Championship",
+          "type": "district_championship",
+          "startDate": "2026-04-17",
+          "endDate": "2026-04-19",
+          "week": 7,
+          "qualRank": 17,
+          "qualRecord": "8-8-0",
+          "awards": [],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 4,
+            "result": "Eliminated in playoff round 4",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 4 and were eliminated in the Double Elimination Bracket (Round 4)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        }
+      ]
+    },
+    {
+      "teamNumber": 10434,
+      "tbaUrl": "https://www.thebluealliance.com/team/10434/2026",
+      "responseSha256": "a56594f7c55b415b1598bec0dab05de1a9edea5b9ea35ddcbcc4b3e577308538",
+      "responseBytes": 363110,
+      "officialRecord": {
+        "wins": 21,
+        "losses": 27,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 28,
+        "points": 97,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 38,
+          "qualRecord": "9-9-0",
+          "awards": [
+            "District Event Winner"
+          ],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 1,
+            "result": "Won event",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 1 and won the event."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 26,
+          "qualRecord": "8-10-0",
+          "awards": [
+            "District Event Finalist"
+          ],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 2,
+            "result": "Finalist",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 2 and were eliminated in the Finals."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026incmp",
+          "name": "FIRST Indiana State Championship",
+          "shortName": "Indiana State Championship",
+          "type": "district_championship",
+          "startDate": "2026-04-17",
+          "endDate": "2026-04-19",
+          "week": 7,
+          "qualRank": 33,
+          "qualRecord": "4-8-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        }
+      ]
+    },
+    {
+      "teamNumber": 8103,
+      "tbaUrl": "https://www.thebluealliance.com/team/8103/2026",
+      "responseSha256": "9d65ed5e34d5bf3e458b17cffbc182220aada1e5ffd3468a8065a1da795a0281",
+      "responseBytes": 221594,
+      "officialRecord": {
+        "wins": 10,
+        "losses": 17,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 57,
+        "points": 23,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 32,
+          "qualRecord": "4-8-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 20,
+          "qualRecord": "6-9-0",
+          "awards": [],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 3,
+            "result": "Eliminated in playoff round 3",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 3 and were eliminated in the Double Elimination Bracket (Round 3)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        }
+      ]
+    },
+    {
+      "teamNumber": 10332,
+      "tbaUrl": "https://www.thebluealliance.com/team/10332/2026",
+      "responseSha256": "0c4dbfe8367c6cb42aacfb66d73b0b2b7708d4f915d09be332cda5ff2f9d4c28",
+      "responseBytes": 217537,
+      "officialRecord": {
+        "wins": 9,
+        "losses": 17,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 49,
+        "points": 35,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 23,
+          "qualRecord": "5-7-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026inlaf",
+          "name": "FIN District Lafayette Event",
+          "shortName": "Lafayette",
+          "type": "district",
+          "startDate": "2026-03-26",
+          "endDate": "2026-03-28",
+          "week": 4,
+          "qualRank": 29,
+          "qualRecord": "4-10-0",
+          "awards": [
+            "Judges' Award"
+          ],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 5,
+            "result": "Eliminated in playoff round 2",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 5 and were eliminated in the Double Elimination Bracket (Round 2)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inlaf"
+        }
+      ]
+    },
+    {
+      "teamNumber": 8742,
+      "tbaUrl": "https://www.thebluealliance.com/team/8742/2026",
+      "responseSha256": "360b82edda2a02abbe68ede519823c05611c5e1bcefff28e216d034ac5f25558",
+      "responseBytes": 213919,
+      "officialRecord": {
+        "wins": 9,
+        "losses": 16,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 61,
+        "points": 19,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inlaf",
+          "name": "FIN District Lafayette Event",
+          "shortName": "Lafayette",
+          "type": "district",
+          "startDate": "2026-03-26",
+          "endDate": "2026-03-28",
+          "week": 4,
+          "qualRank": 30,
+          "qualRecord": "4-8-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inlaf"
+        },
+        {
+          "key": "2026inwas",
+          "name": "FIN District Washington Event",
+          "shortName": "Washington",
+          "type": "district",
+          "startDate": "2026-04-02",
+          "endDate": "2026-04-04",
+          "week": 5,
+          "qualRank": 17,
+          "qualRecord": "5-8-0",
+          "awards": [],
+          "playoff": {
+            "role": "Backup",
+            "alliance": 6,
+            "result": "Eliminated in playoff round 2",
+            "sourceText": "They competed in the playoffs as the Backup of Alliance 6 and were eliminated in the Double Elimination Bracket (Round 2)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inwas"
+        }
+      ]
+    },
+    {
+      "teamNumber": 10172,
+      "tbaUrl": "https://www.thebluealliance.com/team/10172/2026",
+      "responseSha256": "585696791c9b93f92ed522759ed5dd5f13165b1a97db88014575adc4ca9c165d",
+      "responseBytes": 203581,
+      "officialRecord": {
+        "wins": 7,
+        "losses": 17,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 55,
+        "points": 28,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 23,
+          "qualRecord": "5-7-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026inlaf",
+          "name": "FIN District Lafayette Event",
+          "shortName": "Lafayette",
+          "type": "district",
+          "startDate": "2026-03-26",
+          "endDate": "2026-03-28",
+          "week": 4,
+          "qualRank": 32,
+          "qualRecord": "2-10-0",
+          "awards": [
+            "Rising All-Star Award"
+          ],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inlaf"
+        }
+      ]
+    },
+    {
+      "teamNumber": 8431,
+      "tbaUrl": "https://www.thebluealliance.com/team/8431/2026",
+      "responseSha256": "1090eba2926b9f446a9b125366258171cd6aba19ef2fdf5a10d8c976c13f4cd8",
+      "responseBytes": 204120,
+      "officialRecord": {
+        "wins": 9,
+        "losses": 15,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 60,
+        "points": 20,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 35,
+          "qualRecord": "3-9-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 18,
+          "qualRecord": "6-6-0",
+          "awards": [
+            "District Championship FIRST Leadership Award Semi-Finalist (Maitlen B)"
+          ],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        }
+      ]
+    },
+    {
+      "teamNumber": 10411,
+      "tbaUrl": "https://www.thebluealliance.com/team/10411/2026",
+      "responseSha256": "671effbf744e3921def234ce07f556c74d2f976369b945fdb48d073a702f6286",
+      "responseBytes": 203893,
+      "officialRecord": {
+        "wins": 7,
+        "losses": 17,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 62,
+        "points": 19,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 31,
+          "qualRecord": "4-8-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 36,
+          "qualRecord": "3-9-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        }
+      ]
+    },
+    {
+      "teamNumber": 8432,
+      "tbaUrl": "https://www.thebluealliance.com/team/8432/2026",
+      "responseSha256": "efd6f796c7e36cafba098ac78284d1527e43c9ab311d2854c45ae2f0e782bfca",
+      "responseBytes": 203919,
+      "officialRecord": {
+        "wins": 8,
+        "losses": 16,
+        "ties": 0
+      },
+      "district": {
+        "key": "2026fin",
+        "rank": 63,
+        "points": 17,
+        "teamCount": 68
+      },
+      "events": [
+        {
+          "key": "2026inmis",
+          "name": "FIN District Mishawaka Event",
+          "shortName": "Mishawaka",
+          "type": "district",
+          "startDate": "2026-03-06",
+          "endDate": "2026-03-08",
+          "week": 1,
+          "qualRank": 33,
+          "qualRecord": "4-8-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inmis"
+        },
+        {
+          "key": "2026incol",
+          "name": "FIN District Columbus Event",
+          "shortName": "Columbus",
+          "type": "district",
+          "startDate": "2026-03-20",
+          "endDate": "2026-03-22",
+          "week": 3,
+          "qualRank": 29,
+          "qualRecord": "4-8-0",
+          "awards": [],
+          "playoff": null,
+          "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        }
+      ]
+    }
+  ]
+}

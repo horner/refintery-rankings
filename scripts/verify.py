@@ -32,7 +32,7 @@ def haversine(a, b, radius):
 
 
 def eligible_files():
-    return sorted(p for p in ROOT.rglob("*") if p.is_file() and not any(part in {".git", "node_modules", "__pycache__", "verification-runs"} for part in p.relative_to(ROOT).parts) and p.name != "SHA256SUMS")
+    return sorted(p for p in ROOT.rglob("*") if p.is_file() and not any(part in {".git", "node_modules", "__pycache__", "verification-runs"} for part in p.relative_to(ROOT).parts) and p.name not in {"SHA256SUMS", "tba.env"})
 
 
 def main():

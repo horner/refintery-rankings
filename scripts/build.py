@@ -251,7 +251,7 @@ The [complete leadership findings](leadership-findings.md) include all qualifyin
     write_text("docs/sources.md", "\n".join(source_lines))
     readme = f"""# FIRST Robotics teams around Fort Wayne
 
-[Explore the NEI Robotics season preview and Top 10](https://horner.github.io/refintery-rankings/) — follow the 2026–27 event and proposed show calendar, revisit last season’s rankings, browse student and adult profiles, explore the DNF invitation for schools ready to start a team, and open the research sources. Public access; no sign-in required.
+[Explore the NEI Robotics standings and season preview](https://horner.github.io/refintery-rankings/) — browse all 13 regional FRC teams on desktop or phone, follow the 2026–27 calendar, explore team profiles and the DNF invitation for schools ready to start a team, and open the research sources. The separate [Top 10 display](broadcast/dist/top10.html) provides a large-screen EPA ranking, replay previews, optional cycling, and PNG exports. Public access; no sign-in required.
 
 ## New to robotics? A guide for football and baseball fans
 
@@ -280,7 +280,7 @@ Read the ratings here as you might read **yards per play in football or batting 
 
 ## Explore the local teams
 
-[Broadcast screen and announcer package](broadcast/README.md): a sports-style FRC Top 10, team spotlights, separate FTC features, and a source-aware media rundown.
+[Responsive site, Top 10 display, and media package](broadcast/README.md): full regional FRC standings, a separate large-screen Top 10, team profiles, FTC features, and a source-aware press kit. See the same guide for a local preview that leaves the publication unchanged.
 
 Research directories for two FIRST programs within 60 straight-line miles of Citizens Square in downtown Fort Wayne. Each program retains its own season, ranking metric, evidence, and qualifications.
 
@@ -330,7 +330,7 @@ School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coa
 
 ## Rebuild and verify
 
-The analysis build and checks use Python 3.10+ and the standard library. They run offline against the committed captures. CSV serialization has a Node standard-library mode; the initial CSV authoring also used the spreadsheet artifact runtime.
+The research-only analysis build and checks use Python 3.10+ and the standard library. The complete site build, including its HTML page generator, requires **Python 3.12+**. Builds run offline against the committed captures. CSV serialization has a Node standard-library mode; the initial CSV authoring also used the spreadsheet artifact runtime.
 
 ```bash
 python scripts/build.py
@@ -342,6 +342,8 @@ python broadcast/scripts/verify.py
 python scripts/verify.py
 ```
 
+Use a Python 3.12+ interpreter for the sequence above. To review the resulting site locally without publishing, run `python3 -m http.server 8765 --bind 127.0.0.1 --directory broadcast/dist` and open `http://127.0.0.1:8765/`. The [Pages workflow](.github/workflows/pages.yml) deploys pushes to `main`; local builds and previews do not publish. Use this local workflow to review a change before deployment.
+
 To record fresh evidence without overwriting these captures:
 
 ```bash
@@ -351,6 +353,10 @@ python scripts/fetch_statbotics.py --help
 ```
 
 The Statbotics preservation script creates dated capture directories and compares fresh results with the frozen baseline. See its [documented commands](docs/statbotics-provenance.md). A new retrieval does not silently update the published dataset: review the result and explicitly change `data/publication.json` and the baseline when appropriate.
+
+## Keeping results and the calendar current
+
+FRC results and the event calendar refresh from The Blue Alliance and FTCScout with [`scripts/fetch_tba.py`](scripts/fetch_tba.py) and [`scripts/fetch_calendar.py`](scripts/fetch_calendar.py), by hand or every Monday through the [refresh workflow](.github/workflows/refresh-data.yml), which opens a pull request for review. The Blue Alliance key is **not set yet**: copy [`tba.env.example`](tba.env.example) to `tba.env` locally, or add a `TBA_AUTH_KEY` repository secret. Full setup: [docs/tba-api.md](docs/tba-api.md).
 
 ## Contributing corrections
 

@@ -348,6 +348,49 @@
       "status": "unverified",
       "note": "No dedicated team logo published in the official team page or its source content as of 2026-10-22. Leave the logo slot empty; the Amp Lab school/program mark belongs in the separate school slot.",
       "retrievedDate": "2026-10-22"
+    },
+    {
+      "program": "frc",
+      "number": 8431,
+      "kind": "team",
+      "file": "assets/logos/team-8431.png",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/teams/frc-8431-robo-knights.png",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8431-robo-knights.mdx",
+      "label": "Robo-Knights logo",
+      "status": "verified",
+      "note": "Unmodified logo asset explicitly assigned to this team number in The REFINERY official website source. Used for identification; rights remain with the respective team/mark owner.",
+      "sha256": "c677fa67087b98ea2db1c5df91b8a6170581ed21560f805396eff67d75ee2e4d",
+      "retrievedDate": "2026-10-22",
+      "width": 256,
+      "height": 129
+    },
+    {
+      "program": "frc",
+      "number": 8432,
+      "kind": "team",
+      "file": "assets/logos/team-8432.png",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/teams/frc-8432-cyber-knights.png",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8432-cyber-knights.mdx",
+      "label": "Cyber Knights logo",
+      "status": "verified",
+      "note": "Unmodified logo asset explicitly assigned to this team number in The REFINERY official website source. Used for identification; rights remain with the respective team/mark owner.",
+      "sha256": "7f7625a0e0689c03d161154165d7361d25837689406ec1418d336b1d6df8bef5",
+      "retrievedDate": "2026-10-22",
+      "width": 256,
+      "height": 141
+    },
+    {
+      "program": "frc",
+      "number": 10411,
+      "kind": "team",
+      "file": "assets/logos/team-10411.svg",
+      "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/teams/frc-10411-g-code-generals.svg",
+      "pageUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-10411-g-code-generals.mdx",
+      "label": "G-Code Generals logo",
+      "status": "verified",
+      "note": "Unmodified logo asset explicitly assigned to this team number in The REFINERY official website source. Used for identification; rights remain with the respective team/mark owner.",
+      "sha256": "662529e3c312d3bb994810b2d91541cf0990133e5438b7657edd78af93d4b3a3",
+      "retrievedDate": "2026-10-22"
     }
   ],
   "note": "Public school and robotics team marks, obtained unmodified from official sources. Community teams are not assigned a school logo. Missing marks remain explicit."

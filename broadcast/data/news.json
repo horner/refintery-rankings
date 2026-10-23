@@ -1,0 +1,220 @@
+{
+  "note": "Coverage links collected by The REFINERY's website (src/content/news in BioNanomics/REFINERY-site), retrieved 2026-10-22. Team tags are ours; an untagged story covers the region.",
+  "source": "https://github.com/BioNanomics/REFINERY-site/tree/main/src/content/news",
+  "stories": [
+    {
+      "date": "2026-10-02",
+      "outlet": "PBS Fort Wayne (The 260)",
+      "title": "Science Central's New Planetarium, Snider Robotics, and Arena Dinner Theatre",
+      "url": "https://www.pbs.org/video/science-centrals-new-planetarium-snider-robotics-and-arena-dinner-theatre-4j2kgy/",
+      "teams": [
+        "frc9431"
+      ]
+    },
+    {
+      "date": "2026-06-23",
+      "outlet": "Canterbury School",
+      "title": "Canterbury Robotics Team Wins International Premier Competition",
+      "url": "https://www.canterburyschool.org/our-school/news/canterbury-robotics-team-wins-international-premier-competition",
+      "teams": [
+        "ftc22331"
+      ]
+    },
+    {
+      "date": "2026-03-25",
+      "outlet": "The 74",
+      "title": "Building a Mindset: Amp Lab Makes Entrepreneurship, Work Skills Its Mission",
+      "url": "https://www.the74million.org/article/building-a-mindset-amp-lab-makes-entrepreneurship-work-skills-its-mission/",
+      "teams": [
+        "ftc36124"
+      ]
+    },
+    {
+      "date": "2026-02-21",
+      "outlet": "Canterbury School",
+      "title": "Canterbury Robotics Earns First Place Control Award, Advances to State Tournament",
+      "url": "https://www.canterburyschool.org/our-school/news/canterbury-robotics-earns-first-place-control-award-advances-to-state-tournament",
+      "teams": [
+        "ftc22331"
+      ]
+    },
+    {
+      "date": "2026-02-09",
+      "outlet": "The Journal Gazette",
+      "title": "Fort Wayne Community marks second year with 'expensive sport' at all high schools",
+      "url": "https://www.journalgazette.net/local/schools/fort-wayne-community-marks-second-year-with-expensive-sport-at-all-high-schools/article_dd78b949-c0c6-4a9d-a8cd-c4b48e273d03.html",
+      "teams": [
+        "frc9119",
+        "frc9431",
+        "frc10434",
+        "frc10172",
+        "frc10411"
+      ]
+    },
+    {
+      "date": "2025-08-26",
+      "outlet": "Symetri",
+      "title": "Building the Future Through High School Robotics",
+      "url": "https://www.symetri.us/insights/cases/the-g-code-generals-high-school-robotics-team/",
+      "teams": [
+        "frc10411"
+      ]
+    },
+    {
+      "date": "2025-04-08",
+      "outlet": "WANE 15",
+      "title": "Team of the Week: Huntington County Robotics",
+      "url": "https://www.wane.com/sports/team-of-the-week/totw-huntington-county-robotics/",
+      "teams": [
+        "frc1501"
+      ]
+    },
+    {
+      "date": "2025-03-20",
+      "outlet": "WANE 15",
+      "title": "One man's generosity helps future generations within FWCS",
+      "url": "https://www.wane.com/news/local-news/one-mans-generosity-helps-future-generations-within-fwcs/",
+      "teams": []
+    },
+    {
+      "date": "2025-03-11",
+      "outlet": "Essex Brownell",
+      "title": "Supporting the Next Generation of Innovators",
+      "url": "https://www.essexbrownell.com/blog/north-side-high-robotics-intro",
+      "teams": [
+        "frc9119"
+      ]
+    },
+    {
+      "date": "2025-01-23",
+      "outlet": "Purdue Fort Wayne",
+      "title": "North Side robotics team boosted by PFW presence",
+      "url": "https://www.pfw.edu/news-center/north-side-robotics-team-boosted-pfw-presence",
+      "teams": [
+        "frc9119"
+      ]
+    },
+    {
+      "date": "2025-01-19",
+      "outlet": "The Journal Gazette",
+      "title": "Education Notebook: Fort Wayne robotics teams seek mentors",
+      "url": "https://www.journalgazette.net/local/schools/education-notebook-fort-wayne-robotics-teams-seek-mentors/article_17cb512c-c6c9-11ef-b2cd-273079118b5d.html",
+      "teams": []
+    },
+    {
+      "date": "2024-05-10",
+      "outlet": "KPC News",
+      "title": "EN robotics team demonstrates real-world learning",
+      "url": "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html",
+      "teams": [
+        "frc8103"
+      ]
+    },
+    {
+      "date": "2024-04-16",
+      "outlet": "Huntington County TAB",
+      "title": "Huntington Robotics Team Wins State Title",
+      "url": "https://www.huntingtoncountytab.com/articles/features/huntington-robotics-team-wins-state-title/",
+      "teams": [
+        "frc1501"
+      ]
+    },
+    {
+      "date": "2024-04-13",
+      "outlet": "WANE 15",
+      "title": "Two area teams head to Texas for national robotics competition",
+      "url": "https://www.wane.com/top-stories/two-area-teams-head-to-texas-for-national-robotics-competition/",
+      "teams": []
+    },
+    {
+      "date": "2024-04-12",
+      "outlet": "21Alive",
+      "title": "Snider's robotics club prepares to compete at world championship",
+      "url": "https://www.21alivenews.com/2024/04/13/snider-robotics-club-prepares-compete-world-championship/",
+      "teams": [
+        "frc9431"
+      ]
+    },
+    {
+      "date": "2024-04-04",
+      "outlet": "KPC News",
+      "title": "Be Noble rallies support for state-bound robotics team",
+      "url": "https://www.kpcnews.com/newssun/article_21b1cfa8-7470-5a32-89a8-a901b2c8c1aa.html",
+      "teams": [
+        "frc8103"
+      ]
+    },
+    {
+      "date": "2023-11-28",
+      "outlet": "Huntington County TAB",
+      "title": "Roanoke Lions help Robotics Team",
+      "url": "https://www.huntingtoncountytab.com/articles/community/roanoke-lions-help-robotics-team/",
+      "teams": [
+        "frc1501"
+      ]
+    },
+    {
+      "date": "2023-09-30",
+      "outlet": "21Alive",
+      "title": "'Battle of the Robots' Competition held at North Side High School",
+      "url": "https://www.21alivenews.com/2023/09/30/battle-robots-competition-held-north-side-high-school/",
+      "teams": [
+        "frc9119"
+      ]
+    },
+    {
+      "date": "2023-09-29",
+      "outlet": "WBOI",
+      "title": "North Side High School to host first robotics challenge",
+      "url": "https://www.wboi.org/news/2023-09-29/north-side-high-school-to-host-first-robotics-challenge",
+      "teams": [
+        "frc9119"
+      ]
+    },
+    {
+      "date": "2022-04-26",
+      "outlet": "WANE 15",
+      "title": "Team of the Week: Homestead Robotics",
+      "url": "https://www.wane.com/sports/team-of-the-week/totw-homestead-robotics/",
+      "teams": [
+        "frc4982"
+      ]
+    },
+    {
+      "date": "2022-01-19",
+      "outlet": "East Noble High School",
+      "title": "Robotics Team Gets Underway",
+      "url": "https://hs.eastnoble.net/o/enhs/article/632602",
+      "teams": [
+        "frc8103"
+      ]
+    },
+    {
+      "date": "2019-11-15",
+      "outlet": "Trine University",
+      "title": "East Noble robotics team boosts STEM skills at Trine",
+      "url": "https://www.trine.edu/news/2019/east-noble-robotics.aspx",
+      "teams": [
+        "frc8103"
+      ]
+    },
+    {
+      "date": "2016-05-02",
+      "outlet": "PHD, Inc.",
+      "title": "Huntington County 4-H Robotics Team Wins Big at FIRST Robotics World Championship",
+      "url": "https://www.phdinc.com/blog/post/huntington-county-4h-robotics-team-wins-big-at-first-robotics-world-championship",
+      "teams": [
+        "frc1501"
+      ]
+    },
+    {
+      "date": "2015-01-04",
+      "outlet": "The Journal Gazette",
+      "title": "Homestead robotics team ready for challenge",
+      "url": "https://www.journalgazette.net/local/homestead-robotics-team-ready-for-challenge/article_dd333017-8396-50a8-9a32-d92f955e29cf.html",
+      "teams": [
+        "frc4982"
+      ]
+    }
+  ]
+}

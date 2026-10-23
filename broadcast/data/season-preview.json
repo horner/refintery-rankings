@@ -175,6 +175,48 @@
       "note": "Proposed state review show: Mar 9. Date and venue are from FIRST Indiana’s listing."
     },
     {
+      "id": "frc-mishawaka",
+      "startDate": "2027-03-12",
+      "endDate": "2027-03-14",
+      "dateLabel": "Mar 12–14, 2027",
+      "program": "FRC",
+      "status": "Confirmed event",
+      "title": "Indiana opens in Mishawaka",
+      "description": "The first FIRST Indiana district event of 2027. Last year, THRUST (1501) and CyBears (10434) won it together.",
+      "location": "FIN District Mishawaka Event · Mishawaka",
+      "linkUrl": "https://www.thebluealliance.com/event/2027inmis",
+      "linkLabel": "Event on The Blue Alliance",
+      "note": "Dates from The Blue Alliance, checked Oct 22, 2026."
+    },
+    {
+      "id": "frc-sellersburg",
+      "startDate": "2027-03-19",
+      "endDate": "2027-03-21",
+      "dateLabel": "Mar 19–21, 2027",
+      "program": "FRC",
+      "status": "Confirmed event",
+      "title": "Week 3: Sellersburg",
+      "description": "A new stop on the Indiana district circuit.",
+      "location": "FIN District Sellersburg Event · Sellersburg",
+      "linkUrl": "https://www.thebluealliance.com/event/2027insel",
+      "linkLabel": "Event on The Blue Alliance",
+      "note": "Dates from The Blue Alliance, checked Oct 22, 2026."
+    },
+    {
+      "id": "frc-lafayette",
+      "startDate": "2027-03-25",
+      "endDate": "2027-03-27",
+      "dateLabel": "Mar 25–27, 2027",
+      "program": "FRC",
+      "status": "Confirmed event",
+      "title": "Week 4: Lafayette",
+      "description": "THRUST (1501) won Lafayette in 2026.",
+      "location": "FIN District Lafayette Event · Lafayette",
+      "linkUrl": "https://www.thebluealliance.com/event/2027inlaf",
+      "linkLabel": "Event on The Blue Alliance",
+      "note": "Dates from The Blue Alliance, checked Oct 22, 2026."
+    },
+    {
       "id": "fort-wayne",
       "startDate": "2027-04-01",
       "endDate": "2027-04-03",

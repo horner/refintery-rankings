@@ -1,0 +1,134 @@
+{
+  "generator": "broadcast/scripts/build_display_assets.py",
+  "note": "Resized WebP copies for on-screen display only. Originals, sources and checksums remain in logos.json and asset-manifest.json.",
+  "assets": [
+    {
+      "source": "assets/logos/school-10172.png",
+      "sourceSha256": "bf02ac0d359a8b031a5bf181e6206c21c174d4728f3aca1d2eeb25f17e755e38",
+      "file": "assets/display/school-10172.webp",
+      "sha256": "9b41a1688807b5870f09d2616c927b4b1a90586b1aae077d59dc72d92844cbac",
+      "width": 256,
+      "height": 286
+    },
+    {
+      "source": "assets/logos/school-10332.png",
+      "sourceSha256": "e907544421d76adfba551717b95dedfb6e99ef7b5b449a124ee94a5158d09d28",
+      "file": "assets/display/school-10332.webp",
+      "sha256": "70be0a08d346fe87df0cd1d4d1638cd8909910c12d11532ca53874fdf885d202",
+      "width": 320,
+      "height": 149
+    },
+    {
+      "source": "assets/logos/school-10434.png",
+      "sourceSha256": "3afc708ebb021b2263e9d551f4bb29d557d21bda608330d9d0a4771a54d1d2f4",
+      "file": "assets/display/school-10434.webp",
+      "sha256": "d43498fdaacd1b679f51d1d07d894f68d5ec93e2cf2b3686161e95a9b60e00b9",
+      "width": 256,
+      "height": 151
+    },
+    {
+      "source": "assets/logos/school-1501.png",
+      "sourceSha256": "6654945756b761550103cdb5a1c0b56cf330ff8edb7242e6146c9e0801d39b88",
+      "file": "assets/display/school-1501.webp",
+      "sha256": "9b33437dc50777398bff79efda4c5ee18145ca24ba153bccf40d3cb9e23a66e0",
+      "width": 150,
+      "height": 150
+    },
+    {
+      "source": "assets/logos/school-4982.png",
+      "sourceSha256": "2a0a5d5d7228f543faec0f852de88328983f68124df4c036e623ee601e894886",
+      "file": "assets/display/school-4982.webp",
+      "sha256": "724d0ae6c3c08fa9dba89cbb5570a2c422cbd8356a74b3b94039c42a971e9bca",
+      "width": 100,
+      "height": 100
+    },
+    {
+      "source": "assets/logos/school-8103.png",
+      "sourceSha256": "4e5d736bfbba0922a1ff0821e8625561018f99f085a03878441c2c414f956e3a",
+      "file": "assets/display/school-8103.webp",
+      "sha256": "23a256a81d5bd6500695d0adbbcd96fb398073ddf645c11250e1cb76a7bd6880",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "source": "assets/logos/school-8742.png",
+      "sourceSha256": "f4f56dd695a03a56047106246e639be53043b577f369e5d4e1e0ba84491304b0",
+      "file": "assets/display/school-8742.webp",
+      "sha256": "33c6290cf00cea94085ddb933cd00a704b9d7e92c2ab611f636f7602ed2777fe",
+      "width": 106,
+      "height": 100
+    },
+    {
+      "source": "assets/logos/school-9119.png",
+      "sourceSha256": "52e194be601f0982af359ab8dff23b55a824dccd3924b166ea6bd998de0ee7c0",
+      "file": "assets/display/school-9119.webp",
+      "sha256": "8942099ae5668aadf406b305d3bff3eeda66477186da2e1b09fcadf6b012e311",
+      "width": 150,
+      "height": 150
+    },
+    {
+      "source": "assets/logos/school-9431.png",
+      "sourceSha256": "537a087ae243ea8f0d31279c9706836d51de83e10d7d9dd23f1b37528655370c",
+      "file": "assets/display/school-9431.webp",
+      "sha256": "b3a5b1a02f194519b9c53d6c6af99bf9e48266c312299db8a82a4348a7981d89",
+      "width": 320,
+      "height": 193
+    },
+    {
+      "source": "assets/logos/team-10332.png",
+      "sourceSha256": "005ef0eb455fd61ee0b4c218d740b9a971e01c5852332530ee5d0de9ed2487c4",
+      "file": "assets/display/team-10332.webp",
+      "sha256": "96703c44ab1eaacc5532e05451dc02c2e6883ad5f4a81f13f8bcf0e0ba71790b",
+      "width": 164,
+      "height": 164
+    },
+    {
+      "source": "assets/logos/team-10434.png",
+      "sourceSha256": "2072dd35da5b0a19d724d5e7c096f1082f70fcaec987fc34bb17a83dd94abdba",
+      "file": "assets/display/team-10434.webp",
+      "sha256": "40ed13bb99197e2f9f5f6e897b1f2275e8f8fdea0cafd17e1017b329e9e0952c",
+      "width": 256,
+      "height": 239
+    },
+    {
+      "source": "assets/logos/team-1720.png",
+      "sourceSha256": "439e41560078066aeb029f336783909e4a7030e560e9cfa77119c7d8673023da",
+      "file": "assets/display/team-1720.webp",
+      "sha256": "b717120e02f2cec22cefd2d1843e21ad6174ab1c5c94499225d0599802ab1a64",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "source": "assets/logos/team-22331.svg",
+      "sourceSha256": "330f210a6103aaccd47afda622ae59d38c463f9b70a76e0269aeadbe4e34d864",
+      "file": "assets/display/team-22331.webp",
+      "sha256": "08a784d201aea789bdc7245b446da0b3881c2d8b821a8e539bfd7c03f5a1e9ff",
+      "width": 320,
+      "height": 144
+    },
+    {
+      "source": "assets/logos/team-9431.png",
+      "sourceSha256": "06fea8b1491d8bbfff367ad93c7a7873ed8c1c79835cf5e444fd35b01f1c79f1",
+      "file": "assets/display/team-9431.webp",
+      "sha256": "5dfddbb727310e254063be3e985107f43359ea489db7ddd2653def10aaf3544a",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "source": "assets/refinery-shop.jpeg",
+      "sourceSha256": "07e5a5f2703af455b10952a554ae53112f03131dff54f082bc8eaa6b2c4f2b9d",
+      "file": "assets/display/refinery-shop-640.webp",
+      "sha256": "f1a69e56e1f8fd780f22a6a3b057bea6e3a927e1044dfea2ef1579162abee363",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "source": "assets/refinery-shop.jpeg",
+      "sourceSha256": "07e5a5f2703af455b10952a554ae53112f03131dff54f082bc8eaa6b2c4f2b9d",
+      "file": "assets/display/refinery-shop-1200.webp",
+      "sha256": "c07f8b31f43b85cc14cec7cc85623afc848a796919fa2948b4981fc225da955d",
+      "width": 1200,
+      "height": 900
+    }
+  ]
+}

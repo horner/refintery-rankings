@@ -10,6 +10,7 @@ import struct
 from datetime import date, timedelta
 import math
 from verify_matches import verify_matches
+from share_facts import card_facts, fingerprint, home_facts
 
 HERE = Path(__file__).resolve().parents[1]
 ROOT = HERE.parent
@@ -38,6 +39,17 @@ def main():
         require(thumbnail["videoUrl"] == "https://www.youtube.com/watch?v=" + thumbnail["videoId"] and thumbnail["videoId"] in metadata["html"], "Video preview belongs to a different replay")
     match_library = {(r["program"], r["number"]): r for r in data["matchHighlights"]["teams"]}
     require(all(match_library[("FRC", t["number"])]["main"]["videoUrl"] in data["videoThumbnails"] for t in data["top10"]), "Ranked team is missing its match preview")
+    for t in data["top10"]:
+        match = match_library[("FRC", t["number"])]["main"]
+        thumbnail = data["videoThumbnails"][match["videoUrl"]]
+        page = (HERE / f"dist/team/{t['number']}/index.html").read_text(encoding="utf-8")
+        require(thumbnail["file"] in page and match["videoUrl"] in page, f"Team {t['number']} lost its cached replay preview")
+        require(f"top10.html#team/{t['number']}" in page, f"Team {t['number']} has no Top 10 display link")
+    for asset in ("top10.html", "top10.js", "top10.css"):
+        require((HERE / "dist" / asset).is_file(), f"Missing Top 10 display asset: {asset}")
+    display_page = (HERE / "dist/top10.html").read_text(encoding="utf-8")
+    require("top10.js" in display_page and "top10.css" in display_page, "Top 10 display assets are not linked")
+    require('href="top10.html"' in (HERE / "dist/index.html").read_text(encoding="utf-8"), "Home page has no Top 10 entry point")
     frc = load(ROOT / "data/teams.json")
     ftc = load(ROOT / "ftc/data/teams.json")
     regional = sorted([r for r in frc["teams"] if r["scope_group"] == "northeast_indiana"],
@@ -107,8 +119,8 @@ def main():
     require(all(date.fromisoformat(s["date"]).weekday() == 0 for s in preview["shows"]["frc"]), "FRC editorial target is not Monday")
     dnf = load(HERE / "data/dnf.json")
     universe = load(HERE / "data/dnf-research/school-universe.json")
-    require(data["dnf"] == dnf, "DNF directory did not reach the browser data")
-    groups = (dnf["schools"], dnf["excludedSchools"], dnf["reviewSchools"])
+    require(data["dnf"] == {"src": "dnf.json"} and load(HERE / "dist/dnf.json") == dnf, "DNF directory did not reach the browser data")
+    groups = (dnf["schools"], dnf["excludedSchools"], dnf["reviewSchools"], dnf["facilitySchools"])
     all_schools = [school for group in groups for school in group]
     require(len({school["id"] for school in all_schools}) == len(all_schools) == len(universe["schools"]), "DNF join duplicated or dropped a campus")
     require({school["id"] for school in all_schools} == {school["id"] for school in universe["schools"]}, "DNF universe join lost school identities")
@@ -131,13 +143,58 @@ def main():
         require(not invited_ids.intersection(positive.get("ncesIds", [])), f"Known team school incorrectly invited as DNF: {positive['schoolName']}")
     require(all(school["teamClassification"] == "no-school-affiliation-verified-in-roster-screen" for school in dnf["schools"]), "DNF treats a known affiliation as absence")
     require(all(school["teamClassification"] == "exclude-active/recent" for school in dnf["excludedSchools"]), "DNF existing-team classification changed")
+    facility_ids = {row["id"] for row in load(HERE / "data/dnf-research/facility-exclusions.json")["schools"]}
+    require({school["id"] for school in dnf["facilitySchools"]} == facility_ids and not invited_ids & facility_ids, "Secure or residential facility invited as DNF")
     require(dnf["counts"]["invited"] == len(dnf["schools"]) and dnf["counts"]["leadersNamed"] == sum(bool(school["leader"]) for school in dnf["schools"]), "DNF visible counts are incorrect")
     require("no school-affiliated FTC or FRC team verified" in dnf["qualification"] and "another robotics program" in dnf["qualification"], "DNF team-absence qualification lost")
     require(dnf["contactEmail"] == "info@refineryrobotics.org" and (HERE / "dist/dnf-methodology.md").is_file(), "DNF interest destination or evidence missing")
-    for name in ("index.html", "styles.css", "app.js", "press-kit.md", "assets/refinery-logo.svg", "assets/refinery-shop.jpeg"):
+    for name in ("index.html", "styles.css", "app.js", "press-kit.md", "assets/refinery-logo.svg", "assets/refinery-logo-reversed.svg", "assets/fonts/inter-latin-wght.woff2"):
         require((HERE / "dist" / name).is_file(), f"Missing static asset: {name}")
     for asset in load(HERE / "data/asset-manifest.json")["assets"]:
         require(hashlib.sha256((HERE / asset["file"]).read_bytes()).hexdigest() == asset["sha256"], "Official asset checksum changed")
+    results = {r["teamNumber"]: r for r in load(HERE / "data/tba/results-2026.json")["teams"]}
+    standings = data["standings"]
+    require([t["number"] for t in standings] == [r["team_number"] for r in regional], "Standings power order does not match EPA")
+    require(sorted(t["standingsRank"] for t in standings) == list(range(1, len(regional) + 1)), "District standings ranks are not 1..n")
+    for t in standings:
+        source = results[t["number"]]
+        require(t["record"] == source["officialRecord"] and t["district"] == source["district"] and t["events"] == source["events"], f"TBA results changed in the browser data: {t['number']}")
+        require(len(t["titles"]) == sum(1 for e in source["events"] if e["type"] != "offseason" and e["playoff"] and e["playoff"]["result"] == "Won event"), "Event titles miscounted")
+    require(data["seasonSummary"]["eventTitles"] == sum(len(t["titles"]) for t in standings), "Season title count is wrong")
+    for photo in data["photos"]:
+        require(hashlib.sha256((HERE / "dist" / photo["file"]).read_bytes()).hexdigest() == photo["sha256"] and photo["credit"], f"Photo missing or changed: {photo['file']}")
+    require(all(s["url"].startswith("https://") and s["date"] and s["outlet"] for s in data["news"]["stories"]), "News link missing source details")
+    for name in ("press/index.html", "press/standings.html", "press/media.html", "press/press.css"):
+        require((HERE / "dist" / name).is_file(), f"Missing reporter page: {name}")
+    csv_rows = (HERE / "dist/standings-2026.csv").read_text(encoding="utf-8").strip().splitlines()
+    require(len(csv_rows) == len(standings) + 1, "Standings CSV is missing teams")
+    require(all(link["url"].startswith(("https://", "http://")) and link["source"] for t in standings for link in t["teamLinks"]), "Team link without a source")
+    require(all(t["logos"].get("team", {}).get("file") or t["logos"].get("school", {}).get("file") for t in standings if t["number"] != 1720) and standings, "A standings team has no logo")
+    require(".md\"" not in (HERE / "dist/index.html").read_text(encoding="utf-8"), "The site links a raw Markdown file")
+    cards = load(HERE / "data/share-images.json")["cards"]
+    require(cards["home"]["fingerprint"] == fingerprint(home_facts(data)) and (HERE / "dist" / cards["home"]["file"]).is_file(), "Home share card is stale; rerun build_share_images.py")
+    for program, teams in (("FRC", standings), ("FTC", data["ftc"]["teams"] + data["ftc"]["newTeams"])):
+        for team in teams:
+            card = cards.get(str(team["number"]))
+            require(card and card["fingerprint"] == fingerprint(card_facts(team, program)) and (HERE / "dist" / card["file"]).is_file(), f"Share card for {team['number']} is stale; rerun build_share_images.py")
+            page = (HERE / f"dist/team/{team['number']}/index.html").read_text(encoding="utf-8")
+            require(card["file"] in page and f"/team/{team['number']}/" in page, f"Team page for {team['number']} is missing or lacks its share tags")
+    index = (HERE / "dist/index.html").read_text(encoding="utf-8")
+    require("<!--@" not in index and all(f'id="team-{t["number"]}"' in index for t in standings), "Home page was not pre-rendered")
+    calendar = load(HERE / "data/calendar-2026-27.json")
+    require(data["calendar"] == calendar and calendar["events"], "Calendar did not reach the browser data")
+    require([e["startDate"] for e in calendar["events"]] == sorted(e["startDate"] for e in calendar["events"]), "Calendar is out of order")
+    for e in calendar["events"]:
+        require(date.fromisoformat(e["startDate"]) <= date.fromisoformat(e["endDate"]) and e["url"].startswith("https://") and e["program"] in {"FRC", "FTC", "FTC + FRC"}, f"Calendar event incomplete: {e['id']}")
+    require((HERE / "dist/calendar.ics").read_bytes().count(b"BEGIN:VEVENT") == len(calendar["events"]), "calendar.ics is out of date")
+    for e in calendar["events"]:
+        entry = e.get("entrants")
+        require(entry is None or (isinstance(entry["posted"], bool) and (not entry["posted"] or set(entry["local"]) <= {t["number"] for t in standings} | {22331, 25638, 36124})), f"Entrants for {e['id']} include a team outside the region list")
+    display = load(HERE / "data/display-assets.json")["assets"]
+    require(data["displayAssets"] == {r["source"]: {"file": r["file"], "width": r["width"], "height": r["height"]} for r in display}, "Display assets did not reach the browser data")
+    for row in display:
+        require(hashlib.sha256((HERE / "dist" / row["source"]).read_bytes()).hexdigest() == row["sourceSha256"], f"Display copy is stale; rerun build_display_assets.py: {row['source']}")
+        require(hashlib.sha256((HERE / "dist" / row["file"]).read_bytes()).hexdigest() == row["sha256"], f"Display copy checksum changed: {row['file']}")
     marks = load(HERE / "data/logos.json")["logos"]
     require(len({(r["program"], r["number"], r["kind"]) for r in marks}) == len(marks), "Duplicate logo identity")
     for mark in marks:

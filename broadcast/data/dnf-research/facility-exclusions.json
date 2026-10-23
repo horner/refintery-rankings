@@ -1,0 +1,45 @@
+{
+  "note": "Secure, detention or residential treatment campuses. They appear in school directories but are not schools a community robotics invitation can reach, so they are listed separately rather than invited.",
+  "schools": [
+    {
+      "id": "IN-0100",
+      "name": "Allen Co Juvenile Center",
+      "reason": "Juvenile detention center (Allen County)."
+    },
+    {
+      "id": "IN-0145",
+      "name": "Allen Co Youth Services Center",
+      "reason": "Youth residential/detention services campus (Allen County)."
+    },
+    {
+      "id": "A9701438",
+      "name": "Bashor Children's Home",
+      "reason": "Residential treatment campus for children and youth."
+    },
+    {
+      "id": "A1901971",
+      "name": "Paddock View Residential Center",
+      "reason": "Residential treatment campus."
+    },
+    {
+      "id": "A1701689",
+      "name": "Crossroad Child & Family Services",
+      "reason": "Residential treatment campus for children and youth (Fort Wayne)."
+    },
+    {
+      "id": "IN-2416",
+      "name": "Grant County Comm Justice Center",
+      "reason": "Juvenile justice/detention campus (Grant County)."
+    },
+    {
+      "id": "A0301470",
+      "name": "Gateway Woods School",
+      "reason": "School on a residential children's home campus (Leo)."
+    },
+    {
+      "id": "A2101755",
+      "name": "Pierceton Woods Academy",
+      "reason": "Residential treatment campus for youth (Pierceton)."
+    }
+  ]
+}

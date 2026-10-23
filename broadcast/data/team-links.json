@@ -1,0 +1,375 @@
+{
+  "sources": [
+    "The REFINERY website team pages",
+    "The Blue Alliance public team pages"
+  ],
+  "retrievedDate": "2026-10-22",
+  "note": "Public team links. Confirm with the team before publishing a contact.",
+  "teams": [
+    {
+      "teamNumber": 1501,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/teamthrust1501/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-1501-thrust.mdx"
+        },
+        {
+          "type": "Facebook",
+          "url": "https://www.facebook.com/Teamthrust1501/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-1501-thrust.mdx"
+        },
+        {
+          "type": "YouTube",
+          "url": "https://www.youtube.com/@teamthrust1501",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-1501-thrust.mdx"
+        },
+        {
+          "type": "Flickr",
+          "url": "https://www.flickr.com/photos/teamthrust1501/collections",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-1501-thrust.mdx"
+        },
+        {
+          "type": "Website",
+          "url": "http://huntingtonrobotics.org/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-1501-thrust.mdx"
+        },
+        {
+          "type": "Facebook",
+          "url": "https://www.facebook.com/team1501",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1501/2026"
+        },
+        {
+          "type": "X",
+          "url": "https://twitter.com/team1501",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1501/2026"
+        }
+      ],
+      "tbaResponseSha256": "bad60775ff3188dc14abd5dd2c81c2e82c41ddd96ab93e3ed38b7f24fd4038ea"
+    },
+    {
+      "teamNumber": 1720,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Website",
+          "url": "https://phyxtgears.org",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1720/2026"
+        },
+        {
+          "type": "Facebook",
+          "url": "https://www.facebook.com/frcteam1720",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1720/2026"
+        },
+        {
+          "type": "Facebook",
+          "url": "https://www.facebook.com/phyxtgears",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1720/2026"
+        },
+        {
+          "type": "X",
+          "url": "https://twitter.com/frcteam1720",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1720/2026"
+        },
+        {
+          "type": "X",
+          "url": "https://twitter.com/team1720",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1720/2026"
+        },
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/frcteam1720",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1720/2026"
+        },
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/team1720",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/1720/2026"
+        }
+      ],
+      "tbaResponseSha256": "592e64074bfc0a63ddbf30587b09160640fbf89a5d993cd3b313e33c7da47f6a"
+    },
+    {
+      "teamNumber": 9119,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/ironlegends9119/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-9119-iron-legends.mdx"
+        }
+      ],
+      "tbaResponseSha256": "fdd6dc58686664ca0fbcd775141fe1cee0fc24c4f12897550aa0bc040460db14"
+    },
+    {
+      "teamNumber": 9431,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/snider_robotics9431",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-9431-snider-panthers.mdx"
+        },
+        {
+          "type": "GitHub",
+          "url": "https://github.com/snidercs",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-9431-snider-panthers.mdx"
+        },
+        {
+          "type": "Website",
+          "url": "https://snidercs.org/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-9431-snider-panthers.mdx"
+        },
+        {
+          "type": "Facebook",
+          "url": "https://www.facebook.com/share/affc9rrkq6sqjcud",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/9431/2026"
+        },
+        {
+          "type": "YouTube",
+          "url": "https://www.youtube.com/@thegoldstandard9431",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/9431/2026"
+        },
+        {
+          "type": "X",
+          "url": "https://twitter.com/sniderrobotics",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/9431/2026"
+        }
+      ],
+      "tbaResponseSha256": "a5a2dd18603d16255f5f68973f9594cd7c76796156a6768fbe7c07bd7af75566"
+    },
+    {
+      "teamNumber": 4982,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/4982_olympus_robotics/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-4982-olympus-robotics.mdx"
+        },
+        {
+          "type": "TikTok",
+          "url": "https://www.tiktok.com/@olympus.robotics.hhs",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-4982-olympus-robotics.mdx"
+        },
+        {
+          "type": "YouTube",
+          "url": "https://www.youtube.com/@olympusrobotics4982",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-4982-olympus-robotics.mdx"
+        },
+        {
+          "type": "GitHub",
+          "url": "https://github.com/OlympusRobotics/Olympus_Robotics_FRC",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-4982-olympus-robotics.mdx"
+        },
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/homestead.robotics",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/4982/2026"
+        },
+        {
+          "type": "GitHub",
+          "url": "https://github.com/olympusrobotics",
+          "source": "The Blue Alliance",
+          "sourceUrl": "https://www.thebluealliance.com/team/4982/2026"
+        }
+      ],
+      "tbaResponseSha256": "0de439a87ec4e32f63298f4e857bce3e3afc34634a3ac610013b974ad6cdbd66"
+    },
+    {
+      "teamNumber": 10434,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/cybears10434/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-10434-cybears.mdx"
+        },
+        {
+          "type": "Facebook",
+          "url": "https://www.facebook.com/NorthropRobotics",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-10434-cybears.mdx"
+        }
+      ],
+      "tbaResponseSha256": "a56594f7c55b415b1598bec0dab05de1a9edea5b9ea35ddcbcc4b3e577308538"
+    },
+    {
+      "teamNumber": 8103,
+      "program": "frc",
+      "links": [
+        {
+          "type": "TikTok",
+          "url": "https://www.tiktok.com/@knights.robotics.81.84",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8103-knight-robotics.mdx"
+        },
+        {
+          "type": "X",
+          "url": "https://x.com/8103En",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8103-knight-robotics.mdx"
+        }
+      ],
+      "tbaResponseSha256": "9d65ed5e34d5bf3e458b17cffbc182220aada1e5ffd3468a8065a1da795a0281"
+    },
+    {
+      "teamNumber": 10332,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/carrollrobotic",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-10332-carroll-charger-robotics.mdx"
+        }
+      ],
+      "tbaResponseSha256": "0c4dbfe8367c6cb42aacfb66d73b0b2b7708d4f915d09be332cda5ff2f9d4c28"
+    },
+    {
+      "teamNumber": 8742,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/frcteam8742",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8742-argyll-attack.mdx"
+        },
+        {
+          "type": "X",
+          "url": "https://twitter.com/frcteam8742",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8742-argyll-attack.mdx"
+        }
+      ],
+      "tbaResponseSha256": "360b82edda2a02abbe68ede519823c05611c5e1bcefff28e216d034ac5f25558"
+    },
+    {
+      "teamNumber": 10172,
+      "program": "frc",
+      "links": [],
+      "tbaResponseSha256": "585696791c9b93f92ed522759ed5dd5f13165b1a97db88014575adc4ca9c165d"
+    },
+    {
+      "teamNumber": 8431,
+      "program": "frc",
+      "links": [
+        {
+          "type": "TikTok",
+          "url": "https://www.tiktok.com/@knights.robotics.81.84",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8431-robo-knights.mdx"
+        },
+        {
+          "type": "X",
+          "url": "https://x.com/8103En",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8431-robo-knights.mdx"
+        }
+      ],
+      "tbaResponseSha256": "1090eba2926b9f446a9b125366258171cd6aba19ef2fdf5a10d8c976c13f4cd8"
+    },
+    {
+      "teamNumber": 10411,
+      "program": "frc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/gcode_generals/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-10411-g-code-generals.mdx"
+        }
+      ],
+      "tbaResponseSha256": "671effbf744e3921def234ce07f556c74d2f976369b945fdb48d073a702f6286"
+    },
+    {
+      "teamNumber": 8432,
+      "program": "frc",
+      "links": [
+        {
+          "type": "TikTok",
+          "url": "https://www.tiktok.com/@knights.robotics.81.84",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8432-cyber-knights.mdx"
+        },
+        {
+          "type": "X",
+          "url": "https://x.com/8103En",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/frc-8432-cyber-knights.mdx"
+        }
+      ],
+      "tbaResponseSha256": "efd6f796c7e36cafba098ac78284d1527e43c9ab311d2854c45ae2f0e782bfca"
+    },
+    {
+      "teamNumber": 22331,
+      "program": "ftc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/randomrobtics22331/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/ftc-22331-random.mdx"
+        },
+        {
+          "type": "Facebook",
+          "url": "https://www.facebook.com/CanterburySchoolFW",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/ftc-22331-random.mdx"
+        },
+        {
+          "type": "Website",
+          "url": "https://sites.google.com/canterburyschool.org/robotics/home",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/ftc-22331-random.mdx"
+        }
+      ]
+    },
+    {
+      "teamNumber": 25638,
+      "program": "ftc",
+      "links": [
+        {
+          "type": "Instagram",
+          "url": "https://www.instagram.com/ftcteam25638/",
+          "source": "The REFINERY",
+          "sourceUrl": "https://github.com/BioNanomics/REFINERY-site/blob/main/src/content/teams/ftc-25638-mg.mdx"
+        }
+      ]
+    },
+    {
+      "teamNumber": 36124,
+      "program": "ftc",
+      "links": []
+    }
+  ]
+}
