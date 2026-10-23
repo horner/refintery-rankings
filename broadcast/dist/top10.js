@@ -17,6 +17,7 @@
   }
   const external = (url, label) => safeUrl(url) ? `<a href="${esc(safeUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>` : '';
   const selected = () => state.data.top10[state.selected];
+  const schoolLabel = (team) => String(team.school || team.name).split(' / ')[0].replace(/\s*\(community team\)$/, '');
   const standing = (team) => state.data.standings?.find((item) => Number(item.number) === Number(team.number)) || {};
   const matchFor = (team) => state.data.matchHighlights?.teams?.find((item) => item.program === 'FRC' && Number(item.number) === Number(team.number))?.main || standing(team).closestMatch;
   const thumbnailFor = (match) => asset(state.data.videoThumbnails?.[match?.videoUrl]?.file);
@@ -55,7 +56,7 @@
     state.statusTimer = setTimeout(() => { $('status').textContent = ''; }, 6000);
   }
   function renderRows() {
-    $('ranking-rows').innerHTML = state.data.top10.map((team, index) => `<button type="button" class="rank-row" data-team="${index}" aria-current="${index === state.selected}" aria-label="Regional power rank ${esc(team.rank)}, team ${esc(team.number)}, ${esc(team.name)}, ${esc(team.city)}, EPA ${num(team.epa, 2)}"><span class="rank">${String(team.rank).padStart(2, '0')}</span><span class="row-marks" aria-hidden="true">${['school', 'team'].map((kind) => logoFor(team, kind) ? `<img class="${team.logos?.[kind]?.background === 'dark' ? 'dark-logo' : ''}" src="${esc(logoFor(team, kind))}" alt="">` : '<span></span>').join('')}</span><span class="team-number">${esc(team.number)}</span><span class="team-copy"><span class="team-name">${esc(team.name)}</span><span class="team-city">${esc(team.city)} · ${esc(team.county)} County</span></span><span class="epa">${num(team.epa, 2)}</span></button>`).join('');
+    $('ranking-rows').innerHTML = state.data.top10.map((team, index) => `<button type="button" class="rank-row" data-team="${index}" aria-current="${index === state.selected}" aria-label="Regional power rank ${esc(team.rank)}, team ${esc(team.number)}, ${esc(team.name)}, ${esc(team.school)}, ${esc(team.city)}, EPA ${num(team.epa, 2)}"><span class="rank">${String(team.rank).padStart(2, '0')}</span><span class="row-marks" aria-hidden="true">${['school', 'team'].map((kind) => logoFor(team, kind) ? `<img class="${team.logos?.[kind]?.background === 'dark' ? 'dark-logo' : ''}" src="${esc(logoFor(team, kind))}" alt="">` : '<span></span>').join('')}</span><span class="team-copy"><span class="school-name">${esc(schoolLabel(team))}</span><span class="team-name">${esc(team.name)} · ${esc(team.number)}</span></span><span class="epa">${num(team.epa, 2)}</span></button>`).join('');
   }
   function renderSpotlight() {
     const team = selected();
@@ -66,9 +67,9 @@
     const record = stats.record ? `${num(stats.record.wins)}–${num(stats.record.losses)}–${num(stats.record.ties)}` : '—';
     const district = stats.district?.rank ? `#${num(stats.district.rank)}` : '—';
     const replay = match ? `<div class="replay-heading"><h3>CLOSEST FINISH / REPLAY</h3><span>Final alliance scores</span></div>${video && thumbnail ? `<a class="replay-image-link" href="${esc(video)}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${esc(team.name)} in ${esc(match.eventName)}, ${esc(match.matchLabel)} (opens YouTube)"><img class="replay-image" src="${esc(thumbnail)}" alt="Replay thumbnail for ${esc(match.videoTitle || `${match.eventName}, ${match.matchLabel}`)}" decoding="async"><span class="play-cta"><b aria-hidden="true">▶</b> WATCH THE MATCH ↗</span></a>` : `<div class="no-replay"><strong>${video ? 'Match replay available' : 'Match result preserved'}</strong><p>${video ? external(video, 'Watch the match') : 'A verified replay is not available for this match.'}</p></div>`}<div class="match-caption"><p>${esc(match.eventName)}<br>${esc(match.phase)} · ${esc(match.matchLabel)} · ${esc(match.dateLabel || date(match.playedDate))}</p><div class="match-score"><span class="red">${num(match.redScore)}</span>–<span class="blue">${num(match.blueScore)}</span><small>Team ${esc(team.number)}: ${esc(match.teamAlliance)} · ${esc(match.outcome)}</small></div></div>` : '<div class="no-replay"><strong>Replay research in progress</strong><p>No verified match replay is included for this team.</p></div>';
-    $('spotlight').innerHTML = `<p class="spotlight-kicker">POWER RANK ${esc(team.rank)} / TEAM ${esc(team.number)}</p><div class="identity"><div class="identity-copy"><h2 id="team-title">${esc(team.name)}</h2><p class="team-school">${esc(team.school)}<br>${esc(team.city)}, Indiana</p></div><div class="identity-marks">${logoHtml(team, 'school')}${logoHtml(team, 'team')}</div></div><div class="stats"><div class="stat"><strong class="stat-value">${num(team.epa, 2)}</strong><span class="stat-label">Statbotics EPA · 2026</span></div><div class="stat"><strong class="stat-value">${record}</strong><span class="stat-label">2026 season W–L–T</span></div><div class="stat"><strong class="stat-value">${district}</strong><span class="stat-label">FIRST IN district${stats.district?.points != null ? ` · ${num(stats.district.points)} pts` : ''}</span></div></div>${peopleHtml(team)}<div class="replay">${replay}</div><div class="spotlight-links"><a class="back-to-rankings" href="#rankings">↑ Back to the Top 10</a>${external(team.profileUrl || stats.links?.statbotics, 'EPA source')}${external(stats.links?.tba || team.sourceUrls?.find((url) => url.includes('thebluealliance.com')), 'Season results')}${match ? external(match.officialUrl, 'Official match') : ''}<a href="index.html#team/${esc(team.number)}">Full team profile ↗</a></div>`;
+    $('spotlight').innerHTML = `<p class="spotlight-kicker">POWER RANK ${esc(team.rank)} / TEAM ${esc(team.number)}</p><div class="identity"><div class="identity-copy"><h2 id="team-title">${esc(team.school)}</h2><p class="team-school">${esc(team.name)} · Team ${esc(team.number)}<br>${esc(team.city)}, Indiana</p></div><div class="identity-marks">${logoHtml(team, 'school')}${logoHtml(team, 'team')}</div></div><div class="stats"><div class="stat"><strong class="stat-value">${num(team.epa, 2)}</strong><span class="stat-label">Statbotics EPA · 2026</span></div><div class="stat"><strong class="stat-value">${record}</strong><span class="stat-label">2026 season W–L–T</span></div><div class="stat"><strong class="stat-value">${district}</strong><span class="stat-label">FIRST IN district${stats.district?.points != null ? ` · ${num(stats.district.points)} pts` : ''}</span></div></div>${peopleHtml(team)}<div class="replay">${replay}</div><div class="spotlight-links"><a class="back-to-rankings" href="#rankings">↑ Back to the Top 10</a>${external(team.profileUrl || stats.links?.statbotics, 'EPA source')}${external(stats.links?.tba || team.sourceUrls?.find((url) => url.includes('thebluealliance.com')), 'Season results')}${match ? external(match.officialUrl, 'Official match') : ''}<a href="index.html#team/${esc(team.number)}">Full team profile ↗</a></div>`;
     document.querySelectorAll('[data-team]').forEach((row) => row.setAttribute('aria-current', String(Number(row.dataset.team) === state.selected)));
-    document.title = `${team.name} · Power Top 10 · The REFINERY`;
+    document.title = `${team.school} · Power Top 10 · The REFINERY`;
   }
   function stopCycle(message = '') {
     if (!state.cycle) return;
@@ -140,6 +141,7 @@
         image.src = file;
       });
       const [thumbnail, schoolLogo, teamLogo] = await Promise.all([loadImage(thumbnailFor(match)), loadImage(logoFor(team, 'school')), loadImage(logoFor(team, 'team'))]);
+      const rowLogos = await Promise.all(state.data.top10.map((item) => Promise.all(['school', 'team'].map((kind) => loadImage(logoFor(item, kind))))));
       const canvas = document.createElement('canvas');
       canvas.width = 1920; canvas.height = 1080;
       const ctx = canvas.getContext('2d');
@@ -177,27 +179,34 @@
         rectangle(48, y, 968, 65, active ? '#0d3550' : '#ffffff');
         rectangle(48, y, 5, 65, active ? '#a1d18b' : '#dce4e8');
         write(String(item.rank).padStart(2, '0'), 84, y + 43, '800 37px "Barlow Condensed"', active ? '#a1d18b' : '#2b7252', 'center');
-        write(item.number, 128, y + 43, '700 37px "Barlow Condensed"', active ? '#ffffff' : '#0d3550');
-        write(item.name, 247, y + 32, '700 35px "Barlow Condensed"', active ? '#ffffff' : '#0f172a');
-        write(`${item.city} · ${item.county} County`, 248, y + 53, '500 15px Inter', active ? '#c6d5df' : '#536072');
+        rowLogos[index].forEach((mark, markIndex) => {
+          if (!mark) return;
+          const kind = markIndex === 0 ? 'school' : 'team';
+          const [x, width, height] = markIndex === 0 ? [116, 58, 44] : [182, 28, 30];
+          rectangle(x, y + (65 - height) / 2, width, height, item.logos?.[kind]?.background === 'dark' ? '#09283d' : '#ffffff');
+          const scale = Math.min((width - 4) / mark.width, (height - 4) / mark.height);
+          ctx.drawImage(mark, x + (width - mark.width * scale) / 2, y + (65 - mark.height * scale) / 2, mark.width * scale, mark.height * scale);
+        });
+        write(schoolLabel(item), 224, y + 31, '700 31px "Barlow Condensed"', active ? '#ffffff' : '#0f172a');
+        write(`${item.name} · ${item.number}`, 225, y + 53, '500 17px Inter', active ? '#c6d5df' : '#536072');
         write(num(item.epa, 2), 990, y + 44, '700 42px "Barlow Condensed"', active ? '#ffffff' : '#0d3550', 'right');
       });
       rectangle(1052, 218, 820, 770, '#0d3550'); rectangle(1052, 218, 820, 5, '#a1d18b');
       write(`POWER RANK ${team.rank} / TEAM ${team.number}`, 1080, 258, '700 20px "Barlow Condensed"', '#a1d18b');
-      let titleSize = 58;
-      ctx.font = `800 ${titleSize}px "Barlow Condensed"`;
-      while (ctx.measureText(team.name).width > 545 && titleSize > 36) { titleSize -= 1; ctx.font = `800 ${titleSize}px "Barlow Condensed"`; }
-      write(team.name, 1080, 315, `800 ${titleSize}px "Barlow Condensed"`, '#ffffff');
+      const titleSize = team.school.length > 38 ? 42 : 48;
+      lines(team.school, 1080, 302, 545, 43, 2, `800 ${titleSize}px "Barlow Condensed"`, '#ffffff');
       [[schoolLogo, 'school', 'SCHOOL / ORG.'], [teamLogo, 'team', 'ROBOTICS TEAM']].forEach(([logo, kind, label], index) => {
-        const x = 1648 + index * 103;
-        rectangle(x, 276, 93, 66, team.logos?.[kind]?.background === 'dark' ? '#09283d' : '#ffffff');
+        const x = index === 0 ? 1648 : 1792;
+        const width = index === 0 ? 132 : 52;
+        const height = index === 0 ? 80 : 52;
+        rectangle(x, 276, width, height, team.logos?.[kind]?.background === 'dark' ? '#09283d' : '#ffffff');
         if (logo) {
-          const scale = Math.min(81 / logo.width, 54 / logo.height);
-          ctx.drawImage(logo, x + (93 - logo.width * scale) / 2, 309 - logo.height * scale / 2, logo.width * scale, logo.height * scale);
-        } else write('UNVERIFIED', x + 46, 312, '700 13px "Barlow Condensed"', '#536072', 'center');
-        write(label, x + 46, 359, '500 9px Inter', '#c6d5df', 'center');
+          const scale = Math.min((width - 10) / logo.width, (height - 10) / logo.height);
+          ctx.drawImage(logo, x + (width - logo.width * scale) / 2, 276 + (height - logo.height * scale) / 2, logo.width * scale, logo.height * scale);
+        } else write('UNVERIFIED', x + width / 2, 306, '700 10px "Barlow Condensed"', '#536072', 'center');
+        write(label, x + width / 2, 372, '500 9px Inter', '#c6d5df', 'center');
       });
-      lines(`${team.school} · ${team.city}, Indiana`, 1080, 355, 545, 24, 2, '500 18px Inter', '#d6e2e9');
+      lines(`${team.name} · Team ${team.number} · ${team.city}, Indiana`, 1080, 380, 545, 20, 1, '500 17px Inter', '#d6e2e9');
       rectangle(1080, 410, 764, 1, '#46657a'); rectangle(1080, 503, 764, 1, '#46657a');
       const statsList = [[num(team.epa, 2), 'STATBOTICS EPA · 2026'], [stats.record ? `${num(stats.record.wins)}–${num(stats.record.losses)}–${num(stats.record.ties)}` : '—', '2026 SEASON W–L–T'], [stats.district?.rank ? `#${num(stats.district.rank)}` : '—', `FIRST IN DISTRICT${stats.district?.points != null ? ` · ${num(stats.district.points)} PTS` : ''}`]];
       statsList.forEach(([value, label], index) => { const x = 1080 + index * 263; write(value, x, 465, '700 48px "Barlow Condensed"', index ? '#fff' : '#a1d18b'); write(label, x, 487, '500 12px Inter', '#c6d5df'); });

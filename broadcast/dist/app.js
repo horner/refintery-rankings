@@ -56,6 +56,16 @@
     const shown = state.data.displayAssets?.[mark.file];
     return `<span class="logo${mark.background === 'dark' ? ' dark-logo' : ''}"><img src="${esc(shown?.file || mark.file)}" alt="" loading="lazy" decoding="async"${shown ? ` width="${shown.width}" height="${shown.height}"` : ''}></span>`;
   };
+  const standingsLogos = (t) => {
+    const marks = ['school', 'team'].map((kind) => {
+      const mark = t.logos?.[kind];
+      if (!mark?.file || mark.status !== 'verified') return '';
+      const shown = state.data.displayAssets?.[mark.file];
+      const label = `${kind === 'school' ? 'School' : 'Team'}: ${mark.label}`;
+      return `<span class="logo ${kind}-mark${mark.background === 'dark' ? ' dark-logo' : ''}"><img src="${esc(shown?.file || mark.file)}" alt="${esc(label)}" title="${esc(label)}" loading="lazy" decoding="async"${shown ? ` width="${shown.width}" height="${shown.height}"` : ''}></span>`;
+    }).join('');
+    return `<span class="standings-logos">${marks || `<span class="logo placeholder" aria-hidden="true">${esc(t.number)}</span>`}</span>`;
+  };
   const identityLogos = (t) => `<div class="profile-logos">${['school', 'team'].map((kind) => {
     const mark = t.logos?.[kind];
     if (!mark?.file) return '';
@@ -89,7 +99,7 @@
     return `<details class="team" id="team-${t.number}">
       <summary class="team-row">
         <span class="rank">${rank}</span>
-        <span class="identity">${logo(t.logos, t.number)}<span><strong><span class="team-name">${esc(t.name)}</span> <span class="team-number muted">· ${t.number}</span></strong><small>${esc(t.city)} · ${esc(t.school)}</small></span></span>
+        <span class="identity">${standingsLogos(t)}<span><strong class="school-name">${esc(t.school)}</strong><small class="team-secondary"><span class="team-name">${esc(t.name)}</span> <span class="team-number">· FRC ${t.number}</span></small><small class="school-city">${esc(t.city)}</small></span></span>
         <span class="stat r num">${esc(record(t.record))}<small>W-L</small></span>
         <span class="stat r district num">${district}<small>${num(t.district.points)} points</small></span>
         <span class="stat r epa num">${num(t.epa, 1)}<small>EPA</small></span>
@@ -122,7 +132,7 @@
 
   function renderStandings() {
     const teams = [...state.data.standings].sort((a, b) => state.sort === 'power' ? a.powerRank - b.powerRank : a.standingsRank - b.standingsRank);
-    $('standings-list').innerHTML = `<div class="standings-header"><span>#</span><span>Team</span><span class="r">${term('record', 'Record')}</span><span class="r">${term('district', 'District')}</span><span class="r">${term('epa', 'EPA')}</span><span class="h-honors">2026 honors</span><span></span></div>${teams.map(standingsRow).join('')}`;
+    $('standings-list').innerHTML = `<div class="standings-header"><span>#</span><span>School / team</span><span class="r">${term('record', 'Record')}</span><span class="r">${term('district', 'District')}</span><span class="r">${term('epa', 'EPA')}</span><span class="h-honors">2026 honors</span><span></span></div>${teams.map(standingsRow).join('')}`;
     $('standings-list').querySelectorAll('details.team').forEach((el) => el.addEventListener('toggle', () => {
       const body = el.querySelector('.team-detail');
       if (el.open && !body.innerHTML) body.innerHTML = teamDetail(state.data.standings.find((t) => t.number === Number(body.dataset.team)));
