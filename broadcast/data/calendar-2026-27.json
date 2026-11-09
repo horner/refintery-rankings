@@ -1,6 +1,6 @@
 {
   "season": "2026–27",
-  "retrievedDate": "2026-10-22",
+  "retrievedDate": "2026-11-09",
   "sources": [
     "FTCScout events API",
     "The Blue Alliance (hand-checked; no API key set)",
@@ -85,11 +85,7 @@
       "url": "https://www.thebluealliance.com/event/2026inbbb",
       "source": "The Blue Alliance",
       "address": "",
-      "watch": [],
-      "entrants": {
-        "posted": false,
-        "note": "Add a TBA key to check FRC entries."
-      }
+      "watch": []
     },
     {
       "id": "frc-2026infor",
@@ -106,11 +102,7 @@
       "description": "The REFINERY's Halloween offseason event. Matches 8:15 a.m.–6 p.m. ET; college and career fair 10 a.m.–2 p.m. Free spectator admission; costumes encouraged.",
       "url": "https://refineryrobotics.org/programs-events/monster-match/",
       "source": "The REFINERY (TBA lists Oct 30–31 including load-in)",
-      "watch": [],
-      "entrants": {
-        "posted": false,
-        "note": "Add a TBA key to check FRC entries."
-      }
+      "watch": []
     },
     {
       "id": "ftc-usinweq1",
@@ -128,8 +120,8 @@
       "watch": [],
       "source": "FTCScout",
       "entrants": {
-        "posted": false,
-        "count": 0,
+        "posted": true,
+        "count": 31,
         "local": []
       }
     },
@@ -149,9 +141,12 @@
       "watch": [],
       "source": "FTCScout",
       "entrants": {
-        "posted": false,
-        "count": 0,
-        "local": []
+        "posted": true,
+        "count": 25,
+        "local": [
+          22331,
+          36124
+        ]
       }
     },
     {
@@ -186,8 +181,8 @@
       "watch": [],
       "source": "FTCScout",
       "entrants": {
-        "posted": false,
-        "count": 0,
+        "posted": true,
+        "count": 34,
         "local": []
       }
     },
@@ -207,9 +202,11 @@
       "watch": [],
       "source": "FTCScout",
       "entrants": {
-        "posted": false,
-        "count": 0,
-        "local": []
+        "posted": true,
+        "count": 34,
+        "local": [
+          36124
+        ]
       }
     },
     {
@@ -244,9 +241,11 @@
       "watch": [],
       "source": "FTCScout",
       "entrants": {
-        "posted": false,
-        "count": 0,
-        "local": []
+        "posted": true,
+        "count": 34,
+        "local": [
+          25638
+        ]
       }
     },
     {
@@ -265,9 +264,12 @@
       "watch": [],
       "source": "FTCScout",
       "entrants": {
-        "posted": false,
-        "count": 0,
-        "local": []
+        "posted": true,
+        "count": 31,
+        "local": [
+          22331,
+          25638
+        ]
       }
     },
     {
@@ -288,6 +290,27 @@
       "entrants": {
         "posted": false,
         "note": "Not tracked."
+      }
+    },
+    {
+      "id": "ftc-usincmp",
+      "program": "FTC",
+      "type": "Championship",
+      "name": "FTC Championship · Indiana State Championship",
+      "startDate": "2027-03-06",
+      "endDate": "2027-03-06",
+      "venue": "University of Indianapolis Nicoson Hall",
+      "city": "Indianapolis",
+      "state": "IN",
+      "address": "3957 Campus Wy",
+      "description": "",
+      "url": "https://ftcscout.org/events/2026/USINCMP",
+      "watch": [],
+      "source": "FTCScout",
+      "entrants": {
+        "posted": false,
+        "count": 0,
+        "local": []
       }
     },
     {
