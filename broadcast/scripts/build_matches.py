@@ -204,8 +204,8 @@ def build_matches():
         "methodologyUrl": "match-highlights.md", "policy": POLICY,
         "scoreNote": SCORE_NOTE, "teams": teams,
     }
-    (HERE / "data/match-highlights.json").write_text(json.dumps(library, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (HERE / "dist/match-highlights.md").write_text(render_methodology(library, frc, ftc), encoding="utf-8")
+    (HERE / "data/match-highlights.json").write_text(json.dumps(library, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    (HERE / "dist/match-highlights.md").write_text(render_methodology(library, frc, ftc), encoding="utf-8", newline="\n")
     return library
 
 

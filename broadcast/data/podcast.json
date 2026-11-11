@@ -1,0 +1,12 @@
+{
+  "title": "The REFINERY Podcast",
+  "tagline": "Members of The REFINERY break down Northeast Indiana robotics the way a sports show would: the standings, the stats, who's rising and who to watch.",
+  "note": "Working title. To publish an episode, add it to \"episodes\" with its YouTube video ID; the newest episode becomes the featured video and the placeholder disappears.",
+  "topics": [
+    "Standings check: where every team sits in the district points race",
+    "Stat of the week: records, EPA and what the numbers actually mean",
+    "Team spotlight: the students, the robot and the story behind the season",
+    "Weekend preview and recap: who's competing and how they did"
+  ],
+  "episodes": []
+}

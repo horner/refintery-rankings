@@ -1,0 +1,2464 @@
+{
+  "schemaVersion": 1,
+  "source": "The Blue Alliance public team history pages",
+  "retrievedDate": "2026-11-10",
+  "method": "Each team's https://www.thebluealliance.com/team/{n}/history page was saved; its competition list (year, event, awards) and blue-banner list were extracted as shown. Event wins count District Event Winner, Regional Winners and championship winner awards. Future-year rows are event registrations, not results.",
+  "teams": [
+    {
+      "rookieYear": 2005,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026kylou",
+          "event": "RiverBOaT Rumble",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026arc",
+          "event": "Archimedes Division",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": [
+            "Quality Award"
+          ]
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": [
+            "District Event Winner",
+            "Innovation in Control Award sponsored by nVent"
+          ]
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "District Event Winner",
+            "Imagery Award in honor of Jack Kamen"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025gal",
+          "event": "Galileo Division",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inwas",
+          "event": "FIN District Washington Event presented by Toyota Indiana and Vincennes University",
+          "awards": [
+            "District Event Winner"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inkok",
+          "event": "FIN District Kokomo Event",
+          "awards": [
+            "District Event Winner",
+            "Innovation in Control Award sponsored by nVent"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "District Event Winner",
+            "Autonomous Award"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024kylou",
+          "event": "RiverBOaT Rumble",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024mil",
+          "event": "Milstein Division",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": [
+            "District Championship Winner"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024ineva",
+          "event": "FIN District Washington Event presented by Toyota Indiana and Vincennes University",
+          "awards": [
+            "Autonomous Award"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inpla",
+          "event": "FIN District Plainfield Event presented by Carrier",
+          "awards": [
+            "Autonomous Award"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "Autonomous Award"
+          ]
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023infor",
+          "event": "Fort Wayne Robotics Off-Season Tournament",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023mibb",
+          "event": "Big Bang!",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023new",
+          "event": "Newton Division",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023ingre",
+          "event": "FIN District Greenwood Event",
+          "awards": [
+            "District Event Winner",
+            "Industrial Design Award sponsored by General Motors"
+          ]
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inwla",
+          "event": "FIN District Tippecanoe Event",
+          "awards": [
+            "District Event Winner"
+          ]
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inkok",
+          "event": "FIN District Kokomo Event presented by AndyMark",
+          "awards": [
+            "District Event Finalist",
+            "Industrial Design Award sponsored by General Motors"
+          ]
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021finaw",
+          "event": "FIRST Indiana District Awards Event",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021gamzn",
+          "event": "Zinc Group - Game Design Challenge",
+          "awards": [
+            "Concept Award"
+          ]
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021gamce",
+          "event": "Game Design Challenge Event",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021irhti",
+          "event": "Titanium Group - INFINITE RECHARGE At Home Challenge",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021irhce",
+          "event": "INFINITE RECHARGE At Home Challenge Event",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021innce",
+          "event": "FIRST Innovation Challenge Event presented by Qualcomm",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021innc",
+          "event": "Carbon Group - FIRST Innovation Challenge",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "202121fin",
+          "event": "2021 Season Participation for FIN District Teams",
+          "awards": []
+        },
+        {
+          "year": 2020,
+          "eventKey": "2020incol",
+          "event": "* IN District Columbus Event (Cancelled)",
+          "awards": []
+        },
+        {
+          "year": 2020,
+          "eventKey": "2020inblo",
+          "event": "IN District Bloomington Event",
+          "awards": [
+            "District Event Finalist",
+            "Autonomous Award sponsored by Ford"
+          ]
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019cur",
+          "event": "Curie Division",
+          "awards": []
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019incmp",
+          "event": "Indiana State Championship",
+          "awards": [
+            "Quality Award sponsored by Motorola Solutions Foundation"
+          ]
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019ingre",
+          "event": "IN District Center Grove Event sponsored by Toyota",
+          "awards": [
+            "Judges' Award"
+          ]
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019mosl",
+          "event": "St. Louis Regional",
+          "awards": [
+            "Regional Winners",
+            "Quality Award sponsored by Motorola Solutions Foundation",
+            "Safety Award sponsored by Underwriters Laboratories"
+          ]
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019inmis",
+          "event": "IN District St. Joseph Event",
+          "awards": [
+            "District Event Finalist",
+            "Safety Award sponsored by Underwriters Laboratories"
+          ]
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018incmp",
+          "event": "Indiana State Championship",
+          "awards": [
+            "Safety Award sponsored by Underwriters Laboratories"
+          ]
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018inwla",
+          "event": "IN District Tippecanoe Event",
+          "awards": [
+            "District Event Winner"
+          ]
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018inmis",
+          "event": "IN District St. Joseph Event",
+          "awards": [
+            "District Event Finalist"
+          ]
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017incm",
+          "event": "CAGE Match",
+          "awards": []
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017incmp",
+          "event": "Indiana State Championship",
+          "awards": [
+            "Gracious Professionalism Award sponsored by Johnson & Johnson"
+          ]
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017inpmh",
+          "event": "IN District - Perry Meridian Event",
+          "awards": [
+            "District Event Winner",
+            "Imagery Award in honor of Jack Kamen"
+          ]
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017inmis",
+          "event": "IN District - St. Joseph Event",
+          "awards": []
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017inwla",
+          "event": "IN District - Tippecanoe Event",
+          "awards": [
+            "District Event Finalist",
+            "Safety Award sponsored by Underwriters Laboratories"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016kybb",
+          "event": "Battle for the Bluegrass",
+          "awards": [
+            "Winner"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016cmp",
+          "event": "Einstein Field",
+          "awards": []
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016arc",
+          "event": "Archimedes Division",
+          "awards": [
+            "Championship Subdivision Winner"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016incmp",
+          "event": "Indiana State Championship",
+          "awards": [
+            "District Championship Finalist",
+            "Excellence in Engineering Award sponsored by Delphi"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016inpmh",
+          "event": "IN District - Perry Meridian Event",
+          "awards": [
+            "District Event Finalist",
+            "Excellence in Engineering Award sponsored by Delphi"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016inwla",
+          "event": "IN District - Tippecanoe Event",
+          "awards": [
+            "Innovation in Control Award sponsored by Rockwell Automation"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016ncmcl",
+          "event": "NC District - Guilford County Event",
+          "awards": [
+            "District Event Finalist",
+            "Quality Award sponsored by Motorola Solutions Foundation"
+          ]
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015cars",
+          "event": "Carson Division",
+          "awards": []
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015incmp",
+          "event": "Indiana FIRST District Championship",
+          "awards": [
+            "Regional Engineering Inspiration Award",
+            "District Championship Finalist"
+          ]
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015inwla",
+          "event": "IN District - Purdue Event",
+          "awards": []
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015inkok",
+          "event": "IN District - Kokomo City of Firsts Event sponsored by AndyMark",
+          "awards": [
+            "District Engineering Inspiration Award"
+          ]
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015inind",
+          "event": "IN District - Indianapolis Event",
+          "awards": [
+            "District Event Winner",
+            "Innovation in Control Award sponsored by Rockwell Automation"
+          ]
+        },
+        {
+          "year": 2014,
+          "eventKey": "2014cur",
+          "event": "Curie Division",
+          "awards": []
+        },
+        {
+          "year": 2014,
+          "eventKey": "2014papi",
+          "event": "Greater Pittsburgh Regional",
+          "awards": [
+            "Regional Finalist",
+            "Quality Award sponsored by Motorola"
+          ]
+        },
+        {
+          "year": 2014,
+          "eventKey": "2014mosl",
+          "event": "St. Louis Regional",
+          "awards": [
+            "Regional Winner",
+            "Quality Award sponsored by Motorola"
+          ]
+        },
+        {
+          "year": 2013,
+          "eventKey": "2013inth",
+          "event": "Crossroads Regional",
+          "awards": []
+        },
+        {
+          "year": 2013,
+          "eventKey": "2013inwl",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Gracious Professionalism Award sponsored by Johnson & Johnson"
+          ]
+        },
+        {
+          "year": 2012,
+          "eventKey": "2012cur",
+          "event": "Curie Division",
+          "awards": []
+        },
+        {
+          "year": 2012,
+          "eventKey": "2012in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "FIRST Dean's List Finalist Award (Adi Ben-Yehoshua)",
+            "Regional Winners",
+            "Industrial Design Award sponsored by General Motors",
+            "Industrial Safety Award sponsored by Underwriters Laboratories"
+          ]
+        },
+        {
+          "year": 2012,
+          "eventKey": "2012tn",
+          "event": "Smoky Mountains Regional",
+          "awards": [
+            "Imagery Award in honor of Jack Kamen"
+          ]
+        },
+        {
+          "year": 2011,
+          "eventKey": "2011iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2011,
+          "eventKey": "2011in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Woodie Flowers Award (Chris Elston)",
+            "Finalist"
+          ]
+        },
+        {
+          "year": 2010,
+          "eventKey": "2010iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2010,
+          "eventKey": "2010ct",
+          "event": "Northeast Utilities FIRST Connecticut Regional",
+          "awards": [
+            "Finalist",
+            "Entrepreneurship Award sponsored by Kleiner Perkins Caufield and Byers"
+          ]
+        },
+        {
+          "year": 2010,
+          "eventKey": "2010in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Engineering Excellence Award sponsored by Delphi",
+            "Industrial Safety Award sponsored by Underwriters Laboratories"
+          ]
+        },
+        {
+          "year": 2009,
+          "eventKey": "2009iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2009,
+          "eventKey": "2009in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Imagery Award",
+            "Underwriters Laboratories Industrial Safety Award"
+          ]
+        },
+        {
+          "year": 2008,
+          "eventKey": "2008iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2008,
+          "eventKey": "2008in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Underwriters Laboratory Industrial Safety Award"
+          ]
+        },
+        {
+          "year": 2007,
+          "eventKey": "2007iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2007,
+          "eventKey": "2007arc",
+          "event": "Archimedes Division",
+          "awards": []
+        },
+        {
+          "year": 2007,
+          "eventKey": "2007in",
+          "event": "Boilermaker Regional",
+          "awards": []
+        },
+        {
+          "year": 2006,
+          "eventKey": "2006in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Regional Finalist",
+            "Delphi \"Driving Tommorow's Technology\" Award"
+          ]
+        },
+        {
+          "year": 2005,
+          "eventKey": "2005in",
+          "event": "Boilermaker Regional",
+          "awards": []
+        }
+      ],
+      "banners": [
+        {
+          "award": "Winner",
+          "event": "2026 Lafayette District"
+        },
+        {
+          "award": "Winner",
+          "event": "2026 Mishawaka District"
+        },
+        {
+          "award": "Winner",
+          "event": "2025 Washington District"
+        },
+        {
+          "award": "Winner",
+          "event": "2025 Kokomo District"
+        },
+        {
+          "award": "Winner",
+          "event": "2025 Mishawaka District"
+        },
+        {
+          "award": "Winner",
+          "event": "2024 Indiana District Championship"
+        },
+        {
+          "award": "Winner",
+          "event": "2023 Greenwood District"
+        },
+        {
+          "award": "Winner",
+          "event": "2022 Tippecanoe District"
+        },
+        {
+          "award": "Winner",
+          "event": "2019 St. Louis Regional"
+        },
+        {
+          "award": "Winner",
+          "event": "2018 Tippecanoe District"
+        },
+        {
+          "award": "Winner",
+          "event": "2017 Perry Meridian District"
+        },
+        {
+          "award": "Winner",
+          "event": "2016 Archimedes Division"
+        },
+        {
+          "award": "Winner",
+          "event": "2015 Indianapolis District"
+        },
+        {
+          "award": "Winner",
+          "event": "2014 St. Louis Regional"
+        },
+        {
+          "award": "Winner",
+          "event": "2012 Boilermaker Regional"
+        },
+        {
+          "award": "Woodie Flowers Finalist Award",
+          "event": "2011 Boilermaker Regional"
+        }
+      ],
+      "teamNumber": 1501,
+      "tbaUrl": "https://www.thebluealliance.com/team/1501/history",
+      "responseSha256": "1dc619f17e310159cca18a9c48b7d8b51a283ceba03f21a56863c44100e259ad",
+      "responseBytes": 69932,
+      "eventWins": 16,
+      "awardCount": 72,
+      "seasonsPlayed": 22,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2006,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027insel",
+          "event": "FIN District Sellersburg Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026kylou",
+          "event": "RiverBOaT Rumble",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026dal",
+          "event": "Daly Division",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inwas",
+          "event": "FIN District Washington Event presented by Toyota IN & VU CARA",
+          "awards": [
+            "Innovation in Control Award sponsored by nVent"
+          ]
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": [
+            "Creativity Award sponsored by Rockwell Automation"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025kylou",
+          "event": "RiverBOaT Rumble",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inwas",
+          "event": "FIN District Washington Event presented by Toyota Indiana and Vincennes University",
+          "awards": [
+            "District Championship Dean's List Semi-Finalist (Emmalene J)",
+            "Industrial Design Award sponsored by General Motors"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inkok",
+          "event": "FIN District Kokomo Event",
+          "awards": [
+            "Excellence in Engineering Award"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024kylou",
+          "event": "RiverBOaT Rumble",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024ineva",
+          "event": "FIN District Washington Event presented by Toyota Indiana and Vincennes University",
+          "awards": [
+            "District Event Finalist",
+            "Gracious Professionalism Award"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incol",
+          "event": "FIN District Columbus Event",
+          "awards": [
+            "District Engineering Inspiration Award",
+            "District Championship Dean's List Semi-Finalist (Roman H)"
+          ]
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023infor",
+          "event": "Fort Wayne Robotics Off-Season Tournament",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023ingre",
+          "event": "FIN District Greenwood Event",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inwla",
+          "event": "FIN District Tippecanoe Event",
+          "awards": [
+            "Gracious Professionalism Award"
+          ]
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inpri",
+          "event": "FIN District Princeton Event presented by Toyota",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inra",
+          "event": "Indy Rage",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": [
+            "Judges' Award"
+          ]
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022incol",
+          "event": "FIN District Columbus Event presented by Toyota",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inkok",
+          "event": "FIN District Kokomo Event presented by AndyMark",
+          "awards": [
+            "Gracious Professionalism Award"
+          ]
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021infin",
+          "event": "FINite Recharge",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021ohram",
+          "event": "Rambotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021irhsm",
+          "event": "Samarium Group - INFINITE RECHARGE At Home Challenge",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021irhpm",
+          "event": "Promethium Group - INFINITE RECHARGE At Home Challenge",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021irhce",
+          "event": "INFINITE RECHARGE At Home Challenge Event",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "202121fin",
+          "event": "2021 Season Participation for FIN District Teams",
+          "awards": []
+        },
+        {
+          "year": 2020,
+          "eventKey": "2020incol",
+          "event": "* IN District Columbus Event (Cancelled)",
+          "awards": []
+        },
+        {
+          "year": 2020,
+          "eventKey": "2020inblo",
+          "event": "IN District Bloomington Event",
+          "awards": [
+            "District Event Winner",
+            "Excellence in Engineering Award sponsored by Delphi"
+          ]
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019arc",
+          "event": "Archimedes Division",
+          "awards": []
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019incmp",
+          "event": "Indiana State Championship",
+          "awards": [
+            "Woodie Flowers Finalist Award (Mike Koch)",
+            "District Championship Finalist",
+            "Autonomous Award sponsored by Ford"
+          ]
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019inwla",
+          "event": "IN District Tippecanoe Event",
+          "awards": [
+            "District Event Finalist"
+          ]
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019inmis",
+          "event": "IN District St. Joseph Event",
+          "awards": []
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018tes",
+          "event": "Tesla Division",
+          "awards": [
+            "Championship Subdivision Finalist"
+          ]
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018incmp",
+          "event": "Indiana State Championship",
+          "awards": [
+            "District Championship Finalist",
+            "Industrial Design Award sponsored by General Motors"
+          ]
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018inwla",
+          "event": "IN District Tippecanoe Event",
+          "awards": [
+            "Industrial Design Award sponsored by General Motors"
+          ]
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018inpla",
+          "event": "IN District Plainfield Event sponsored by Toyota",
+          "awards": []
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017cur",
+          "event": "Curie Division",
+          "awards": []
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017incmp",
+          "event": "Indiana State Championship",
+          "awards": [
+            "District Championship Finalist",
+            "Innovation in Control Award sponsored by Rockwell Automation"
+          ]
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017inpmh",
+          "event": "IN District - Perry Meridian Event",
+          "awards": [
+            "District Event Finalist",
+            "Innovation in Control Award sponsored by Rockwell Automation"
+          ]
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017inmis",
+          "event": "IN District - St. Joseph Event",
+          "awards": [
+            "Excellence in Engineering Award sponsored by Delphi"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016incmp",
+          "event": "Indiana State Championship",
+          "awards": [
+            "Innovation in Control Award sponsored by Rockwell Automation"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016inpmh",
+          "event": "IN District - Perry Meridian Event",
+          "awards": [
+            "Judges' Award"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016inwch",
+          "event": "IN District - Walker Warren Event",
+          "awards": [
+            "District Event Winner",
+            "Judges' Award"
+          ]
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015ohri",
+          "event": "CORI Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015new",
+          "event": "Newton Division",
+          "awards": []
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015incmp",
+          "event": "Indiana FIRST District Championship",
+          "awards": [
+            "Creativity Award sponsored by Xerox"
+          ]
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015inkok",
+          "event": "IN District - Kokomo City of Firsts Event sponsored by AndyMark",
+          "awards": [
+            "Excellence in Engineering Award sponsored by Delphi"
+          ]
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015inind",
+          "event": "IN District - Indianapolis Event",
+          "awards": []
+        },
+        {
+          "year": 2014,
+          "eventKey": "2014inwl",
+          "event": "Boilermaker Regional",
+          "awards": []
+        },
+        {
+          "year": 2013,
+          "eventKey": "2013inth",
+          "event": "Crossroads Regional",
+          "awards": []
+        },
+        {
+          "year": 2012,
+          "eventKey": "2012in",
+          "event": "Boilermaker Regional",
+          "awards": []
+        },
+        {
+          "year": 2011,
+          "eventKey": "2011iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2011,
+          "eventKey": "2011in",
+          "event": "Boilermaker Regional",
+          "awards": []
+        },
+        {
+          "year": 2010,
+          "eventKey": "2010iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2010,
+          "eventKey": "2010in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Excellence in Design Award sponsored by Autodesk"
+          ]
+        },
+        {
+          "year": 2009,
+          "eventKey": "2009iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2009,
+          "eventKey": "2009in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Autodesk Visualization Award"
+          ]
+        },
+        {
+          "year": 2008,
+          "eventKey": "2008iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2008,
+          "eventKey": "2008in",
+          "event": "Boilermaker Regional",
+          "awards": []
+        },
+        {
+          "year": 2007,
+          "eventKey": "2007iri",
+          "event": "Indiana Robotics Invitational",
+          "awards": []
+        },
+        {
+          "year": 2007,
+          "eventKey": "2007in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Autodesk Visualization Award"
+          ]
+        },
+        {
+          "year": 2006,
+          "eventKey": "2006in",
+          "event": "Boilermaker Regional",
+          "awards": [
+            "Highest Rookie Seed Award"
+          ]
+        }
+      ],
+      "banners": [
+        {
+          "award": "Winner",
+          "event": "2020 Bloomington District"
+        },
+        {
+          "award": "Woodie Flowers Finalist Award",
+          "event": "2019 Indiana District Championship"
+        },
+        {
+          "award": "Winner",
+          "event": "2016 Walker Warren District"
+        }
+      ],
+      "teamNumber": 1720,
+      "tbaUrl": "https://www.thebluealliance.com/team/1720/history",
+      "responseSha256": "2606675a75d325faaf5a0f9956084dabda3713df5b3feb797df58d6123c8822a",
+      "responseBytes": 51405,
+      "eventWins": 2,
+      "awardCount": 37,
+      "seasonsPlayed": 21,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027insel",
+          "event": "FIN District Sellersburg Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2014,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": [
+            "District Event Winner"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inkok",
+          "event": "FIN District Kokomo Event",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inpla",
+          "event": "FIN District Plainfield Event presented by Carrier",
+          "awards": [
+            "Gracious Professionalism Award"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incol",
+          "event": "FIN District Columbus Event",
+          "awards": [
+            "District Event Finalist",
+            "Team Sustainability Award sponsored by Dow"
+          ]
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inwla",
+          "event": "FIN District Tippecanoe Event",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "Creativity Award sponsored by Rockwell Automation"
+          ]
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inwla",
+          "event": "FIN District Tippecanoe Event",
+          "awards": [
+            "District Event Winner",
+            "Creativity Award sponsored by Rockwell Automation"
+          ]
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inkok",
+          "event": "FIN District Kokomo Event presented by AndyMark",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "202121fin",
+          "event": "2021 Season Participation for FIN District Teams",
+          "awards": []
+        },
+        {
+          "year": 2020,
+          "eventKey": "2020inpmh",
+          "event": "* IN District Perry Meridian Event (Cancelled)",
+          "awards": []
+        },
+        {
+          "year": 2020,
+          "eventKey": "2020inmis",
+          "event": "* IN District St. Joseph Event (Cancelled)",
+          "awards": []
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019inwla",
+          "event": "IN District Tippecanoe Event",
+          "awards": []
+        },
+        {
+          "year": 2019,
+          "eventKey": "2019inmis",
+          "event": "IN District St. Joseph Event",
+          "awards": []
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018inpla",
+          "event": "IN District Plainfield Event sponsored by Toyota",
+          "awards": []
+        },
+        {
+          "year": 2018,
+          "eventKey": "2018inmis",
+          "event": "IN District St. Joseph Event",
+          "awards": []
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017incmp",
+          "event": "Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017inmis",
+          "event": "IN District - St. Joseph Event",
+          "awards": []
+        },
+        {
+          "year": 2017,
+          "eventKey": "2017inwla",
+          "event": "IN District - Tippecanoe Event",
+          "awards": []
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016incmp",
+          "event": "Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016inwch",
+          "event": "IN District - Walker Warren Event",
+          "awards": [
+            "District Event Finalist"
+          ]
+        },
+        {
+          "year": 2016,
+          "eventKey": "2016inwla",
+          "event": "IN District - Tippecanoe Event",
+          "awards": [
+            "Industrial Design Award sponsored by General Motors"
+          ]
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015incmp",
+          "event": "Indiana FIRST District Championship",
+          "awards": []
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015inkok",
+          "event": "IN District - Kokomo City of Firsts Event sponsored by AndyMark",
+          "awards": [
+            "District Event Finalist"
+          ]
+        },
+        {
+          "year": 2015,
+          "eventKey": "2015inind",
+          "event": "IN District - Indianapolis Event",
+          "awards": []
+        },
+        {
+          "year": 2014,
+          "eventKey": "2014gal",
+          "event": "Galileo Division",
+          "awards": []
+        },
+        {
+          "year": 2014,
+          "eventKey": "2014ohci",
+          "event": "Queen City Regional",
+          "awards": [
+            "Rookie All Star Award",
+            "Highest Rookie Seed Award"
+          ]
+        }
+      ],
+      "banners": [
+        {
+          "award": "Winner",
+          "event": "2026 Columbus District"
+        },
+        {
+          "award": "Winner",
+          "event": "2022 Tippecanoe District"
+        }
+      ],
+      "teamNumber": 4982,
+      "tbaUrl": "https://www.thebluealliance.com/team/4982/history",
+      "responseSha256": "ee3cdf75469dc052a02bb2567c1af29dacfb7e315ecfa458c5abbf4dbc227e37",
+      "responseBytes": 32701,
+      "eventWins": 2,
+      "awardCount": 12,
+      "seasonsPlayed": 13,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2025,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027insel",
+          "event": "FIN District Sellersburg Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": [
+            "District Event Finalist"
+          ]
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "District Event Winner"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ],
+      "banners": [
+        {
+          "award": "Winner",
+          "event": "2026 Mishawaka District"
+        }
+      ],
+      "teamNumber": 10434,
+      "tbaUrl": "https://www.thebluealliance.com/team/10434/history",
+      "responseSha256": "61a6a513381013c1aabb5890fbc2a824dbf79d20272f5bff1d95bb4d80b8d733",
+      "responseBytes": 20769,
+      "eventWins": 1,
+      "awardCount": 2,
+      "seasonsPlayed": 2,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027insel",
+          "event": "FIN District Sellersburg Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2023,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": [
+            "Rising All-Star Award"
+          ]
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inpla",
+          "event": "FIN District Plainfield Event presented by Carrier",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023infor",
+          "event": "Fort Wayne Robotics Off-Season Tournament",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inpri",
+          "event": "FIN District Princeton Event presented by Toyota",
+          "awards": [
+            "Rookie All Star Award"
+          ]
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ],
+      "banners": [],
+      "teamNumber": 9119,
+      "tbaUrl": "https://www.thebluealliance.com/team/9119/history",
+      "responseSha256": "b16002d29f7296464372a51cb9dbcc3402f5edb793d608e7c024427234fc695d",
+      "responseBytes": 21153,
+      "eventWins": 0,
+      "awardCount": 2,
+      "seasonsPlayed": 4,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2024,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024mil",
+          "event": "Milstein Division",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": [
+            "District Championship Rookie All Star Award"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inpla",
+          "event": "FIN District Plainfield Event presented by Carrier",
+          "awards": [
+            "Rookie Inspiration Award"
+          ]
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "Rookie All Star Award"
+          ]
+        }
+      ],
+      "banners": [],
+      "teamNumber": 9431,
+      "tbaUrl": "https://www.thebluealliance.com/team/9431/history",
+      "responseSha256": "33dd0be66f8d06f72c4b5495c3e6e3b07a042c0c69f2c5e88f31a40085a4e232",
+      "responseBytes": 22977,
+      "eventWins": 0,
+      "awardCount": 3,
+      "seasonsPlayed": 3,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2025,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": [
+            "Judges' Award"
+          ]
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": [
+            "Rising All-Star Award"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inkok",
+          "event": "FIN District Kokomo Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "District Event Winner"
+          ]
+        }
+      ],
+      "banners": [
+        {
+          "award": "Winner",
+          "event": "2025 Mishawaka District"
+        }
+      ],
+      "teamNumber": 10332,
+      "tbaUrl": "https://www.thebluealliance.com/team/10332/history",
+      "responseSha256": "111373cf42b7316bb84d14a9aa2034aa9cd8fed34cc803c18b677bb4d134c3db",
+      "responseBytes": 21668,
+      "eventWins": 1,
+      "awardCount": 3,
+      "seasonsPlayed": 2,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2025,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": [
+            "Rising All-Star Award"
+          ]
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "Rookie All Star Award"
+          ]
+        }
+      ],
+      "banners": [],
+      "teamNumber": 10172,
+      "tbaUrl": "https://www.thebluealliance.com/team/10172/history",
+      "responseSha256": "2190db875b2c325e99488eda984107ae880c0d71a50db057b572e240fd3928f2",
+      "responseBytes": 20196,
+      "eventWins": 0,
+      "awardCount": 2,
+      "seasonsPlayed": 2,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2020,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inkok",
+          "event": "FIN District Kokomo Event",
+          "awards": [
+            "District Event Winner"
+          ]
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incol",
+          "event": "FIN District Columbus Event",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inpri",
+          "event": "FIN District Princeton Event presented by Toyota",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inwla",
+          "event": "FIN District Tippecanoe Event",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022incol",
+          "event": "FIN District Columbus Event presented by Toyota",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021irhcs",
+          "event": "Caesium Group - INFINITE RECHARGE At Home Challenge",
+          "awards": [
+            "Rookie Game Changer"
+          ]
+        },
+        {
+          "year": 2021,
+          "eventKey": "2021irhce",
+          "event": "INFINITE RECHARGE At Home Challenge Event",
+          "awards": []
+        },
+        {
+          "year": 2021,
+          "eventKey": "202121fin",
+          "event": "2021 Season Participation for FIN District Teams",
+          "awards": []
+        },
+        {
+          "year": 2020,
+          "eventKey": "2020inmis",
+          "event": "* IN District St. Joseph Event (Cancelled)",
+          "awards": []
+        },
+        {
+          "year": 2020,
+          "eventKey": "2020inblo",
+          "event": "IN District Bloomington Event",
+          "awards": [
+            "Rookie Inspiration Award sponsored by National Instruments"
+          ]
+        }
+      ],
+      "banners": [
+        {
+          "award": "Winner",
+          "event": "2025 Kokomo District"
+        }
+      ],
+      "teamNumber": 8103,
+      "tbaUrl": "https://www.thebluealliance.com/team/8103/history",
+      "responseSha256": "590bc83b88062e78126a219f8d2bcf6eab4f8ff5f0ff80e4cbff2896280c4f46",
+      "responseBytes": 24392,
+      "eventWins": 1,
+      "awardCount": 3,
+      "seasonsPlayed": 7,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2020,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": [
+            "District Championship FIRST Leadership Award Semi-Finalist (Maitlen B)"
+          ]
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inkok",
+          "event": "FIN District Kokomo Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ],
+      "banners": [],
+      "teamNumber": 8431,
+      "tbaUrl": "https://www.thebluealliance.com/team/8431/history",
+      "responseSha256": "7f7b6fa65bc1bf831969bb5b8e965efbfa0bad8080a521116bdfb0979d663b45",
+      "responseBytes": 19181,
+      "eventWins": 0,
+      "awardCount": 1,
+      "seasonsPlayed": 2,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2022,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027insel",
+          "event": "FIN District Sellersburg Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inwas",
+          "event": "FIN District Washington Event presented by Toyota IN & VU CARA",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inwas",
+          "event": "FIN District Washington Event presented by Toyota Indiana and Vincennes University",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inkok",
+          "event": "FIN District Kokomo Event",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024inpla",
+          "event": "FIN District Plainfield Event presented by Carrier",
+          "awards": []
+        },
+        {
+          "year": 2024,
+          "eventKey": "2024incol",
+          "event": "FIN District Columbus Event",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023infor",
+          "event": "Fort Wayne Robotics Off-Season Tournament",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inwla",
+          "event": "FIN District Tippecanoe Event",
+          "awards": []
+        },
+        {
+          "year": 2023,
+          "eventKey": "2023inpri",
+          "event": "FIN District Princeton Event presented by Toyota",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inbbb",
+          "event": "Boiler Bot Battle",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022carv",
+          "event": "Carver Division",
+          "awards": []
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022incmp",
+          "event": "FIRST Indiana State Championship",
+          "awards": [
+            "District Championship Rookie All Star Award",
+            "District Championship Finalist",
+            "Highest Rookie Seed"
+          ]
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inwla",
+          "event": "FIN District Tippecanoe Event",
+          "awards": [
+            "Highest Rookie Seed"
+          ]
+        },
+        {
+          "year": 2022,
+          "eventKey": "2022inkok",
+          "event": "FIN District Kokomo Event presented by AndyMark",
+          "awards": [
+            "Rookie All Star Award",
+            "Highest Rookie Seed"
+          ]
+        }
+      ],
+      "banners": [],
+      "teamNumber": 8742,
+      "tbaUrl": "https://www.thebluealliance.com/team/8742/history",
+      "responseSha256": "2ea4e6c4cdf09f4ad31794ae5720e394ebbde54c8943f5c233929a6c0778e571",
+      "responseBytes": 25172,
+      "eventWins": 0,
+      "awardCount": 6,
+      "seasonsPlayed": 5,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027insel",
+          "event": "FIN District Sellersburg Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2025,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027insel",
+          "event": "FIN District Sellersburg Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inlaf",
+          "event": "FIN District Lafayette Event",
+          "awards": []
+        },
+        {
+          "year": 2025,
+          "eventKey": "2025inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": [
+            "Rising All-Star Award"
+          ]
+        }
+      ],
+      "banners": [],
+      "teamNumber": 10411,
+      "tbaUrl": "https://www.thebluealliance.com/team/10411/history",
+      "responseSha256": "2f6f32224b49fc24f62b0b915da84d0de00e0a8174f8e869ebf54dc7704abda8",
+      "responseBytes": 19663,
+      "eventWins": 0,
+      "awardCount": 1,
+      "seasonsPlayed": 2,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2027,
+          "eventKey": "2027insel",
+          "event": "FIN District Sellersburg Event",
+          "awards": []
+        }
+      ]
+    },
+    {
+      "rookieYear": 2020,
+      "events": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026infor",
+          "event": "Monster Match",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026incol",
+          "event": "FIN District Columbus Event",
+          "awards": []
+        },
+        {
+          "year": 2026,
+          "eventKey": "2026inmis",
+          "event": "FIN District Mishawaka Event",
+          "awards": []
+        }
+      ],
+      "banners": [],
+      "teamNumber": 8432,
+      "tbaUrl": "https://www.thebluealliance.com/team/8432/history",
+      "responseSha256": "c14048bf841effc9c8e9e07173299cb1157746c95c07269d83e6f7fee49f9c90",
+      "responseBytes": 18507,
+      "eventWins": 0,
+      "awardCount": 0,
+      "seasonsPlayed": 1,
+      "registered": [
+        {
+          "year": 2027,
+          "eventKey": "2027inftw",
+          "event": "FIN District Fort Wayne Event",
+          "awards": []
+        }
+      ]
+    }
+  ]
+}

@@ -16,7 +16,7 @@ RESEARCH = HERE / "data/dnf-research"
 
 
 def load(name):
-    return json.loads((RESEARCH / name).read_text())
+    return json.loads((RESEARCH / name).read_text(encoding="utf-8"))
 
 
 def normalized(value):
@@ -121,7 +121,7 @@ def build_dnf():
     for rows in (schools, excluded, review, facilities):
         rows.sort(key=lambda row: (row["name"].casefold(), row["state"], row["id"]))
     result = {"asOf": "2026-10-22", "title": "DNF — Did Not Field. Yet.", "contactEmail": "info@refineryrobotics.org", "interestPage": "https://refineryrobotics.org/get-involved/#start-or-host-a-team", "resourceUrl": "https://refineryrobotics.org/what-we-do/", "methodologyUrl": "dnf-methodology.md", "origin": universe["origin"], "radiusMiles": 60, "qualification": "The schools below have no school-affiliated FTC or FRC team verified in our dated public-source review. DNF is an invitation to join the lineup. A new team, an unlisted affiliation, or participation in another robotics program may already exist.", "scopeNote": "Physical public, charter, and private campuses offering any of grades 9–12 within 60 straight-line miles of Citizens Square, downtown Fort Wayne, including Ohio and Michigan. School locations come from NCES and documented state/site supplements; directory years vary. Distance is tested before rounding. Older private-school records needing current campus confirmation are marked. Statewide virtual-school offices and adult-only diploma centers are excluded. Former teams and documented community-team connections are listed separately for follow-up.", "schools": schools, "reviewSchools": review, "excludedSchools": excluded, "facilitySchools": facilities, "universeCount": len(universe["schools"]), "scopeReviewCount": len(universe.get("reviewSchools", [])), "counts": {"invited": len(schools), "existingTeams": len(excluded), "affiliationsToConfirm": len(review), "facilitiesNotInvited": len(facilities), "leadersNamed": sum(bool(row["leader"]) for row in schools), "byState": dict(Counter(row["state"] for row in schools))}}
-    (HERE / "data/dnf.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+    (HERE / "data/dnf.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     write_methodology(result, universe, team_screen)
     return result
 
@@ -142,7 +142,7 @@ def write_methodology(data, universe, team_screen):
     lines.extend(["", "## Other scope decisions", "", "These records were reviewed separately rather than silently counted as physical high-school campuses:", ""])
     for row in universe.get("reviewSchools", []):
         lines.append(f"- {row['name']} ({row['state']}): {row['scopeClass']}. {row.get('scopeNote', '')} [Source]({row['sourceUrls'][0]})")
-    (HERE / "dist/dnf-methodology.md").write_text("\n".join(lines) + "\n")
+    (HERE / "dist/dnf-methodology.md").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

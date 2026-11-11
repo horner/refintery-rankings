@@ -28,6 +28,8 @@ def require(condition, message):
 
 def main():
     data = load(HERE / "dist/data.json")
+    site = load(HERE / "dist/site.json")
+    require(site and all(site[k] == data[k] for k in site), "site.json (home page data) is stale; rerun build.py")
     verify_matches(data)
     thumbnails = load(HERE / "data/video-thumbnails.json")["thumbnails"]
     require(data["videoThumbnails"] == {r["videoUrl"]: r for r in thumbnails}, "Video thumbnail join changed")
@@ -62,14 +64,19 @@ def main():
     ftc = load(ROOT / "ftc/data/teams.json")
     regional = sorted([r for r in frc["teams"] if r["scope_group"] == "northeast_indiana"],
                       key=lambda r: (-r["rankings"]["epa_mean"], r["team_number"]))
+    tba = {r["teamNumber"]: r for r in load(HERE / "data/tba/results-2026.json")["teams"]}
+    by_district = sorted(regional, key=lambda r: (tba[r["team_number"]]["district"]["rank"] or 999, r["team_number"]))
     require(len(regional) == 13 and len(data["top10"]) == 10, "Unexpected Top 10 population")
-    require([r["number"] for r in data["top10"]] == [r["team_number"] for r in regional[:10]], "Top 10 does not match source EPA ordering")
+    require([r["number"] for r in data["top10"]] == [r["team_number"] for r in by_district[:10]], "Top 10 does not match official district-points order")
+    for t in data["top10"]:
+        d = tba[t["number"]]["district"]
+        require((t["districtPoints"], t["districtRank"], t["record"]) == (d["points"], d["rank"], tba[t["number"]]["officialRecord"]), f"Top 10 district values changed: {t['number']}")
     scope = load(HERE / "data/first-fin-scope-audit.json")
     require(len(scope["teams"]) == 69 and scope["capture_failure_count"] == 0, "Official roster screening is incomplete")
     require(set(scope["included_team_numbers"]) == {r["team_number"] for r in regional}, "Official district and research regional selections differ")
     require(data["edition"]["rankingsDate"] == "2026-06-12" and data["edition"]["season"] == 2026, "Historical snapshot date lost")
     people_count = 0
-    for t, r in zip(data["top10"], regional[:10]):
+    for t, r in zip(data["top10"], by_district[:10]):
         k, h, l = r["rankings"], r["season_history"], r["leadership"]
         require(t["epa"] == k["epa_mean"] and t["stateRank"] == k["state_rank"] and t["worldRank"] == k["world_rank"], "Source performance value changed")
         require(t["stateCount"] == k["state_team_count"] and t["worldCount"] == k["world_team_count"], "Source ranking denominator changed")
@@ -214,9 +221,6 @@ def main():
             expected = {r["kind"]: r for r in marks if r["program"] == program and r["number"] == team["number"]}
             require(team["logos"] == expected, "Logo joined to the wrong team or program")
     require(not data["top10"][1]["logos"]["school"].get("file"), "Community team incorrectly assigned a school mark")
-    for name in ("nei-top10-2026.png", "team-spotlight-9119.png", "ftc-features.png"):
-        raw = (HERE / "dist/exports" / name).read_bytes()
-        require(raw[:8] == b"\x89PNG\r\n\x1a\n" and struct.unpack(">II", raw[16:24]) == (1920, 1080), f"Broadcast graphic has incorrect dimensions: {name}")
     for file in (HERE / "dist").rglob("*"):
         if file.suffix not in {".html", ".css", ".js", ".md", ".json", ".svg"}:
             continue

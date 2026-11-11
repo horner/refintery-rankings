@@ -46,12 +46,12 @@ def main():
     require(len(records) == len(ids) == 17 and ids == set(baseline), "17 unique baseline teams required")
     require(sum(r["state"] == "IN" for r in records) == 13, "Expected 13 Indiana teams")
     snap = ROOT / config["statbotics_snapshot_directory"]
-    meta = json.loads((snap / "metadata.json").read_text())
+    meta = json.loads((snap / "metadata.json").read_text(encoding="utf-8"))
     raw = (snap / "team-years-2026.json.zlib").read_bytes()
     require(hashlib.sha256(raw).hexdigest() == meta["raw_sha256"], "Raw Statbotics checksum mismatch")
     full = json.loads(zlib.decompress(raw))
     original = {r["team"]: r for r in full["team_years"]}
-    subset = json.loads((snap / "team-years-2026-subset.json").read_text())["team_years"]
+    subset = json.loads((snap / "team-years-2026-subset.json").read_text(encoding="utf-8"))["team_years"]
     require({r["team"] for r in subset} == ids, "Statbotics subset coverage mismatch")
     require(all(r == original[r["team"]] for r in subset), "Statbotics subset changed source rows")
     require(len(full["team_years"]) == 3724, "World denominator changed")
@@ -125,9 +125,9 @@ def main():
                     broken.append((str(file.relative_to(ROOT)), relative))
     require(not broken, f"Broken local documentation links: {broken}")
     if args.write_checksums:
-        checksum_path.write_text("".join(f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.relative_to(ROOT).as_posix()}\n" for p in eligible_files()))
+        checksum_path.write_text("".join(f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.relative_to(ROOT).as_posix()}\n" for p in eligible_files()), encoding="utf-8", newline="\n")
     if checksum_path.exists():
-        for line in checksum_path.read_text().splitlines():
+        for line in checksum_path.read_text(encoding="utf-8").splitlines():
             digest, relative = line.split("  ", 1)
             require(hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() == digest, f"File checksum mismatch: {relative}")
     print(f"Verified: {len(records)} teams; {len(matrices[1]['rows'])} person-role rows; {len(sources)} sources; {text_file_count} text files.")

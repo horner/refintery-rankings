@@ -44,7 +44,7 @@ def main():
            "sourceSha256": hashlib.sha256(original.read_bytes()).hexdigest(), "sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
            "retrievedDate": date.today().isoformat()}
     manifest["photos"] = [p for p in manifest["photos"] if p["id"] != args.id] + [row]
-    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"Added {target.name} ({image.width}×{image.height}, {target.stat().st_size // 1024} KB) for teams {args.teams or 'none'}.")
 
 

@@ -1,6 +1,6 @@
 # The REFINERY · Northeast Indiana Robotics
 
-A responsive sports-style site and a separate Top 10 display introduce regional robotics teams to football and baseball audiences. The home page covers all 13 regional FRC teams, with district standings, an EPA power-ranking sort, team pages, match replays, FTC features, a calendar, and a press kit. Student and adult names retain their exact published roles and evidence dates.
+A responsive sports-style site and a separate Top 10 display introduce regional robotics teams to football and baseball audiences. The home page covers all 13 regional FRC teams, with district standings, an optional EPA sort, team pages, match replays, FTC features, a calendar, and a press kit. Student and adult names retain their exact published roles and evidence dates.
 
 The 2026–27 season preview looks ahead while keeping 2026 rankings and results clearly dated. Its [coverage plan](data/season-preview.json) separates confirmed events from proposed show dates and local planning windows. [Source checks](data/season-sources) retain the FIRST, FIRST Indiana, and REFINERY calendar evidence. Event dates, entry lists, and rookie-team assignments retain their published status; a planning date is not a confirmed competition assignment.
 
@@ -8,7 +8,7 @@ The 2026–27 season preview looks ahead while keeping 2026 rankings and results
 
 [Open the public site](https://horner.github.io/refintery-rankings/) for desktop and phone browsing. The home page opens on the responsive season overview. Its standings include all 13 regional FRC teams and can be sorted by official FIRST Indiana district rank or frozen Statbotics EPA. Expand a team for details or open its static team page, such as [North Side / 9119](dist/team/9119/). FTC features, the event calendar and downloadable `.ics` file, media resources, and the DNF directory remain on the home page.
 
-The separate [Top 10 · Big screen display](dist/top10.html) uses the same generated data and the original ten highest-EPA teams. Its fluid layout makes room for the ranking and selected-team spotlight on a large desktop screen and adapts to a phone. Select a team for its profile and cached replay preview, enter fullscreen, or export a 1920 × 1080 PNG. Optional cycling advances the selected team every 12 seconds and is **off by default**. Replay interaction and PNG export pause cycling.
+The separate [Top 10 · Big screen display](dist/top10.html) uses the same generated data: the top ten teams by official FIRST Indiana district points, the same order as the standings. Its fluid layout makes room for the ranking and selected-team spotlight on a large desktop screen and adapts to a phone. Select a team for its profile and cached replay preview, enter fullscreen, or export a 1920 × 1080 PNG. Optional cycling advances the selected team every 12 seconds and is **off by default**. Replay interaction and PNG export pause cycling.
 
 Direct `#team/<number>` links continue to open home-page standings details. Legacy `#spotlight/<number>`, `#board`, and `#broadcast` links open the dedicated Top 10 display. A direct display selection uses `top10.html#team/<number>`.
 
@@ -37,7 +37,7 @@ The home-page source is [`templates/index.html`](templates/index.html). Edit tha
 
 ## Close games to watch
 
-The Top 10 display, home-page team details, and static team pages retain clickable **video preview thumbnails** for the original ten FRC features. Each preview pairs the selected close match with its score and official result. Preserved YouTube thumbnails are cached locally and included in the display's PNG export. The [thumbnail manifest](data/video-thumbnails.json) records the exact metadata source, original dimensions, retrieval time, and SHA-256 for each preview.
+The Top 10 display, home-page team details, and static team pages retain clickable **video preview thumbnails** for all 13 regional FRC teams. Each preview pairs the selected close match with its score and official result. Preserved YouTube thumbnails are cached locally and included in the display's PNG export. The [thumbnail manifest](data/video-thumbnails.json) records the exact metadata source, original dimensions, retrieval time, and SHA-256 for each preview.
 
 Replay coverage identifies the event, phase, final Red/Blue alliance scores, all playing team numbers, the featured team's result, and an official FIRST scorecard link. Main selections use the closest eligible final-score margin; equally close playoffs take priority. A different closest playoff is available as an alternative. Wins and losses qualify, and scores include penalties. Changing alliance opponents are a matchup rather than a claim of a permanent rivalry.
 
@@ -47,7 +47,7 @@ The [complete match library](dist/match-highlights.md) covers all 17 FRC and 9 F
 
 The home page's **district standings** use official FIRST Indiana district points and ranks. Win-loss records, events, and awards come from The Blue Alliance. These are different measures from EPA; district rank and EPA rank must not be described interchangeably.
 
-The **power ranking** and dedicated **Top 10** sort the 13 FRC teams in The REFINERY's 12-county Northeast Indiana region by **2026 Statbotics EPA** from the frozen **June 12, 2026** source. A [FIRST Indiana district roster/profile screening](data/first-fin-scope-audit.json) supports the regional hometown selection. It does not establish workshop locations or student residences. The Top 10 is an independent performance ranking, not a voted poll or a live scoreboard. The broader research directory contains 17 FRC teams within 60 straight-line miles; that geographic study and this 13-team regional cohort have different scopes.
+The **standings** and the **Top 10** both sort the 13 FRC teams in The REFINERY's 12-county Northeast Indiana region by **official 2026 FIRST Indiana district points** (via The Blue Alliance). **Statbotics EPA** from the **June 12, 2026** snapshot is shown as a secondary rating and an optional sort. A [FIRST Indiana district roster/profile screening](data/first-fin-scope-audit.json) supports the regional hometown selection. It does not establish workshop locations or student residences. The Top 10 is the first ten rows of the official standings, not a voted poll. The broader research directory contains 17 FRC teams within 60 straight-line miles; that geographic study and this 13-team regional cohort have different scopes.
 
 FTCs 22331 and 25638 are separate 2025–26 features. Rookie 36124 is a 2026–27 watch item. FTC OPR and FRC EPA remain separate. A school-size division is an analogy only: FIRST does not assign FTC/FRC by enrollment; a school can offer either or both.
 

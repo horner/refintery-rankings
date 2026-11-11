@@ -72,7 +72,7 @@ def main() -> int:
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Output already exists; choose a new evidence filename.")
-    teams = [row["team_number"] for row in json.loads(args.roster.read_text())["teams"]]
+    teams = [row["team_number"] for row in json.loads(args.roster.read_text(encoding="utf-8"))["teams"]]
     with ThreadPoolExecutor(max_workers=4) as pool:
         records = list(pool.map(lambda team: capture(team, args.through), teams))
     result = {

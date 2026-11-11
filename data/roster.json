@@ -7,13 +7,13 @@
     {
       "team_number": 1501,
       "team_name": "Team THRUST",
-      "school_or_organization": "Huntington North High School / Huntington County 4-H",
-      "school_url": "https://hnhs.hccsc.k12.in.us/",
+      "school_or_organization": "Huntington County 4-H Robotics",
+      "school_url": "https://huntingtonrobotics.org/",
       "city": "Huntington",
       "state": "IN",
       "scope_group": "northeast_indiana",
       "affiliation_type": "school_and_community",
-      "affiliation_notes": "School connection plus community 4-H program; participation is not restricted to one high school.",
+      "affiliation_notes": "Run by Huntington County 4-H Robotics, a community 4-H program open to high-school students countywide; Huntington North High School lists the team among its clubs.",
       "first_team_url": "https://frc-events.firstinspires.org/2026/team/1501",
       "first_history_url": "https://frc-events.firstinspires.org/team/1501",
       "statbotics_url": "https://www.statbotics.io/team/1501/2026",
@@ -21,7 +21,8 @@
         "https://frc-events.firstinspires.org/2026/team/1501",
         "https://refineryrobotics.org/about/",
         "https://huntingtonnhs.ss13.sharpschool.com/get_involved/clubs/robotics",
-        "https://huntingtonrobotics.org/faq/"
+        "https://huntingtonrobotics.org/faq/",
+        "https://huntingtonrobotics.org/"
       ]
     },
     {

@@ -32,7 +32,7 @@ Each person is stored with an exact documented role, evidence date or an explici
 
 An overall captain, assistant captain, drive-team captain, student representative, outreach officer, mentor, coach, and organization president remain distinct roles. Quoted students and former captains are not promoted to current captains. Partial names remain partial. Contradictory spelling is retained as a source conflict. An empty people list means no qualifying identification was verified, not that the team has no leader.
 
-Current-season confirmation gaps are explicit. Snider's Nick Sims and Carroll's Nieng Mang have evidence tied to the completed 2026 season or 2025–26 school year. Homestead's Jasroop and Jake are first-name-only identifications from indexed official team text. FWCS's February board slides designate representatives, not captains. Ava Stanley's public team-spokesperson role does not establish whether she was an adult or student.
+Current-season confirmation gaps are explicit. Snider's Nick Sims and Carroll's Nieng Mang have evidence tied to the completed 2026 season or 2025–26 school year. Homestead's 2026–27 captain (Jake) and its coaches, and Carroll's coaching history, were confirmed directly by a team mentor on November 10, 2026 (status `confirmed_by_team_mentor` or `confirmed_by_person`). FWCS's February board slides designate representatives, not captains. Ava Stanley's public team-spokesperson role does not establish whether she was an adult or student.
 
 ## Evidence and preservation
 

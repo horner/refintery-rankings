@@ -3,19 +3,6 @@
     {
       "program": "frc",
       "number": 1501,
-      "kind": "school",
-      "file": "assets/logos/school-1501.png",
-      "sourceUrl": "https://static.eventlink.com/public/3a8f0019-9494-4e8f-8fdf-525b14134381/947cf3d8-4e96-4708-8b87-38cfb8df5e63/blob",
-      "pageUrl": "https://websites.eventlink.com/s/huntington-north-high-school/Tickets",
-      "label": "Huntington North High School",
-      "status": "verified",
-      "note": "Official Huntington North Viking emblem. School Tickets page links this official Eventlink athletics site. Huntington County 4-H is an additional team affiliation. School link: https://hnhs.hccsc.k12.in.us/athletics/tickets",
-      "retrievedDate": "2026-10-22",
-      "sha256": "6654945756b761550103cdb5a1c0b56cf330ff8edb7242e6146c9e0801d39b88"
-    },
-    {
-      "program": "frc",
-      "number": 1501,
       "kind": "team",
       "file": "assets/logos/team-1501.png",
       "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/teams/frc-1501-thrust.png",

@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "season": 2026,
   "source": "The Blue Alliance public team pages",
-  "retrievedDate": "2026-10-22",
+  "retrievedDate": "2026-11-10",
   "method": "Each team's https://www.thebluealliance.com/team/{n}/2026 page was saved and its event rank, qualification record, awards and playoff sentence extracted. Official record and district rank/points come from the preserved Statbotics snapshot and match TBA's page text. Refresh with scripts/fetch_tba.py and a TBA API key.",
   "teams": [
     {
       "teamNumber": 1501,
       "tbaUrl": "https://www.thebluealliance.com/team/1501/2026",
-      "responseSha256": "bad60775ff3188dc14abd5dd2c81c2e82c41ddd96ab93e3ed38b7f24fd4038ea",
-      "responseBytes": 562382,
+      "responseSha256": "d0dcae88a6029d2246c3a0478f44adbe5d57770630bfa37683b3f26e0540f872",
+      "responseBytes": 731080,
       "officialRecord": {
         "wins": 45,
         "losses": 15,
@@ -119,14 +119,52 @@
             "sourceText": "They are 4-1-0 in the Double Elimination Bracket (Round 2) as the 1st Pick of Alliance 2."
           },
           "tbaUrl": "https://www.thebluealliance.com/event/2026kylou"
+        },
+        {
+          "key": "2026inbbb",
+          "name": "Boiler Bot Battle",
+          "shortName": "Boiler Bot Battle",
+          "type": "offseason",
+          "startDate": "2026-10-23",
+          "endDate": "2026-10-24",
+          "week": null,
+          "qualRank": 6,
+          "qualRecord": "7-4-0",
+          "awards": [],
+          "playoff": {
+            "role": "1st Pick",
+            "alliance": 2,
+            "result": "Eliminated in playoff round 5",
+            "sourceText": "They competed in the playoffs as the 1st Pick of Alliance 2 and were eliminated in the Double Elimination Bracket (Round 5)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inbbb"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 3,
+          "qualRecord": "9-5-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 2,
+            "result": "Finalist",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 2 and were eliminated in the Finals."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     },
     {
       "teamNumber": 1720,
       "tbaUrl": "https://www.thebluealliance.com/team/1720/2026",
-      "responseSha256": "592e64074bfc0a63ddbf30587b09160640fbf89a5d993cd3b313e33c7da47f6a",
-      "responseBytes": 609844,
+      "responseSha256": "2cedbd03ee24acfade3eb3ca989860cf7cc648c0d519d4527c840fdb54c02694",
+      "responseBytes": 683873,
       "officialRecord": {
         "wins": 31,
         "losses": 24,
@@ -251,14 +289,33 @@
             "sourceText": "They competed in the playoffs as the Captain of Alliance 7 and were eliminated in the Double Elimination Bracket (Round 2)."
           },
           "tbaUrl": "https://www.thebluealliance.com/event/2026iri"
+        },
+        {
+          "key": "2026inbbb",
+          "name": "Boiler Bot Battle",
+          "shortName": "Boiler Bot Battle",
+          "type": "offseason",
+          "startDate": "2026-10-23",
+          "endDate": "2026-10-24",
+          "week": null,
+          "qualRank": 1,
+          "qualRecord": "11-0-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 1,
+            "result": "Won event",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 1 and won the event."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inbbb"
         }
       ]
     },
     {
       "teamNumber": 9119,
       "tbaUrl": "https://www.thebluealliance.com/team/9119/2026",
-      "responseSha256": "fdd6dc58686664ca0fbcd775141fe1cee0fc24c4f12897550aa0bc040460db14",
-      "responseBytes": 329947,
+      "responseSha256": "3a8c03c613183106531c91c8baf3313b5b0c2090235972d06869dce53f72eb86",
+      "responseBytes": 329584,
       "officialRecord": {
         "wins": 21,
         "losses": 21,
@@ -330,8 +387,8 @@
     {
       "teamNumber": 9431,
       "tbaUrl": "https://www.thebluealliance.com/team/9431/2026",
-      "responseSha256": "a5a2dd18603d16255f5f68973f9594cd7c76796156a6768fbe7c07bd7af75566",
-      "responseBytes": 327837,
+      "responseSha256": "ecae25e42be7cf08b8a53f28349953265f8c5b09b47afd3992576643381af522",
+      "responseBytes": 416471,
       "officialRecord": {
         "wins": 21,
         "losses": 20,
@@ -395,14 +452,33 @@
           "awards": [],
           "playoff": null,
           "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 13,
+          "qualRecord": "6-7-0",
+          "awards": [],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 4,
+            "result": "Eliminated in playoff round 5",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 4 and were eliminated in the Double Elimination Bracket (Round 5)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     },
     {
       "teamNumber": 4982,
       "tbaUrl": "https://www.thebluealliance.com/team/4982/2026",
-      "responseSha256": "0de439a87ec4e32f63298f4e857bce3e3afc34634a3ac610013b974ad6cdbd66",
-      "responseBytes": 373135,
+      "responseSha256": "9acfa2428ab378fb03fee83ce2c03a6e3cd910a663c802952b704286a6b1662c",
+      "responseBytes": 456929,
       "officialRecord": {
         "wins": 24,
         "losses": 25,
@@ -473,14 +549,33 @@
             "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 4 and were eliminated in the Double Elimination Bracket (Round 4)."
           },
           "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 5,
+          "qualRecord": "8-4-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 3,
+            "result": "Eliminated in playoff round 4",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 3 and were eliminated in the Double Elimination Bracket (Round 4)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     },
     {
       "teamNumber": 10434,
       "tbaUrl": "https://www.thebluealliance.com/team/10434/2026",
-      "responseSha256": "a56594f7c55b415b1598bec0dab05de1a9edea5b9ea35ddcbcc4b3e577308538",
-      "responseBytes": 363110,
+      "responseSha256": "c28419f15c37e06bdb5fcaee45be81655dd9f81580c32ec506e946308383d6c5",
+      "responseBytes": 452149,
       "officialRecord": {
         "wins": 21,
         "losses": 27,
@@ -548,14 +643,33 @@
           "awards": [],
           "playoff": null,
           "tbaUrl": "https://www.thebluealliance.com/event/2026incmp"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 6,
+          "qualRecord": "8-5-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 4,
+            "result": "Eliminated in playoff round 5",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 4 and were eliminated in the Double Elimination Bracket (Round 5)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     },
     {
       "teamNumber": 8103,
       "tbaUrl": "https://www.thebluealliance.com/team/8103/2026",
-      "responseSha256": "9d65ed5e34d5bf3e458b17cffbc182220aada1e5ffd3468a8065a1da795a0281",
-      "responseBytes": 221594,
+      "responseSha256": "7251d0ffea7458ca855fb5581fcc205ec36425bd239e949b3fba747611468b8c",
+      "responseBytes": 305472,
       "officialRecord": {
         "wins": 10,
         "losses": 17,
@@ -600,14 +714,33 @@
             "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 3 and were eliminated in the Double Elimination Bracket (Round 3)."
           },
           "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 14,
+          "qualRecord": "5-7-0",
+          "awards": [],
+          "playoff": {
+            "role": "2nd Pick",
+            "alliance": 3,
+            "result": "Eliminated in playoff round 4",
+            "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 3 and were eliminated in the Double Elimination Bracket (Round 4)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     },
     {
       "teamNumber": 10332,
       "tbaUrl": "https://www.thebluealliance.com/team/10332/2026",
-      "responseSha256": "0c4dbfe8367c6cb42aacfb66d73b0b2b7708d4f915d09be332cda5ff2f9d4c28",
-      "responseBytes": 217537,
+      "responseSha256": "1f476388b68c8e4f3424728098097c84296c3f63e56b720a689d31da12ff0aed",
+      "responseBytes": 356507,
       "officialRecord": {
         "wins": 9,
         "losses": 17,
@@ -654,14 +787,52 @@
             "sourceText": "They competed in the playoffs as the 2nd Pick of Alliance 5 and were eliminated in the Double Elimination Bracket (Round 2)."
           },
           "tbaUrl": "https://www.thebluealliance.com/event/2026inlaf"
+        },
+        {
+          "key": "2026inbbb",
+          "name": "Boiler Bot Battle",
+          "shortName": "Boiler Bot Battle",
+          "type": "offseason",
+          "startDate": "2026-10-23",
+          "endDate": "2026-10-24",
+          "week": null,
+          "qualRank": 4,
+          "qualRecord": "6-2-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 3,
+            "result": "Finalist",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 3 and were eliminated in the Finals."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inbbb"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 9,
+          "qualRecord": "4-7-0",
+          "awards": [],
+          "playoff": {
+            "role": "1st Pick",
+            "alliance": 5,
+            "result": "Eliminated in playoff round 3",
+            "sourceText": "They competed in the playoffs as the 1st Pick of Alliance 5 and were eliminated in the Double Elimination Bracket (Round 3)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     },
     {
       "teamNumber": 8742,
       "tbaUrl": "https://www.thebluealliance.com/team/8742/2026",
-      "responseSha256": "360b82edda2a02abbe68ede519823c05611c5e1bcefff28e216d034ac5f25558",
-      "responseBytes": 213919,
+      "responseSha256": "76f987457a5809b393168f3fd2b85566c715500e2d25ceb85adaba644f315f72",
+      "responseBytes": 356834,
       "officialRecord": {
         "wins": 9,
         "losses": 16,
@@ -706,14 +877,52 @@
             "sourceText": "They competed in the playoffs as the Backup of Alliance 6 and were eliminated in the Double Elimination Bracket (Round 2)."
           },
           "tbaUrl": "https://www.thebluealliance.com/event/2026inwas"
+        },
+        {
+          "key": "2026inbbb",
+          "name": "Boiler Bot Battle",
+          "shortName": "Boiler Bot Battle",
+          "type": "offseason",
+          "startDate": "2026-10-23",
+          "endDate": "2026-10-24",
+          "week": null,
+          "qualRank": 17,
+          "qualRecord": "4-3-0",
+          "awards": [],
+          "playoff": {
+            "role": "3rd Pick",
+            "alliance": 6,
+            "result": "Eliminated in playoff round 4",
+            "sourceText": "They competed in the playoffs as the 3rd Pick of Alliance 6 and were eliminated in the Double Elimination Bracket (Round 4)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inbbb"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 7,
+          "qualRecord": "7-6-0",
+          "awards": [],
+          "playoff": {
+            "role": "1st Pick",
+            "alliance": 4,
+            "result": "Eliminated in playoff round 5",
+            "sourceText": "They competed in the playoffs as the 1st Pick of Alliance 4 and were eliminated in the Double Elimination Bracket (Round 5)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     },
     {
       "teamNumber": 10172,
       "tbaUrl": "https://www.thebluealliance.com/team/10172/2026",
-      "responseSha256": "585696791c9b93f92ed522759ed5dd5f13165b1a97db88014575adc4ca9c165d",
-      "responseBytes": 203581,
+      "responseSha256": "dc5156a40eafaf65cbedd9c78d57f6713e6515962ef52d2088c479f3bc1f5c7d",
+      "responseBytes": 257401,
       "officialRecord": {
         "wins": 7,
         "losses": 17,
@@ -755,14 +964,33 @@
           ],
           "playoff": null,
           "tbaUrl": "https://www.thebluealliance.com/event/2026inlaf"
+        },
+        {
+          "key": "2026inbbb",
+          "name": "Boiler Bot Battle",
+          "shortName": "Boiler Bot Battle",
+          "type": "offseason",
+          "startDate": "2026-10-23",
+          "endDate": "2026-10-24",
+          "week": null,
+          "qualRank": 24,
+          "qualRecord": "2-5-0",
+          "awards": [],
+          "playoff": {
+            "role": "3rd Pick",
+            "alliance": 8,
+            "result": "Eliminated in playoff round 3",
+            "sourceText": "They competed in the playoffs as the 3rd Pick of Alliance 8 and were eliminated in the Double Elimination Bracket (Round 3)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026inbbb"
         }
       ]
     },
     {
       "teamNumber": 8431,
       "tbaUrl": "https://www.thebluealliance.com/team/8431/2026",
-      "responseSha256": "1090eba2926b9f446a9b125366258171cd6aba19ef2fdf5a10d8c976c13f4cd8",
-      "responseBytes": 204120,
+      "responseSha256": "232fd6216640b34f72bbec787b36f2f0ece24973f11acd1e1ccc91a56f9b58e3",
+      "responseBytes": 203757,
       "officialRecord": {
         "wins": 9,
         "losses": 15,
@@ -810,8 +1038,8 @@
     {
       "teamNumber": 10411,
       "tbaUrl": "https://www.thebluealliance.com/team/10411/2026",
-      "responseSha256": "671effbf744e3921def234ce07f556c74d2f976369b945fdb48d073a702f6286",
-      "responseBytes": 203893,
+      "responseSha256": "409084d0a66b75b80f313bcb8e2a1efde5be8fdcc35a5b92c0e3374eb8400c27",
+      "responseBytes": 282212,
       "officialRecord": {
         "wins": 7,
         "losses": 17,
@@ -851,14 +1079,33 @@
           "awards": [],
           "playoff": null,
           "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 17,
+          "qualRecord": "3-8-0",
+          "awards": [],
+          "playoff": {
+            "role": "1st Pick",
+            "alliance": 6,
+            "result": "Eliminated in playoff round 3",
+            "sourceText": "They competed in the playoffs as the 1st Pick of Alliance 6 and were eliminated in the Double Elimination Bracket (Round 3)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     },
     {
       "teamNumber": 8432,
       "tbaUrl": "https://www.thebluealliance.com/team/8432/2026",
-      "responseSha256": "efd6f796c7e36cafba098ac78284d1527e43c9ab311d2854c45ae2f0e782bfca",
-      "responseBytes": 203919,
+      "responseSha256": "e72d13138b994d75128f85e88aff1394baba72a02a5a3308f4476fe6b4ce4535",
+      "responseBytes": 282482,
       "officialRecord": {
         "wins": 8,
         "losses": 16,
@@ -898,6 +1145,25 @@
           "awards": [],
           "playoff": null,
           "tbaUrl": "https://www.thebluealliance.com/event/2026incol"
+        },
+        {
+          "key": "2026infor",
+          "name": "Monster Match",
+          "shortName": "Monster Match",
+          "type": "offseason",
+          "startDate": "2026-10-31",
+          "endDate": "2026-10-31",
+          "week": null,
+          "qualRank": 11,
+          "qualRecord": "4-7-0",
+          "awards": [],
+          "playoff": {
+            "role": "Captain",
+            "alliance": 6,
+            "result": "Eliminated in playoff round 3",
+            "sourceText": "They competed in the playoffs as the Captain of Alliance 6 and were eliminated in the Double Elimination Bracket (Round 3)."
+          },
+          "tbaUrl": "https://www.thebluealliance.com/event/2026infor"
         }
       ]
     }

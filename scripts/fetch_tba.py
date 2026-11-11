@@ -89,7 +89,7 @@ def main():
                     "events": rows})
     doc = {"schemaVersion": 1, "season": args.season, "source": "The Blue Alliance API v3", "retrievedDate": date.today().isoformat(),
            "method": "TBA API v3 team profile and social media, events, event statuses, awards and district rankings.", "teams": out}
-    Path(args.output).write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    Path(args.output).write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"Wrote {len(out)} teams to {args.output}. Review the diff before replacing broadcast/data/tba/results-{args.season}.json.")
 
 

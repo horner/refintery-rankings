@@ -19,11 +19,11 @@ def read(path):
 def write_json(path, value):
     target = ROOT / path
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    target.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
 
 
 def write_text(path, value):
-    (ROOT / path).write_text(value.rstrip() + "\n", encoding="utf-8")
+    (ROOT / path).write_text(value.rstrip() + "\n", encoding="utf-8", newline="\n")
 
 
 def by_team(rows):

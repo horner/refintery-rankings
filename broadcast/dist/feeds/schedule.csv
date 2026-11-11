@@ -1,0 +1,22 @@
+start_date,end_date,program,type,event,venue,city,state,local_teams,url
+2026-09-12,2026-09-12,FTC,Kickoff,FTC Kickoff · Avon,Avon High School,Avon,IN,,https://ftcscout.org/events/2026/USINAVKO
+2026-09-12,2026-09-12,FTC,Kickoff,FTC Kickoff · Bloomington,IUB MESH,Bloomington,IN,,https://ftcscout.org/events/2026/USINBLKO
+2026-09-12,2026-09-12,FTC,Kickoff,FTC Kickoff · South Bend,GEARS Youth Robotics Center,Osceola,IN,,https://ftcscout.org/events/2026/USINOSKO
+2026-09-12,2026-09-12,FTC,Kickoff,FTC Kickoff · West Lafayette,WBI Shop,West Lafayette,IN,,https://ftcscout.org/events/2026/USINWLKO
+2026-10-23,2026-10-24,FRC,Offseason,Boiler Bot Battle,Tippecanoe County Fairgrounds,Lafayette,IN,"1501, 1720, 8742, 10172, 10332",https://www.thebluealliance.com/event/2026inbbb
+2026-10-31,2026-10-31,FRC,Offseason,Monster Match,Wayne High School,Fort Wayne,IN,"1501, 4982, 8103, 8432, 8742, 9431, 10332, 10411, 10434",https://refineryrobotics.org/programs-events/monster-match/
+2026-12-05,2026-12-05,FTC,Qualifier,FTC Qualifier · Westfield 1,Westfield Middle School,Westfield,IN,,https://ftcscout.org/events/2026/USINWEQ1
+2026-12-06,2026-12-06,FTC,Qualifier,FTC Qualifier · Westfield 2,Westfield Middle School,Westfield,IN,"22331, 36124",https://ftcscout.org/events/2026/USINWEQ2
+2027-01-09,2027-01-09,FRC,Kickoff,2027 FRC game reveal (Kickoff),Worldwide broadcast,,,,https://www.firstinspires.org/programs/calendar
+2027-02-06,2027-02-06,FTC,Qualifier,FTC Qualifier · Greenwood,Greenwood Middle School,Greenwood,IN,,https://ftcscout.org/events/2026/USINGRQ
+2027-02-13,2027-02-13,FTC,Qualifier,FTC Qualifier · Shoals,Shoals Jr/Sr High School,Shoals,IN,36124,https://ftcscout.org/events/2026/USINSHQ
+2027-02-20,2027-02-20,FRC,Scrimmage,FRC Week Zero,Scrimmages nationwide,,,,https://www.firstinspires.org/programs/calendar
+2027-02-20,2027-02-20,FTC,Qualifier,FTC Qualifier · Avon,Avon High School,Avon,IN,25638,https://ftcscout.org/events/2026/USINAVQ
+2027-02-28,2027-02-28,FTC,Qualifier,FTC Qualifier · Mishawaka,Penn High School,Mishawaka,IN,"22331, 25638",https://ftcscout.org/events/2026/USINMIQ
+2027-03-06,2027-03-06,FTC,Championship,FIRST Indiana FTC State Championship,"Nicoson Hall, University of Indianapolis",Indianapolis,IN,,https://ftcscout.org/events/2026/USINCMP
+2027-03-12,2027-03-14,FRC,District,FIN District Mishawaka Event,Penn High School,Mishawaka,IN,"1501, 4982, 9119, 9431, 10172",https://www.thebluealliance.com/event/2027inmis
+2027-03-19,2027-03-21,FRC,District,FIN District Sellersburg Event,Silver Creek Senior High School,Sellersburg,IN,"1720, 8742, 10411, 10434",https://www.thebluealliance.com/event/2027insel
+2027-03-25,2027-03-27,FRC,District,FIN District Lafayette Event,Jefferson High School,Lafayette,IN,10332,https://www.thebluealliance.com/event/2027inlaf
+2027-04-01,2027-04-03,FRC,District,FIN District Fort Wayne Event,Homestead High School,Fort Wayne,IN,"1501, 1720, 4982, 8103, 8431, 8432, 8742, 10172, 10332, 10411, 10434",https://www.thebluealliance.com/event/2027inftw
+2027-04-16,2027-04-18,FRC,Championship,FIRST Indiana State Championship (FRC),Center Grove High School,Greenwood,IN,,https://www.thebluealliance.com/event/2027incmp
+2027-04-28,2027-05-01,FTC + FRC,Championship,FIRST Championship,George R. Brown Convention Center,Houston,TX,,https://www.firstinspires.org/programs/first-championship

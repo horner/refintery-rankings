@@ -1,6 +1,6 @@
 {
   "research_date": "2026-10-22",
-  "scope_recommendation": "Northeast Indiana \u2014 The REFINERY 12-county region. A fresh screening of all 69 teams listed on the official 2026 FIRST Indiana district roster found 13 official hometowns within these counties; these match the existing Indiana research cohort. Geography uses official FIRST profile hometown, not workshop location or student residence.",
+  "scope_recommendation": "Northeast Indiana — The REFINERY 12-county region. A fresh screening of all 69 teams listed on the official 2026 FIRST Indiana district roster found 13 official hometowns within these counties; these match the existing Indiana research cohort. Geography uses official FIRST profile hometown, not workshop location or student residence.",
   "counties": [
     "Adams",
     "Allen",
@@ -32,7 +32,7 @@
     "source": "https://storage.googleapis.com/site_v1/team_years/2026",
     "local_source": "data/teams.json",
     "local_methodology": "docs/statbotics-provenance.md",
-    "on_screen_footer": "2026 FRC \u2022 Statbotics EPA \u2022 Snapshot June 12, 2026",
+    "on_screen_footer": "2026 FRC • Statbotics EPA • Snapshot June 12, 2026",
     "producer_note": "Local ordering derived from Statbotics. This is an independent model-based list, not an official FIRST ranking or a voted poll; the June snapshot is not live October performance. EPA is not a win-loss record or a ranking of educational value. Do not compare FRC EPA numerically with FTC ratings."
   },
   "hero": {
@@ -42,7 +42,7 @@
       "https://www.firstinspires.org/resources/library/varsity-sports-robotics",
       "https://first.global/sport/"
     ],
-    "attribution_note": "FIRST uses the variant \u201cthe only sport where every kid can go pro.\u201d FIRST Global uses the requested everyone variant with a registered mark. Attribute the campaign message in small source text. Explain go pro through career-relevant skills; do not imply employment, admission, earnings, or paid competition are guaranteed."
+    "attribution_note": "FIRST uses the variant “the only sport where every kid can go pro.” FIRST Global uses the requested everyone variant with a registered mark. Attribute the campaign message in small source text. Explain go pro through career-relevant skills; do not imply employment, admission, earnings, or paid competition are guaranteed."
   },
   "editorial_guidance": [
     "Keep separate FTC and FRC boards; use a shared regional robotics brand if both are shown.",
@@ -58,7 +58,7 @@
       "rank": 1,
       "team_number": 1501,
       "team_name": "Team THRUST",
-      "school_or_organization": "Huntington North High School / Huntington County 4-H",
+      "school_or_organization": "Huntington County 4-H Robotics",
       "city": "Huntington",
       "county": "Huntington",
       "epa_mean": 118.71,
@@ -253,15 +253,15 @@
           },
           {
             "name": "Doug Horner",
-            "role": "Sponsor and adult team spokesperson",
+            "role": "Notable supporter and sponsor",
             "evidence_date": "2024-04-12",
             "date_precision": "day",
             "source_urls": [
               "https://www.21alivenews.com/2024/04/13/snider-robotics-club-prepares-compete-world-championship/",
               "https://refineryrobotics.org/about/"
             ],
-            "evidence_status": "verified_historical",
-            "notes": "The 21Alive page displays publication on April 12, 2024 at 11:38 PM EDT, although its URL uses April 13. It describes his work with the club and quotes him about the program; The REFINERY biography corroborates rookie-year sponsorship. No formal head-coach appointment is asserted."
+            "evidence_status": "verified_dated",
+            "notes": "Founder of The REFINERY, which sponsors the team, and a Snider High School alumnus. He supports the program as a sponsor rather than as a coach or team member; 21Alive quoted him about the club in April 2024."
           }
         ],
         "students": [
@@ -322,10 +322,10 @@
       "official_profile": "https://frc-events.firstinspires.org/2026/team/4982",
       "rating_profile": "https://www.statbotics.io/team/4982/2026",
       "spotlight": {
-        "name": "Caleb Neely",
-        "role": "Co-Business Manager and Outreach Director",
-        "qualification": "Partner biography explicitly associates these roles with 2026; page undated.",
-        "other_people_note": "Cameron Elder: assistant coach in undated partner biography. Captain pair Jasroop/Jake lacks full names and verified individual title assignments."
+        "name": "Jake",
+        "role": "Team captain, 2026–27",
+        "qualification": "First name only; confirmed by the team’s assistant coach, Nov 10, 2026.",
+        "other_people_note": "Matt Elder (lead coach) and Cameron Elder (assistant coach) confirmed Nov 10, 2026."
       },
       "leadership_evidence": {
         "team_number": 4982,
@@ -333,66 +333,43 @@
           {
             "name": "Matt Elder",
             "role": "Lead coach / mentor",
-            "evidence_date": null,
-            "date_precision": "undated",
+            "evidence_date": "2026-11-10",
+            "date_precision": "day",
             "source_urls": [
               "https://www.linkedin.com/in/matt-elder-24b8b615a"
             ],
-            "evidence_status": "self_reported_undated",
-            "notes": "Role appears on a public professional profile. No dated school appointment or current-season appointment was independently verified."
+            "evidence_status": "confirmed_by_team_mentor",
+            "notes": "Lead coach and mentor. Confirmed by Cameron Elder (Olympus assistant coach; Carroll mentor) on Nov 10, 2026."
           },
           {
             "name": "Cameron Elder",
             "role": "Assistant coach",
-            "evidence_date": null,
-            "date_precision": "undated",
+            "evidence_date": "2026-11-10",
+            "date_precision": "day",
             "source_urls": [
               "https://refineryrobotics.org/about/"
             ],
-            "evidence_status": "verified_undated",
-            "notes": "The REFINERY biography expressly identifies him as assistant coach of Team 4982. It also identifies him as a graduate and former student captain, so he is not listed as a current student captain."
+            "evidence_status": "confirmed_by_person",
+            "notes": "Assistant coach of Olympus Robotics and a former Olympus student captain. Also the former head coach of Carroll (10332), where he is now a mentor. Confirmed by Cameron Elder (Olympus assistant coach; Carroll mentor) on Nov 10, 2026."
           }
         ],
         "students": [
           {
-            "name": "Jasroop",
-            "role": "Named in the team captain / assistant captain announcement",
-            "evidence_date": "2025-2026",
-            "date_precision": "school_year",
-            "source_urls": [
-              "https://www.instagram.com/4982_olympus_robotics/"
-            ],
-            "evidence_status": "qualified_indexed",
-            "notes": "Official team account search-indexed caption pairs Jasroop and Jake with captain and assistant captain for 2025-2026, in that order. A full surname, stable post permalink, and independent confirmation of the individual title assignment were not retrieved. Do not silently convert the caption order into a verified individual appointment."
-          },
-          {
             "name": "Jake",
-            "role": "Named in the team captain / assistant captain announcement",
-            "evidence_date": "2025-2026",
-            "date_precision": "school_year",
+            "role": "Team captain, 2026–27",
+            "evidence_date": "2026-11-10",
+            "date_precision": "day",
             "source_urls": [
               "https://www.instagram.com/4982_olympus_robotics/"
             ],
-            "evidence_status": "qualified_indexed",
-            "notes": "Official team account search-indexed caption pairs Jasroop and Jake with captain and assistant captain for 2025-2026, in that order. Only the first name is verified. The individual assignment and a stable post permalink remain unverified."
-          },
-          {
-            "name": "Caleb Neely",
-            "role": "Co-Business Manager and Outreach Director",
-            "evidence_date": "2026",
-            "date_precision": "year",
-            "source_urls": [
-              "https://refineryrobotics.org/about/"
-            ],
-            "evidence_status": "verified_undated",
-            "notes": "An undated official partner biography expressly associates these roles with 2026. This establishes student leadership but does not establish the team-captain role."
+            "evidence_status": "confirmed_by_team_mentor",
+            "notes": "Olympus has a single team captain this season and no assistant captain. Surname not published here. Confirmed by Cameron Elder (Olympus assistant coach; Carroll mentor) on Nov 10, 2026."
           }
         ],
         "other_representatives": [],
         "gaps": [
-          "Captain and assistant-captain surnames and individual title assignments require confirmation.",
-          "The captain announcement is indexed account content, with no retrieved individual post permalink.",
-          "A 2026-27 student captain is not verified."
+          "Captain surname not published.",
+          "Olympus has a student leadership board; its members are not listed individually here."
         ]
       }
     },
@@ -480,7 +457,6 @@
             "evidence_date": "2024-05-11",
             "date_precision": "day",
             "source_urls": [
-              "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
               "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html",
               "https://www.trine.edu/news/2019/east-noble-robotics.aspx"
             ],
@@ -493,7 +469,6 @@
             "evidence_date": "2024-05-11",
             "date_precision": "day",
             "source_urls": [
-              "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
               "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html"
             ],
             "evidence_status": "verified_historical",
@@ -505,7 +480,6 @@
             "evidence_date": "2024-05-11",
             "date_precision": "day",
             "source_urls": [
-              "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
               "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html"
             ],
             "evidence_status": "verified_historical",
@@ -517,7 +491,6 @@
             "evidence_date": "2024-05-11",
             "date_precision": "day",
             "source_urls": [
-              "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
               "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html"
             ],
             "evidence_status": "verified_historical",
@@ -548,9 +521,9 @@
       "rating_profile": "https://www.statbotics.io/team/10332/2026",
       "spotlight": {
         "name": "Nieng Mang",
-        "role": "2025\u201326 team captain",
-        "qualification": "School newspaper contributor biography attached to January 27, 2026 article; biography may be updated dynamically; current appointment not confirmed.",
-        "other_people_note": "Current head coach not verified. Mady Stricker has indexed mentor evidence only."
+        "role": "2025–26 team captain",
+        "qualification": "Captain in 2025–26 per a January 2026 school-newspaper bio; 2026–27 captain not confirmed.",
+        "other_people_note": "Cameron Elder: former head coach (2025), now a mentor. Current head coach is a Carroll teacher not yet named publicly."
       },
       "leadership_evidence": {
         "team_number": 10332,
@@ -568,45 +541,33 @@
           },
           {
             "name": "Cameron Elder",
-            "role": "Former head coach",
-            "evidence_date": null,
-            "date_precision": "undated",
+            "role": "Former head coach (2025); now a team mentor",
+            "evidence_date": "2026-11-10",
+            "date_precision": "day",
             "source_urls": [
               "https://www.linkedin.com/in/camelder"
             ],
-            "evidence_status": "self_reported_historical",
-            "notes": "Public professional profile reports the Team 10332 head-coach tenure as April through October 2025. The profile itself is undated; this is a past appointment, not a current coach assignment."
-          },
-          {
-            "name": "Matt Arnold",
-            "role": "Former assistant coach",
-            "evidence_date": null,
-            "date_precision": "undated",
-            "source_urls": [
-              "https://www.linkedin.com/in/m4ttbit"
-            ],
-            "evidence_status": "self_reported_historical",
-            "notes": "Public professional profile reports an assistant-coach tenure from October 2024 through April 2025. The profile itself is undated; continued service is not established."
+            "evidence_status": "confirmed_by_person",
+            "notes": "Head coach from April to October 2025, and now a mentor with the team. Confirmed by Cameron Elder (Olympus assistant coach; Carroll mentor) on Nov 10, 2026. Carroll has had several head and assistant coaches since its 2025 rookie season."
           }
         ],
         "students": [
           {
             "name": "Nieng Mang",
-            "role": "Team captain; Carroll High School senior",
+            "role": "Team captain, 2025–26",
             "evidence_date": "2026-01-27",
             "date_precision": "day",
             "source_urls": [
               "https://chargeronline.nacs.k12.in.us/12210/sports/from-worst-to-first-how-indianas-football-program-became-the-nations-best/"
             ],
             "evidence_status": "verified_dated_bio",
-            "notes": "The school newspaper contributor biography identifies Mang as captain and a senior. January 27, 2026 is the article date; the biography itself has no separate timestamp and may be updated dynamically. The evidence supports the 2025-26 school-year identification, not a current 2026-27 appointment."
+            "notes": "A January 2026 Carroll school-newspaper bio names Mang as team captain and a senior. A senior that year would have graduated in spring 2026, so the 2026–27 captain still needs confirming with the team."
           }
         ],
         "other_representatives": [],
         "gaps": [
-          "Current head coach not verified.",
-          "Student captain for 2026-27 not verified.",
-          "Mentor evidence for Mady Stricker is indexed official content rather than the full biography on the current live page."
+          "The current head coach is a Carroll High School teacher who is not yet named in a public source.",
+          "The 2026–27 student captain is not confirmed."
         ]
       }
     },

@@ -53,9 +53,9 @@ School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coa
 | [Team directory](docs/team-directory.md) | School and team links, EPA/state/world ranks, seasons, distances, adult and student roles |
 | [Combined JSON](data/teams.json) | Complete joined dataset, including qualifications, evidence URLs, geographic points, and snapshot metadata |
 | [Team CSV](data/teams.csv) | One row per team; 17 rows with explicit source and qualification columns |
-| [Leadership CSV](data/leadership.csv) | One row per person-role record; 37 rows with dates, status, notes, and sources |
+| [Leadership CSV](data/leadership.csv) | One row per person-role record; 34 rows with dates, status, notes, and sources |
 | [Leadership findings](docs/leadership-findings.md) | Detailed source evidence, historical roles, captain/representative distinctions, and gaps |
-| [Source catalog](docs/sources.md) / [JSON](data/sources.json) | 148 unique source URLs |
+| [Source catalog](docs/sources.md) / [JSON](data/sources.json) | 146 unique source URLs |
 | [Methodology](docs/methodology.md) | Metric definitions, scope, dates, affiliations, and inclusion rules |
 | [Geographic verification](docs/geographic-scope.md) | Documented origin, source coordinates, distance calculations, and exclusions |
 | [Statbotics provenance](docs/statbotics-provenance.md) | Official cache, exact source fields, freshness limit, and reproduction instructions |
@@ -65,7 +65,7 @@ School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coa
 
 | School / organization | FRC team | Approx. miles | FIRST seasons through 2026 | EPA | State EPA rank | World EPA rank |
 |---|---|---:|---|---:|---:|---:|
-| [Huntington North High School / Huntington County 4-H](https://hnhs.hccsc.k12.in.us/) | [1501 Team THRUST](https://www.statbotics.io/team/1501/2026) | 23.3 | [22 (2005–2026)](https://frc-events.firstinspires.org/team/1501) | 118.71 | IN 12 / 68 | 438 / 3,724 |
+| [Huntington County 4-H Robotics](https://huntingtonrobotics.org/) | [1501 Team THRUST](https://www.statbotics.io/team/1501/2026) | 23.3 | [22 (2005–2026)](https://frc-events.firstinspires.org/team/1501) | 118.71 | IN 12 / 68 | 438 / 3,724 |
 | [East Central Indiana Robotics (community team)](https://phyxtgears.org/) | [1720 PhyXTGears](https://www.statbotics.io/team/1720/2026) | 51.4 | [21 (2006–2026)](https://frc-events.firstinspires.org/team/1720) | 118.52 | IN 13 / 68 | 440 / 3,724 |
 | [North Side High School](https://northside.fortwayneschools.org/about-us/robotics) | [9119 Iron Legends](https://www.statbotics.io/team/9119/2026) | 1.2 | [4 (2023–2026)](https://frc-events.firstinspires.org/team/9119) | 75.10 | IN 22 / 68 | 868 / 3,724 |
 | [R. Nelson Snider High School](https://snider.fortwayneschools.org/) | [9431 The Gold Standard](https://www.statbotics.io/team/9431/2026) | 3.4 | [3 (2024–2026)](https://frc-events.firstinspires.org/team/9431) | 68.51 | IN 24 / 68 | 984 / 3,724 |

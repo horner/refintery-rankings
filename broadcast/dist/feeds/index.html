@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Graphics feeds · Northeast Indiana Robotics · The REFINERY</title>
+  <meta name="description" content="Live data feeds and 1920×1080 browser-source overlays for Northeast Indiana FRC standings: JSON, CSV, ticker text, standings boards, lower thirds and a crawl.">
+  <link rel="icon" href="../assets/refinery-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../press/press.css">
+  <style>
+    code { background: #f1f5f9; padding: 1px 5px; border-radius: 4px; font-size: 14px; word-break: break-all; }
+    table.feeds { width: 100%; border-collapse: collapse; font-size: 15px; }
+    table.feeds th, table.feeds td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    table.feeds th { font-family: var(--display); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); border-bottom: 2px solid var(--ink); }
+    .preview { aspect-ratio: 16 / 9; width: 100%; border: 1px solid var(--line); background: repeating-conic-gradient(#e5e7eb 0 25%, #fff 0 50%) 0 0 / 24px 24px; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="bar"><a href="../"><img src="../assets/refinery-logo-reversed.svg" alt="The REFINERY" width="124" height="32"></a>
+    <nav><a href="../">Home</a><a href="../#standings">Standings</a><a href="../top10.html">Top 10</a><a href="./">Graphics feeds</a></nav></header>
+  <main class="sheet" id="main">
+    <p class="kicker">For graphics operators and streamers</p>
+    <h1>Graphics feeds</h1>
+    <p>Everything on this page is built from the same data as the site and updates whenever the site does. Point your graphics system at a feed, or add an overlay as a 1920×1080 browser source. No sign-up or key needed.</p>
+
+    <h2>Data feeds</h2>
+    <p>One flat row per team, in district-standings order. Works with vMix Data Sources, Ross XPression DataLinq (JSON / HTTP), NewBlue Captivate, Singular, and anything that reads CSV.</p>
+    <table class="feeds">
+      <thead><tr><th>Feed</th><th>Format</th><th>What’s in it</th></tr></thead>
+      <tbody>
+        <tr><td><a href="standings.json">standings.json</a> · <a href="standings.csv">.csv</a></td><td>JSON array / CSV</td><td>All 13 Northeast Indiana FRC teams: rank, team, short name (≤ 20 characters), short school name, city, W-L-T, district points, Indiana rank, honors line, EPA, logo URLs, team page, updated date.</td></tr>
+        <tr><td><a href="top10.json">top10.json</a> · <a href="top10.csv">.csv</a></td><td>JSON array / CSV</td><td>The first ten rows of the standings: the Top 10.</td></tr>
+        <tr><td><a href="schedule.json">schedule.json</a> · <a href="schedule.csv">.csv</a></td><td>JSON array / CSV</td><td>Every 2026–27 FTC and FRC event: dates, venue, city, local teams entered (once posted), event link.</td></tr>
+        <tr><td><a href="ticker.txt">ticker.txt</a></td><td>Plain text</td><td>One line per team for a crawl or ticker, e.g. <code>#1 Team THRUST (1501, Huntington County 4-H Robotics) · 45-15 · 250 pts · Won Mishawaka, Lafayette · World Championship · 3 judged awards</code></td></tr>
+      </tbody>
+    </table>
+    <p class="small">Order and points: official FIRST Indiana district points, via The Blue Alliance. The <code>epa</code> column is EPA (Expected Points Added), Statbotics’ estimate of how many points a robot adds to its alliance’s score in an average match, like points per game. It is a secondary column and does not set the order. Absolute URL for any feed: <code>https://horner.github.io/refintery-rankings/feeds/standings.json</code></p>
+
+    <h2>Overlays (browser sources)</h2>
+    <p>Add as a browser source at <strong>1920 × 1080</strong>. Backgrounds are transparent by default, and every graphic stays inside the 90% title-safe area. The overlay re-reads the data every minute.</p>
+    <table class="feeds">
+      <thead><tr><th>Graphic</th><th>URL</th></tr></thead>
+      <tbody>
+        <tr><td>Full-screen standings (8 per page)</td><td><a href="overlay.html?view=standings">overlay.html?view=standings</a> · page 2: <a href="overlay.html?view=standings&amp;page=2">&amp;page=2</a></td></tr>
+        <tr><td>Full-screen Top 10</td><td><a href="overlay.html?view=top10">overlay.html?view=top10</a></td></tr>
+        <tr><td>Team lower third</td><td><a href="overlay.html?view=lowerthird&amp;team=1501">overlay.html?view=lowerthird&amp;team=1501</a> (any team number)</td></tr>
+        <tr><td>Standings crawl</td><td><a href="overlay.html?view=ticker">overlay.html?view=ticker</a> · speed: <code>&amp;speed=120</code> pixels/second</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Options</strong> (add to any overlay URL):</p>
+    <ul>
+      <li><code>&amp;bg=green</code> chroma green, <code>&amp;bg=black</code>, or <code>&amp;bg=navy</code> for switchers without alpha. Default is transparent.</li>
+      <li><code>&amp;cycle=10</code> flips standings pages every 10 seconds.</li>
+      <li><code>&amp;rows=6</code> changes rows per page.</li>
+      <li><code>&amp;safe=1</code> shows action-safe (blue) and title-safe (pink) guides while you line things up.</li>
+    </ul>
+    <iframe class="preview" src="overlay.html?view=standings&amp;safe=1" title="Standings overlay preview" loading="lazy"></iframe>
+    <p class="small">Preview of the standings overlay with safe-area guides. The checkerboard is transparency.</p>
+
+    <h2>Using these on air</h2>
+    <ul>
+      <li>During a match, FIRST requires its own unmodified audience-display overlay on streams of its events. Use these graphics for standings, results and team introductions before and after matches.</li>
+      <li>Logos are the teams’ and schools’ own marks; see the <a href="../press/media.html">logo credits</a>.</li>
+      <li>The ranking is not a poll. It is the official district-points order, so it matches what FIRST Indiana publishes.</li>
+    </ul>
+  </main>
+</body>
+</html>

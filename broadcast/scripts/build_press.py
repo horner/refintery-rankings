@@ -60,11 +60,13 @@ def page(title, body, description):
   <meta name="description" content="{e(description)}">
   <link rel="icon" href="../assets/refinery-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="press.css">
+  <script src="../upcoming.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="bar"><a href="../"><img src="../assets/refinery-logo-reversed.svg" alt="The REFINERY" width="124" height="32"></a>
     <nav><a href="./">Press kit</a><a href="standings.html">Standings</a><a href="media.html">Logos &amp; photos</a><a href="../#schedule">Calendar</a></nav></header>
-  <main class="sheet">
+  <main class="sheet" id="main">
 {body}
   </main>
   <footer class="sheet small"><p><strong>Media contact:</strong> <a href="mailto:{CONTACT}">{CONTACT}</a></p><p>{e(DISCLOSURE)}</p></footer>
@@ -82,7 +84,7 @@ def team_block(t):
     return f"""<section class="team" id="team-{t['number']}">
       <h3>{e(t['name'])} <span class="muted">· FRC {t['number']}</span></h3>
       <p class="muted">{e(t['school'])} · {e(t['city'])}, {e(t['county'])} County · rookie year {t['rookieYear']}</p>
-      <dl class="facts"><div><dt>2026 record</dt><dd>{record(t['record'])}</dd></div><div><dt>Indiana district rank</dt><dd>#{t['district']['rank']} of {t['district']['teamCount']}</dd></div><div><dt>District points</dt><dd>{t['district']['points']}</dd></div><div><dt>EPA (Statbotics)</dt><dd>{t['epa']:.1f}</dd></div></dl>
+      <dl class="facts"><div><dt>2026 record</dt><dd>{record(t['record'])}</dd></div><div><dt>Indiana district rank</dt><dd>#{t['district']['rank']} of {t['district']['teamCount']}</dd></div><div><dt>District points</dt><dd>{t['district']['points']}</dd></div><div><dt><abbr title="Expected Points Added (Statbotics): estimated points a robot adds to its alliance’s score per match">EPA</abbr> · points added per match</dt><dd>{t['epa']:.1f}</dd></div></dl>
       {f"<p><strong>Honors:</strong> {e('; '.join(h for h in honors if h))}</p>" if any(honors) else ""}
       {f"<p><strong>Awards:</strong> {e(awards)}</p>" if awards else ""}
       {f"<p><strong>Follow the team:</strong> {follow}</p>" if follow else ""}
@@ -100,6 +102,13 @@ def storylines(result, dnf_count):
         lines.append(f"<strong>{e(t['name'])} ({t['number']})</strong> won the {e(' and '.join(t['titles']))} district event{'s' if len(t['titles']) > 1 else ''}{e(extra)}.")
     for t in (t for t in teams if t["worlds"] and not t["titles"]):
         lines.append(f"<strong>{e(t['name'])} ({t['number']})</strong> earned a trip to the {e(t['worlds'])} in Houston.")
+    for ev in result.get("latestResults", []):
+        if ev["type"] != "offseason":
+            continue
+        top = [r for r in ev["teams"] if r["outcome"] in ("Won event", "Finalist")]
+        if top:
+            told = " and ".join(f"<strong>{e(r['name'])} ({r['number']})</strong> {'won' if r['outcome'] == 'Won event' else 'reached the finals at'}" for r in top)
+            lines.append(f"Offseason: {told} {e(ev['name'])} ({nice_date(ev['endDate'])}), an early look at the 2027 season.")
     lines.append(f"Regional teams won <strong>{s['awards']} judged awards</strong> in 2026, from Innovation in Control to Rising All-Star.")
     ftc = result["ftc"]
     names = [f"{e(t['school'])}'s {e(t['name'])} ({t['number']})" for t in ftc["teams"]]
@@ -114,12 +123,13 @@ def write_press(result, dnf_count):
     PRESS.mkdir(parents=True, exist_ok=True)
     teams = sorted(result["standings"], key=lambda t: t["standingsRank"])
     s, cal = result["seasonSummary"], result["calendar"]
-    upcoming = [x for x in cal["events"] if x["endDate"] >= cal["retrievedDate"]][:8]
+    # Everything not over at build time; upcoming.js hides events that end before the reader's date.
+    upcoming = [x for x in cal["events"] if x["endDate"] >= cal["retrievedDate"]]
 
     # Standings CSV
     buffer = io.StringIO()
     writer = csv.writer(buffer, lineterminator="\n")
-    writer.writerow(["district_standing", "power_ranking", "team_number", "team_name", "school_or_organization", "city", "county",
+    writer.writerow(["district_standing", "epa_rank", "team_number", "team_name", "school_or_organization", "city", "county",
                      "wins", "losses", "ties", "indiana_district_rank", "district_points", "epa_2026", "event_titles", "world_championship",
                      "awards", "website", "results_source", "ratings_source"])
     for t in teams:
@@ -128,7 +138,7 @@ def write_press(result, dnf_count):
                          t["record"]["wins"], t["record"]["losses"], t["record"]["ties"], t["district"]["rank"], t["district"]["points"],
                          f"{t['epa']:.2f}", "; ".join(t["titles"]), t["worlds"] or "", "; ".join(a["award"] for a in t["awards"]), site,
                          s["resultsSource"], s["ratingsSource"]])
-    (HERE / "dist/standings-2026.csv").write_text(buffer.getvalue(), encoding="utf-8")
+    (HERE / "dist/standings-2026.csv").write_text(buffer.getvalue(), encoding="utf-8", newline="\n")
 
     # Printable standings
     rows = "".join(f"<tr><td>{t['standingsRank']}</td><td><strong>{e(t['name'])}</strong> {t['number']}<br><span class='muted'>{e(t['city'])} · {e(t['school'])}</span></td>"
@@ -136,36 +146,51 @@ def write_press(result, dnf_count):
                    f"<td>{e('; '.join(t['badges']))}</td></tr>" for t in teams)
     standings = f"""    <p class="kicker">2026 FRC season · final</p>
     <h1>Northeast Indiana standings</h1>
-    <p class="muted">Ordered by 2026 FIRST Indiana district points. Updated {nice_date(s['updated'])}. <a href="../standings-2026.csv" download>Download CSV</a> · <a href="javascript:print()">Print</a></p>
-    <table class="standings"><thead><tr><th>#</th><th>Team</th><th class="n">W-L</th><th class="n">IN rank</th><th class="n">Points</th><th class="n">EPA</th><th>2026 honors</th></tr></thead><tbody>{rows}</tbody></table>
-    <p class="small">Records count official matches (district events, state and world championship). Indiana district rank is among {teams[0]['district']['teamCount']} teams. Records, events and awards: {e(s['resultsSource'])}. EPA: {e(s['ratingsSource'])}.</p>"""
-    (PRESS / "standings.html").write_text(page("2026 standings", standings, "Printable 2026 FRC standings for Northeast Indiana."), encoding="utf-8")
+    <p class="muted">Ordered by 2026 FIRST Indiana district points. Updated {nice_date(s['updated'])}. <a href="../standings-2026.csv" download>Download CSV</a> · <button type="button" class="print-button" onclick="print()">Print</button></p>
+    <table class="standings"><thead><tr><th>#</th><th>Team</th><th class="n">W-L</th><th class="n">IN rank</th><th class="n">Points</th><th class="n"><abbr title="Expected Points Added">EPA</abbr></th><th>2026 honors</th></tr></thead><tbody>{rows}</tbody></table>
+    <p class="small">Records count official matches (district events, state and world championship). Indiana district rank is among {teams[0]['district']['teamCount']} teams. Records, events and awards: {e(s['resultsSource'])}. EPA (Expected Points Added) is Statbotics’ estimate of the points a robot adds to its alliance’s score per match, like points per game: {e(s['ratingsSource'])}. It does not set the order.</p>"""
+    (PRESS / "standings.html").write_text(page("2026 standings", standings, "Printable 2026 FRC standings for Northeast Indiana."), encoding="utf-8", newline="\n")
 
     # Press kit
     stats = [(s["teams"], "FRC teams in the region"), (s["eventTitles"], "district event titles in 2026"), (len(s["worldsTeams"]), "World Championship teams"),
              (s["awards"], "judged awards"), (len(result["ftc"]["teams"]) + len(result["ftc"]["newTeams"]), "FTC teams to follow")]
-    dates = "".join(f"<li><strong>{date_range(x['startDate'], x['endDate'])}</strong> · {e(x['name'])} <span class='muted'>· {e(', '.join(v for v in (x['venue'], x['city']) if v))}</span></li>" for x in upcoming)
+    dates = "".join(f"<li data-end=\"{x['endDate']}\"><strong>{date_range(x['startDate'], x['endDate'])}</strong> · {e(x['name'])} <span class='muted'>· {e(', '.join(v for v in (x['venue'], x['city']) if v))}</span></li>" for x in upcoming)
+    latest_html = "".join(
+        f"<div class='latest'><h3>{e(ev['name'])} <span class='muted'>· {nice_date(ev['endDate'])}{' · offseason' if ev['type'] == 'offseason' else ''}</span></h3><ul>"
+        + "".join(f"<li><strong>{e(r['name'])} ({r['number']})</strong>: {e(r['result'])}{(' · ' + e(', '.join(r['awards']))) if r['awards'] else ''}</li>" for r in ev["teams"])
+        + "</ul></div>" for ev in result.get("latestResults", []))
     kit = f"""    <p class="kicker">Press kit · updated {nice_date(s['updated'])}</p>
     <h1>Northeast Indiana high school robotics</h1>
     <div class="contact"><strong>Media contact</strong><a href="mailto:{CONTACT}?subject=Media%20request%3A%20Northeast%20Indiana%20robotics">{CONTACT}</a><span>Interviews, photos, team introductions and event access.</span></div>
-    <h2>At a glance</h2>
+    <nav class="jump" aria-label="On this page"><a href="#glance">At a glance</a><a href="#latest">Latest results</a><a href="#stories">Story ideas</a><a href="#dates">Coming up</a><a href="#downloads">Downloads</a><a href="#terms">Terms</a><a href="#teams">Team by team</a></nav>
+    <h2 id="glance">At a glance</h2>
     <ul class="glance">{''.join(f'<li><strong>{v}</strong> {e(label)}</li>' for v, label in stats)}</ul>
-    <h2>Story ideas</h2>
+    <h2 id="latest">Latest results</h2>
+    {latest_html}
+    <h2 id="stories">Story ideas</h2>
     <ul class="stories">{storylines(result, dnf_count)}</ul>
-    <h2>Coming up</h2>
-    <ul class="dates">{dates}</ul>
+    <h2 id="dates">Coming up</h2>
+    <ul class="dates" data-upcoming-limit="8">{dates}<li class="muted" data-upcoming-empty hidden>No events left on the calendar. Check back when the next season's dates post.</li></ul>
     <p><a href="../calendar.ics" download>Add every event to your calendar (.ics)</a> · <a href="../#schedule">Full calendar</a></p>
-    <h2>Downloads</h2>
-    <ul class="downloads"><li><a href="standings.html">Printable standings</a> and <a href="../standings-2026.csv" download>standings CSV</a></li><li><a href="media.html">Team logos and photos</a> with credits</li><li><a href="../calendar.ics" download>Season calendar (.ics)</a></li><li>{link('https://github.com/horner/refintery-rankings', 'Full data, sources and methodology on GitHub')}</li></ul>
+    <h2 id="downloads">Downloads</h2>
+    <ul class="downloads"><li><a href="standings.html">Printable standings</a> and <a href="../standings-2026.csv" download>standings CSV</a></li><li><a href="media.html">Team logos and photos</a> with credits</li><li><a href="../feeds/">Graphics feeds and overlays</a> (JSON, CSV, ticker text, 1920×1080 browser sources)</li><li><a href="../calendar.ics" download>Season calendar (.ics)</a></li><li>{link('https://github.com/horner/refintery-rankings', 'Full data, sources and methodology on GitHub')}</li></ul>
     <h2>How the sport works</h2>
     <p><strong>FRC</strong> (<i>FIRST</i> Robotics Competition) is for grades 9–12 and uses industrial-size robots; <strong>FTC</strong> (<i>FIRST</i> Tech Challenge) is for grades 7–12 with smaller robots. Matches pit a red alliance against a blue alliance, three FRC teams per side, and partners change every qualifying match. Top teams pick partners for the playoffs. Indiana FRC teams earn district points at two district events; the leaders advance to the state championship and the <i>FIRST</i> Championship in Houston.</p>
-    <p><strong>Rankings on this site:</strong> the standings follow official FIRST Indiana district points. The power ranking uses Statbotics EPA (Expected Points Added), an estimate of the points a robot adds to its alliance each match. FTC ratings (OPR) are separate and not comparable to EPA.</p>
+    <p><strong>Rankings on this site:</strong> the standings and the Top 10 both follow official FIRST Indiana district points, from The Blue Alliance. Statbotics EPA (Expected Points Added), a model estimate of the points a robot adds to its alliance each match, is shown alongside as a secondary rating; it is least reliable early in a season. FTC ratings (OPR) are separate and not comparable to EPA.</p>
     <h2>About The REFINERY</h2>
     <p>{e(ABOUT)} {link('https://refineryrobotics.org/', 'refineryrobotics.org')}</p>
-    <h2>Team by team</h2>
+    <h2 id="terms">Terms to know</h2>
+    <dl class="terms">
+      <dt>District points</dt><dd>The official FIRST Indiana standings: points for qualifying wins, playoff runs and awards. They decide who goes to state and to Houston.</dd>
+      <dt>EPA</dt><dd>Expected Points Added, from Statbotics: an estimate of how many points a robot adds to its alliance’s score in an average match, like points per game. A model, so it can be off early in a season.</dd>
+      <dt>Alliance</dt><dd>Three FRC teams (two in FTC) play together, red against blue. Partners change every qualifying match; top teams pick partners for the playoffs.</dd>
+      <dt>Blue banner</dt><dd>What <i>FIRST</i> awards for an event win or a top team award; teams hang them like championship banners.</dd>
+      <dt>OPR</dt><dd>Offensive Power Rating, the FTC per-match scoring estimate. Not comparable to EPA.</dd>
+    </dl>
+    <h2 id="teams">Team by team</h2>
     <p class="muted">In district-standings order. People are named on the main site only with the role and date found in a public source; confirm current captains and coaches with the team.</p>
     {''.join(team_block(t) for t in teams)}"""
-    (PRESS / "index.html").write_text(page("Press kit", kit, "Press kit for Northeast Indiana high school robotics: story ideas, standings, dates, team facts and contacts."), encoding="utf-8")
+    (PRESS / "index.html").write_text(page("Press kit", kit, "Press kit for Northeast Indiana high school robotics: story ideas, standings, dates, team facts and contacts."), encoding="utf-8", newline="\n")
 
     # Logos and photos
     marks = []
@@ -176,13 +201,15 @@ def write_press(result, dnf_count):
                 shown = result["displayAssets"].get(mark["file"], {}).get("file", mark["file"])
                 marks.append(f"<figure class='mark{' dark' if mark.get('background') == 'dark' else ''}'><img src='../{e(shown)}' alt='{e(mark['label'])}' loading='lazy'><figcaption><strong>{e(t['name'])}</strong> · {program} {t['number']} · {e(kind)} mark<br><a href='../{e(mark['file'])}' download>Download original</a> · {link(mark['pageUrl'], 'source')}</figcaption></figure>")
     photos = "".join(f"<figure class='photo'><img src='../{e(p['file'])}' alt='{e(p['caption'])}' loading='lazy' width='{p['width']}' height='{p['height']}'><figcaption>{e(p['caption'])} Photo: {e(p['credit'])}.<br><a href='../{e(p['file'])}' download>Download ({p['width']}×{p['height']})</a> · {link(p['sourceUrl'], 'full-size original')}</figcaption></figure>" for p in result["photos"])
+    photo_teams = len({n for ph in result["photos"] for n in ph["teams"]})
+    all_teams = len(teams) + len(result["ftc"]["teams"]) + len(result["ftc"]["newTeams"])
     media = f"""    <p class="kicker">For reporters</p>
     <h1>Logos &amp; photos</h1>
     <p>School and team marks belong to their schools and teams; they're shown here for identification in news coverage. Photos are from The REFINERY; credit "Photo: The REFINERY". For other uses, or for more photos of a team, email <a href="mailto:{CONTACT}">{CONTACT}</a>.</p>
-    <div class="contact"><strong>Have photos of your team?</strong><a href="mailto:{CONTACT}?subject=Team%20photos">{CONTACT}</a><span>Send action shots of your robot and team with the photographer's name and an OK to post. We're adding at least one photo for every team.</span></div>
+    <div class="contact"><strong>Have photos of your team?</strong><a href="mailto:{CONTACT}?subject=Team%20photos">{CONTACT}</a><span>Send action shots of your robot and team with the photographer's name and an OK to post. We'd like at least one photo of every team; {photo_teams} of {all_teams} have one so far.</span></div>
     <h2>Photos</h2>
     <div class="grid photos">{photos}</div>
     <h2>Team and school logos</h2>
     <div class="grid marks">{''.join(marks)}</div>
     <p class="small">Each logo links to the page it came from. Originals are unmodified; checksums are in the {link('https://github.com/horner/refintery-rankings/blob/main/broadcast/data/logos.json', 'logo manifest')}.</p>"""
-    (PRESS / "media.html").write_text(page("Logos & photos", media, "Team logos and photos for news coverage of Northeast Indiana robotics."), encoding="utf-8")
+    (PRESS / "media.html").write_text(page("Logos & photos", media, "Team logos and photos for news coverage of Northeast Indiana robotics."), encoding="utf-8", newline="\n")

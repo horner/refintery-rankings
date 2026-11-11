@@ -30,7 +30,7 @@ export TBA_AUTH_KEY=your-key-here
 
 On Windows PowerShell: `$env:TBA_AUTH_KEY = "your-key-here"`.
 
-**On GitHub** (for the automatic refresh): go to the repository **Settings → Secrets and variables → Actions → New repository secret**, name it `TBA_AUTH_KEY`, and paste the key. Also turn on **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests**, so the refresh can open its pull request.
+**On GitHub** (for the automatic refresh): go to the repository **Settings → Secrets and variables → Actions → New repository secret**, name it `TBA_AUTH_KEY`, and paste the key.
 
 ## 3. What uses the key
 
@@ -70,9 +70,9 @@ Review the diff before committing. A refresh should only change dates, results a
 
 1. Refreshes the calendar, and the FRC results if the `TBA_AUTH_KEY` secret exists.
 2. Rebuilds the site, rewrites the checksums and runs every verify step.
-3. Opens a pull request named "Refresh results and calendar (date)" if anything changed.
+3. If anything changed, commits "Refresh results and calendar (date)" straight to `main` and starts the publish workflow.
 
-Nothing goes live until someone reviews and merges that pull request. The publish workflow then deploys it as usual. If nothing changed, no pull request is opened.
+There is no pull request to approve: the verify steps are the gate. If any check fails, the run stops red and nothing is committed or published. If nothing changed, nothing is committed.
 
 ## 6. Season rollover (each January)
 

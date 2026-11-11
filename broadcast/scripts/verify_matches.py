@@ -95,7 +95,7 @@ def frc_population(record, cutoff):
     meta = load(path.with_suffix(".metadata.json"))
     require(meta["status"] == 200, f"FRC {number} schedule capture failed")
     digest(path, meta["sha256"])
-    tree = SourceHTML(path.read_text()).root
+    tree = SourceHTML(path.read_text(encoding="utf-8")).root
     found = {}
     for event in tree.all("div"):
         if "tab-pane" not in event.attrs.get("class", "").split():
@@ -253,7 +253,7 @@ def verified_videos():
                                       else "P" + str(record["series"]))
                     require(video["chapterLabel"] == expected_label, "FTC chapter belongs to a different match")
                 else:
-                    page = (RESEARCH / record["sourceFile"]).read_text()
+                    page = (RESEARCH / record["sourceFile"]).read_text(encoding="utf-8")
                     require(video["id"] in page and video["oembedStatus"] == 200,
                             "FRC video absent from exact match page or inaccessible")
                 result.setdefault(record["officialResultsUrl"], []).append(video)

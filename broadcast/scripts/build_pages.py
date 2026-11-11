@@ -91,7 +91,8 @@ def identity_logos(t, display, prefix="", kind=None):
             continue
         shown = display.get(mark["file"], {})
         image = f'<span class="logo{(" dark-logo" if mark.get("background") == "dark" else "")}"><img src="{prefix}{e(shown.get("file", mark["file"]))}" alt="{e(mark["label"])}" loading="lazy" decoding="async"></span>'
-        marks.append(f'<figure class="{kind}-identity">{image}<figcaption>{"School / organization" if kind == "school" else "Team"}</figcaption></figure>')
+        name = (t.get("school") or "").split(" / ")[0] if kind == "school" else f'{t["name"]} · {t["number"]}'
+        marks.append(f'<figure class="{kind}-identity">{image}<figcaption><strong>{e(name)}</strong><span>{"School / organization" if kind == "school" else "Robotics team"}</span></figcaption></figure>')
     return '<div class="profile-logos">' + ''.join(marks) + '</div>'
 
 
@@ -106,15 +107,17 @@ def standings_mark(t, display, kind):
 
 
 def person_evidence(p):
-    qualifiers = [("historical", "Historical evidence"), ("retrospective", "Retrospective account"), ("indexed", "Indexed evidence"), ("self reported", "Self-reported")]
-    parts = ["Source dated " + short(p["date"]) if p.get("date") else "Undated source"]
-    if p.get("season"):
-        parts.append("Season " + p["season"])
-    parts.extend(label for term, label in qualifiers if term in p.get("status", ""))
-    if p.get("note"):
+    status = p.get("status", "")
+    if "confirmed" in status:
+        parts = ["Confirmed with the team" + (", " + short(p["date"]) if p.get("date") else "")]
+    else:
+        how = [("historical", "Past role"), ("retrospective", "From a later interview"), ("indexed", "From a search listing"), ("self reported", "Self-reported online")]
+        parts = ["As of " + short(p["date"]) if p.get("date") else "Source has no date"]
+        parts.extend(label for term, label in how if term in status)
+    if p.get("note") and "confirmed" in status:
         parts.append(p["note"])
-    if p.get("dateBasis"):
-        parts.append(p["dateBasis"])
+    elif "confirmed" not in status:
+        parts.append("Confirm current role with the team")
     return e(" · ".join(parts))
 
 
@@ -124,9 +127,11 @@ def people_details(people, gaps=()):
     rows = []
     for p in people:
         sources = " · ".join(ext(url, f"source {i + 1}") for i, url in enumerate(p["sourceUrls"]))
-        rows.append(f'<li><strong>{e(p["name"])}</strong> · {e(p["role"])}<br><small>{person_evidence(p)} · {sources}</small></li>')
+        research = p.get("note") and "confirmed" not in p.get("status", "")
+        more = f'<details class="person-note"><summary>Source notes</summary><p>{e(p["note"])}</p></details>' if research else ""
+        rows.append(f'<li><strong>{e(p["name"])}</strong> · {e(p["role"])}<br><small>{person_evidence(p)} · {sources}</small>{more}</li>')
     note = " ".join(gaps) or "Confirm current captains and coaches with the team before publishing."
-    return f'<details open><summary>People named in public sources ({len(people)})</summary><ul class="people">{"".join(rows)}</ul><p class="muted small">{e(note)}</p></details>'
+    return f'<details open><summary>Coaches, leaders &amp; supporters ({len(people)})</summary><ul class="people">{"".join(rows)}</ul><p class="muted small">{e(note)}</p></details>'
 
 
 def follow_label(link):
@@ -184,24 +189,37 @@ def ftc_cards(result):
     display, cards = result["displayAssets"], []
     for t, rookie in [(t, False) for t in result["ftc"]["teams"]] + [(t, True) for t in result["ftc"]["newTeams"]]:
         stats = '<p class="muted">Rookie team for 2026–27. First matches this season.</p>' if rookie else f'<div class="card-stats"><div><strong>{t["opr"]:.1f}</strong><span>Best OPR, 2025–26</span></div><div><strong>{t["regionalRank"]}<small class="muted">/{t["regionalCount"]}</small></strong><span>Rank at Indiana events</span></div></div>'
+        h = t.get("history") or {}
+        if h.get("events"):
+            stats += f'<p class="card-history"><strong>All-time:</strong> {h["events"]} event{"s" if h["events"] != 1 else ""} · {e(h["record"])} qualifying · {h["awards"]} award{"s" if h["awards"] != 1 else ""}' + (f' · {h["eventWins"]} event win{"s" if h["eventWins"] != 1 else ""}' if h["eventWins"] else "") + '</p>'
         cards.append(f'<article class="card"><span class="label {"new" if rookie else "ftc"}">{"New this season" if rookie else "FTC"} · {t["number"]}</span><div class="identity">{logo(t["logos"], t["number"], display)}<span><strong>{e(t["name"])}</strong><small>{e(t["school"])}{" · " + e(t["city"]) if t.get("city") else ""}</small></span></div>{stats}<p><a class="text-link" href="team/{t["number"]}/">Team page</a></p></article>')
     return "".join(cards)
 
 
 def region_teams(event, result, prefix=""):
+    """Same wording as app.js entrants(): the note wins when the source supplied one."""
     entry = event.get("entrants")
     if not entry:
         return ""
     if not entry["posted"]:
-        text = ("Teams qualify during the season. Region qualifiers will be listed here." if event["type"] == "Championship"
-                else "Entry list not posted yet. Region teams will be listed here when it is.")
-        return f'<div class="region-teams"><span class="rt-label">REFINERY-region teams</span><p class="muted">{text}</p></div>'
+        if "registered" in (entry.get("note") or ""):
+            text = entry["note"]
+        else:
+            text = ("Teams qualify during the season. Region qualifiers will be listed here." if event["type"] == "Championship"
+                    else "Entry list not posted yet. Region teams will be listed here when it is.")
+        return f'<div class="region-teams"><span class="rt-label">REFINERY-region teams</span><p class="muted">{e(text)}</p></div>'
     roster = {t["number"]: t for t in result["standings"] + result["ftc"]["teams"] + result["ftc"]["newTeams"]}
     if not entry["local"]:
-        body = f'<p class="muted">{entry["count"]} teams entered; none from The REFINERY’s region yet.</p>'
+        body = f'<p class="muted">{e(str(entry["count"]) + " teams entered; none from The REFINERY’s region yet." if entry.get("count") else entry.get("note") or "Entry list not posted yet.")}</p>'
     else:
-        items = "".join(f'<li>{logo(roster[n]["logos"], n, result["displayAssets"], prefix) if n in roster else ""}<span><strong><a href="{prefix}team/{n}/">{e(roster[n]["name"]) if n in roster else f"Team {n}"}</a></strong><small>{n}</small></span></li>' for n in entry["local"])
-        body = f'<ul class="entered">{items}</ul><p class="muted">{len(entry["local"])} of {entry["count"]} teams entered are from The REFINERY’s region.</p>'
+        def item(n):
+            t = roster.get(n)
+            name = f'<a href="{prefix}team/{n}/">{e(t["name"])}</a>' if t else f"Team {n}"
+            return f'<li>{logo(t["logos"], n, result["displayAssets"], prefix) if t else ""}<span><strong>{name}</strong><small>{n}{" · " + e(t["school"]) if t and t.get("school") else ""}</small></span></li>'
+        local = entry["local"]
+        count = entry.get("count")
+        summary = f'{len(local)} of {count} teams entered {"is" if len(local) == 1 else "are"} from The REFINERY’s region.' if count else entry.get("note", "")
+        body = f'<ul class="entered">{"".join(item(n) for n in local)}</ul><p class="muted">{e(summary)}</p>'
     return f'<div class="region-teams"><span class="rt-label">REFINERY-region teams</span>{body}</div>'
 
 
@@ -216,7 +234,7 @@ def calendar(result, today):
         for ev in events:
             d = date.fromisoformat(ev["startDate"])
             place = " · ".join(x for x in (ev["venue"], ", ".join(x for x in (ev["city"], ev["state"]) if x)) if x)
-            items.append(f'<li><div class="date-block"><span class="m">{d:%b}</span><span class="d">{d.day}</span></div><div><span class="label{" ftc" if ev["program"] == "FTC" else ""}">{e(ev["program"])} · {e(ev["type"])}{f" · Week {ev["week"]}" if ev.get("week") else ""}</span><h3>{e(ev["name"])}</h3><p>{span(ev["startDate"], ev["endDate"])}{" · " + e(place) if place else ""}</p>{f"<p class=\"desc\">{e(ev['description'])}</p>" if ev["description"] else ""}{region_teams(ev, result)}<ul class="link-list"><li>{ext(ev["url"], "Event details", "text-link")}</li></ul></div></li>')
+            items.append(f'<li><div class="date-block"><span class="m">{d:%b}</span><span class="d">{d.day}</span></div><div><span class="label{" ftc" if ev["program"] == "FTC" else ""}">{e(ev["program"])} · {e(ev["type"])}{f" · Week {ev["week"]}" if ev.get("week") else ""}</span><h4>{e(ev["name"])}</h4><p>{span(ev["startDate"], ev["endDate"])}{" · " + e(place) if place else ""}</p>{f"<p class=\"desc\">{e(ev['description'])}</p>" if ev["description"] else ""}{region_teams(ev, result)}<ul class="link-list"><li>{ext(ev["url"], "Event details", "text-link")}</li></ul></div></li>')
         html.append(f'<h3 class="month">{MONTHS[month - 1]} {year}</h3><ol class="schedule">{"".join(items)}</ol>')
     return "".join(html)
 
@@ -229,14 +247,71 @@ def school_leader(s, linked=False):
     return f'{e(leader["role"])}: {name} · {e(leader["evidenceLabel"])}'
 
 
-def dnf_list(dnf):
-    rows = sorted(dnf["schools"], key=lambda s: s["distanceMiles"])
+def dnf_list(dnf, limit=24):
+    # Same first page app.js shows (dnfLimit); the full list loads from dnf.json on demand.
+    rows = sorted(dnf["schools"], key=lambda s: s["distanceMiles"])[:limit]
     return "".join(f'<li><details class="school"><summary><span><strong>{e(s["name"])}</strong><small>{e(s["city"])}, {e(s["state"])} · {e(s["sector"])}</small><small class="school-leader">{school_leader(s)}</small></span><span class="miles">{s["distanceMiles"]:.1f}<small> mi</small></span></summary><div class="school-body"><p>{e(s["district"])}</p><p>{school_leader(s, True)}</p></div></details></li>' for s in rows)
 
 
-def news(result):
+def podcast():
+    """The REFINERY's sports-show-style podcast. Until an episode is listed in data/podcast.json,
+    the player is a placeholder; the newest episode then becomes the featured video."""
+    show = json.loads((HERE / "data/podcast.json").read_text(encoding="utf-8"))
+    episodes = sorted(show["episodes"], key=lambda x: x["date"], reverse=True)
+    if episodes:
+        ep = episodes[0]
+        player = (f'<button type="button" class="replay-play" data-video="{e(ep["videoId"])}" data-title="{e(show["title"])}: {e(ep["title"])}" aria-label="Play episode {e(ep.get("number", ""))}: {e(ep["title"])}">'
+                  f'<img src="https://i.ytimg.com/vi/{e(ep["videoId"])}/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="play-icon" aria-hidden="true"></span></button>'
+                  f'<figcaption><strong>Episode {e(ep.get("number", ""))}: {e(ep["title"])}</strong> {e(ep.get("summary", ""))} <span class="muted">{short(ep["date"])}</span></figcaption>')
+        more = "".join(f'<li>{ext("https://www.youtube.com/watch?v=" + x["videoId"], "Episode " + str(x.get("number", "")) + ": " + x["title"])}<small>{short(x["date"])}</small></li>' for x in episodes[1:])
+        archive = f'<h3 class="col-title">Past episodes</h3><ul class="news-list">{more}</ul>' if more else ""
+    else:
+        player = ('<div class="podcast-placeholder" role="img" aria-label="Video placeholder: the first episode is coming soon">'
+                  '<span class="play-icon" aria-hidden="true"></span><strong>Episode 1</strong><span>Coming soon</span></div>'
+                  '<figcaption><strong>First episode coming soon.</strong> <span class="muted">New episodes will play right here.</span></figcaption>')
+        archive = ""
+    topics = "".join(f"<li>{e(t)}</li>" for t in show["topics"])
+    return (f'<div class="podcast-grid"><figure class="replay podcast-player">{player}</figure>'
+            f'<div><h3 class="col-title">On the show</h3><ul class="podcast-topics">{topics}</ul>{archive}'
+            '<p class="source-note">Want a team on the show, or have a question for the hosts? '
+            '<a href="mailto:celder@bionanomics.com?subject=Podcast%3A%20Northeast%20Indiana%20robotics">Email the show</a>.</p></div></div>'), show
+
+
+NEWS_CARDS = 6
+
+
+def team_tags(story, result):
+    names = {f"frc{t['number']}": t["name"] for t in result["standings"]}
+    names.update({f"ftc{t['number']}": t["name"] for t in result["ftc"]["teams"] + result["ftc"]["newTeams"]})
+    tags = [f'<span class="tag">{e(names[k])}</span>' for k in story["teams"] if k in names]
+    return "".join(tags) or '<span class="tag tag-region">Region</span>'
+
+
+def news(result, more=False):
     stories = sorted(result["news"]["stories"], key=lambda s: s["date"], reverse=True)
-    return "".join(f'<li>{ext(s["url"], s["title"])}<small>{e(s["outlet"])} · {short(s["date"])}</small></li>' for s in stories)
+    if more:
+        return "".join(f'<li>{ext(s["url"], s["title"])}<small>{e(s["outlet"])} · {short(s["date"])}</small></li>' for s in stories[NEWS_CARDS:])
+    return "".join(f'<li class="news-card"><small class="news-meta">{e(s["outlet"])} · {short(s["date"])}</small>{ext(s["url"], s["title"])}<span class="tags">{team_tags(s, result)}</span></li>' for s in stories[:NEWS_CARDS])
+
+
+def latest(result):
+    blocks = []
+    for ev in result["latestResults"]:
+        rows = "".join(f'<li class="{"won" if r["outcome"] == "Won event" else ""}"><strong><a href="team/{r["number"]}/">{e(r["name"])}</a> <span class="muted">{r["number"]}</span></strong><span>{e(r["result"])}{" · " + e(", ".join(r["awards"])) if r["awards"] else ""}</span></li>' for r in ev["teams"])
+        kind = "Offseason" if ev["type"] == "offseason" else "Official"
+        blocks.append(f'<article class="result-card"><p class="news-meta">{kind} · {short(ev["endDate"])}</p><h4>{ext(ev["tbaUrl"], ev["name"])}</h4><ul class="result-list">{rows}</ul></article>')
+    return "".join(blocks)
+
+
+def fast_facts(result):
+    s = result["seasonSummary"]
+    top = sorted(result["standings"], key=lambda t: t["standingsRank"])[0]
+    banners = sum((t.get("history") or {}).get("bannerCount", 0) for t in result["standings"])
+    return e(f"Northeast Indiana has {s['teams']} FIRST Robotics Competition (FRC) teams for high-school students and {len(result['ftc']['teams']) + len(result['ftc']['newTeams'])} FIRST Tech Challenge (FTC) teams to follow in The REFINERY's 12-county region. "
+             f"In 2026 they won {s['eventTitles']} district event titles and {s['awards']} judged awards, and {len(s['worldsTeams'])} teams reached the World Championship in Houston. "
+             f"{top['name']} ({top['number']}) of {top['school'].split(' / ')[0]} led the region in official district points. "
+             f"Together the region's FRC teams have earned {banners} blue banners. The 2027 FRC season starts with the game reveal on Jan. 9, 2027. "
+             f"Source: The Blue Alliance and FIRST Indiana; site by The REFINERY, a Fort Wayne nonprofit robotics makerspace.")
 
 
 def write_index(result, dnf):
@@ -251,7 +326,8 @@ def write_index(result, dnf):
         "standings-source": f"Records, events and awards: {e(s['resultsSource'])}. Ratings: {e(s['ratingsSource'])}. District rank is among {result['standings'][0]['district']['teamCount']} Indiana teams.",
         "highlights": highlights(result), "gallery": gallery(result), "ftc": ftc_cards(result), "calendar": calendar(result, today),
         "dnf-count": f'<strong data-count="{len(dnf["schools"])}">{len(dnf["schools"])}</strong><span>schools without a team</span>',
-        "dnf": dnf_list(dnf), "news": news(result),
+        "podcast": podcast()[0], "podcast-title": e(podcast()[1]["title"]), "podcast-tagline": e(podcast()[1]["tagline"]),
+        "dnf": dnf_list(dnf), "news": news(result), "newsmore": news(result, more=True), "latest": latest(result), "fastfacts": fast_facts(result),
         "og-description": e(f"{s['teams']} FRC teams, {s['eventTitles']} event titles, {len(s['worldsTeams'])} World Championship teams. Records, results and stories from The REFINERY region."),
     }
     page = (HERE / "templates/index.html").read_text(encoding="utf-8")
@@ -260,7 +336,7 @@ def write_index(result, dnf):
         if marker not in page:
             raise ValueError(f"Template marker missing: {marker}")
         page = page.replace(marker, html)
-    (DIST / "index.html").write_text(page, encoding="utf-8")
+    (DIST / "index.html").write_text(page, encoding="utf-8", newline="\n")
 
 
 # ---------------------------------------------------------------- team pages
@@ -284,12 +360,14 @@ def page_shell(title, description, image, url, body, json_ld):
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/refinery-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../styles.css?v=20261023-integrated-2">
+  <link rel="stylesheet" href="../../styles.css?v=20261111-podcast">
+  <script src="../../upcoming.js" defer></script>
   <script type="application/ld+json">{json.dumps(json_ld, ensure_ascii=False)}</script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="page-bar"><div class="wrap"><a class="brand" href="../../"><img src="../../assets/refinery-logo-reversed.svg" alt="The REFINERY" width="132" height="34"></a><a class="back" href="../../#standings">All standings</a></div></header>
-  <main>
+  <main id="main">
 {body}
   </main>
   <footer class="site-footer"><div class="wrap footer-inner"><p>Media contact: <a href="mailto:{CONTACT}">{CONTACT}</a> · <a href="../../press/">Press kit</a> · <a href="../../press/media.html">Logos &amp; photos</a></p><p>Built by <a href="https://refineryrobotics.org/" target="_blank" rel="noopener">The REFINERY</a>. Results: The Blue Alliance; ratings: Statbotics and FTCScout. Not affiliated with or endorsed by <i>FIRST</i>.</p></div></footer>
@@ -299,13 +377,14 @@ def page_shell(title, description, image, url, body, json_ld):
 
 
 def team_hero(t, program, stats, honors, display):
+    epa_note = '<p class="stat-def">EPA (Expected Points Added) is Statbotics’ estimate of how many points a robot adds to its alliance’s score in an average match, like points per game. District points are the official FIRST Indiana standings.</p>'
     return f"""    <section class="team-hero"><div class="wrap"><div class="team-hero-grid">{identity_logos(t, display, '../../', 'school')}<div class="team-hero-copy">
-      <p class="eyebrow">{program} {t['number']} · {e(t.get('city', ''))}</p>
+      <p class="eyebrow">{program} {t['number']}{' · ' + e(t['city']) if t.get('city') else ''}</p>
       <h1>{e(t.get('school') or t['name'])}</h1>
       <p class="team-school">{e(t['name'])} · {program} {t['number']}</p>
       {f'<p class="honors">{honors}</p>' if honors else ''}
     </div>{identity_logos(t, display, '../../', 'team')}</div>
-    <dl class="stat-bar">{''.join(f'<div><dt>{e(label)}</dt><dd>{e(value)}</dd></div>' for value, label in stats)}</dl></div></section>"""
+    <dl class="stat-bar">{''.join(f'<div><dt>{e(label)}</dt><dd>{e(value)}</dd></div>' for value, label in stats)}</dl>{epa_note if program == "FRC" else ""}</div></section>"""
 
 
 def follow(t):
@@ -321,7 +400,7 @@ def upcoming_for(number, result):
     rows = [ev for ev in result["calendar"]["events"] if ev.get("entrants", {}).get("posted") and number in ev["entrants"]["local"]]
     if not rows:
         return '<h2>Coming up</h2><p class="muted">Entry lists for 2026–27 events haven’t posted yet. <a href="../../#schedule">See the full calendar</a>.</p>'
-    return "<h2>Coming up</h2><ul class=\"news-list\">" + "".join(f"<li><strong>{span(ev['startDate'], ev['endDate'])}</strong> · {ext(ev['url'], ev['name'])}<small>{e(ev['venue'])} · {e(ev['city'])}</small></li>" for ev in rows) + "</ul>"
+    return "<h2>Coming up</h2><ul class=\"news-list\" data-upcoming-limit=\"99\">" + "".join(f"<li data-end=\"{ev['endDate']}\"><strong>{span(ev['startDate'], ev['endDate'])}</strong> · {ext(ev['url'], ev['name'])}<small>{e(ev['venue'])} · {e(ev['city'])}</small></li>" for ev in rows) + "<li class=\"muted\" data-upcoming-empty hidden>No upcoming events for this team. <a href=\"../../#schedule\">See the full calendar</a>.</li></ul>"
 
 
 def frc_page(t, result):
@@ -329,7 +408,7 @@ def frc_page(t, result):
     photos = {p["id"]: p for p in result["photos"]}
     honors = "".join(f'<span class="{"trophy" if "winner" in b.lower() else "worlds" if "World" in b else ""}">{e(b)}</span>' for b in t["badges"])
     stats = [(record(t["record"]), "2026 record"), (f"#{t['district']['rank']}", f"Indiana district rank (of {t['district']['teamCount']})"),
-             (t["district"]["points"], "District points"), (f"{t['epa']:.1f}", "EPA (Statbotics)"), (t["rookieYear"], "Rookie year")]
+             (t["district"]["points"], "District points"), (f"{t['epa']:.1f}", "EPA · points added per match"), ((t.get("history") or {}).get("bannerCount", 0), "Blue banners, all-time"), (t["rookieYear"], "Rookie year")]
     def row(ev):
         role = playoff_role(ev["playoff"])
         won = ev["playoff"] and ev["playoff"]["result"] == "Won event"
@@ -341,6 +420,15 @@ def frc_page(t, result):
     if offseason:
         events += f'<details><summary>Offseason events ({len(offseason)})</summary><table class="events">{head}<tbody>{"".join(row(ev) for ev in offseason)}</tbody></table></details>'
     awards = f'<h2>Awards</h2><ul class="award-list">{"".join(f"<li>{e(a["award"])} <span>· {e(a["event"])}</span></li>" for a in t["awards"])}</ul>' if t["awards"] else ""
+    h = t.get("history")
+    all_time = ""
+    if h:
+        banners = "".join(f'<li><b>{e(x["award"])}</b><small>{e(x["event"])}</small></li>' for x in h["banners"])
+        by_year = "".join(f'<li>{y["year"]} · {e(a["award"])} <span>· {e(a["event"])}</span></li>' for y in h["awardsByYear"] for a in y["awards"])
+        all_time = (f'<h2>All-time history</h2><div class="all-time"><div><strong>{h["bannerCount"]}</strong><span>Blue banners</span></div><div><strong>{h["awardCount"]}</strong><span>Awards</span></div><div><strong>{h["seasonsPlayed"]}</strong><span>Seasons</span></div></div>'
+                    + (f'<ul class="banners">{banners}</ul>' if banners else '')
+                    + (f'<details><summary>Every award, by season ({h["awardCount"]})</summary><ul class="award-list">{by_year}</ul></details>' if by_year else '')
+                    + f'<p class="muted small">Blue banners are what <i>FIRST</i> hangs for an event win or a top team award. From {ext(h["tbaUrl"], "The Blue Alliance team history")}.</p>')
     m = t["closestMatch"]
     closest = f'<h2>Closest game</h2><div class="close-game">{replay_thumbnail(m, result, t["name"], "../../")}<div>{e(m["eventName"])} · {e(m["matchLabel"])}</div><div class="scoreline"><span class="red">{m["redScore"]}</span><span class="muted">–</span><span class="blue">{m["blueScore"]}</span></div><div class="muted">{m["margin"]}-point {e(m["outcome"].lower())} on the {e(m["teamAlliance"].lower())} alliance</div><ul class="link-list">{f"<li>{ext(m["videoUrl"], "Watch replay", "text-link")}</li>" if m.get("videoUrl") else ""}<li>{ext(m["officialUrl"], "Official result", "text-link")}</li></ul></div>' if m else ""
     pic = next((photos[p] for p in t["photos"] if p in photos), None)
@@ -349,7 +437,7 @@ def frc_page(t, result):
     people_html = people_details(people, t.get("gaps", []))
     body = f"""{team_hero(t, 'FRC', stats, honors, display)}
     <section class="section team-body"><div class="wrap team-columns"><div>
-      {people_html}<h2>2026 season</h2>{events}{awards}{upcoming_for(t['number'], result)}{f'<p><a class="text-link" href="../../top10.html#team/{t["number"]}">View in the Top 10 display</a></p>' if t['powerRank'] <= 10 else ''}
+      {people_html}<h2>2026 season</h2>{events}{awards}{all_time}{upcoming_for(t['number'], result)}{f'<p><a class="text-link" href="../../top10.html#team/{t["number"]}">View in the Top 10 display</a></p>' if t['standingsRank'] <= 10 else ''}
       <h2>Team facts</h2><ul class="people"><li>{e(t['school'])} · {e(t['city'])}, {e(t['county'])} County</li><li>{e(t['affiliationNote'])}</li><li>{t['seasons']} FIRST seasons through 2026 · rookie year {t['rookieYear']}</li><li>Indiana EPA rank {t['stateEpaRank']} of {t['stateEpaCount']} · world {t['worldEpaRank']:,} of {t['worldEpaCount']:,}</li></ul>
     </div><aside>{follow(t)}{closest}{figure}{news_list(t['news'])}
       <h2>Stats &amp; profiles</h2><ul class="link-list"><li>{ext(t['links']['tba'], 'The Blue Alliance', 'text-link')}</li><li>{ext(t['links']['statbotics'], 'Statbotics', 'text-link')}</li><li>{ext(t['links']['first'], 'FIRST profile', 'text-link')}</li>{f"<li>{ext(t['links']['school'], 'School site', 'text-link')}</li>" if t['links'].get('school') else ''}</ul>
@@ -367,11 +455,25 @@ def ftc_page(t, result, rookie):
     stories = [s for s in result["news"]["stories"] if f"ftc{t['number']}" in s["teams"]]
     people = (t.get("students") or []) + (t.get("adults") or [])
     people_html = people_details(people, t.get("gaps", []))
-    note = e(t.get("note") or t.get("qualification") or "")
+    note = e(t.get("note") or "Best OPR is the team's top scoring estimate (Offensive Power Rating) at any 2025–26 event. The Indiana rank compares it with teams at Indiana events.")
+    h = t.get("history")
+    history_html = ""
+    if h:
+        if h["events"]:
+            stats = stats + [(h["events"], "Events, all-time"), (h["eventWins"], "Event wins, all-time")]
+        head = "<thead><tr><th>Event</th><th>After qualifying</th><th>Playoffs</th></tr></thead>"
+        def ftc_row(ev):
+            quals = f'{ordinal(ev["qualRank"])}<br><small class="muted">{e(ev["qualRecord"])} record</small>' if ev["qualRank"] else '<small class="muted">—</small>'
+            awards = "".join(f'<br><small class="award-chip">{e(a)}</small>' for a in ev["awards"])
+            return f'<tr><td>{ext(ev["url"], ev["name"])}<br><small class="muted">{span(ev["startDate"], ev["endDate"])}</small></td><td>{quals}</td><td>{e(ev["playoff"] or "Did not reach playoffs")}{awards}</td></tr>'
+        seasons = "".join(f'<h3 class="season-head">{e(x["label"] or x["season"])}{(" · " + e(x["name"])) if x["name"] else ""} <span class="muted">· {e(x["record"])} · {x["awards"]} award{"s" if x["awards"] != 1 else ""}</span></h3><table class="events">{head}<tbody>{"".join(ftc_row(ev) for ev in x["events"])}</tbody></table>' for x in h["seasons"])
+        upcoming = "".join(f'<li data-end="{ev["endDate"]}"><strong>{span(ev["startDate"], ev["endDate"])}</strong> · {ext(ev["eventUrl"], ev["name"])}<small>{e(ev.get("city") or "")}{", " + e(ev["state"]) if ev.get("state") else ""}</small></li>' for ev in h["upcoming"])
+        history_html = ((f'<h2>Registered events</h2><ul class="news-list" data-upcoming-limit="99">{upcoming}<li class="muted" data-upcoming-empty hidden>No upcoming events.</li></ul>' if upcoming else "")
+                        + (f'<h2>All-time history</h2><div class="all-time"><div><strong>{h["events"]}</strong><span>Events</span></div><div><strong>{e(h["record"])}</strong><span>Qualifying W-L-T</span></div><div><strong>{h["awards"]}</strong><span>Awards</span></div></div>{seasons}<p class="muted small">From {ext(h["url"], "FTCScout")}. Records count qualification matches.</p>' if h["seasons"] else ""))
     body = f"""{team_hero(t, 'FTC', stats, '', display)}
     <section class="section team-body"><div class="wrap team-columns"><div>
       <h2>About</h2><p>{note}</p><p class="muted">FTC (<i>FIRST</i> Tech Challenge) uses smaller robots than FRC and its own game; OPR ratings aren’t comparable to FRC’s EPA.</p>
-      {upcoming_for(t['number'], result)}{people_html}
+      {history_html or upcoming_for(t['number'], result)}{people_html}
     </div><aside>{follow(t)}{news_list(stories)}
       <h2>Stats &amp; profiles</h2><ul class="link-list"><li>{ext(f"https://ftcscout.org/teams/{t['number']}", 'FTCScout', 'text-link')}</li>{f"<li>{ext(t['profileUrl'], 'FIRST profile', 'text-link')}</li>" if t.get('profileUrl') else ''}</ul>
       <h2>Media</h2><p>Interview requests: <a href="mailto:{CONTACT}">{CONTACT}</a></p>
@@ -393,7 +495,7 @@ def write_team_pages(result):
                    "location": {"@type": "Place", "name": t.get("city", "")}, "sameAs": [l["url"] for l in t.get("teamLinks") or []]}
         folder = DIST / "team" / str(t["number"])
         folder.mkdir(parents=True, exist_ok=True)
-        (folder / "index.html").write_text(page_shell(f"{t['name']} · {program} {t['number']} · Northeast Indiana Robotics", description, image, url, body, json_ld), encoding="utf-8")
+        (folder / "index.html").write_text(page_shell(f"{t['name']} · {program} {t['number']} · Northeast Indiana Robotics", description, image, url, body, json_ld), encoding="utf-8", newline="\n")
     return len(entries)
 
 

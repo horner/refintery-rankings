@@ -55,3 +55,17 @@ footer.sheet { border-top: 1px solid var(--line); padding: 24px 0 40px; }
   a { color: inherit; text-decoration: none; }
   h2 { margin-top: 24px; }
 }
+.jump { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 18px 0 0; padding: 10px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: sticky; top: 0; background: #fff; z-index: 2; }
+.jump a { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; text-decoration: none; }
+h2[id] { scroll-margin-top: 60px; }
+.latest h3 { font-size: 22px; margin: 14px 0 6px; }
+.latest ul { margin: 0; }
+.terms dt { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: 18px; margin-top: 12px; }
+.terms dd { margin: 2px 0 0; }
+@media print { .jump { display: none; } }
+:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+.bar :focus-visible { outline-color: var(--mint); }
+.skip-link { position: absolute; left: 12px; top: -48px; z-index: 10; background: #fff; padding: 8px 14px; }
+.skip-link:focus { top: 12px; }
+html { scroll-padding-top: 60px; }
+.print-button { font: inherit; color: var(--green); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }

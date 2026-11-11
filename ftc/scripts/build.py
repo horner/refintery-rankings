@@ -15,11 +15,11 @@ def load(path):
 
 
 def save_json(path, value):
-    (ROOT / path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (ROOT / path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 def save_text(path, value):
-    (ROOT / path).write_text(value.rstrip() + "\n", encoding="utf-8")
+    (ROOT / path).write_text(value.rstrip() + "\n", encoding="utf-8", newline="\n")
 
 
 def index(rows):

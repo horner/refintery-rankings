@@ -1,9 +1,10 @@
 name: Refresh results and calendar
 
 # Pulls fresh results (The Blue Alliance) and events (FTCScout, The Blue Alliance), rebuilds and
-# verifies the site, then opens a pull request for review. Nothing is published until it is merged.
+# verifies the site, then commits straight to main and republishes. No pull request to approve:
+# the verify scripts are the gate, and a run that fails them changes nothing.
 # Needs the repository secret TBA_AUTH_KEY for FRC data; without it only the FTC calendar refreshes.
-# Setup and review steps: docs/tba-api.md
+# Setup: docs/tba-api.md
 
 on:
   workflow_dispatch:
@@ -13,7 +14,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
+  actions: write   # to start the Pages publish after the commit
 
 concurrency:
   group: refresh-data
@@ -27,17 +28,44 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+      - name: Warn when The Blue Alliance key is missing
+        if: ${{ env.TBA_AUTH_KEY == '' }}
+        run: echo "::warning title=TBA_AUTH_KEY not set::FRC results and FRC events were NOT refreshed. Add the TBA_AUTH_KEY repository secret (docs/tba-api.md)."
+      - name: Refresh all-time history and FTC seasons
+        # Public pages and APIs, no key needed: FRC blue banners, awards and 2027 registrations from
+        # The Blue Alliance team history pages; FTC events, records and awards from FTCScout.
+        run: |
+          for attempt in 1 2 3; do
+            python3 scripts/capture_tba_history.py 1501 1720 4982 10434 9119 9431 10332 10172 8103 8431 8742 10411 8432 && python3 scripts/capture_ftc_history.py && exit 0
+            echo "History fetch failed (attempt $attempt); retrying in 30 seconds."
+            sleep 30
+          done
+          exit 1
       - name: Refresh calendar
-        run: python3 scripts/fetch_calendar.py
+        # The FTCScout and TBA APIs occasionally time out; retry before failing the run.
+        run: |
+          for attempt in 1 2 3; do
+            python3 scripts/fetch_calendar.py && exit 0
+            echo "Calendar fetch failed (attempt $attempt); retrying in 30 seconds."
+            sleep 30
+          done
+          exit 1
       - name: Refresh FRC results
         if: ${{ env.TBA_AUTH_KEY != '' }}
-        run: python3 scripts/fetch_tba.py --season 2026 --output broadcast/data/tba/results-2026.json
+        run: |
+          for attempt in 1 2 3; do
+            python3 scripts/fetch_tba.py --season 2026 --output broadcast/data/tba/results-2026.json && exit 0
+            echo "TBA fetch failed (attempt $attempt); retrying in 30 seconds."
+            sleep 30
+          done
+          exit 1
       - name: Rebuild and verify
         run: |
           python3 -m pip install --quiet pillow
           python3 scripts/build.py
           python3 ftc/scripts/build.py
           python3 broadcast/scripts/build.py
+          python3 broadcast/scripts/cache_thumbnails.py
           python3 broadcast/scripts/build_share_images.py
           python3 broadcast/scripts/build.py
           python3 scripts/verify.py --write-checksums
@@ -45,22 +73,25 @@ jobs:
           python3 ftc/scripts/verify.py
           python3 broadcast/scripts/verify.py
           node --check broadcast/dist/app.js
-      - name: Open a pull request if anything changed
+      - name: Commit to main and republish if anything changed
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if git diff --quiet; then
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No changes."
             exit 0
           fi
-          branch="refresh/$(date -u +%Y-%m-%d)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git switch -c "$branch"
           git add -A
           git commit -m "Refresh results and calendar ($(date -u +%Y-%m-%d))"
-          git push --force origin "$branch"
-          gh pr create --base main --head "$branch" \
-            --title "Refresh results and calendar ($(date -u +%Y-%m-%d))" \
-            --body "Automated refresh from The Blue Alliance and FTCScout. Review the data diff, then merge to publish. See docs/tba-api.md." \
-            || echo "A pull request for $branch already exists."
+          # If someone pushed to main during the run, replay this data commit on top and try again.
+          # A real conflict or a protected branch still fails loudly; nothing is half-published.
+          for attempt in 1 2 3; do
+            git push origin HEAD:main && break
+            [ "$attempt" = 3 ] && exit 1
+            git pull --rebase origin main
+          done
+          # A push made with the workflow token does not start other workflows on its own,
+          # so start the Pages publish explicitly.
+          gh workflow run pages.yml --ref main

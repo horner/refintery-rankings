@@ -56,7 +56,7 @@ def main():
     require(config["season_start_year"] == config["season_history_cutoff_start_year"] == 2025, "FTC starting-year cutoff changed")
     require(output["publication"] == config and output["ranking_method"] == rankings["method"], "Publication metadata changed in export")
 
-    root_geography = json.loads((ROOT.parent / "data/geography.json").read_text())
+    root_geography = json.loads((ROOT.parent / "data/geography.json").read_text(encoding="utf-8"))
     require(geography["origin"]["latitude"] == root_geography["origin"]["coordinates"]["latitude"] and
             geography["origin"]["longitude"] == root_geography["origin"]["coordinates"]["longitude"], "FTC/FRC origins differ")
     require(geography["earth_radius_miles"] == root_geography["scope"]["earth_radius_miles"], "FTC/FRC distance conventions differ")
@@ -70,12 +70,12 @@ def main():
 
     snapshot = ROOT / config["ranking_snapshot_directory"]
     fresh = keyed(normalize(snapshot))
-    saved_extract = keyed(json.loads((snapshot / "local-ranking-extract.json").read_text()))
+    saved_extract = keyed(json.loads((snapshot / "local-ranking-extract.json").read_text(encoding="utf-8")))
     require(fresh == saved_extract, "Frozen ranking extract does not reproduce from raw captures")
     # Validate every captured body, including the five best-event metadata responses.
     capture_count = 0
     for manifest_file in snapshot.rglob("manifest.json"):
-        manifest = json.loads(manifest_file.read_text())
+        manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
         for capture in manifest["captures"]:
             raw = (manifest_file.parent / capture["raw_file"]).read_bytes()
             require(len(raw) == capture["byte_count"] and hashlib.sha256(raw).hexdigest() == capture["sha256"], "Raw response integrity failure")
@@ -90,7 +90,7 @@ def main():
             expected_count = 71 if k["regional_code"] == "USIN" else 113
             require(k["regional_team_count"] == expected_count, "Event-region denominator changed")
             for code in k["world_best_event_codes"] + k["regional_best_event_codes"]:
-                event = json.loads((snapshot / "event-metadata" / f"event-2025-{code}.json").read_text())
+                event = json.loads((snapshot / "event-metadata" / f"event-2025-{code}.json").read_text(encoding="utf-8"))
                 require(event["season"] == 2025 and not event["remote"] and not event["modifiedRules"], "Best event fails eligibility")
                 if code in k["regional_best_event_codes"]:
                     require(event["regionCode"] == k["regional_code"], "Regional best assigned to wrong event region")
@@ -128,7 +128,7 @@ def main():
         require(actual == expected, f"CSV values or qualifications changed: {table['output']}")
         require(all(not isinstance(v, str) or not re.match(r"^[=+@\t\r]", v) for row in table["rows"] for v in row), "Unexpected spreadsheet formula prefix")
     for file in ROOT.rglob("*.md"):
-        for target in re.findall(r"\]\(([^)]+)\)", file.read_text()):
+        for target in re.findall(r"\]\(([^)]+)\)", file.read_text(encoding="utf-8")):
             if target.startswith(("https://", "http://", "#", "mailto:")):
                 continue
             relative = unquote(target.split("#", 1)[0])

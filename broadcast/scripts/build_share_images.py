@@ -111,7 +111,7 @@ def main():
         for team in teams:
             name = f"team-{team['number']}.png"
             rows[str(team["number"])] = {"file": f"assets/share/{name}", "fingerprint": team_card(team, program, data["displayAssets"], folder / name)}
-    (HERE / "data/share-images.json").write_text(json.dumps({"generator": "broadcast/scripts/build_share_images.py", "cards": rows}, indent=2) + "\n", encoding="utf-8")
+    (HERE / "data/share-images.json").write_text(json.dumps({"generator": "broadcast/scripts/build_share_images.py", "cards": rows}, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"Wrote {len(rows)} share cards to {folder}")
 
 

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "research_date": "2026-10-22",
-  "source_count": 148,
+  "source_count": 146,
   "note": "Source links and per-person access limitations are preserved. This catalog does not assert that every linked page is currently accessible or archived locally.",
   "sources": [
     {
@@ -758,18 +758,6 @@
       ]
     },
     {
-      "source_id": "S-2039de4f00",
-      "title": "hnhs.hccsc.k12.in.us",
-      "url": "https://hnhs.hccsc.k12.in.us/",
-      "publisher_domain": "hnhs.hccsc.k12.in.us",
-      "categories": [
-        "school and team"
-      ],
-      "teams": [
-        1501
-      ]
-    },
-    {
       "source_id": "S-8b5a31fb68",
       "title": "hnhs.hccsc.k12.in.us: services/administration/main office",
       "url": "https://hnhs.hccsc.k12.in.us/services/administration/main-office",
@@ -844,6 +832,18 @@
       "categories": [
         "geographic method",
         "geography",
+        "school and team"
+      ],
+      "teams": [
+        1501
+      ]
+    },
+    {
+      "source_id": "S-c9d46714e4",
+      "title": "huntingtonrobotics.org",
+      "url": "https://huntingtonrobotics.org/",
+      "publisher_domain": "huntingtonrobotics.org",
+      "categories": [
         "school and team"
       ],
       "teams": [
@@ -1382,18 +1382,6 @@
       "teams": []
     },
     {
-      "source_id": "S-7b2f1b24b1",
-      "title": "Republished KPC News Sun report: East Noble coaches, May 2024",
-      "url": "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
-      "publisher_domain": "www.euvolution.com",
-      "categories": [
-        "leadership"
-      ],
-      "teams": [
-        8103
-      ]
-    },
-    {
       "source_id": "S-6bc3ec9e37",
       "title": "Northrop Robotics: official team Facebook, indexed Coach Jacobs mention",
       "url": "https://www.facebook.com/NorthropRobotics/",
@@ -1519,18 +1507,6 @@
       ],
       "teams": [
         1501
-      ]
-    },
-    {
-      "source_id": "S-dcb83b6d86",
-      "title": "Matt Arnold: public professional profile and historical role",
-      "url": "https://www.linkedin.com/in/m4ttbit",
-      "publisher_domain": "www.linkedin.com",
-      "categories": [
-        "leadership"
-      ],
-      "teams": [
-        10332
       ]
     },
     {
