@@ -3,19 +3,6 @@
     {
       "program": "frc",
       "number": 1501,
-      "kind": "school",
-      "file": "assets/logos/school-1501.png",
-      "sourceUrl": "https://static.eventlink.com/public/3a8f0019-9494-4e8f-8fdf-525b14134381/947cf3d8-4e96-4708-8b87-38cfb8df5e63/blob",
-      "pageUrl": "https://websites.eventlink.com/s/huntington-north-high-school/Tickets",
-      "label": "Huntington North High School",
-      "status": "verified",
-      "note": "Official Huntington North Viking emblem. School Tickets page links this official Eventlink athletics site. Huntington County 4-H is an additional team affiliation. School link: https://hnhs.hccsc.k12.in.us/athletics/tickets",
-      "retrievedDate": "2026-10-22",
-      "sha256": "6654945756b761550103cdb5a1c0b56cf330ff8edb7242e6146c9e0801d39b88"
-    },
-    {
-      "program": "frc",
-      "number": 1501,
       "kind": "team",
       "file": "assets/logos/team-1501.png",
       "sourceUrl": "https://raw.githubusercontent.com/BioNanomics/REFINERY-site/main/src/assets/teams/frc-1501-thrust.png",
@@ -27,33 +14,6 @@
       "retrievedDate": "2026-10-22",
       "width": 231,
       "height": 256
-    },
-    {
-      "program": "frc",
-      "number": 1720,
-      "kind": "school",
-      "file": null,
-      "sourceUrl": null,
-      "pageUrl": "https://phyxtgears.org/",
-      "label": "East Central Indiana Robotics",
-      "status": "no-school",
-      "note": "Community team, not a single-school team; no school logo assigned. The robotics team logo identifies this organization.",
-      "retrievedDate": "2026-10-22"
-    },
-    {
-      "program": "frc",
-      "number": 1720,
-      "kind": "team",
-      "file": "assets/logos/team-1720.png",
-      "sourceUrl": "https://frc-events.firstinspires.org/2026/team/1720#teamAvatar",
-      "pageUrl": "https://frc-events.firstinspires.org/2026/team/1720",
-      "label": "PhyXTGears logo",
-      "status": "verified",
-      "note": "Unmodified 40×40 team avatar embedded as PNG data in the official FIRST 2026 team profile. Suitable for small on-screen marks; not a high-resolution print master.",
-      "sha256": "439e41560078066aeb029f336783909e4a7030e560e9cfa77119c7d8673023da",
-      "retrievedDate": "2026-10-22",
-      "width": 40,
-      "height": 40
     },
     {
       "program": "frc",

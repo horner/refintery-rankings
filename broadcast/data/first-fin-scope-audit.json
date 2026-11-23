@@ -135,8 +135,9 @@
       "title": "Team 1720 - PhyXTGears (2026)",
       "location": "Matthews, Indiana, USA",
       "source": "https://frc-events.firstinspires.org/2026/team/1720",
-      "included_in_refinery_region": true,
-      "refinery_county": "Grant"
+      "included_in_refinery_region": false,
+      "refinery_county": "Grant",
+      "exclusion_reason": "Not part of The REFINERY and does not want to be. Hometown is inside the 12-county region."
     },
     {
       "team_number": 1741,
@@ -557,10 +558,9 @@
   ],
   "screening_rule": "2026 FIRST Indiana district roster; primary geography is official FIRST profile town. In-region towns are mapped using The REFINERY service-area town/county list; all 69 listed district team profiles were retrieved and screened. This is not a workshop-location or student-residence audit.",
   "region_county_source": "https://refineryrobotics.org/about/",
-  "included_team_count": 13,
+  "included_team_count": 12,
   "included_team_numbers": [
     1501,
-    1720,
     4982,
     8103,
     8431,

@@ -1,6 +1,6 @@
 # FIRST Robotics teams around Fort Wayne
 
-[Explore the NEI Robotics standings and season preview](https://horner.github.io/refintery-rankings/) — browse all 13 regional FRC teams on desktop or phone, follow the 2026–27 calendar, explore team profiles and the DNF invitation for schools ready to start a team, and open the research sources. The separate [Top 10 display](broadcast/dist/top10.html) provides a large-screen EPA ranking, replay previews, optional cycling, and PNG exports. Public access; no sign-in required.
+[Explore the NEI Robotics standings and season preview](https://horner.github.io/refintery-rankings/) — browse all 12 regional FRC teams on desktop or phone, follow the 2026–27 calendar, explore team profiles and the DNF invitation for schools ready to start a team, and open the research sources. The separate [Top 10 display](broadcast/dist/top10.html) provides a large-screen EPA ranking, replay previews, optional cycling, and PNG exports. Public access; no sign-in required.
 
 ## New to robotics? A guide for football and baseball fans
 
@@ -42,7 +42,7 @@ Read each program's methodology for the details behind its ratings. FTC's curren
 
 ## FRC research
 
-School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coach/student leadership evidence** for 17 FRC teams in the Fort Wayne study area: 13 Indiana teams and four nearby Michigan/Ohio teams.
+School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coach/student leadership evidence** for 16 FRC teams in the Fort Wayne study area: 12 Indiana teams and 4 nearby Michigan/Ohio teams. Team 1720 PhyXTGears is not part of The REFINERY and is not included.
 
 **Research date:** October 22, 2026. **Ranking snapshot:** June 12, 2026, 02:51:19 UTC. Rankings are preserved historical values, not a live leaderboard.
 
@@ -52,10 +52,10 @@ School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coa
 |---|---|
 | [Team directory](docs/team-directory.md) | School and team links, EPA/state/world ranks, seasons, distances, adult and student roles |
 | [Combined JSON](data/teams.json) | Complete joined dataset, including qualifications, evidence URLs, geographic points, and snapshot metadata |
-| [Team CSV](data/teams.csv) | One row per team; 17 rows with explicit source and qualification columns |
-| [Leadership CSV](data/leadership.csv) | One row per person-role record; 37 rows with dates, status, notes, and sources |
+| [Team CSV](data/teams.csv) | One row per team; 16 rows with explicit source and qualification columns |
+| [Leadership CSV](data/leadership.csv) | One row per person-role record; 32 rows with dates, status, notes, and sources |
 | [Leadership findings](docs/leadership-findings.md) | Detailed source evidence, historical roles, captain/representative distinctions, and gaps |
-| [Source catalog](docs/sources.md) / [JSON](data/sources.json) | 148 unique source URLs |
+| [Source catalog](docs/sources.md) / [JSON](data/sources.json) | 139 unique source URLs |
 | [Methodology](docs/methodology.md) | Metric definitions, scope, dates, affiliations, and inclusion rules |
 | [Geographic verification](docs/geographic-scope.md) | Documented origin, source coordinates, distance calculations, and exclusions |
 | [Statbotics provenance](docs/statbotics-provenance.md) | Official cache, exact source fields, freshness limit, and reproduction instructions |
@@ -65,8 +65,7 @@ School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coa
 
 | School / organization | FRC team | Approx. miles | FIRST seasons through 2026 | EPA | State EPA rank | World EPA rank |
 |---|---|---:|---|---:|---:|---:|
-| [Huntington North High School / Huntington County 4-H](https://hnhs.hccsc.k12.in.us/) | [1501 Team THRUST](https://www.statbotics.io/team/1501/2026) | 23.3 | [22 (2005–2026)](https://frc-events.firstinspires.org/team/1501) | 118.71 | IN 12 / 68 | 438 / 3,724 |
-| [East Central Indiana Robotics (community team)](https://phyxtgears.org/) | [1720 PhyXTGears](https://www.statbotics.io/team/1720/2026) | 51.4 | [21 (2006–2026)](https://frc-events.firstinspires.org/team/1720) | 118.52 | IN 13 / 68 | 440 / 3,724 |
+| [Huntington County 4-H Robotics](https://huntingtonrobotics.org/) | [1501 Team THRUST](https://www.statbotics.io/team/1501/2026) | 23.3 | [22 (2005–2026)](https://frc-events.firstinspires.org/team/1501) | 118.71 | IN 12 / 68 | 438 / 3,724 |
 | [North Side High School](https://northside.fortwayneschools.org/about-us/robotics) | [9119 Iron Legends](https://www.statbotics.io/team/9119/2026) | 1.2 | [4 (2023–2026)](https://frc-events.firstinspires.org/team/9119) | 75.10 | IN 22 / 68 | 868 / 3,724 |
 | [R. Nelson Snider High School](https://snider.fortwayneschools.org/) | [9431 The Gold Standard](https://www.statbotics.io/team/9431/2026) | 3.4 | [3 (2024–2026)](https://frc-events.firstinspires.org/team/9431) | 68.51 | IN 24 / 68 | 984 / 3,724 |
 | [Homestead High School](https://homestead.sacs.k12.in.us/) | [4982 Olympus Robotics](https://www.statbotics.io/team/4982/2026) | 8.0 | [13 (2014–2026)](https://frc-events.firstinspires.org/team/4982) | 58.80 | IN 27 / 68 | 1,147 / 3,724 |
@@ -91,10 +90,10 @@ School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coa
 ## How to interpret the data
 
 - EPA describes estimated robot scoring performance in the 2026 game. State and world ranks are copied directly from the preserved Statbotics response. Denominators are included.
-- The 60-mile rule uses straight-line distance from Citizens Square in downtown Fort Wayne to a documented school/host point. Team 1720 remains a town-based screening result. Lima and Waldron are near the boundary; see the geographic qualifications before changing the origin or reference facilities.
+- The 60-mile rule uses straight-line distance from Citizens Square in downtown Fort Wayne to a documented school/host point. Lima and Waldron are near the boundary; see the geographic qualifications before changing the origin or reference facilities.
 - “Years in FIRST” means recorded season entries through 2026, including registered pandemic years with no matches. Future 2027 entries are excluded. East Noble 8431 and 8432 have official rookie year 2020 but recorded histories beginning in 2025 and 2026.
 - Leadership records carry exact roles and evidence dates. Most student evidence relates to 2025–26 or the 2026 competition season. Unverified head coaches, partial names, historical captains, indexed sources, and other gaps remain visible.
-- PhyXTGears and Lima are community programs. Huntington's record retains its high-school connection and county 4-H identity.
+- Lima is a community program. Huntington's record retains its high-school connection and county 4-H identity.
 
 ## Rebuild and verify
 

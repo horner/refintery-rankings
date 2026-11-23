@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-10-23T08:51:24.799637+00:00",
+  "asOf": "2026-11-10T18:25:21.786203+00:00",
   "thumbnails": [
     {
       "videoUrl": "https://www.youtube.com/watch?v=VGFBklDAzrE",
@@ -96,6 +96,30 @@
       "height": 360,
       "contentType": "image/jpeg",
       "retrievedAt": "2026-10-23T08:51:24.678247+00:00"
+    },
+    {
+      "videoUrl": "https://www.youtube.com/watch?v=rO4LP-jcGqk",
+      "videoId": "rO4LP-jcGqk",
+      "file": "assets/match-thumbnails/rO4LP-jcGqk.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/rO4LP-jcGqk/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/rO4LP-jcGqk-oembed.json",
+      "sha256": "a480accb9d2464d8a5b400bab42e1d66a411ff1fcab002bbb837ab86564d64ea",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-11-10T18:25:21.357604+00:00"
+    },
+    {
+      "videoUrl": "https://www.youtube.com/watch?v=1zmg9zXmvOQ",
+      "videoId": "1zmg9zXmvOQ",
+      "file": "assets/match-thumbnails/1zmg9zXmvOQ.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/1zmg9zXmvOQ/hqdefault.jpg",
+      "sourceMetadataFile": "data/match-research/video-sources/1zmg9zXmvOQ-oembed.json",
+      "sha256": "5f12c364470a3360a4f4a2cdda0150d78641ffcbaeed8580c5b3557471bf5105",
+      "width": 480,
+      "height": 360,
+      "contentType": "image/jpeg",
+      "retrievedAt": "2026-11-10T18:25:21.786203+00:00"
     }
   ]
 }

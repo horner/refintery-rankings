@@ -2,9 +2,9 @@
 
 **Research date: October 22, 2026. Season: 2026 FIRST Robotics Competition (FRC).**
 
-The 17 identified teams—13 in Indiana and four in nearby Michigan or Ohio—have reference points within **60 straight-line miles of downtown Fort Wayne** under the convention documented here. This is a point-to-point radius, not driving mileage. **Team 1720 remains a town-based screening result** because its physical workshop address was not confirmed. The other rows use a linked school or community host as their geographic reference; these points do not establish where each robot is built.
+The 16 identified teams—12 in Indiana and four in nearby Michigan or Ohio—have reference points within **60 straight-line miles of downtown Fort Wayne** under the convention documented here. This is a point-to-point radius, not driving mileage. The other rows use a linked school or community host as their geographic reference; these points do not establish where each robot is built.
 
-This verification was **newly rebuilt for publication on October 22, 2026**. The earlier geographic artifacts were unavailable. The coordinates and fixed downtown origin below are newly documented inputs, not a claim that the original calculations were recovered. No team was added to or removed from the canonical 13-plus-four roster by this rebuild. The complete inputs, source URLs, returned coordinate fields, and calculations are in [geography.json](../data/geography.json).
+This verification was **newly rebuilt for publication on October 22, 2026**. The earlier geographic artifacts were unavailable. The coordinates and fixed downtown origin below are newly documented inputs, not a claim that the original calculations were recovered. No team was added to or removed from the roster by this rebuild. Team 1720 PhyXTGears is not part of The REFINERY and is not included. The complete inputs, source URLs, returned coordinate fields, and calculations are in [geography.json](../data/geography.json).
 
 ## Radius and origin
 
@@ -28,7 +28,6 @@ The school or program links in this table lead to official address or location e
 | Team | High school or community program | Location | Reference used | Approx. miles |
 |---|---|---|---|---:|
 | [1501](https://frc-events.firstinspires.org/2026/team/1501) | [Huntington North High School / Huntington County 4-H](https://hnhs.hccsc.k12.in.us/services/administration/main-office) | Huntington, IN | School address | 23.3 |
-| [1720](https://frc-events.firstinspires.org/2026/team/1720) | [East Central Indiana Robotics (community team)](https://townofmatthews.com/phyxtgears-robotics-team-1720/) | Matthews, IN | Town point | 51.4 ‡ |
 | [9119](https://frc-events.firstinspires.org/2026/team/9119) | [North Side High School](https://northside.fortwayneschools.org/contact-us) | Fort Wayne, IN | School address | 1.2 |
 | [9431](https://frc-events.firstinspires.org/2026/team/9431) | [R. Nelson Snider High School](https://snider.fortwayneschools.org/) | Fort Wayne, IN | School address | 3.4 |
 | [4982](https://frc-events.firstinspires.org/2026/team/4982) | [Homestead High School](https://homestead.sacs.k12.in.us/home) | Fort Wayne, IN | School address | 8.0 |
@@ -40,8 +39,6 @@ The school or program links in this table lead to official address or location e
 | [8431](https://frc-events.firstinspires.org/2026/team/8431) | [East Noble High School](https://hs.eastnoble.net/page/contact-us/) | Kendallville, IN | School address | 25.3 |
 | [10411](https://frc-events.firstinspires.org/2026/team/10411) | [Wayne High School](https://wayne.fortwayneschools.org/contact-us) | Fort Wayne, IN | School address | 5.4 |
 | [8432](https://frc-events.firstinspires.org/2026/team/8432) | [East Noble High School](https://hs.eastnoble.net/page/contact-us/) | Kendallville, IN | School address | 25.3 |
-
-‡ **PhyXTGears, 1720:** the [Town of Matthews team page](https://townofmatthews.com/phyxtgears-robotics-team-1720/) identifies the Matthews-based community program but supplies a PO box rather than a geocodable physical workshop. The point used is the Census internal point for **Matthews town, GEOID 1847592**, from the [2026 Indiana incorporated-places table](https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html), at 40.3874569, −85.4977783. The approximately 8.6-mile margin to the boundary is a property of that town point; it is not a measured uncertainty bound for the workshop.
 
 **Huntington, 1501:** the [school's robotics page](https://huntingtonnhs.ss13.sharpschool.com/get_involved/clubs/robotics) documents the Huntington North connection, and the [team FAQ](https://huntingtonrobotics.org/faq/) describes the wider community program. Huntington North's campus is a useful reference for the requested high-school connection, but it should not be described as the only school students can come from or as a verified workshop address. The [canonical roster](../data/roster.json) preserves the affiliation distinction.
 

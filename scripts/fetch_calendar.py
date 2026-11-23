@@ -71,10 +71,20 @@ def entrants(event, key, local):
             teams = [t["teamNumber"] for t in get(f"https://api.ftcscout.org/rest/v1/events/{FTC_SEASON}/{event['_code']}/teams")]
         elif event["program"] == "FRC" and key and event["source"] == "The Blue Alliance":
             teams = [int(k[3:]) for k in get(f"{TBA}/event/{event['id'][4:]}/teams/keys", {"X-TBA-Auth-Key": key})]
+        elif event["program"] == "FRC" and event["source"] == "The Blue Alliance":
+            # No key: fall back to the registrations shown on each local team's public TBA history page
+            # (scripts/capture_tba_history.py). That lists our teams only, not the full field.
+            history = ROOT / "broadcast/data/tba/history.json"
+            registered = json.loads(history.read_text(encoding="utf-8"))["teams"] if history.is_file() else []
+            mine = sorted(t["teamNumber"] for t in registered if any(r["eventKey"] == event["id"][4:] for r in t["registered"]))
+            if not mine:
+                return {"posted": False, "note": "No local teams have registered yet."}
+            return {"posted": True, "local": mine, "note": "Local teams registered so far. The full entry list posts closer to the event."}
         else:
-            return {"posted": False, "note": "Add a TBA key to check FRC entries." if event["program"] == "FRC" else "Not tracked."}
+            return {"posted": False, "note": "Entry list not posted yet." if event["program"] == "FRC" else "Not tracked."}
     except Exception as error:  # A missing list should never stop the calendar refresh.
-        return {"posted": False, "note": f"Could not check entries ({error.__class__.__name__})."}
+        print(f"Could not check entries for {event['id']} ({error.__class__.__name__}); keeping the previous list.")
+        return None
     mine = local[0] if event["program"] == "FRC" else local[1]
     return {"posted": bool(teams), "count": len(teams), "local": sorted(t for t in teams if t in mine)}
 
@@ -107,14 +117,27 @@ def main():
     for e in fetched:
         # Hand-written descriptions and venues survive an API refresh.
         hand = manual.get(e["id"], {})
-        events[e["id"]] = {**e, **{k: hand[k] for k in ("description", "venue", "week", "address", "admission", "watch") if hand.get(k)}}
+        # A hand-entered placeholder for the same event (same program, day and city) is superseded by the
+        # official listing once it appears; its friendlier name and description carry over.
+        twin = next((m for m in manual.values() if m["id"] != e["id"] and m["program"] == e["program"]
+                     and m["startDate"] == e["startDate"] and m.get("city") == e.get("city")), None)
+        if twin:
+            events.pop(twin["id"], None)
+            hand = {**twin, **hand}
+        events[e["id"]] = {**e, **{k: hand[k] for k in ("name", "description", "venue", "week", "address", "admission", "watch") if hand.get(k) and (k != "name" or twin)}}
     local = local_teams()
     today = date.today().isoformat()
+    # On an API hiccup, keep last week's entry list instead of wiping a posted one.
+    output_path = Path(args.output)
+    before = {e["id"]: e.get("entrants") for e in json.loads(output_path.read_text(encoding="utf-8")).get("events", [])} if output_path.is_file() else {}
     for e in events.values():
         e.setdefault("address", "")
         e.setdefault("watch", [])
         if e["endDate"] >= today and e["type"] not in ("Kickoff", "Scrimmage"):
-            e["entrants"] = entrants(e, key, local)
+            fresh = entrants(e, key, local)
+            if fresh is None:
+                fresh = before.get(e["id"]) or {"posted": False, "note": "Entry list not posted yet."}
+            e["entrants"] = fresh
         e.pop("_code", None)
     rows = sorted(events.values(), key=lambda e: (e["startDate"], e["program"], e["name"]))
     output = Path(args.output)
@@ -124,7 +147,7 @@ def main():
     doc = {"season": "2026–27", "retrievedDate": checked,
            "sources": ["FTCScout events API", "The Blue Alliance API v3" if key else "The Blue Alliance (hand-checked; no API key set)", "FIRST and FIRST Indiana calendars"],
            "events": rows}
-    Path(args.output).write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    Path(args.output).write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"Wrote {len(rows)} events ({sum(e['program'] == 'FTC' for e in rows)} FTC) to {args.output}" + ("" if key else "; FRC from calendar-manual.json (no TBA key)"))
 
 

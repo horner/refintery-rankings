@@ -9,7 +9,9 @@ NAMES = {"2026inmis": ("FIN District Mishawaka Event", "Mishawaka", "district", 
          "2026arc": ("FIRST Championship · Archimedes Division", "World Championship (Archimedes)", "championship_division", "2026-04-29", "2026-05-02", None),
          "2026dal": ("FIRST Championship · Daly Division", "World Championship (Daly)", "championship_division", "2026-04-29", "2026-05-02", None),
          "2026kylou": ("RiverBOaT Rumble", "RiverBOaT Rumble", "offseason", "2026-07-10", "2026-07-11", None),
-         "2026iri": ("Indiana Robotics Invitational", "Indiana Robotics Invitational", "offseason", "2026-07-16", "2026-07-18", None)}
+         "2026iri": ("Indiana Robotics Invitational", "Indiana Robotics Invitational", "offseason", "2026-07-16", "2026-07-18", None),
+         "2026inbbb": ("Boiler Bot Battle", "Boiler Bot Battle", "offseason", "2026-10-23", "2026-10-24", None),
+         "2026infor": ("Monster Match", "Monster Match", "offseason", "2026-10-31", "2026-10-31", None)}
 snap = json.loads(open(sys.argv[3], encoding="utf-8").read())["team_years"]
 snap = {r["team"]: r for r in snap}
 teams = []
@@ -48,7 +50,7 @@ for n in map(int, sys.argv[4:]):
                   "district": {"key": "2026fin", "rank": sb.get("district_rank"), "points": sb.get("district_points"), "teamCount": 68},
                   "events": events})
 doc = {"schemaVersion": 1, "season": 2026, "source": "The Blue Alliance public team pages",
-       "retrievedDate": "2026-10-22",
+       "retrievedDate": "2026-11-10",
        "method": "Each team's https://www.thebluealliance.com/team/{n}/2026 page was saved and its event rank, qualification record, awards and playoff sentence extracted. Official record and district rank/points come from the preserved Statbotics snapshot and match TBA's page text. Refresh with scripts/fetch_tba.py and a TBA API key.",
        "teams": teams}
 open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(doc, ensure_ascii=False, indent=2) + "\n")

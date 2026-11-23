@@ -1,0 +1,14 @@
+# Generated files must be byte-identical on Windows and Linux, or CI's rebuild check fails.
+* text=auto eol=lf
+# Calendar files are CRLF by specification (RFC 5545).
+*.ics -text
+# Preserved third-party source captures keep their original bytes (checksummed).
+broadcast/data/dnf-research/leader-sources/** -text
+broadcast/data/match-research/frc-sources/** -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff2 binary
+*.zlib binary
+*.pdf binary

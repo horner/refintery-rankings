@@ -3,15 +3,11 @@
   "cards": {
     "home": {
       "file": "assets/share/home.jpg",
-      "fingerprint": "972cc1583c875fe54e9bec751fd828835c5957e712bff7a0a465248e9688691c"
+      "fingerprint": "c45032216bf8a3746a95add3aa09b7bbaea8a24ee8ebfdd0432aa6cf89251ff9"
     },
     "1501": {
       "file": "assets/share/team-1501.png",
-      "fingerprint": "3954eaba875efcdcddd0f8ad495b4cec9576d0ee21d476863edb4042f3920169"
-    },
-    "1720": {
-      "file": "assets/share/team-1720.png",
-      "fingerprint": "ff9234eed0a4e71cd0091b16982c64cfa37129daabf07870052f9fec42afe85b"
+      "fingerprint": "b7c74c2c9ea97d7007199ed2f449bf5a3f5cb16380c54a3bd8a968a472d74d0f"
     },
     "9119": {
       "file": "assets/share/team-9119.png",

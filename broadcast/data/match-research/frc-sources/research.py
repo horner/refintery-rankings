@@ -7,7 +7,7 @@ import concurrent.futures,datetime as dt,json,re,time,urllib.request,hashlib
 from pathlib import Path
 from bs4 import BeautifulSoup
 HERE=Path(__file__).resolve().parent
-TEAMS=[1501,1720,9119,9431,4982,10434,8103,10332,8742,10172,8431,8432,10411,5559,3777,6556,11407]
+TEAMS=[1501,9119,9431,4982,10434,8103,10332,8742,10172,8431,8432,10411,5559,3777,6556,11407]
 YEAR=2026
 CUTOFF='2026-06-12'
 BASE='https://frc-events.firstinspires.org'

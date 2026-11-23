@@ -91,14 +91,6 @@
       "height": 239
     },
     {
-      "source": "assets/logos/team-1720.png",
-      "sourceSha256": "439e41560078066aeb029f336783909e4a7030e560e9cfa77119c7d8673023da",
-      "file": "assets/display/team-1720.webp",
-      "sha256": "b717120e02f2cec22cefd2d1843e21ad6174ab1c5c94499225d0599802ab1a64",
-      "width": 40,
-      "height": 40
-    },
-    {
       "source": "assets/logos/team-22331.svg",
       "sourceSha256": "330f210a6103aaccd47afda622ae59d38c463f9b70a76e0269aeadbe4e34d864",
       "file": "assets/display/team-22331.webp",

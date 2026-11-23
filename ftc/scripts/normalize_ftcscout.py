@@ -9,7 +9,7 @@ import hashlib,json,pathlib,sys
 TEAMS={22331:'USIN',25638:'USIN',5501:'USOH',14174:'USOH',12802:'USOH',19778:'USOH',30782:'USOH',32552:'USOH'}
 def normalize(root):
     root=pathlib.Path(root)
-    manifest=json.loads((root/'manifest.json').read_text())
+    manifest=json.loads((root/'manifest.json').read_text(encoding="utf-8"))
     captures={m['raw_file']:m for m in manifest['captures'] if m.get('raw_file')}
     assert len(captures)==sum(bool(m.get('raw_file')) for m in manifest['captures']), 'Duplicate capture filenames'
     def read(name):

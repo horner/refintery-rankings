@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "research_date": "2026-10-22",
-  "source_count": 148,
+  "source_count": 139,
   "note": "Source links and per-person access limitations are preserved. This catalog does not assert that every linked page is currently accessible or archived locally.",
   "sources": [
     {
@@ -164,20 +164,6 @@
         "geographic method"
       ],
       "teams": []
-    },
-    {
-      "source_id": "S-f0abf80e10",
-      "title": "FIRST 2026 team page: 1720",
-      "url": "https://frc-events.firstinspires.org/2026/team/1720",
-      "publisher_domain": "frc-events.firstinspires.org",
-      "categories": [
-        "geographic method",
-        "geography",
-        "school and team"
-      ],
-      "teams": [
-        1720
-      ]
     },
     {
       "source_id": "S-b6852ece67",
@@ -389,18 +375,6 @@
       ],
       "teams": [
         1501
-      ]
-    },
-    {
-      "source_id": "S-77fdc41cf1",
-      "title": "FIRST team history: 1720",
-      "url": "https://frc-events.firstinspires.org/team/1720",
-      "publisher_domain": "frc-events.firstinspires.org",
-      "categories": [
-        "school and team"
-      ],
-      "teams": [
-        1720
       ]
     },
     {
@@ -758,18 +732,6 @@
       ]
     },
     {
-      "source_id": "S-2039de4f00",
-      "title": "hnhs.hccsc.k12.in.us",
-      "url": "https://hnhs.hccsc.k12.in.us/",
-      "publisher_domain": "hnhs.hccsc.k12.in.us",
-      "categories": [
-        "school and team"
-      ],
-      "teams": [
-        1501
-      ]
-    },
-    {
       "source_id": "S-8b5a31fb68",
       "title": "hnhs.hccsc.k12.in.us: services/administration/main office",
       "url": "https://hnhs.hccsc.k12.in.us/services/administration/main-office",
@@ -844,6 +806,18 @@
       "categories": [
         "geographic method",
         "geography",
+        "school and team"
+      ],
+      "teams": [
+        1501
+      ]
+    },
+    {
+      "source_id": "S-c9d46714e4",
+      "title": "huntingtonrobotics.org",
+      "url": "https://huntingtonrobotics.org/",
+      "publisher_domain": "huntingtonrobotics.org",
+      "categories": [
         "school and team"
       ],
       "teams": [
@@ -998,33 +972,6 @@
       ],
       "teams": [
         8742
-      ]
-    },
-    {
-      "source_id": "S-6ee167d98e",
-      "title": "phyxtgears.org",
-      "url": "https://phyxtgears.org/",
-      "publisher_domain": "phyxtgears.org",
-      "categories": [
-        "geographic method",
-        "geography",
-        "school and team"
-      ],
-      "teams": [
-        1720
-      ]
-    },
-    {
-      "source_id": "S-661b1d60f2",
-      "title": "PhyXTGears: 2026 season and world championship report",
-      "url": "https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/",
-      "publisher_domain": "phyxtgears.org",
-      "categories": [
-        "leadership",
-        "school and team"
-      ],
-      "teams": [
-        1720
       ]
     },
     {
@@ -1222,7 +1169,6 @@
       ],
       "teams": [
         1501,
-        1720,
         3777,
         4982,
         5559,
@@ -1238,32 +1184,6 @@
         10411,
         10434,
         11407
-      ]
-    },
-    {
-      "source_id": "S-842f7dd4f1",
-      "title": "tigerweb.geo.census.gov: tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html",
-      "url": "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html",
-      "publisher_domain": "tigerweb.geo.census.gov",
-      "categories": [
-        "geographic method",
-        "geography"
-      ],
-      "teams": [
-        1720
-      ]
-    },
-    {
-      "source_id": "S-195d71a549",
-      "title": "townofmatthews.com: phyxtgears robotics team 1720",
-      "url": "https://townofmatthews.com/phyxtgears-robotics-team-1720/",
-      "publisher_domain": "townofmatthews.com",
-      "categories": [
-        "geographic method",
-        "geography"
-      ],
-      "teams": [
-        1720
       ]
     },
     {
@@ -1380,18 +1300,6 @@
         "geographic method"
       ],
       "teams": []
-    },
-    {
-      "source_id": "S-7b2f1b24b1",
-      "title": "Republished KPC News Sun report: East Noble coaches, May 2024",
-      "url": "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
-      "publisher_domain": "www.euvolution.com",
-      "categories": [
-        "leadership"
-      ],
-      "teams": [
-        8103
-      ]
     },
     {
       "source_id": "S-6bc3ec9e37",
@@ -1522,18 +1430,6 @@
       ]
     },
     {
-      "source_id": "S-dcb83b6d86",
-      "title": "Matt Arnold: public professional profile and historical role",
-      "url": "https://www.linkedin.com/in/m4ttbit",
-      "publisher_domain": "www.linkedin.com",
-      "categories": [
-        "leadership"
-      ],
-      "teams": [
-        10332
-      ]
-    },
-    {
       "source_id": "S-335b149918",
       "title": "Matt Elder: public professional profile",
       "url": "https://www.linkedin.com/in/matt-elder-24b8b615a",
@@ -1639,18 +1535,6 @@
       ],
       "teams": [
         1501
-      ]
-    },
-    {
-      "source_id": "S-6befec500f",
-      "title": "Statbotics 2026 profile: team 1720",
-      "url": "https://www.statbotics.io/team/1720/2026",
-      "publisher_domain": "www.statbotics.io",
-      "categories": [
-        "school and team"
-      ],
-      "teams": [
-        1720
       ]
     },
     {

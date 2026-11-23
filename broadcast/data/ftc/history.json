@@ -1,0 +1,1606 @@
+{
+  "schemaVersion": 1,
+  "source": "FTCScout public GraphQL API",
+  "sourceUrl": "https://api.ftcscout.org/graphql",
+  "retrievedDate": "2026-11-11",
+  "method": "Queried FTCScout teamByNumber for each team and, per active season, its event participations (event info, qualification stats, awards) and matches (to derive playoff records); eventWins counts 'Winning Alliance' awards (captain/first/second pick) at top-level events, divisionWins counts division-level winning alliances, and inspireAwards counts 1st-place Inspire.",
+  "teams": [
+    {
+      "teamNumber": 22331,
+      "name": "random()",
+      "schoolName": "Canterbury High School",
+      "city": "Fort Wayne",
+      "state": "IN",
+      "country": "USA",
+      "rookieYear": 2022,
+      "website": "https://sites.google.com/canterburyschool.org/robotics/home",
+      "activeSeasons": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "ftcscoutUrl": "https://ftcscout.org/teams/22331",
+      "seasons": [
+        {
+          "season": 2022,
+          "seasonLabel": "2022-23",
+          "seasonName": "POWERPLAY",
+          "events": [
+            {
+              "eventCode": "USINNCM2",
+              "name": "IN FIN North Central League Meet 2",
+              "startDate": "2022-12-03",
+              "endDate": "2022-12-03",
+              "type": "LeagueMeet",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Career Academy",
+              "city": "South Bend",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 6,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 1,
+                "losses": 4,
+                "ties": 0
+              },
+              "opr": 14.42,
+              "npOpr": 14.42,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2022/USINNCM2"
+            },
+            {
+              "eventCode": "USINNCM4",
+              "name": "IN FIN North Central League Meet 4",
+              "startDate": "2022-12-17",
+              "endDate": "2022-12-17",
+              "type": "LeagueMeet",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Career Academy",
+              "city": "South Bend",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 9,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 2,
+                "losses": 3,
+                "ties": 0
+              },
+              "opr": 0.18,
+              "npOpr": 2.99,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2022/USINNCM4"
+            },
+            {
+              "eventCode": "USINNCM5",
+              "name": "IN FIN North Central League Meet 5",
+              "startDate": "2023-01-21",
+              "endDate": "2023-01-21",
+              "type": "LeagueMeet",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Career Academy",
+              "city": "South Bend",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 13,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 2,
+                "losses": 3,
+                "ties": 0
+              },
+              "opr": 14.32,
+              "npOpr": 13.97,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2022/USINNCM5"
+            },
+            {
+              "eventCode": "USINNCM6",
+              "name": "IN FIN North Central League Meet 6",
+              "startDate": "2023-01-21",
+              "endDate": "2023-01-21",
+              "type": "LeagueMeet",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Career Academy",
+              "city": "South Bend",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 7,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 1,
+                "losses": 4,
+                "ties": 0
+              },
+              "opr": 29.9,
+              "npOpr": 31.24,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2022/USINNCM6"
+            },
+            {
+              "eventCode": "USINNCLT",
+              "name": "IN FIN North-Central League Tournament",
+              "startDate": "2023-02-04",
+              "endDate": "2023-02-04",
+              "type": "LeagueTournament",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Success Academy",
+              "city": "South Bend",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 9,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 2,
+                "losses": 3,
+                "ties": 0
+              },
+              "opr": 21.44,
+              "npOpr": 17.11,
+              "playoff": null,
+              "awards": [
+                {
+                  "type": "Think",
+                  "name": "Think Award",
+                  "placement": 2,
+                  "displayName": "Think Award – 2nd Place",
+                  "divisionName": null,
+                  "personName": null
+                },
+                {
+                  "type": "Control",
+                  "name": "Control Award",
+                  "placement": 2,
+                  "displayName": "Control Award – 2nd Place",
+                  "divisionName": null,
+                  "personName": null
+                },
+                {
+                  "type": "Motivate",
+                  "name": "Motivate Award",
+                  "placement": 2,
+                  "displayName": "Motivate Award – 2nd Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2022/USINNCLT"
+            }
+          ],
+          "totals": {
+            "events": 5,
+            "eventEntries": 5,
+            "wins": 8,
+            "losses": 17,
+            "ties": 0,
+            "playoffWins": 0,
+            "playoffLosses": 0,
+            "playoffTies": 0,
+            "awards": 3,
+            "bestOpr": 29.9,
+            "bestNpOpr": 31.24,
+            "quickStatsNpOpr": 31.24,
+            "quickStatsNpOprRank": 3429,
+            "quickStatsTeamCount": 5671
+          }
+        },
+        {
+          "season": 2023,
+          "seasonLabel": "2023-24",
+          "seasonName": "CENTERSTAGE",
+          "events": [
+            {
+              "eventCode": "USINDUQ",
+              "name": "IN NE Dubois QT",
+              "startDate": "2024-02-03",
+              "endDate": "2024-02-03",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "NE Dubois Jr/Sr High School",
+              "city": "Dubois",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 23,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 1,
+                "losses": 4,
+                "ties": 0
+              },
+              "opr": 24.84,
+              "npOpr": 18.7,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2023/USINDUQ"
+            },
+            {
+              "eventCode": "USINSBQ1",
+              "name": "IN South Bend QT1",
+              "startDate": "2024-02-10",
+              "endDate": "2024-02-10",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Success Academy South Bend",
+              "city": "South Bend",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 7,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 4,
+                "losses": 1,
+                "ties": 0
+              },
+              "opr": 7.69,
+              "npOpr": 6.6,
+              "playoff": {
+                "allianceRole": "SecondPick",
+                "allianceColorLastMatch": "Red",
+                "levels": [
+                  "Semis"
+                ],
+                "matchesPlayed": 3,
+                "wins": 1,
+                "losses": 2,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Motivate",
+                  "name": "Motivate Award",
+                  "placement": 1,
+                  "displayName": "Motivate Award – 1st Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2023/USINSBQ1"
+            },
+            {
+              "eventCode": "USINGRQ2",
+              "name": "IN Greenwood QT2",
+              "startDate": "2024-02-18",
+              "endDate": "2024-02-18",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Greenwood Middle School",
+              "city": "Greenwood",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 13,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 3,
+                "losses": 2,
+                "ties": 0
+              },
+              "opr": 51.55,
+              "npOpr": 23.02,
+              "playoff": {
+                "allianceRole": "SecondPick",
+                "allianceColorLastMatch": "Blue",
+                "levels": [
+                  "Semis"
+                ],
+                "matchesPlayed": 2,
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Connect",
+                  "name": "Connect Award",
+                  "placement": 3,
+                  "displayName": "Connect Award – 3rd Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2023/USINGRQ2"
+            }
+          ],
+          "totals": {
+            "events": 3,
+            "eventEntries": 3,
+            "wins": 8,
+            "losses": 7,
+            "ties": 0,
+            "playoffWins": 1,
+            "playoffLosses": 4,
+            "playoffTies": 0,
+            "awards": 2,
+            "bestOpr": 51.55,
+            "bestNpOpr": 23.02,
+            "quickStatsNpOpr": 23.02,
+            "quickStatsNpOprRank": 4346,
+            "quickStatsTeamCount": 6664
+          }
+        },
+        {
+          "season": 2024,
+          "seasonLabel": "2024-25",
+          "seasonName": "INTO THE DEEP",
+          "events": [
+            {
+              "eventCode": "USININQ",
+              "name": "Indianapolis QT",
+              "startDate": "2024-12-07",
+              "endDate": "2024-12-07",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Perry Meridian HS",
+              "city": "Indianapolis",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 12,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 3,
+                "losses": 2,
+                "ties": 0
+              },
+              "opr": 5.55,
+              "npOpr": 8.37,
+              "playoff": null,
+              "awards": [
+                {
+                  "type": "Motivate",
+                  "name": "Motivate Award",
+                  "placement": 1,
+                  "displayName": "Motivate Award – 1st Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2024/USININQ"
+            },
+            {
+              "eventCode": "USINWLQ2",
+              "name": "West Lafayette QT2",
+              "startDate": "2025-01-26",
+              "endDate": "2025-01-26",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Battle Ground MS",
+              "city": "West Lafayette",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 24,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 1,
+                "losses": 4,
+                "ties": 0
+              },
+              "opr": 31.19,
+              "npOpr": 23.96,
+              "playoff": null,
+              "awards": [
+                {
+                  "type": "Innovate",
+                  "name": "Innovate Award",
+                  "placement": 2,
+                  "displayName": "Innovate Award – 2nd Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2024/USINWLQ2"
+            },
+            {
+              "eventCode": "USINAVQ",
+              "name": "Avon QT",
+              "startDate": "2025-02-22",
+              "endDate": "2025-02-22",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Avon HS",
+              "city": "Avon",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 11,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 3,
+                "losses": 2,
+                "ties": 0
+              },
+              "opr": 54.38,
+              "npOpr": 54.96,
+              "playoff": {
+                "allianceRole": "FirstPick",
+                "allianceColorLastMatch": "Blue",
+                "levels": [
+                  "DoubleElim"
+                ],
+                "matchesPlayed": 2,
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Innovate",
+                  "name": "Innovate Award",
+                  "placement": 1,
+                  "displayName": "Innovate Award – 1st Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2024/USINAVQ"
+            },
+            {
+              "eventCode": "USINCMP",
+              "name": "FIRST Indiana Robotics State Championship",
+              "startDate": "2025-03-08",
+              "endDate": "2025-03-08",
+              "type": "Championship",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Uindy Nicoson Hall",
+              "city": "Indianapolis",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 20,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 2,
+                "losses": 3,
+                "ties": 0
+              },
+              "opr": 39.58,
+              "npOpr": 42.48,
+              "playoff": null,
+              "awards": [
+                {
+                  "type": "Think",
+                  "name": "Think Award",
+                  "placement": 2,
+                  "displayName": "Think Award – 2nd Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2024/USINCMP"
+            }
+          ],
+          "totals": {
+            "events": 4,
+            "eventEntries": 4,
+            "wins": 9,
+            "losses": 11,
+            "ties": 0,
+            "playoffWins": 0,
+            "playoffLosses": 2,
+            "playoffTies": 0,
+            "awards": 4,
+            "bestOpr": 54.38,
+            "bestNpOpr": 54.96,
+            "quickStatsNpOpr": 54.96,
+            "quickStatsNpOprRank": 2808,
+            "quickStatsTeamCount": 7641
+          }
+        },
+        {
+          "season": 2025,
+          "seasonLabel": "2025-26",
+          "seasonName": "DECODE",
+          "events": [
+            {
+              "eventCode": "USINWEQ",
+              "name": "Westfield QT",
+              "startDate": "2025-12-06",
+              "endDate": "2025-12-06",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Westfield Middle School",
+              "city": "Westfield",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 2,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 5,
+                "losses": 0,
+                "ties": 0
+              },
+              "opr": 90.9,
+              "npOpr": 78.67,
+              "playoff": {
+                "allianceRole": "FirstPick",
+                "allianceColorLastMatch": "Red",
+                "levels": [
+                  "DoubleElim"
+                ],
+                "matchesPlayed": 3,
+                "wins": 3,
+                "losses": 0,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Winner",
+                  "name": "Winning Alliance",
+                  "placement": 2,
+                  "displayName": "Winning Alliance (First Pick)",
+                  "divisionName": null,
+                  "personName": null
+                },
+                {
+                  "type": "Sustain",
+                  "name": "Sustain Award",
+                  "placement": 1,
+                  "displayName": "Sustain Award – 1st Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2025/USINWEQ"
+            },
+            {
+              "eventCode": "USINWLQ2",
+              "name": "West Lafayette QT2",
+              "startDate": "2026-02-01",
+              "endDate": "2026-02-01",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Battle Ground Middle School",
+              "city": "West Lafayette",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 10,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 3,
+                "losses": 2,
+                "ties": 0
+              },
+              "opr": 50.77,
+              "npOpr": 23.16,
+              "playoff": {
+                "allianceRole": "FirstPick",
+                "allianceColorLastMatch": "Red",
+                "levels": [
+                  "DoubleElim"
+                ],
+                "matchesPlayed": 3,
+                "wins": 1,
+                "losses": 2,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Inspire",
+                  "name": "Inspire Award",
+                  "placement": 3,
+                  "displayName": "Inspire Award – 3rd Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2025/USINWLQ2"
+            },
+            {
+              "eventCode": "USINSBQ",
+              "name": "South Bend QT",
+              "startDate": "2026-02-14",
+              "endDate": "2026-02-14",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Penn High School",
+              "city": "Mishawaka",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 24,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 1,
+                "losses": 4,
+                "ties": 0
+              },
+              "opr": 42.89,
+              "npOpr": 50.0,
+              "playoff": {
+                "allianceRole": "FirstPick",
+                "allianceColorLastMatch": "Blue",
+                "levels": [
+                  "DoubleElim"
+                ],
+                "matchesPlayed": 3,
+                "wins": 1,
+                "losses": 2,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Control",
+                  "name": "Control Award",
+                  "placement": 1,
+                  "displayName": "Control Award – 1st Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2025/USINSBQ"
+            },
+            {
+              "eventCode": "USINCMP",
+              "name": "Indiana State Championship",
+              "startDate": "2026-03-14",
+              "endDate": "2026-03-14",
+              "type": "Championship",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "University of Indianapolis Nicoson Hall",
+              "city": "Indianapolis",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 8,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 4,
+                "losses": 1,
+                "ties": 0
+              },
+              "opr": 75.9,
+              "npOpr": 70.42,
+              "playoff": {
+                "allianceRole": "Captain",
+                "allianceColorLastMatch": "Blue",
+                "levels": [
+                  "DoubleElim"
+                ],
+                "matchesPlayed": 2,
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Think",
+                  "name": "Think Award",
+                  "placement": 1,
+                  "displayName": "Think Award – 1st Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2025/USINCMP"
+            },
+            {
+              "eventCode": "FPEMI",
+              "name": "Michiana Premier Event Presented by GEARS",
+              "startDate": "2026-06-18",
+              "endDate": "2026-06-21",
+              "type": "Premier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Century Center",
+              "city": "South Bend",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": null,
+              "qualMatchesPlayed": null,
+              "qualRecord": null,
+              "opr": null,
+              "npOpr": null,
+              "playoff": {
+                "allianceRole": "SecondPick",
+                "allianceColorLastMatch": "Red",
+                "levels": [
+                  "DoubleElim"
+                ],
+                "matchesPlayed": 2,
+                "wins": 2,
+                "losses": 0,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Winner",
+                  "name": "Winning Alliance",
+                  "placement": 3,
+                  "displayName": "Winning Alliance (Second Pick)",
+                  "divisionName": null,
+                  "personName": null
+                },
+                {
+                  "type": "DivisionWinner",
+                  "name": "Division Winning Alliance",
+                  "placement": 3,
+                  "displayName": "Division Winning Alliance (Second Pick)",
+                  "divisionName": "Croft",
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2025/FPEMI"
+            },
+            {
+              "eventCode": "FPEMICRFT",
+              "name": "Michiana Premier Event Presented by GEARS - Croft Division",
+              "startDate": "2026-06-18",
+              "endDate": "2026-06-21",
+              "type": "Premier",
+              "divisionOf": "FPEMI",
+              "remote": false,
+              "venue": "Century Center",
+              "city": "South Bend",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 19,
+              "qualMatchesPlayed": 10,
+              "qualRecord": {
+                "wins": 5,
+                "losses": 5,
+                "ties": 0
+              },
+              "opr": 95.44,
+              "npOpr": 88.85,
+              "playoff": {
+                "allianceRole": "SecondPick",
+                "allianceColorLastMatch": "Red",
+                "levels": [
+                  "DoubleElim"
+                ],
+                "matchesPlayed": 4,
+                "wins": 4,
+                "losses": 0,
+                "ties": 0
+              },
+              "awards": [
+                {
+                  "type": "Winner",
+                  "name": "Winning Alliance",
+                  "placement": 3,
+                  "displayName": "Winning Alliance (Second Pick)",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2025/FPEMICRFT"
+            }
+          ],
+          "totals": {
+            "events": 5,
+            "eventEntries": 6,
+            "wins": 18,
+            "losses": 12,
+            "ties": 0,
+            "playoffWins": 11,
+            "playoffLosses": 6,
+            "playoffTies": 0,
+            "awards": 8,
+            "bestOpr": 95.44,
+            "bestNpOpr": 88.85,
+            "quickStatsNpOpr": 88.85,
+            "quickStatsNpOprRank": 861,
+            "quickStatsTeamCount": 8368
+          }
+        },
+        {
+          "season": 2026,
+          "seasonLabel": "2026-27",
+          "seasonName": null,
+          "events": [
+            {
+              "eventCode": "USINWEQ2",
+              "name": "Westfield 2 QT",
+              "startDate": "2026-12-06",
+              "endDate": "2026-12-06",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Westfield Middle School",
+              "city": "Westfield",
+              "state": "IN",
+              "country": "USA",
+              "started": false,
+              "finished": false,
+              "qualRank": null,
+              "qualMatchesPlayed": null,
+              "qualRecord": null,
+              "opr": null,
+              "npOpr": null,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2026/USINWEQ2"
+            },
+            {
+              "eventCode": "USINMIQ",
+              "name": "Mishawaka QT",
+              "startDate": "2027-02-28",
+              "endDate": "2027-02-28",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Penn High School",
+              "city": "Mishawaka",
+              "state": "IN",
+              "country": "USA",
+              "started": false,
+              "finished": false,
+              "qualRank": null,
+              "qualMatchesPlayed": null,
+              "qualRecord": null,
+              "opr": null,
+              "npOpr": null,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2026/USINMIQ"
+            }
+          ],
+          "totals": {
+            "events": 0,
+            "eventEntries": 0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 0,
+            "playoffWins": 0,
+            "playoffLosses": 0,
+            "playoffTies": 0,
+            "awards": 0,
+            "bestOpr": null,
+            "bestNpOpr": null,
+            "quickStatsNpOpr": null,
+            "quickStatsNpOprRank": null,
+            "quickStatsTeamCount": null
+          }
+        }
+      ],
+      "allTime": {
+        "seasonsWithEvents": 4,
+        "totalEvents": 17,
+        "totalEventEntries": 18,
+        "wins": 43,
+        "losses": 47,
+        "ties": 0,
+        "totalAwards": 17,
+        "eventWins": 2,
+        "divisionWins": 1,
+        "inspireAwards": 0,
+        "awards": [
+          {
+            "season": 2022,
+            "eventCode": "USINNCLT",
+            "eventName": "IN FIN North-Central League Tournament",
+            "divisionOf": null,
+            "type": "Think",
+            "name": "Think Award",
+            "placement": 2,
+            "displayName": "Think Award – 2nd Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2022,
+            "eventCode": "USINNCLT",
+            "eventName": "IN FIN North-Central League Tournament",
+            "divisionOf": null,
+            "type": "Control",
+            "name": "Control Award",
+            "placement": 2,
+            "displayName": "Control Award – 2nd Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2022,
+            "eventCode": "USINNCLT",
+            "eventName": "IN FIN North-Central League Tournament",
+            "divisionOf": null,
+            "type": "Motivate",
+            "name": "Motivate Award",
+            "placement": 2,
+            "displayName": "Motivate Award – 2nd Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2023,
+            "eventCode": "USINSBQ1",
+            "eventName": "IN South Bend QT1",
+            "divisionOf": null,
+            "type": "Motivate",
+            "name": "Motivate Award",
+            "placement": 1,
+            "displayName": "Motivate Award – 1st Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2023,
+            "eventCode": "USINGRQ2",
+            "eventName": "IN Greenwood QT2",
+            "divisionOf": null,
+            "type": "Connect",
+            "name": "Connect Award",
+            "placement": 3,
+            "displayName": "Connect Award – 3rd Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2024,
+            "eventCode": "USININQ",
+            "eventName": "Indianapolis QT",
+            "divisionOf": null,
+            "type": "Motivate",
+            "name": "Motivate Award",
+            "placement": 1,
+            "displayName": "Motivate Award – 1st Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2024,
+            "eventCode": "USINWLQ2",
+            "eventName": "West Lafayette QT2",
+            "divisionOf": null,
+            "type": "Innovate",
+            "name": "Innovate Award",
+            "placement": 2,
+            "displayName": "Innovate Award – 2nd Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2024,
+            "eventCode": "USINAVQ",
+            "eventName": "Avon QT",
+            "divisionOf": null,
+            "type": "Innovate",
+            "name": "Innovate Award",
+            "placement": 1,
+            "displayName": "Innovate Award – 1st Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2024,
+            "eventCode": "USINCMP",
+            "eventName": "FIRST Indiana Robotics State Championship",
+            "divisionOf": null,
+            "type": "Think",
+            "name": "Think Award",
+            "placement": 2,
+            "displayName": "Think Award – 2nd Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2025,
+            "eventCode": "USINWEQ",
+            "eventName": "Westfield QT",
+            "divisionOf": null,
+            "type": "Winner",
+            "name": "Winning Alliance",
+            "placement": 2,
+            "displayName": "Winning Alliance (First Pick)",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2025,
+            "eventCode": "USINWEQ",
+            "eventName": "Westfield QT",
+            "divisionOf": null,
+            "type": "Sustain",
+            "name": "Sustain Award",
+            "placement": 1,
+            "displayName": "Sustain Award – 1st Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2025,
+            "eventCode": "USINWLQ2",
+            "eventName": "West Lafayette QT2",
+            "divisionOf": null,
+            "type": "Inspire",
+            "name": "Inspire Award",
+            "placement": 3,
+            "displayName": "Inspire Award – 3rd Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2025,
+            "eventCode": "USINSBQ",
+            "eventName": "South Bend QT",
+            "divisionOf": null,
+            "type": "Control",
+            "name": "Control Award",
+            "placement": 1,
+            "displayName": "Control Award – 1st Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2025,
+            "eventCode": "USINCMP",
+            "eventName": "Indiana State Championship",
+            "divisionOf": null,
+            "type": "Think",
+            "name": "Think Award",
+            "placement": 1,
+            "displayName": "Think Award – 1st Place",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2025,
+            "eventCode": "FPEMI",
+            "eventName": "Michiana Premier Event Presented by GEARS",
+            "divisionOf": null,
+            "type": "Winner",
+            "name": "Winning Alliance",
+            "placement": 3,
+            "displayName": "Winning Alliance (Second Pick)",
+            "divisionName": null,
+            "personName": null
+          },
+          {
+            "season": 2025,
+            "eventCode": "FPEMI",
+            "eventName": "Michiana Premier Event Presented by GEARS",
+            "divisionOf": null,
+            "type": "DivisionWinner",
+            "name": "Division Winning Alliance",
+            "placement": 3,
+            "displayName": "Division Winning Alliance (Second Pick)",
+            "divisionName": "Croft",
+            "personName": null
+          },
+          {
+            "season": 2025,
+            "eventCode": "FPEMICRFT",
+            "eventName": "Michiana Premier Event Presented by GEARS - Croft Division",
+            "divisionOf": "FPEMI",
+            "type": "Winner",
+            "name": "Winning Alliance",
+            "placement": 3,
+            "displayName": "Winning Alliance (Second Pick)",
+            "divisionName": null,
+            "personName": null
+          }
+        ]
+      },
+      "upcoming": [
+        {
+          "eventCode": "USINWEQ2",
+          "name": "Westfield 2 QT",
+          "startDate": "2026-12-06",
+          "endDate": "2026-12-06",
+          "type": "Qualifier",
+          "city": "Westfield",
+          "state": "IN",
+          "eventUrl": "https://ftcscout.org/events/2026/USINWEQ2"
+        },
+        {
+          "eventCode": "USINMIQ",
+          "name": "Mishawaka QT",
+          "startDate": "2027-02-28",
+          "endDate": "2027-02-28",
+          "type": "Qualifier",
+          "city": "Mishawaka",
+          "state": "IN",
+          "eventUrl": "https://ftcscout.org/events/2026/USINMIQ"
+        }
+      ]
+    },
+    {
+      "teamNumber": 25638,
+      "name": "MG (Microchips & Guac)",
+      "schoolName": "Madison-Grant Jr Sr High Sch",
+      "city": "Fairmount",
+      "state": "IN",
+      "country": "USA",
+      "rookieYear": 2024,
+      "website": null,
+      "activeSeasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "ftcscoutUrl": "https://ftcscout.org/teams/25638",
+      "seasons": [
+        {
+          "season": 2024,
+          "seasonLabel": "2024-25",
+          "seasonName": "INTO THE DEEP",
+          "events": [
+            {
+              "eventCode": "USINWLQ1",
+              "name": "West Lafayette QT1",
+              "startDate": "2025-01-25",
+              "endDate": "2025-01-25",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Battle Ground MS",
+              "city": "West Lafayette",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 17,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 2,
+                "losses": 3,
+                "ties": 0
+              },
+              "opr": 38.23,
+              "npOpr": 38.14,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2024/USINWLQ1"
+            },
+            {
+              "eventCode": "USINELQ",
+              "name": "Mishawaka QT",
+              "startDate": "2025-02-08",
+              "endDate": "2025-02-08",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Penn-Harris-Madison High School",
+              "city": "Mishawaka",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 8,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 3,
+                "losses": 2,
+                "ties": 0
+              },
+              "opr": 56.13,
+              "npOpr": 55.54,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2024/USINELQ"
+            },
+            {
+              "eventCode": "USINAVQ",
+              "name": "Avon QT",
+              "startDate": "2025-02-22",
+              "endDate": "2025-02-22",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Avon HS",
+              "city": "Avon",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 20,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 1,
+                "losses": 4,
+                "ties": 0
+              },
+              "opr": 64.98,
+              "npOpr": 56.56,
+              "playoff": null,
+              "awards": [
+                {
+                  "type": "Design",
+                  "name": "Design Award",
+                  "placement": 2,
+                  "displayName": "Design Award – 2nd Place",
+                  "divisionName": null,
+                  "personName": null
+                }
+              ],
+              "eventUrl": "https://ftcscout.org/events/2024/USINAVQ"
+            }
+          ],
+          "totals": {
+            "events": 3,
+            "eventEntries": 3,
+            "wins": 6,
+            "losses": 9,
+            "ties": 0,
+            "playoffWins": 0,
+            "playoffLosses": 0,
+            "playoffTies": 0,
+            "awards": 1,
+            "bestOpr": 64.98,
+            "bestNpOpr": 56.56,
+            "quickStatsNpOpr": 56.56,
+            "quickStatsNpOprRank": 2697,
+            "quickStatsTeamCount": 7641
+          }
+        },
+        {
+          "season": 2025,
+          "seasonLabel": "2025-26",
+          "seasonName": "DECODE",
+          "events": [
+            {
+              "eventCode": "USINWLQ1",
+              "name": "West Lafayette QT1",
+              "startDate": "2026-01-31",
+              "endDate": "2026-01-31",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Battle Ground Middle School",
+              "city": "West Lafayette",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 12,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 3,
+                "losses": 2,
+                "ties": 0
+              },
+              "opr": 52.85,
+              "npOpr": 30.27,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2025/USINWLQ1"
+            },
+            {
+              "eventCode": "USINSBQ",
+              "name": "South Bend QT",
+              "startDate": "2026-02-14",
+              "endDate": "2026-02-14",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Penn High School",
+              "city": "Mishawaka",
+              "state": "IN",
+              "country": "USA",
+              "started": true,
+              "finished": true,
+              "qualRank": 10,
+              "qualMatchesPlayed": 5,
+              "qualRecord": {
+                "wins": 3,
+                "losses": 2,
+                "ties": 0
+              },
+              "opr": 50.06,
+              "npOpr": 39.17,
+              "playoff": {
+                "allianceRole": "FirstPick",
+                "allianceColorLastMatch": "Blue",
+                "levels": [
+                  "DoubleElim"
+                ],
+                "matchesPlayed": 2,
+                "wins": 0,
+                "losses": 2,
+                "ties": 0
+              },
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2025/USINSBQ"
+            }
+          ],
+          "totals": {
+            "events": 2,
+            "eventEntries": 2,
+            "wins": 6,
+            "losses": 4,
+            "ties": 0,
+            "playoffWins": 0,
+            "playoffLosses": 2,
+            "playoffTies": 0,
+            "awards": 0,
+            "bestOpr": 52.85,
+            "bestNpOpr": 39.17,
+            "quickStatsNpOpr": 39.17,
+            "quickStatsNpOprRank": 3455,
+            "quickStatsTeamCount": 8368
+          }
+        },
+        {
+          "season": 2026,
+          "seasonLabel": "2026-27",
+          "seasonName": null,
+          "events": [
+            {
+              "eventCode": "USINAVQ",
+              "name": "Avon QT",
+              "startDate": "2027-02-20",
+              "endDate": "2027-02-20",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Avon High School",
+              "city": "Avon",
+              "state": "IN",
+              "country": "USA",
+              "started": false,
+              "finished": false,
+              "qualRank": null,
+              "qualMatchesPlayed": null,
+              "qualRecord": null,
+              "opr": null,
+              "npOpr": null,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2026/USINAVQ"
+            },
+            {
+              "eventCode": "USINMIQ",
+              "name": "Mishawaka QT",
+              "startDate": "2027-02-28",
+              "endDate": "2027-02-28",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Penn High School",
+              "city": "Mishawaka",
+              "state": "IN",
+              "country": "USA",
+              "started": false,
+              "finished": false,
+              "qualRank": null,
+              "qualMatchesPlayed": null,
+              "qualRecord": null,
+              "opr": null,
+              "npOpr": null,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2026/USINMIQ"
+            }
+          ],
+          "totals": {
+            "events": 0,
+            "eventEntries": 0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 0,
+            "playoffWins": 0,
+            "playoffLosses": 0,
+            "playoffTies": 0,
+            "awards": 0,
+            "bestOpr": null,
+            "bestNpOpr": null,
+            "quickStatsNpOpr": null,
+            "quickStatsNpOprRank": null,
+            "quickStatsTeamCount": null
+          }
+        }
+      ],
+      "allTime": {
+        "seasonsWithEvents": 2,
+        "totalEvents": 5,
+        "totalEventEntries": 5,
+        "wins": 12,
+        "losses": 13,
+        "ties": 0,
+        "totalAwards": 1,
+        "eventWins": 0,
+        "divisionWins": 0,
+        "inspireAwards": 0,
+        "awards": [
+          {
+            "season": 2024,
+            "eventCode": "USINAVQ",
+            "eventName": "Avon QT",
+            "divisionOf": null,
+            "type": "Design",
+            "name": "Design Award",
+            "placement": 2,
+            "displayName": "Design Award – 2nd Place",
+            "divisionName": null,
+            "personName": null
+          }
+        ]
+      },
+      "upcoming": [
+        {
+          "eventCode": "USINAVQ",
+          "name": "Avon QT",
+          "startDate": "2027-02-20",
+          "endDate": "2027-02-20",
+          "type": "Qualifier",
+          "city": "Avon",
+          "state": "IN",
+          "eventUrl": "https://ftcscout.org/events/2026/USINAVQ"
+        },
+        {
+          "eventCode": "USINMIQ",
+          "name": "Mishawaka QT",
+          "startDate": "2027-02-28",
+          "endDate": "2027-02-28",
+          "type": "Qualifier",
+          "city": "Mishawaka",
+          "state": "IN",
+          "eventUrl": "https://ftcscout.org/events/2026/USINMIQ"
+        }
+      ]
+    },
+    {
+      "teamNumber": 36124,
+      "name": "R.Amp Robotics",
+      "schoolName": "Amp Lab at Electric Works",
+      "city": "Fort Wayne",
+      "state": "IN",
+      "country": "USA",
+      "rookieYear": 2026,
+      "website": "https://refineryrobotics.org/teams/ftc36124/",
+      "activeSeasons": [
+        2026
+      ],
+      "ftcscoutUrl": "https://ftcscout.org/teams/36124",
+      "seasons": [
+        {
+          "season": 2026,
+          "seasonLabel": "2026-27",
+          "seasonName": null,
+          "events": [
+            {
+              "eventCode": "USINWEQ2",
+              "name": "Westfield 2 QT",
+              "startDate": "2026-12-06",
+              "endDate": "2026-12-06",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Westfield Middle School",
+              "city": "Westfield",
+              "state": "IN",
+              "country": "USA",
+              "started": false,
+              "finished": false,
+              "qualRank": null,
+              "qualMatchesPlayed": null,
+              "qualRecord": null,
+              "opr": null,
+              "npOpr": null,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2026/USINWEQ2"
+            },
+            {
+              "eventCode": "USINSHQ",
+              "name": "Shoals QT",
+              "startDate": "2027-02-13",
+              "endDate": "2027-02-13",
+              "type": "Qualifier",
+              "divisionOf": null,
+              "remote": false,
+              "venue": "Shoals Jr/Sr High School",
+              "city": "Shoals",
+              "state": "IN",
+              "country": "USA",
+              "started": false,
+              "finished": false,
+              "qualRank": null,
+              "qualMatchesPlayed": null,
+              "qualRecord": null,
+              "opr": null,
+              "npOpr": null,
+              "playoff": null,
+              "awards": [],
+              "eventUrl": "https://ftcscout.org/events/2026/USINSHQ"
+            }
+          ],
+          "totals": {
+            "events": 0,
+            "eventEntries": 0,
+            "wins": 0,
+            "losses": 0,
+            "ties": 0,
+            "playoffWins": 0,
+            "playoffLosses": 0,
+            "playoffTies": 0,
+            "awards": 0,
+            "bestOpr": null,
+            "bestNpOpr": null,
+            "quickStatsNpOpr": null,
+            "quickStatsNpOprRank": null,
+            "quickStatsTeamCount": null
+          }
+        }
+      ],
+      "allTime": {
+        "seasonsWithEvents": 0,
+        "totalEvents": 0,
+        "totalEventEntries": 0,
+        "wins": 0,
+        "losses": 0,
+        "ties": 0,
+        "totalAwards": 0,
+        "eventWins": 0,
+        "divisionWins": 0,
+        "inspireAwards": 0,
+        "awards": []
+      },
+      "upcoming": [
+        {
+          "eventCode": "USINWEQ2",
+          "name": "Westfield 2 QT",
+          "startDate": "2026-12-06",
+          "endDate": "2026-12-06",
+          "type": "Qualifier",
+          "city": "Westfield",
+          "state": "IN",
+          "eventUrl": "https://ftcscout.org/events/2026/USINWEQ2"
+        },
+        {
+          "eventCode": "USINSHQ",
+          "name": "Shoals QT",
+          "startDate": "2027-02-13",
+          "endDate": "2027-02-13",
+          "type": "Qualifier",
+          "city": "Shoals",
+          "state": "IN",
+          "eventUrl": "https://ftcscout.org/events/2026/USINSHQ"
+        }
+      ]
+    }
+  ]
+}

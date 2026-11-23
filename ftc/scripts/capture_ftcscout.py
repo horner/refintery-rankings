@@ -40,7 +40,7 @@ def capture(out, name, url, timeout):
             elif 'quick-stats?' in url and status == 404:
                 meta['missing_quick_stats_http_404']=True
         except Exception as e: meta['payload_validation_error']=str(e) or type(e).__name__
-    (out/(name+'.metadata.json')).write_text(json.dumps(meta,indent=2)+'\n')
+    (out/(name+'.metadata.json')).write_text(json.dumps(meta,indent=2)+'\n', encoding="utf-8", newline="\n")
     print(name,status,err or 'ok',flush=True)
     return meta
 
@@ -56,5 +56,5 @@ def main():
         for name,url in requests:
             meta=capture(a.out,name,url,a.timeout)
             manifest.append(meta);time.sleep(.3)
-            (a.out/'manifest.json').write_text(json.dumps({'source':'FTCScout','source_code_commit_for_algorithm':PIN,'captures':manifest},indent=2)+'\n')
+            (a.out/'manifest.json').write_text(json.dumps({'source':'FTCScout','source_code_commit_for_algorithm':PIN,'captures':manifest},indent=2)+'\n', encoding="utf-8", newline="\n")
 if __name__=='__main__':main()

@@ -43,7 +43,6 @@ The detailed evidence and qualifications follow the table. Dates below refer to 
 | Team | School or program | Adult finding | Student leadership or representative finding |
 | --- | --- | --- | --- |
 | 1501 · T.H.R.U.S.T. | [Huntington County 4-H; Huntington North High School connection](https://frc-events.firstinspires.org/2026/team/1501) | Chris Elston: engineering lead, self-reported undated profile | Captain unverified |
-| 1720 · PhyXTGears | [Matthews community team](https://frc-events.firstinspires.org/2026/team/1720) | Shawn VanNess: president; Mike Koch: mentor/co-founder (May 2026) | Captain unverified |
 | 3777 · Bean City Bots | [Lima Family YMCA; Lima Senior High School participant](https://frc-events.firstinspires.org/2026/team/3777) | Skylynn Prine: YMCA program spokesperson (March 2026) | Coltin Myers: quoted student; captain unverified |
 | 4982 · Olympus Robotics | [Homestead High School](https://frc-events.firstinspires.org/2026/team/4982) | Matt Elder: lead coach/mentor; Cameron Elder: assistant coach (undated) | Jasroop/Jake: 2025–26 captain/assistant pair, qualified; Caleb Neely: business/outreach leader |
 | 5559 · Gear Grinders | [Camden-Frontier High School](https://frc-events.firstinspires.org/2026/team/5559) | Unverified | Captain unverified |
@@ -79,22 +78,6 @@ The official [FWCS high-school robotics presentation dated February 9, 2026](htt
 
 - Student team captain not verified.
 - Current formally designated head coach not independently verified; the documented title is Lead Engineering Mentor.
-
-### 1720 — PhyXTGears
-
-**School or program:** [Matthews community team](https://frc-events.firstinspires.org/2026/team/1720).
-
-**Adults**
-
-- **Shawn VanNess — Team president.** Evidence: 2026-05-15 (day); `verified_dated`. Official team season report names the president. Publication date is May 15, 2026; the page also displays a May 23 update.
-  Sources: [PhyXTGears official season report, May 15, 2026](https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/).
-- **Mike Koch — Mechanical mentor and co-founder.** Evidence: 2026-05-15 (day); `verified_dated`. Official team report supplies these roles; it does not identify him as head coach.
-  Sources: [PhyXTGears official season report, May 15, 2026](https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/).
-
-**Remaining gaps**
-
-- Student team captain not verified.
-- A separately designated head coach is not established by the cited team report.
 
 ### 3777 — Bean City Bots
 

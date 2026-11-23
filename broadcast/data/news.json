@@ -1,7 +1,28 @@
 {
-  "note": "Coverage links collected by The REFINERY's website (src/content/news in BioNanomics/REFINERY-site), retrieved 2026-10-22. Team tags are ours; an untagged story covers the region.",
+  "note": "Coverage links collected by The REFINERY's website (src/content/news in BioNanomics/REFINERY-site), retrieved 2026-11-10. Team tags are ours; an untagged story covers the region.",
   "source": "https://github.com/BioNanomics/REFINERY-site/tree/main/src/content/news",
   "stories": [
+    {
+      "date": "2026-10-30",
+      "outlet": "WANE 15",
+      "title": "Halloween robotics competition to take over Wayne High School",
+      "url": "https://www.wane.com/news/local-news/halloween-robotics-competition-to-take-over-wayne-high-school/",
+      "teams": []
+    },
+    {
+      "date": "2026-10-23",
+      "outlet": "The Waynedale News",
+      "title": "Student robotics teams to compete on Halloween at Monster Match",
+      "url": "https://waynedalenews.com/2026/10/student-robotics-teams-to-compete-on-halloween-at-monster-match/",
+      "teams": []
+    },
+    {
+      "date": "2026-10-22",
+      "outlet": "21Alive",
+      "title": "Fort Wayne nonprofit gives 200 students shared space to build robots — and futures",
+      "url": "https://www.21alivenews.com/2026/10/22/fort-wayne-nonprofit-gives-200-students-shared-space-build-robots-futures/",
+      "teams": []
+    },
     {
       "date": "2026-10-02",
       "outlet": "PBS Fort Wayne (The 260)",
