@@ -34,6 +34,7 @@ jobs:
           node --check broadcast/dist/app.js
           node --check broadcast/dist/top10.js
           git diff --exit-code
+          test -z "$(git status --porcelain)" || { git status --porcelain; echo "Build produced files that are not committed."; exit 1; }
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload interactive site

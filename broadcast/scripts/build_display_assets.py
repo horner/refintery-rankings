@@ -88,7 +88,7 @@ def main():
     manifest = {"generator": "broadcast/scripts/build_display_assets.py",
                 "note": "Resized WebP copies for on-screen display only. Originals, sources and checksums remain in logos.json and asset-manifest.json.",
                 "assets": rows}
-    (HERE / "data/display-assets.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    (HERE / "data/display-assets.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
     before = sum((DIST / r["source"]).stat().st_size for r in rows if "refinery-shop" not in r["file"])
     after = sum((DIST / r["file"]).stat().st_size for r in rows if "refinery-shop" not in r["file"])
     print(f"Wrote {len(rows)} display assets; logos {before // 1024} KB -> {after // 1024} KB.")

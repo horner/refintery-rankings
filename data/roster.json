@@ -7,13 +7,13 @@
     {
       "team_number": 1501,
       "team_name": "Team THRUST",
-      "school_or_organization": "Huntington North High School / Huntington County 4-H",
-      "school_url": "https://hnhs.hccsc.k12.in.us/",
+      "school_or_organization": "Huntington County 4-H Robotics",
+      "school_url": "https://huntingtonrobotics.org/",
       "city": "Huntington",
       "state": "IN",
       "scope_group": "northeast_indiana",
       "affiliation_type": "school_and_community",
-      "affiliation_notes": "School connection plus community 4-H program; participation is not restricted to one high school.",
+      "affiliation_notes": "Run by Huntington County 4-H Robotics, a community 4-H program open to high-school students countywide; Huntington North High School lists the team among its clubs.",
       "first_team_url": "https://frc-events.firstinspires.org/2026/team/1501",
       "first_history_url": "https://frc-events.firstinspires.org/team/1501",
       "statbotics_url": "https://www.statbotics.io/team/1501/2026",
@@ -21,26 +21,8 @@
         "https://frc-events.firstinspires.org/2026/team/1501",
         "https://refineryrobotics.org/about/",
         "https://huntingtonnhs.ss13.sharpschool.com/get_involved/clubs/robotics",
-        "https://huntingtonrobotics.org/faq/"
-      ]
-    },
-    {
-      "team_number": 1720,
-      "team_name": "PhyXTGears",
-      "school_or_organization": "East Central Indiana Robotics (community team)",
-      "school_url": "https://phyxtgears.org/",
-      "city": "Matthews",
-      "state": "IN",
-      "scope_group": "northeast_indiana",
-      "affiliation_type": "community",
-      "affiliation_notes": "Community team with no single exclusive high-school affiliation.",
-      "first_team_url": "https://frc-events.firstinspires.org/2026/team/1720",
-      "first_history_url": "https://frc-events.firstinspires.org/team/1720",
-      "statbotics_url": "https://www.statbotics.io/team/1720/2026",
-      "affiliation_source_urls": [
-        "https://frc-events.firstinspires.org/2026/team/1720",
-        "https://phyxtgears.org/",
-        "https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/"
+        "https://huntingtonrobotics.org/faq/",
+        "https://huntingtonrobotics.org/"
       ]
     },
     {

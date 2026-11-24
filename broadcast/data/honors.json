@@ -1,0 +1,130 @@
+{
+  "season": 2026,
+  "note": "Definitions and district-point values are from the 2026 FIRST Robotics Competition Game Manual, section 11 (District Tournaments), and FIRST's published award descriptions. The site computes 'most recent' from The Blue Alliance results in tba/results-2026.json.",
+  "pointsIntro": "Indiana teams are ranked by district points. A team's total counts only its first two home district events plus the state championship, where points are multiplied by 3. Offseason events such as Monster Match are unofficial: they award no district points and don't affect advancement.",
+  "sources": {
+    "manual": "https://firstfrc.blob.core.windows.net/frc2026/Manual/HTML/2026GameManual.htm",
+    "teamAwards": "https://www.firstinspires.org/resources/library/frc/team-awards",
+    "machineAwards": "https://www.firstinspires.org/resources/library/frc/machine-awards",
+    "leadership": "https://www.firstinspires.org/resources/library/frc/first-leadership-award-winners"
+  },
+  "honors": [
+    {
+      "key": "event-winner",
+      "label": "Event winner",
+      "group": "Playoffs",
+      "what": "The team's three-robot alliance won the event's playoffs. Winners earn a blue banner, the sport's version of a championship pennant.",
+      "technical": "After qualification matches, eight alliances of three teams play a double-elimination bracket. The finals are best two out of three. Winning the state championship also earns a FIRST Championship spot.",
+      "points": "20 points for finishing first, plus 5 for each finals match the team played in and won (up to 10 more). Maximum 30.",
+      "source": "manual"
+    },
+    {
+      "key": "event-finalist",
+      "label": "Runner-up",
+      "group": "Playoffs",
+      "what": "The alliance reached the finals and lost. Same as finishing second in a bracket tournament.",
+      "technical": "Only two of the eight alliances reach the best-of-three finals. Reaching it means the alliance survived the double-elimination bracket from at least one side.",
+      "points": "20 points.",
+      "source": "manual"
+    },
+    {
+      "key": "playoff-finish",
+      "label": "3rd or 4th place",
+      "group": "Playoffs",
+      "what": "The alliance went deep in the bracket but was eliminated before the finals.",
+      "technical": "In the double-elimination bracket, the loser of match 13 places 3rd and the loser of match 12 places 4th. Alliances knocked out earlier don't earn playoff points.",
+      "points": "13 points for 3rd place, 7 points for 4th place.",
+      "source": "manual"
+    },
+    {
+      "key": "alliance-captain",
+      "label": "Alliance captain",
+      "group": "Alliance selection",
+      "what": "The team ranked high enough after qualification matches to lead its own playoff alliance and choose its partners.",
+      "technical": "The top eight teams in the qualification rankings become captains in rank order. Qualification rank comes from ranking points earned in matches with rotating partners. If a captain is picked by a higher captain, the next-ranked team moves up.",
+      "points": "17 minus the alliance number: 16 for the #1 alliance captain, 9 for #8.",
+      "source": "manual"
+    },
+    {
+      "key": "alliance-pick",
+      "label": "Drafted",
+      "group": "Alliance selection",
+      "what": "Another team chose this team as a playoff partner. Getting picked means other teams' scouts rated the robot highly.",
+      "technical": "Captains pick in a serpentine draft: round one goes from alliance 1 to 8, round two back from 8 to 1. Teams scout every match to decide who to pick.",
+      "points": "17 minus the order the team accepted: for example, 12 points for the fifth team to accept.",
+      "source": "manual"
+    },
+    {
+      "key": "state-qualifier",
+      "label": "State qualifier",
+      "group": "Advancement",
+      "what": "The team earned a spot at the FIRST Indiana State Championship, the top 38 or so teams in Indiana.",
+      "technical": "Spots go mostly by district points from the team's first two home district events. FIRST Impact Award winners also qualify. Engineering Inspiration and Rookie All-Star winners qualify to compete for those awards. Indiana's championship holds 38 teams in one division.",
+      "points": "Everything earned at the state championship counts triple.",
+      "source": "manual"
+    },
+    {
+      "key": "world-championship",
+      "label": "World Championship",
+      "group": "Advancement",
+      "what": "The team earned a trip to the FIRST Championship in Houston, the sport's world finals.",
+      "technical": "Indiana has 12 FIRST Championship spots. They go first to the state championship's Impact, Engineering Inspiration and Rookie All-Star winners and its winning alliance, then to the highest remaining teams in district points. At Houston, teams are split into divisions such as Archimedes.",
+      "points": "Not counted in district points; it's the end of the season.",
+      "source": "manual"
+    },
+    {
+      "key": "Imagery Award",
+      "label": "Imagery Award",
+      "group": "Judged awards",
+      "what": "Recognizes a team whose robot and team appearance look great together.",
+      "technical": "FIRST: it “celebrates attractiveness in engineering and outstanding visual aesthetic integration of machine and team appearance.” Named in honor of Jack Kamen.",
+      "points": "5 points.",
+      "source": "teamAwards"
+    },
+    {
+      "key": "Innovation in Control Award",
+      "label": "Innovation in Control Award",
+      "group": "Judged awards",
+      "what": "Recognizes clever engineering in how the robot is controlled: its wiring, mechanisms or code.",
+      "technical": "FIRST: it “celebrates an innovative control system or application of control components – electrical, mechanical or software – to provide unique machine functions.” Judges interview the team in the pits.",
+      "points": "5 points.",
+      "source": "machineAwards"
+    },
+    {
+      "key": "Quality Award",
+      "label": "Quality Award",
+      "group": "Judged awards",
+      "what": "Recognizes the best-built robot: sturdy, well designed and well made.",
+      "technical": "FIRST: it “celebrates machine robustness in concept and fabrication.”",
+      "points": "5 points.",
+      "source": "machineAwards"
+    },
+    {
+      "key": "Judges' Award",
+      "label": "Judges’ Award",
+      "group": "Judged awards",
+      "what": "A judges’ choice award for something special about a team that other awards don't cover.",
+      "technical": "FIRST: “the judging panel may decide a team’s unique efforts, performance, or dynamics merit recognition.”",
+      "points": "5 points.",
+      "source": "teamAwards"
+    },
+    {
+      "key": "Rising All-Star Award",
+      "label": "Rising All-Star Award",
+      "group": "Judged awards",
+      "what": "Recognizes a young team that is succeeding despite being new or rebuilding.",
+      "technical": "FIRST: it “celebrates the team that has persisted through challenges, despite the difficulties of being young. This could be the result of being a new team, or a team with recent turnover in membership.” It replaced the Rookie Inspiration Award in 2025; teams don't have to be rookies.",
+      "points": "5 points.",
+      "source": "teamAwards"
+    },
+    {
+      "key": "FIRST Leadership Award semifinalist",
+      "label": "FIRST Leadership Award semifinalist",
+      "group": "Individual honors",
+      "what": "An honor for one student, not the team. Teams nominate student leaders, and nominees are recognized as semifinalists at district events.",
+      "technical": "Formerly called Dean’s List. Indiana names two finalists who go on to the FIRST Championship. Because it's an individual award, it isn't in the team district-points table.",
+      "points": "No team district points.",
+      "source": "leadership"
+    }
+  ]
+}

@@ -19,11 +19,11 @@ def read(path):
 def write_json(path, value):
     target = ROOT / path
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    target.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
 
 
 def write_text(path, value):
-    (ROOT / path).write_text(value.rstrip() + "\n", encoding="utf-8")
+    (ROOT / path).write_text(value.rstrip() + "\n", encoding="utf-8", newline="\n")
 
 
 def by_team(rows):
@@ -75,7 +75,6 @@ def short_person(person):
 TITLES = {
     "https://refineryrobotics.org/about/": "The REFINERY: Our Story, People & Facility",
     "https://www.pfw.edu/news-center/north-side-robotics-team-boosted-pfw-presence": "Purdue Fort Wayne: North Side robotics team boosted by PFW presence",
-    "https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/": "PhyXTGears: 2026 season and world championship report",
     "https://video.wfwa.org/video/science-centrals-new-planetarium-snider-robotics-and-arena-dinner-theatre-4j2kgy/": "PBS Fort Wayne: The 260, Snider Robotics interview and transcript, October 2, 2026",
     "https://chargeronline.nacs.k12.in.us/12210/sports/from-worst-to-first-how-indianas-football-program-became-the-nations-best/": "Carroll school newspaper: January 27, 2026 article, Nieng Mang contributor biography",
     "https://wilcoxnewspapers.com/shs-robotics-team-receives-recognition-at-district-meet/": "Wilcox Newspapers: SHS robotics team receives recognition, March 27, 2026",
@@ -134,9 +133,13 @@ def main():
     stats = {r["team"]: r for r in read(snap + "/team-years-2026-subset.json")["team_years"]}
     snapshot_metadata = read(snap + "/metadata.json")
     expected_ids = {r["team_number"] for r in roster}
-    for label, items in [("baseline", baseline), ("leadership", people), ("geography", geo), ("FIRST", histories), ("Statbotics", stats)]:
+    for label, items in [("baseline", baseline), ("leadership", people), ("geography", geo)]:
         if set(items) != expected_ids:
             raise ValueError(f"{label} team coverage differs from the curated roster")
+    # Raw captures stay byte-for-byte as retrieved, so they may cover teams the roster no longer lists.
+    for label, items in [("FIRST", histories), ("Statbotics", stats)]:
+        if not expected_ids <= set(items):
+            raise ValueError(f"{label} capture is missing a rostered team")
     combined = []
     for r in roster:
         number = r["team_number"]
@@ -216,11 +219,12 @@ def main():
         students = "<br><br>".join(map(short_person, p["students"])) or "Student captain not verified."
         representatives = "<br><br>".join(map(short_person, p["other_representatives"])) or "No additional representative documented."
         leadership_lines.append(f"| {md(r['school_or_organization'])} ({r['team_number']}) | {adults} | {students} | {representatives} |")
+    indiana_count = sum(r["scope_group"] == "northeast_indiana" for r in combined)
     report = f"""# Team directory and ranking snapshot
 
 Research date: **{config['research_date']}**. Rankings: **2026 season, official cache last modified June 12, 2026 at 02:51:19 UTC**. This is a frozen snapshot; October retrieval does not make the rankings October-current.
 
-The tables cover the original **17 FRC teams: 13 Indiana and 4 nearby Michigan/Ohio teams**. School names link to the school or community program. Team numbers link to Statbotics. Season counts link to FIRST. See [source catalog](sources.md), [methodology](methodology.md), [geography](geographic-scope.md), and [detailed leadership evidence](leadership-findings.md).
+The tables cover **{len(combined)} FRC teams: {indiana_count} Indiana and {len(combined) - indiana_count} nearby Michigan/Ohio teams**. School names link to the school or community program. Team numbers link to Statbotics. Season counts link to FIRST. See [source catalog](sources.md), [methodology](methodology.md), [geography](geographic-scope.md), and [detailed leadership evidence](leadership-findings.md).
 
 ## Indiana teams
 
@@ -232,7 +236,7 @@ The tables cover the original **17 FRC teams: 13 Indiana and 4 nearby Michigan/O
 
 ## Dates, geography, and season counts
 
-Distances use the documented Citizens Square downtown origin and linked school/host reference points. They are approximate straight-line miles. Team 1720 uses a Matthews town reference because its physical workshop was not confirmed. Lima 3777 and Waldron 6556 are close to the boundary, at 58.8 and 58.6 miles under this convention. The underlying coordinates and assumptions are preserved in [geography.json](../data/geography.json).
+Distances use the documented Citizens Square downtown origin and linked school/host reference points. They are approximate straight-line miles. Lima 3777 and Waldron 6556 are close to the boundary, at 58.8 and 58.6 miles under this convention. The underlying coordinates and assumptions are preserved in [geography.json](../data/geography.json).
 
 Recorded seasons include registered years without matches and exclude 2027. They are not a count of uninterrupted on-field competition years. East Noble 8431 has two recorded seasons (2025–26), and 8432 has one (2026), although both official rookie years are 2020. Community programs retain their community identity rather than being assigned an exclusive school.
 
@@ -251,7 +255,7 @@ The [complete leadership findings](leadership-findings.md) include all qualifyin
     write_text("docs/sources.md", "\n".join(source_lines))
     readme = f"""# FIRST Robotics teams around Fort Wayne
 
-[Explore the NEI Robotics standings and season preview](https://horner.github.io/refintery-rankings/) — browse all 13 regional FRC teams on desktop or phone, follow the 2026–27 calendar, explore team profiles and the DNF invitation for schools ready to start a team, and open the research sources. The separate [Top 10 display](broadcast/dist/top10.html) provides a large-screen EPA ranking, replay previews, optional cycling, and PNG exports. Public access; no sign-in required.
+[Explore the NEI Robotics standings and season preview](https://horner.github.io/refintery-rankings/) — browse all {indiana_count} regional FRC teams on desktop or phone, follow the 2026–27 calendar, explore team profiles and the DNF invitation for schools ready to start a team, and open the research sources. The separate [Top 10 display](broadcast/dist/top10.html) provides a large-screen EPA ranking, replay previews, optional cycling, and PNG exports. Public access; no sign-in required.
 
 ## New to robotics? A guide for football and baseball fans
 
@@ -293,7 +297,7 @@ Read each program's methodology for the details behind its ratings. FTC's curren
 
 ## FRC research
 
-School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coach/student leadership evidence** for 17 FRC teams in the Fort Wayne study area: 13 Indiana teams and four nearby Michigan/Ohio teams.
+School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coach/student leadership evidence** for {len(combined)} FRC teams in the Fort Wayne study area: {indiana_count} Indiana teams and {len(combined) - indiana_count} nearby Michigan/Ohio teams. Team 1720 PhyXTGears is not part of The REFINERY and is not included.
 
 **Research date:** October 22, 2026. **Ranking snapshot:** June 12, 2026, 02:51:19 UTC. Rankings are preserved historical values, not a live leaderboard.
 
@@ -303,7 +307,7 @@ School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coa
 |---|---|
 | [Team directory](docs/team-directory.md) | School and team links, EPA/state/world ranks, seasons, distances, adult and student roles |
 | [Combined JSON](data/teams.json) | Complete joined dataset, including qualifications, evidence URLs, geographic points, and snapshot metadata |
-| [Team CSV](data/teams.csv) | One row per team; 17 rows with explicit source and qualification columns |
+| [Team CSV](data/teams.csv) | One row per team; {len(team_rows)} rows with explicit source and qualification columns |
 | [Leadership CSV](data/leadership.csv) | One row per person-role record; {len(person_rows)} rows with dates, status, notes, and sources |
 | [Leadership findings](docs/leadership-findings.md) | Detailed source evidence, historical roles, captain/representative distinctions, and gaps |
 | [Source catalog](docs/sources.md) / [JSON](data/sources.json) | {len(sources)} unique source URLs |
@@ -323,10 +327,10 @@ School-linked **2026 Statbotics rankings, recorded FIRST seasons, and public coa
 ## How to interpret the data
 
 - EPA describes estimated robot scoring performance in the 2026 game. State and world ranks are copied directly from the preserved Statbotics response. Denominators are included.
-- The 60-mile rule uses straight-line distance from Citizens Square in downtown Fort Wayne to a documented school/host point. Team 1720 remains a town-based screening result. Lima and Waldron are near the boundary; see the geographic qualifications before changing the origin or reference facilities.
+- The 60-mile rule uses straight-line distance from Citizens Square in downtown Fort Wayne to a documented school/host point. Lima and Waldron are near the boundary; see the geographic qualifications before changing the origin or reference facilities.
 - “Years in FIRST” means recorded season entries through 2026, including registered pandemic years with no matches. Future 2027 entries are excluded. East Noble 8431 and 8432 have official rookie year 2020 but recorded histories beginning in 2025 and 2026.
 - Leadership records carry exact roles and evidence dates. Most student evidence relates to 2025–26 or the 2026 competition season. Unverified head coaches, partial names, historical captains, indexed sources, and other gaps remain visible.
-- PhyXTGears and Lima are community programs. Huntington's record retains its high-school connection and county 4-H identity.
+- Lima is a community program. Huntington's record retains its high-school connection and county 4-H identity.
 
 ## Rebuild and verify
 

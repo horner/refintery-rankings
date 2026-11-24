@@ -315,7 +315,7 @@ h1 em {
 
 .team-city {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 2px;
 }
@@ -400,10 +400,16 @@ h1 em {
 .stat-label {
   display: block;
   color: #c6d5df;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: .05em;
   margin-top: 5px;
   text-transform: uppercase;
+}
+
+.stat-note {
+  color: #c6d5df;
+  font-size: 12px;
+  margin: -6px 0 12px;
 }
 
 .stat:first-child .stat-value {
@@ -473,7 +479,7 @@ h1 em {
   justify-content: space-between;
   gap: 12px;
   padding-top: 9px;
-  font-size: 10px;
+  font-size: 12px;
   color: #c6d5df;
   line-height: 1.5;
 }
@@ -515,7 +521,7 @@ h1 em {
 
 .spotlight a:not(.replay-image-link) {
   color: var(--mint);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -536,7 +542,7 @@ h1 em {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   padding: 0 0 10px;
   line-height: 1.5;
@@ -646,7 +652,7 @@ h1 em {
   }
 
   .eyebrow {
-    font-size: 11px;
+    font-size: 12px;
     margin-bottom: 3px;
   }
 
@@ -668,7 +674,7 @@ h1 em {
   }
 
   .spotlight-kicker {
-    font-size: 11px;
+    font-size: 12px;
     margin-bottom: 6px;
   }
 
@@ -677,7 +683,7 @@ h1 em {
   }
 
   .team-school {
-    font-size: 11px;
+    font-size: 12px;
     margin-top: 5px;
   }
 
@@ -696,7 +702,7 @@ h1 em {
   }
 
   .stat-label {
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .replay-heading {
@@ -704,7 +710,7 @@ h1 em {
   }
 
   .replay-heading span {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .spotlight-links {
@@ -736,7 +742,7 @@ h1 em {
   }
 
   .team-city {
-    font-size: 9px;
+    font-size: 12px;
   }
 
 }
@@ -760,7 +766,7 @@ h1 em {
   }
 
   .heading-note {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .spotlight-links {
@@ -793,7 +799,7 @@ h1 em {
   }
 
   .heading-note {
-    font-size: 10px;
+    font-size: 12px;
     max-width: 190px;
   }
 
@@ -838,7 +844,7 @@ h1 em {
   }
 
   .team-city {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .spotlight {
@@ -868,7 +874,7 @@ h1 em {
   }
 
   .stat-label {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .replay-image-link {
@@ -882,11 +888,11 @@ h1 em {
   }
 
   .replay-heading span {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .match-caption {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .spotlight-links {
@@ -899,7 +905,7 @@ h1 em {
   }
 
   .snapshot {
-    font-size: 10px;
+    font-size: 12px;
     flex-direction: column;
     gap: 4px;
     padding: 6px 0 18px;
@@ -924,7 +930,7 @@ h1 em {
   }
 
   .wordmark span {
-    font-size: 7px;
+    font-size: 12px;
   }
 
   .back-link {
@@ -947,7 +953,7 @@ h1 em {
   }
 
   .eyebrow {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .heading h1 {
@@ -958,7 +964,7 @@ h1 em {
     margin-top: 10px;
     text-align: left;
     max-width: none;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .heading-note br {
@@ -989,7 +995,7 @@ h1 em {
 
   .rank-labels {
     padding-right: 9px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .rank-row {
@@ -1014,7 +1020,7 @@ h1 em {
   }
 
   .team-city {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .epa {
@@ -1039,7 +1045,7 @@ h1 em {
   }
 
   .team-school {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .stats {
@@ -1053,7 +1059,7 @@ h1 em {
   }
 
   .stat-label {
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .replay-heading {
@@ -1062,7 +1068,7 @@ h1 em {
   }
 
   .replay-heading span {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .play-cta {
@@ -1073,7 +1079,7 @@ h1 em {
   }
 
   .match-caption {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .match-score {
@@ -1085,7 +1091,7 @@ h1 em {
   }
 
   .spotlight a:not(.replay-image-link) {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .methodology {
@@ -1182,7 +1188,7 @@ h1 em {
   .rank-row { grid-template-columns: 27px 44px minmax(0, 1fr) 66px 25px; column-gap: 6px; }
   .row-mark img { height: 40px; }
   .row-mark.team-mark img { height: 25px; }
-  .team-name { font-size: 11px; }
+  .team-name { font-size: 12px; }
   .epa { font-size: 25px; }
 }
 
@@ -1206,7 +1212,7 @@ h1 em {
   padding: 6px;
   background: white;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -1221,7 +1227,7 @@ h1 em {
 }
 
 .identity-mark figcaption {
-  font-size: 8px;
+  font-size: 12px;
   color: #c6d5df;
   text-align: center;
   margin-top: 4px;
@@ -1254,7 +1260,7 @@ h1 em {
 .person-summary h4 {
   margin: 0 0 4px;
   color: #c6d5df;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -1265,14 +1271,14 @@ h1 em {
 
 .person-role, .person-gap {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.4;
   margin-top: 4px;
 }
 
 .person-evidence {
   color: #c6d5df;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.5;
   margin-top: 5px;
 }
@@ -1283,13 +1289,13 @@ h1 em {
 
 .people-caution {
   color: #c6d5df;
-  font-size: 9px;
+  font-size: 12px;
   margin-top: 7px;
 }
 
 .people-details {
   margin-top: 5px;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
@@ -1297,7 +1303,7 @@ h1 em {
 .people-details summary {
   color: var(--mint);
   cursor: pointer;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -1376,11 +1382,11 @@ h1 em {
   }
 
   .person-role {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .person-evidence, .people-caution {
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .replay-image-link {
@@ -1406,7 +1412,7 @@ h1 em {
   }
 
   .person-evidence, .people-caution, .people-details summary {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -1428,7 +1434,7 @@ h1 em {
   }
 
   .identity-mark figcaption {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .people-summary {
@@ -1437,7 +1443,7 @@ h1 em {
   }
 
   .person-summary h4 {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .people {
@@ -1472,3 +1478,5 @@ h1 em {
 .rank-labels { padding-right: 50px; }
 @media (max-width: 540px) { .rank-labels { padding-right: 38px; } }
 @media (max-width: 350px) { .rank-labels { padding-right: 32px; } }
+
+.identity-mark.no-logo { visibility: hidden; }

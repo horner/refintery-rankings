@@ -80,6 +80,8 @@ The extraction selects these 17 team numbers, in the project's fixed research or
 
 The first 13 are the Indiana research roster. The final four are the separately reported Michigan/Ohio border cases. Geographic eligibility is decided in the main research data, not inferred by the Statbotics downloader. Extraction does not add new teams automatically or silently remove a team that becomes missing upstream.
 
+This frozen snapshot still contains 1720 because it was captured before the roster changed. Team 1720 PhyXTGears is not part of The REFINERY and is not included. The research build reads only rostered teams from the snapshot.
+
 ## Reproduce and check the data
 
 The [download and verification script](../scripts/fetch_statbotics.py) uses only the Python standard library. Run commands from the repository root.

@@ -1,6 +1,6 @@
 # Source catalog
 
-This catalog contains **148 unique source URLs** used for team identity, school affiliation, rankings, season history, geography, and leadership. It was assembled from the October 22, 2026 research and preservation work.
+This catalog contains **139 unique source URLs** used for team identity, school affiliation, rankings, season history, geography, and leadership. It was assembled from the October 22, 2026 research and preservation work.
 
 The per-person records contain evidence dates, exact roles, and access qualifications. Several social pages and professional profiles were available only through indexed public text. A link is not a claim that a complete local copy exists. The [linked-document manifest](../artifacts/source-manifests/documents.json) records hashes for the two principal PDFs.
 
@@ -19,7 +19,6 @@ The per-person records contain evidence dates, exact roles, and access qualifica
 | S-a836b29392 | [FIRST 2026 team page: 11407](https://frc-events.firstinspires.org/2026/team/11407) | geographic method, geography, school and team | 11407 |
 | S-ed7f97233c | [FIRST 2026 team page: 1501](https://frc-events.firstinspires.org/2026/team/1501) | geographic method, geography, school and team | 1501 |
 | S-2f92d3ab3d | [FIRST 2026 team page: 1555](https://frc-events.firstinspires.org/2026/team/1555) | geographic method | Method / scope |
-| S-f0abf80e10 | [FIRST 2026 team page: 1720](https://frc-events.firstinspires.org/2026/team/1720) | geographic method, geography, school and team | 1720 |
 | S-b6852ece67 | [FIRST 2026 team page: 3777](https://frc-events.firstinspires.org/2026/team/3777) | geographic method, geography, school and team | 3777 |
 | S-990d94976c | [FIRST 2026 team page: 4982](https://frc-events.firstinspires.org/2026/team/4982) | geographic method, geography, school and team | 4982 |
 | S-50abccde36 | [FIRST 2026 team page: 5559](https://frc-events.firstinspires.org/2026/team/5559) | geographic method, geography, school and team | 5559 |
@@ -36,7 +35,6 @@ The per-person records contain evidence dates, exact roles, and access qualifica
 | S-d7a15ab0a5 | [FIRST team history: 10434](https://frc-events.firstinspires.org/team/10434) | school and team | 10434 |
 | S-767bea01bd | [FIRST team history: 11407](https://frc-events.firstinspires.org/team/11407) | school and team | 11407 |
 | S-611d3b559d | [FIRST team history: 1501](https://frc-events.firstinspires.org/team/1501) | school and team | 1501 |
-| S-77fdc41cf1 | [FIRST team history: 1720](https://frc-events.firstinspires.org/team/1720) | school and team | 1720 |
 | S-ac7ae8263f | [FIRST team history: 2867](https://frc-events.firstinspires.org/team/2867) | geographic method | Method / scope |
 | S-094f214b07 | [FIRST team history: 3777](https://frc-events.firstinspires.org/team/3777) | school and team | 3777 |
 | S-f7e307b464 | [FIRST team history: 4982](https://frc-events.firstinspires.org/team/4982) | school and team | 4982 |
@@ -66,13 +64,13 @@ The per-person records contain evidence dates, exact roles, and access qualifica
 | S-c8ef4725d5 | [U.S. Census Bureau: geocoder result or method documentation](https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=7001+Coldwater+Road%2C+Fort+Wayne%2C+IN+46825&benchmark=Public_AR_Current&format=json) | geographic method, geography | 10434 |
 | S-4fcf5baeed | [U.S. Census Bureau: geocoder result or method documentation](https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=901+Garden+Street%2C+Kendallville%2C+IN+46755&benchmark=Public_AR_Current&format=json) | geographic method, geography | 8103, 8431, 8432 |
 | S-a50cf8904f | [U.S. Census Bureau: geocoder result or method documentation](https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=9100+Winchester+Road%2C+Fort+Wayne%2C+IN+46819&benchmark=Public_AR_Current&format=json) | geographic method, geography | 10411 |
-| S-2039de4f00 | [hnhs.hccsc.k12.in.us](https://hnhs.hccsc.k12.in.us/) | school and team | 1501 |
 | S-8b5a31fb68 | [hnhs.hccsc.k12.in.us: services/administration/main office](https://hnhs.hccsc.k12.in.us/services/administration/main-office) | geographic method, geography | 1501 |
 | S-fa8b49e950 | [homestead.sacs.k12.in.us](https://homestead.sacs.k12.in.us/) | school and team | 4982 |
 | S-068836fd15 | [homestead.sacs.k12.in.us: home](https://homestead.sacs.k12.in.us/home) | geographic method, geography | 4982 |
 | S-fd42e98c58 | [hs.eastnoble.net](https://hs.eastnoble.net/) | school and team | 8103, 8431, 8432 |
 | S-1d4217eb99 | [hs.eastnoble.net: page/contact us](https://hs.eastnoble.net/page/contact-us/) | geographic method, geography | 8103, 8431, 8432 |
 | S-ae56a072c2 | [Huntington North High School: Robotics club page](https://huntingtonnhs.ss13.sharpschool.com/get_involved/clubs/robotics) | geographic method, geography, school and team | 1501 |
+| S-c9d46714e4 | [huntingtonrobotics.org](https://huntingtonrobotics.org/) | school and team | 1501 |
 | S-af435a6c0b | [Huntington robotics: community participation FAQ](https://huntingtonrobotics.org/faq/) | geographic method, geography, school and team | 1501 |
 | S-4811631100 | [limaymca.net: contact us](https://limaymca.net/contact-us/) | geographic method, geography | 3777 |
 | S-880476608a | [mghs.mgusc.k12.in.us](https://mghs.mgusc.k12.in.us/) | school and team | 8742 |
@@ -85,8 +83,6 @@ The per-person records contain evidence dates, exact roles, and access qualifica
 | S-d1a9e9cc45 | [northside.fortwayneschools.org: about us/robotics](https://northside.fortwayneschools.org/about-us/robotics) | school and team | 9119 |
 | S-f7740cf161 | [northside.fortwayneschools.org: contact us](https://northside.fortwayneschools.org/contact-us) | geographic method, geography | 9119 |
 | S-c61273c831 | [park.mgusc.k12.in.us: o/mghs/page/contact us](https://park.mgusc.k12.in.us/o/mghs/page/contact-us) | geographic method, geography | 8742 |
-| S-6ee167d98e | [phyxtgears.org](https://phyxtgears.org/) | geographic method, geography, school and team | 1720 |
-| S-661b1d60f2 | [PhyXTGears: 2026 season and world championship report](https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/) | leadership, school and team | 1720 |
 | S-3dfc1bd0a4 | [Madison-Grant Live Wire: Eric Cale and Robotics, April 7, 2026](https://podcasts.apple.com/ma/podcast/eric-cale-and-robotics/id1773140582?i=1000760060708) | leadership | 8742 |
 | S-57bc48c255 | [raw.githubusercontent.com: avgupta456/statbotics/169330ecef38a4f614356ac0b0caa156f2180021/LICENSE](https://raw.githubusercontent.com/avgupta456/statbotics/169330ecef38a4f614356ac0b0caa156f2180021/LICENSE) | Statbotics provenance | Method / scope |
 | S-3db64b86cf | [raw.githubusercontent.com: avgupta456/statbotics/169330ecef38a4f614356ac0b0caa156f2180021/frontend/src/api/storage.tsx](https://raw.githubusercontent.com/avgupta456/statbotics/169330ecef38a4f614356ac0b0caa156f2180021/frontend/src/api/storage.tsx) | Statbotics provenance | Method / scope |
@@ -101,9 +97,7 @@ The per-person records contain evidence dates, exact roles, and access qualifica
 | S-97bc3beb0c | [southside.fortwayneschools.org](https://southside.fortwayneschools.org/) | school and team | 10172 |
 | S-f47b94ba5d | [southside.fortwayneschools.org: contact us](https://southside.fortwayneschools.org/contact-us) | geographic method, geography | 10172 |
 | S-55b3bf00e4 | [Fairmount Town Council minutes: September 8, 2025, Argyll Attack presentation](https://static1.squarespace.com/static/5dc440cbaed3360b099cc5e8/t/68e97523a86b466f4093381a/1760130339609/Regular%2BMeeting%2BMinutes%2B09.08.2025.pdf) | leadership, linked documents | 8742 |
-| S-dee2520c50 | [storage.googleapis.com: site_v1/team_years/2026](https://storage.googleapis.com/site_v1/team_years/2026) | Statbotics provenance, rankings | 1501, 1720, 3777, 4982, 5559, 6556, 8103, 8431, 8432, 8742, 9119, 9431, 10172, 10332, 10411, 10434, 11407 |
-| S-842f7dd4f1 | [tigerweb.geo.census.gov: tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html](https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html) | geographic method, geography | 1720 |
-| S-195d71a549 | [townofmatthews.com: phyxtgears robotics team 1720](https://townofmatthews.com/phyxtgears-robotics-team-1720/) | geographic method, geography | 1720 |
+| S-dee2520c50 | [storage.googleapis.com: site_v1/team_years/2026](https://storage.googleapis.com/site_v1/team_years/2026) | Statbotics provenance, rankings | 1501, 3777, 4982, 5559, 6556, 8103, 8431, 8432, 8742, 9119, 9431, 10172, 10332, 10411, 10434, 11407 |
 | S-b6bd171752 | [PBS Fort Wayne: The 260, Snider Robotics interview and transcript, October 2, 2026](https://video.wfwa.org/video/science-centrals-new-planetarium-snider-robotics-and-arena-dinner-theatre-4j2kgy/) | leadership | 9431 |
 | S-9d9e825189 | [wayne.fortwayneschools.org](https://wayne.fortwayneschools.org/) | school and team | 10411 |
 | S-8823a28ee4 | [wayne.fortwayneschools.org: contact us](https://wayne.fortwayneschools.org/contact-us) | geographic method, geography | 10411 |
@@ -114,7 +108,6 @@ The per-person records contain evidence dates, exact roles, and access qualifica
 | S-970016fefa | [www.cityoffortwayne.org: publicworks/52 mayors office/neighborhoods/196 customer service.html](https://www.cityoffortwayne.org/publicworks/52-mayors-office/neighborhoods/196-customer-service.html) | geographic method | Method / scope |
 | S-5ae7bca438 | [www.e3robotics.org: contact.html](https://www.e3robotics.org/contact.html) | geographic method | Method / scope |
 | S-788af9121a | [www.e3robotics.org: k 12 teams.html](https://www.e3robotics.org/k-12-teams.html) | geographic method | Method / scope |
-| S-7b2f1b24b1 | [Republished KPC News Sun report: East Noble coaches, May 2024](https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/) | leadership | 8103 |
 | S-6bc3ec9e37 | [Northrop Robotics: official team Facebook, indexed Coach Jacobs mention](https://www.facebook.com/NorthropRobotics/) | leadership | 10434 |
 | S-fd1c2fed27 | [FIRST Indiana: Board of Directors and mentor biographies](https://www.firstindianarobotics.org/about-first-indiana-robotics/board-of-directors/) | leadership | 10332 |
 | S-d04a4a13ac | [WLIO: Lima Bean City Bots prepare for Buckeye Regional, March 17, 2026](https://www.hometownstations.com/news/allen_county/lima-bean-city-bots-ready-robot-for-first-robotics-competition-buckeye-regional/article_e5d3d483-ada8-4a44-91a8-361777fc6b54.html) | leadership | 3777 |
@@ -126,7 +119,6 @@ The per-person records contain evidence dates, exact roles, and access qualifica
 | S-7510d27efd | [www.linkedin.com: company/e3rc](https://www.linkedin.com/company/e3rc) | geographic method | Method / scope |
 | S-01bac52452 | [Cameron Elder: public professional profile and historical roles](https://www.linkedin.com/in/camelder) | leadership | 10332 |
 | S-04e10368b6 | [Chris Elston: public professional profile](https://www.linkedin.com/in/chriselston) | leadership | 1501 |
-| S-dcb83b6d86 | [Matt Arnold: public professional profile and historical role](https://www.linkedin.com/in/m4ttbit) | leadership | 10332 |
 | S-335b149918 | [Matt Elder: public professional profile](https://www.linkedin.com/in/matt-elder-24b8b615a) | leadership | 4982 |
 | S-a7612fc1db | [www.linkedin.com: posts/chriselston_this is my yearly first robotics plug to activity 7302732445911527424 p7cI](https://www.linkedin.com/posts/chriselston_this-is-my-yearly-first-robotics-plug-to-activity-7302732445911527424-p7cI) | leadership | 1501 |
 | S-e8e6451dda | [Purdue Fort Wayne: North Side robotics team boosted by PFW presence](https://www.pfw.edu/news-center/north-side-robotics-team-boosted-pfw-presence) | leadership | 9119 |
@@ -136,7 +128,6 @@ The per-person records contain evidence dates, exact roles, and access qualifica
 | S-2dcbb7d4eb | [Statbotics 2026 profile: team 10434](https://www.statbotics.io/team/10434/2026) | school and team | 10434 |
 | S-4ccc8048d6 | [Statbotics 2026 profile: team 11407](https://www.statbotics.io/team/11407/2026) | school and team | 11407 |
 | S-dbd5a14b4e | [Statbotics 2026 profile: team 1501](https://www.statbotics.io/team/1501/2026) | school and team | 1501 |
-| S-6befec500f | [Statbotics 2026 profile: team 1720](https://www.statbotics.io/team/1720/2026) | school and team | 1720 |
 | S-e36e7de7a3 | [Statbotics 2026 profile: team 3777](https://www.statbotics.io/team/3777/2026) | school and team | 3777 |
 | S-34a882e0e3 | [Statbotics 2026 profile: team 4982](https://www.statbotics.io/team/4982/2026) | school and team | 4982 |
 | S-02667276a5 | [Statbotics 2026 profile: team 5559](https://www.statbotics.io/team/5559/2026) | school and team | 5559 |

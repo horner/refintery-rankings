@@ -554,37 +554,6 @@
       ]
     },
     {
-      "location_id": "matthews_town",
-      "name": "Matthews town, Indiana",
-      "reference_type": "town_representative_point",
-      "address": null,
-      "address_source_url": null,
-      "source_accessed_date": "2026-10-22",
-      "coordinates": {
-        "latitude": 40.3874569,
-        "longitude": -85.4977783
-      },
-      "coordinate_method": "U.S. Census TIGERweb incorporated-place internal point",
-      "coordinate_source_url": "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html",
-      "coordinate_evidence": {
-        "dataset": "State of Indiana Incorporated Places - Current/ACS26",
-        "data_as_of": "2026-01-01",
-        "GEOID": "1847592",
-        "NAME": "Matthews town",
-        "INTPTLAT": "+40.3874569",
-        "INTPTLON": "-085.4977783",
-        "CENTLAT": "+40.3874569",
-        "CENTLON": "-085.4977783"
-      },
-      "precision_note": "Town-based screening only. The municipal team page establishes Matthews as the team location but supplies a PO box; no physical team workshop was geocoded.",
-      "team_location_source_url": "https://townofmatthews.com/phyxtgears-robotics-team-1720/",
-      "source_urls": [
-        "https://townofmatthews.com/phyxtgears-robotics-team-1720/",
-        "https://phyxtgears.org/",
-        "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html"
-      ]
-    },
-    {
       "location_id": "sturgis",
       "name": "Sturgis High School",
       "reference_type": "school_point_proxy",
@@ -700,7 +669,7 @@
     {
       "team_number": 1501,
       "team_name": "Team THRUST",
-      "school_or_organization": "Huntington North High School / Huntington County 4-H",
+      "school_or_organization": "Huntington County 4-H Robotics",
       "city": "Huntington",
       "state": "IN",
       "scope_group": "northeast_indiana",
@@ -717,27 +686,6 @@
         "https://refineryrobotics.org/about/",
         "https://huntingtonnhs.ss13.sharpschool.com/get_involved/clubs/robotics",
         "https://huntingtonrobotics.org/faq/"
-      ]
-    },
-    {
-      "team_number": 1720,
-      "team_name": "PhyXTGears",
-      "school_or_organization": "East Central Indiana Robotics (community team)",
-      "city": "Matthews",
-      "state": "IN",
-      "scope_group": "northeast_indiana",
-      "location_id": "matthews_town",
-      "distance_miles": 51.391027,
-      "display_distance_miles": 51.4,
-      "within_radius": true,
-      "radius_margin_miles": 8.608973,
-      "within_two_miles_of_boundary": false,
-      "inclusion_basis": "town_screening",
-      "certainty_notes": "Included on town-based screening. The point is Matthews town, not a school or a confirmed team workshop. The approximately 8.6-mile margin is not a bound on workshop-location uncertainty.",
-      "affiliation_source_urls": [
-        "https://frc-events.firstinspires.org/2026/team/1720",
-        "https://phyxtgears.org/",
-        "https://townofmatthews.com/phyxtgears-robotics-team-1720/"
       ]
     },
     {

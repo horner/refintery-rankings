@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Broadcast overlay · Northeast Indiana Robotics</title>
+  <style>
+    /* A fixed 1920×1080 stage for OBS, vMix, CasparCG and NFHS/PlayOn browser sources.
+       Everything sits inside the SMPTE ST 2046-1 title-safe area (90%: 96px sides, 54px top/bottom).
+       Primary text is 40px or larger; three type sizes. Background is transparent unless ?bg= is set. */
+    @font-face { font-family: Inter; src: url('../assets/fonts/inter-latin-wght.woff2') format('woff2'); font-weight: 100 900; }
+    @font-face { font-family: 'Barlow Condensed'; src: url('../assets/fonts/barlow-condensed-latin-700.woff2') format('woff2'); font-weight: 700; }
+    @font-face { font-family: 'Barlow Condensed'; src: url('../assets/fonts/barlow-condensed-latin-800.woff2') format('woff2'); font-weight: 800; }
+    :root { --deep: #0d3550; --navy: #134b70; --mint: #a1d18b; --green: #2b7252; --white: #ffffff; --soft: #d6e2e9; --display: 'Barlow Condensed', 'Arial Narrow', sans-serif; --font: Inter, system-ui, sans-serif; }
+    html, body { margin: 0; height: 100%; overflow: hidden; background: transparent; }
+    body.bg-green { background: #00b140; }
+    body.bg-black { background: #000; }
+    body.bg-navy { background: var(--deep); }
+    .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; font-family: var(--font); color: var(--white); }
+    .safe { position: absolute; inset: 54px 96px; }
+    .guides .safe { outline: 2px dashed rgba(255, 0, 128, .8); }
+    .guides .stage::before { content: ''; position: absolute; inset: 38px 67px; outline: 2px dashed rgba(0, 200, 255, .8); }
+    .hidden { display: none !important; }
+
+    /* Full-screen board (standings / top 10) */
+    .board { position: absolute; inset: 0; background: rgba(13, 53, 80, .96); border-top: 8px solid var(--mint); padding: 34px 40px 28px; box-sizing: border-box; display: flex; flex-direction: column; }
+    .board-head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid rgba(255, 255, 255, .25); padding-bottom: 16px; }
+    .kicker { font: 700 28px/1 var(--display); letter-spacing: .08em; color: var(--mint); margin: 0 0 8px; text-transform: uppercase; }
+    .title { font: 800 84px/.9 var(--display); margin: 0; text-transform: uppercase; }
+    .page-note { font: 700 28px/1 var(--display); color: var(--soft); letter-spacing: .06em; text-align: right; }
+    .cols, .row { display: grid; grid-template-columns: 90px 80px 1fr 170px 150px; align-items: center; column-gap: 24px; }
+    .cols { font: 700 26px/1 var(--display); color: var(--soft); letter-spacing: .08em; padding: 14px 0 8px; }
+    .cols span:nth-child(n+4) { text-align: right; }
+    .rows { flex: 1; display: flex; flex-direction: column; }
+    .row { flex: 1; border-bottom: 1px solid rgba(255, 255, 255, .15); min-height: 0; }
+    .row:last-child { border-bottom: 0; }
+    .rank { font: 800 56px/1 var(--display); color: var(--mint); text-align: center; }
+    .mark { width: 72px; height: 60px; background: #fff; border-radius: 6px; display: grid; place-items: center; overflow: hidden; }
+    .mark img { max-width: 64px; max-height: 52px; }
+    .mark:empty { background: transparent; }
+    .name { font: 800 48px/1 var(--display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-transform: uppercase; }
+    .sub { font: 500 26px/1.2 var(--font); color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 4px; }
+    .num { font: 800 52px/1 var(--display); text-align: right; font-variant-numeric: tabular-nums; }
+    .num.pts { color: var(--mint); }
+    .board-foot { font: 500 24px/1.2 var(--font); color: var(--soft); padding-top: 12px; border-top: 2px solid rgba(255, 255, 255, .25); display: flex; justify-content: space-between; }
+
+    /* Lower third */
+    .lower { position: absolute; left: 0; right: 0; bottom: 0; height: 200px; display: grid; grid-template-columns: 200px 1fr auto; background: rgba(13, 53, 80, .97); border-top: 8px solid var(--mint); }
+    .lower .badge { background: var(--mint); color: var(--deep); display: grid; place-items: center; text-align: center; }
+    .lower .badge b { font: 800 96px/.85 var(--display); display: block; }
+    .lower .badge small { font: 700 26px/1 var(--display); letter-spacing: .06em; }
+    .lower .who { padding: 26px 32px; display: flex; gap: 28px; align-items: center; min-width: 0; }
+    .lower .who .mark { width: 120px; height: 120px; flex: none; }
+    .lower .who .mark img { max-width: 108px; max-height: 108px; }
+    .lower .who .name { font-size: 64px; }
+    .lower .who .sub { font-size: 30px; }
+    .lower .stats { display: flex; align-items: center; gap: 44px; padding: 0 44px; border-left: 2px solid rgba(255, 255, 255, .2); }
+    .lower .stat b { display: block; font: 800 64px/1 var(--display); text-align: center; font-variant-numeric: tabular-nums; }
+    .lower .stat small { display: block; font: 700 24px/1 var(--display); color: var(--soft); letter-spacing: .08em; text-align: center; margin-top: 6px; }
+
+    /* Ticker */
+    .ticker { position: absolute; left: 0; right: 0; bottom: 0; height: 84px; display: flex; background: rgba(13, 53, 80, .97); border-top: 6px solid var(--mint); overflow: hidden; }
+    .ticker .tag { flex: none; background: var(--mint); color: var(--deep); font: 800 40px/84px var(--display); padding: 0 28px; letter-spacing: .04em; z-index: 1; }
+    .ticker .track { flex: 1; overflow: hidden; position: relative; }
+    .ticker .crawl { position: absolute; white-space: nowrap; font: 600 40px/84px var(--font); will-change: transform; }
+    .ticker .crawl span { margin-right: 80px; }
+    .ticker .crawl b { color: var(--mint); font-weight: 800; }
+
+    .message { position: absolute; inset: 0; display: grid; place-items: center; font: 700 40px var(--display); color: var(--white); background: rgba(13, 53, 80, .9); }
+  </style>
+</head>
+<body>
+  <div class="stage" id="stage"><div class="safe" id="safe"></div></div>
+  <script>
+  'use strict';
+  (() => {
+    const params = new URLSearchParams(location.search);
+    const view = params.get('view') || 'standings';
+    const bg = params.get('bg') || 'transparent';
+    const perPage = Math.max(1, Math.min(13, Number(params.get('rows')) || (view === 'top10' ? 10 : 8)));
+    const cycle = Number(params.get('cycle')) || 0;
+    let page = Math.max(1, Number(params.get('page')) || 1);
+    if (['green', 'black', 'navy'].includes(bg)) document.body.classList.add(`bg-${bg}`);
+    if (params.get('safe') === '1') document.body.classList.add('guides');
+    const stage = document.getElementById('stage');
+    const safe = document.getElementById('safe');
+    const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    // Feed logo URLs point at the published site; load the same file from this copy so local previews work.
+    const local = (url) => String(url || '').replace(/^https:\/\/horner\.github\.io\/refintery-rankings\//, '../');
+    const mark = (url) => `<div class="mark">${url ? `<img src="${esc(local(url))}" alt="">` : ''}</div>`;
+    const day = (iso) => iso ? new Date(`${iso}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+    let rows = [];
+    let crawlFrame = 0, crawlX = 0;
+
+    // Scale the 1920×1080 stage to the window so it previews in any browser; at 1920×1080 it is 1:1.
+    const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `scale(${s})`; };
+    addEventListener('resize', fit); fit();
+
+    function board() {
+      const list = view === 'top10' ? rows.slice(0, 10) : rows;
+      const pages = Math.max(1, Math.ceil(list.length / perPage));
+      if (page > pages) page = 1;
+      const slice = list.slice((page - 1) * perPage, page * perPage);
+      const title = view === 'top10' ? 'The Top 10' : 'District standings';
+      safe.innerHTML = `<section class="board">
+        <div class="board-head"><div><p class="kicker">2026 FRC · Northeast Indiana</p><h1 class="title">${title}</h1></div>
+        <div class="page-note">${pages > 1 ? `${page} of ${pages}` : ''}</div></div>
+        <div class="cols"><span>RK</span><span></span><span>TEAM / SCHOOL</span><span>W-L</span><span>PTS</span></div>
+        <div class="rows">${slice.map((r) => `<div class="row"><span class="rank">${r.rank}</span>${mark(r.team_logo || r.school_logo)}<div><div class="name">${esc(r.short_name)} <span style="color:var(--soft);font-weight:700">${r.team_number}</span></div><div class="sub">${esc(r.school_short)} · ${esc(r.city)}</div></div><span class="num">${esc(r.record)}</span><span class="num pts">${r.district_points}</span></div>`).join('')}</div>
+        <div class="board-foot"><span>Ranked by FIRST Indiana district points</span><span>Source: The Blue Alliance · ${esc(day(rows[0]?.updated))}</span></div>
+      </section>`;
+    }
+
+    function lowerThird() {
+      const wanted = params.get('team');
+      const r = rows.find((x) => String(x.team_number) === wanted);
+      if (!r) { safe.innerHTML = `<div class="message">No team ${esc(wanted || '')} in the standings. Add &amp;team= with a team number, e.g. &amp;team=1501.</div>`; return; }
+      safe.innerHTML = `<section class="lower">
+        <div class="badge"><div><b>${r.rank}</b><small>NE INDIANA</small></div></div>
+        <div class="who">${mark(r.team_logo || r.school_logo)}<div style="min-width:0"><div class="name">${esc(r.team_name)} · ${r.team_number}</div><div class="sub">${esc(r.school_short)} · ${esc(r.city)}${r.honors ? ` · ${esc(r.honors)}` : ''}</div></div></div>
+        <div class="stats"><div class="stat"><b>${esc(r.record)}</b><small>2026 W-L</small></div><div class="stat"><b>${r.district_points}</b><small>DIST. PTS</small></div><div class="stat"><b>#${r.indiana_rank}</b><small>IN STATE</small></div></div>
+      </section>`;
+    }
+
+    function ticker() {
+      const items = rows.map((r) => `<span><b>#${r.rank}</b> ${esc(r.short_name)} (${r.team_number}) ${esc(r.record)} · ${r.district_points} pts</span>`).join('');
+      safe.innerHTML = `<section class="ticker"><div class="tag">NE INDIANA ROBOTICS</div><div class="track"><div class="crawl" id="crawl">${items}${items}</div></div></section>`;
+      const crawl = document.getElementById('crawl');
+      const speed = Number(params.get('speed')) || 120; // pixels per second
+      const half = crawl.scrollWidth / 2; // the items are drawn twice; wrap after one copy
+      let last = performance.now();
+      cancelAnimationFrame(crawlFrame); // a data update restarts the crawl without stacking loops
+      const step = (now) => {
+        crawlX = (crawlX - speed * (now - last) / 1000) % half; last = now;
+        crawl.style.transform = `translateX(${crawlX}px)`;
+        crawlFrame = requestAnimationFrame(step);
+      };
+      crawlFrame = requestAnimationFrame(step);
+    }
+
+    function render() {
+      if (!rows.length) return;
+      if (view === 'lowerthird') lowerThird();
+      else if (view === 'ticker') ticker();
+      else board();
+    }
+
+    async function load() {
+      try {
+        const response = await fetch('standings.json', { cache: 'no-cache' });
+        if (!response.ok) throw new Error(response.status);
+        const fresh = await response.json();
+        const changed = JSON.stringify(fresh) !== JSON.stringify(rows);
+        rows = fresh;
+        if (changed) render();
+      } catch (error) {
+        if (!rows.length) safe.innerHTML = '<div class="message">Standings feed unavailable. Serve this folder over http(s).</div>';
+      }
+    }
+    load();
+    setInterval(load, 60000); // A browser source left open picks up a site update within a minute.
+    if (cycle > 0 && view !== 'lowerthird' && view !== 'ticker') setInterval(() => { if (!rows.length) return; page += 1; board(); }, cycle * 1000);
+  })();
+  </script>
+</body>
+</html>

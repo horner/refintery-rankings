@@ -69,13 +69,13 @@
     {
       "team_number": 1501,
       "team_name": "Team THRUST",
-      "school_or_organization": "Huntington North High School / Huntington County 4-H",
-      "school_url": "https://hnhs.hccsc.k12.in.us/",
+      "school_or_organization": "Huntington County 4-H Robotics",
+      "school_url": "https://huntingtonrobotics.org/",
       "city": "Huntington",
       "state": "IN",
       "scope_group": "northeast_indiana",
       "affiliation_type": "school_and_community",
-      "affiliation_notes": "School connection plus community 4-H program; participation is not restricted to one high school.",
+      "affiliation_notes": "Run by Huntington County 4-H Robotics, a community 4-H program open to high-school students countywide; Huntington North High School lists the team among its clubs.",
       "first_team_url": "https://frc-events.firstinspires.org/2026/team/1501",
       "first_history_url": "https://frc-events.firstinspires.org/team/1501",
       "statbotics_url": "https://www.statbotics.io/team/1501/2026",
@@ -83,7 +83,8 @@
         "https://frc-events.firstinspires.org/2026/team/1501",
         "https://refineryrobotics.org/about/",
         "https://huntingtonnhs.ss13.sharpschool.com/get_involved/clubs/robotics",
-        "https://huntingtonrobotics.org/faq/"
+        "https://huntingtonrobotics.org/faq/",
+        "https://huntingtonrobotics.org/"
       ],
       "rankings": {
         "season": 2026,
@@ -190,7 +191,7 @@
       "geography": {
         "team_number": 1501,
         "team_name": "Team THRUST",
-        "school_or_organization": "Huntington North High School / Huntington County 4-H",
+        "school_or_organization": "Huntington County 4-H Robotics",
         "city": "Huntington",
         "state": "IN",
         "scope_group": "northeast_indiana",
@@ -248,7 +249,6 @@
       },
       "source_ids": [
         "S-04e10368b6",
-        "S-2039de4f00",
         "S-30d1e0053f",
         "S-611d3b559d",
         "S-8b5a31fb68",
@@ -256,200 +256,10 @@
         "S-a7612fc1db",
         "S-ae56a072c2",
         "S-af435a6c0b",
+        "S-c9d46714e4",
         "S-dbd5a14b4e",
         "S-dee2520c50",
         "S-ed7f97233c"
-      ]
-    },
-    {
-      "team_number": 1720,
-      "team_name": "PhyXTGears",
-      "school_or_organization": "East Central Indiana Robotics (community team)",
-      "school_url": "https://phyxtgears.org/",
-      "city": "Matthews",
-      "state": "IN",
-      "scope_group": "northeast_indiana",
-      "affiliation_type": "community",
-      "affiliation_notes": "Community team with no single exclusive high-school affiliation.",
-      "first_team_url": "https://frc-events.firstinspires.org/2026/team/1720",
-      "first_history_url": "https://frc-events.firstinspires.org/team/1720",
-      "statbotics_url": "https://www.statbotics.io/team/1720/2026",
-      "affiliation_source_urls": [
-        "https://frc-events.firstinspires.org/2026/team/1720",
-        "https://phyxtgears.org/",
-        "https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/"
-      ],
-      "rankings": {
-        "season": 2026,
-        "source_url": "https://storage.googleapis.com/site_v1/team_years/2026",
-        "snapshot_last_modified_utc": "2026-06-12T02:51:19Z",
-        "epa_mean": 118.52,
-        "epa_standard_deviation": 22.26,
-        "state_rank": 13,
-        "state_team_count": 68,
-        "world_rank": 440,
-        "world_team_count": 3724,
-        "source_artifact": "artifacts/statbotics/snapshots/2026-10-22T04-29-18-072314Z_0059dfe792a0/team-years-2026-subset.json"
-      },
-      "season_history": {
-        "team_number": 1720,
-        "source_url": "https://frc-events.firstinspires.org/team/1720",
-        "resolved_url": "https://frc-events.firstinspires.org/team/1720",
-        "retrieved_at_utc": "2026-10-22T04:30:15.809910+00:00",
-        "response_sha256": "91f26d6145426933c4244e92e4caccb8d4b75842ac4bf389a57e1283798f5416",
-        "response_bytes": 78787,
-        "response_last_modified": null,
-        "official_rookie_year": 2006,
-        "source_headline_seasons_competed": 22,
-        "all_listed_seasons": [
-          2006,
-          2007,
-          2008,
-          2009,
-          2010,
-          2011,
-          2012,
-          2013,
-          2014,
-          2015,
-          2016,
-          2017,
-          2018,
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024,
-          2025,
-          2026,
-          2027
-        ],
-        "recorded_seasons_through_cutoff": [
-          2006,
-          2007,
-          2008,
-          2009,
-          2010,
-          2011,
-          2012,
-          2013,
-          2014,
-          2015,
-          2016,
-          2017,
-          2018,
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024,
-          2025,
-          2026
-        ],
-        "recorded_season_count": 21,
-        "first_recorded_season": 2006,
-        "excluded_future_seasons": [
-          2027
-        ],
-        "seasons_explicitly_registered_without_competition": [],
-        "count_definition": "Season entries in FIRST history through the cutoff, including registered seasons without competition; not a count of seasons with matches."
-      },
-      "leadership": {
-        "team_number": 1720,
-        "adults": [
-          {
-            "name": "Shawn VanNess",
-            "role": "Team president",
-            "evidence_date": "2026-05-15",
-            "date_precision": "day",
-            "source_urls": [
-              "https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/"
-            ],
-            "evidence_status": "verified_dated",
-            "notes": "Official team season report names the president. Publication date is May 15, 2026; the page also displays a May 23 update."
-          },
-          {
-            "name": "Mike Koch",
-            "role": "Mechanical mentor and co-founder",
-            "evidence_date": "2026-05-15",
-            "date_precision": "day",
-            "source_urls": [
-              "https://phyxtgears.org/2026/05/15/local-robotics-team-celebrates-20th-season-with-world-championship-appearance/"
-            ],
-            "evidence_status": "verified_dated",
-            "notes": "Official team report supplies these roles; it does not identify him as head coach."
-          }
-        ],
-        "students": [],
-        "other_representatives": [],
-        "gaps": [
-          "Student team captain not verified.",
-          "A separately designated head coach is not established by the cited team report."
-        ]
-      },
-      "geography": {
-        "team_number": 1720,
-        "team_name": "PhyXTGears",
-        "school_or_organization": "East Central Indiana Robotics (community team)",
-        "city": "Matthews",
-        "state": "IN",
-        "scope_group": "northeast_indiana",
-        "location_id": "matthews_town",
-        "distance_miles": 51.391027,
-        "display_distance_miles": 51.4,
-        "within_radius": true,
-        "radius_margin_miles": 8.608973,
-        "within_two_miles_of_boundary": false,
-        "inclusion_basis": "town_screening",
-        "certainty_notes": "Included on town-based screening. The point is Matthews town, not a school or a confirmed team workshop. The approximately 8.6-mile margin is not a bound on workshop-location uncertainty.",
-        "affiliation_source_urls": [
-          "https://frc-events.firstinspires.org/2026/team/1720",
-          "https://phyxtgears.org/",
-          "https://townofmatthews.com/phyxtgears-robotics-team-1720/"
-        ],
-        "location": {
-          "location_id": "matthews_town",
-          "name": "Matthews town, Indiana",
-          "reference_type": "town_representative_point",
-          "address": null,
-          "address_source_url": null,
-          "source_accessed_date": "2026-10-22",
-          "coordinates": {
-            "latitude": 40.3874569,
-            "longitude": -85.4977783
-          },
-          "coordinate_method": "U.S. Census TIGERweb incorporated-place internal point",
-          "coordinate_source_url": "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html",
-          "coordinate_evidence": {
-            "dataset": "State of Indiana Incorporated Places - Current/ACS26",
-            "data_as_of": "2026-01-01",
-            "GEOID": "1847592",
-            "NAME": "Matthews town",
-            "INTPTLAT": "+40.3874569",
-            "INTPTLON": "-085.4977783",
-            "CENTLAT": "+40.3874569",
-            "CENTLON": "-085.4977783"
-          },
-          "precision_note": "Town-based screening only. The municipal team page establishes Matthews as the team location but supplies a PO box; no physical team workshop was geocoded.",
-          "team_location_source_url": "https://townofmatthews.com/phyxtgears-robotics-team-1720/",
-          "source_urls": [
-            "https://townofmatthews.com/phyxtgears-robotics-team-1720/",
-            "https://phyxtgears.org/",
-            "https://tigerweb.geo.census.gov/tigerwebmain/Files/acs26/tigerweb_acs26_incplace_in.html"
-          ]
-        }
-      },
-      "source_ids": [
-        "S-195d71a549",
-        "S-661b1d60f2",
-        "S-6befec500f",
-        "S-6ee167d98e",
-        "S-77fdc41cf1",
-        "S-842f7dd4f1",
-        "S-dee2520c50",
-        "S-f0abf80e10"
       ]
     },
     {
@@ -705,15 +515,15 @@
           },
           {
             "name": "Doug Horner",
-            "role": "Sponsor and adult team spokesperson",
+            "role": "Notable supporter and sponsor",
             "evidence_date": "2024-04-12",
             "date_precision": "day",
             "source_urls": [
               "https://www.21alivenews.com/2024/04/13/snider-robotics-club-prepares-compete-world-championship/",
               "https://refineryrobotics.org/about/"
             ],
-            "evidence_status": "verified_historical",
-            "notes": "The 21Alive page displays publication on April 12, 2024 at 11:38 PM EDT, although its URL uses April 13. It describes his work with the club and quotes him about the program; The REFINERY biography corroborates rookie-year sponsorship. No formal head-coach appointment is asserted."
+            "evidence_status": "verified_dated",
+            "notes": "Founder of The REFINERY, which sponsors the team, and a Snider High School alumnus. He supports the program as a sponsor rather than as a coach or team member; 21Alive quoted him about the club in April 2024."
           }
         ],
         "students": [
@@ -918,66 +728,43 @@
           {
             "name": "Matt Elder",
             "role": "Lead coach / mentor",
-            "evidence_date": null,
-            "date_precision": "undated",
+            "evidence_date": "2026-11-10",
+            "date_precision": "day",
             "source_urls": [
               "https://www.linkedin.com/in/matt-elder-24b8b615a"
             ],
-            "evidence_status": "self_reported_undated",
-            "notes": "Role appears on a public professional profile. No dated school appointment or current-season appointment was independently verified."
+            "evidence_status": "confirmed_by_team_mentor",
+            "notes": "Lead coach and mentor. Confirmed by Cameron Elder (Olympus assistant coach; Carroll mentor) on Nov 10, 2026."
           },
           {
             "name": "Cameron Elder",
             "role": "Assistant coach",
-            "evidence_date": null,
-            "date_precision": "undated",
+            "evidence_date": "2026-11-10",
+            "date_precision": "day",
             "source_urls": [
               "https://refineryrobotics.org/about/"
             ],
-            "evidence_status": "verified_undated",
-            "notes": "The REFINERY biography expressly identifies him as assistant coach of Team 4982. It also identifies him as a graduate and former student captain, so he is not listed as a current student captain."
+            "evidence_status": "confirmed_by_person",
+            "notes": "Assistant coach of Olympus Robotics and a former Olympus student captain. Also the former head coach of Carroll (10332), where he is now a mentor. Confirmed by Cameron Elder (Olympus assistant coach; Carroll mentor) on Nov 10, 2026."
           }
         ],
         "students": [
           {
-            "name": "Jasroop",
-            "role": "Named in the team captain / assistant captain announcement",
-            "evidence_date": "2025-2026",
-            "date_precision": "school_year",
-            "source_urls": [
-              "https://www.instagram.com/4982_olympus_robotics/"
-            ],
-            "evidence_status": "qualified_indexed",
-            "notes": "Official team account search-indexed caption pairs Jasroop and Jake with captain and assistant captain for 2025-2026, in that order. A full surname, stable post permalink, and independent confirmation of the individual title assignment were not retrieved. Do not silently convert the caption order into a verified individual appointment."
-          },
-          {
             "name": "Jake",
-            "role": "Named in the team captain / assistant captain announcement",
-            "evidence_date": "2025-2026",
-            "date_precision": "school_year",
+            "role": "Team captain, 2026–27",
+            "evidence_date": "2026-11-10",
+            "date_precision": "day",
             "source_urls": [
               "https://www.instagram.com/4982_olympus_robotics/"
             ],
-            "evidence_status": "qualified_indexed",
-            "notes": "Official team account search-indexed caption pairs Jasroop and Jake with captain and assistant captain for 2025-2026, in that order. Only the first name is verified. The individual assignment and a stable post permalink remain unverified."
-          },
-          {
-            "name": "Caleb Neely",
-            "role": "Co-Business Manager and Outreach Director",
-            "evidence_date": "2026",
-            "date_precision": "year",
-            "source_urls": [
-              "https://refineryrobotics.org/about/"
-            ],
-            "evidence_status": "verified_undated",
-            "notes": "An undated official partner biography expressly associates these roles with 2026. This establishes student leadership but does not establish the team-captain role."
+            "evidence_status": "confirmed_by_team_mentor",
+            "notes": "Olympus has a single team captain this season and no assistant captain. Surname not published here. Confirmed by Cameron Elder (Olympus assistant coach; Carroll mentor) on Nov 10, 2026."
           }
         ],
         "other_representatives": [],
         "gaps": [
-          "Captain and assistant-captain surnames and individual title assignments require confirmation.",
-          "The captain announcement is indexed account content, with no retrieved individual post permalink.",
-          "A 2026-27 student captain is not verified."
+          "Captain surname not published.",
+          "Olympus has a student leadership board; its members are not listed individually here."
         ]
       },
       "geography": {
@@ -1287,7 +1074,6 @@
             "evidence_date": "2024-05-11",
             "date_precision": "day",
             "source_urls": [
-              "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
               "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html",
               "https://www.trine.edu/news/2019/east-noble-robotics.aspx"
             ],
@@ -1300,7 +1086,6 @@
             "evidence_date": "2024-05-11",
             "date_precision": "day",
             "source_urls": [
-              "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
               "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html"
             ],
             "evidence_status": "verified_historical",
@@ -1312,7 +1097,6 @@
             "evidence_date": "2024-05-11",
             "date_precision": "day",
             "source_urls": [
-              "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
               "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html"
             ],
             "evidence_status": "verified_historical",
@@ -1324,7 +1108,6 @@
             "evidence_date": "2024-05-11",
             "date_precision": "day",
             "source_urls": [
-              "https://www.euvolution.com/prometheism-transhumanism-posthumanism/robotics/en-robotics-team-demonstrates-real-world-learning-news-sun-kpcnews-com-kpcnews-com/",
               "https://www.kpcnews.com/newssun/article_01fef033-f9cb-525e-82e8-676e717dee03.html"
             ],
             "evidence_status": "verified_historical",
@@ -1401,7 +1184,6 @@
         "S-30d1e0053f",
         "S-4fcf5baeed",
         "S-657af3e200",
-        "S-7b2f1b24b1",
         "S-7f2297bf24",
         "S-926639a459",
         "S-b2f253fe7b",
@@ -1482,45 +1264,33 @@
           },
           {
             "name": "Cameron Elder",
-            "role": "Former head coach",
-            "evidence_date": null,
-            "date_precision": "undated",
+            "role": "Former head coach (2025); now a team mentor",
+            "evidence_date": "2026-11-10",
+            "date_precision": "day",
             "source_urls": [
               "https://www.linkedin.com/in/camelder"
             ],
-            "evidence_status": "self_reported_historical",
-            "notes": "Public professional profile reports the Team 10332 head-coach tenure as April through October 2025. The profile itself is undated; this is a past appointment, not a current coach assignment."
-          },
-          {
-            "name": "Matt Arnold",
-            "role": "Former assistant coach",
-            "evidence_date": null,
-            "date_precision": "undated",
-            "source_urls": [
-              "https://www.linkedin.com/in/m4ttbit"
-            ],
-            "evidence_status": "self_reported_historical",
-            "notes": "Public professional profile reports an assistant-coach tenure from October 2024 through April 2025. The profile itself is undated; continued service is not established."
+            "evidence_status": "confirmed_by_person",
+            "notes": "Head coach from April to October 2025, and now a mentor with the team. Confirmed by Cameron Elder (Olympus assistant coach; Carroll mentor) on Nov 10, 2026. Carroll has had several head and assistant coaches since its 2025 rookie season."
           }
         ],
         "students": [
           {
             "name": "Nieng Mang",
-            "role": "Team captain; Carroll High School senior",
+            "role": "Team captain, 2025–26",
             "evidence_date": "2026-01-27",
             "date_precision": "day",
             "source_urls": [
               "https://chargeronline.nacs.k12.in.us/12210/sports/from-worst-to-first-how-indianas-football-program-became-the-nations-best/"
             ],
             "evidence_status": "verified_dated_bio",
-            "notes": "The school newspaper contributor biography identifies Mang as captain and a senior. January 27, 2026 is the article date; the biography itself has no separate timestamp and may be updated dynamically. The evidence supports the 2025-26 school-year identification, not a current 2026-27 appointment."
+            "notes": "A January 2026 Carroll school-newspaper bio names Mang as team captain and a senior. A senior that year would have graduated in spring 2026, so the 2026–27 captain still needs confirming with the team."
           }
         ],
         "other_representatives": [],
         "gaps": [
-          "Current head coach not verified.",
-          "Student captain for 2026-27 not verified.",
-          "Mentor evidence for Mady Stricker is indexed official content rather than the full biography on the current live page."
+          "The current head coach is a Carroll High School teacher who is not yet named in a public source.",
+          "The 2026–27 student captain is not confirmed."
         ]
       },
       "geography": {
@@ -1589,7 +1359,6 @@
         "S-5c8cb901ec",
         "S-874fa1f02b",
         "S-a5a67ec0f8",
-        "S-dcb83b6d86",
         "S-dee2520c50",
         "S-fab383bbea",
         "S-fd1c2fed27"
